@@ -131,6 +131,16 @@ AI 기반 맞춤형 식단 관리 플랫폼입니다.
 
 ---
 
+## 📖 API Documentation
+
+프로젝트의 전체 API 명세는 Notion을 통해 관리하고 있습니다.
+
+### 🔗 Documentation
+
+* Notion API Docs : https://app.notion.com/p/API-2e601bc06a948051a95bce07c8ad3433
+
+---
+
 ## 📂 Directory Structure
 ```text
 📦 src/main/java/com/urisik/backend
