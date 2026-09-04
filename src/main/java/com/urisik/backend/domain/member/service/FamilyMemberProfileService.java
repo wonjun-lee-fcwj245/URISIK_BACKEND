@@ -19,6 +19,8 @@ import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.global.external.s3.S3Remover;
 import com.urisik.backend.global.external.s3.S3Uploader;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,6 +43,13 @@ public class FamilyMemberProfileService {
     private final MemberTransformedRecipeWishRepository memberTransformedRecipeWishRepository;
 
     //post
+    @Caching(evict = {
+            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public FamilyMemberProfileResponse.Create create
             (Long familyRoomId, Long memberId, FamilyMemberProfileRequest.Create req)
@@ -123,6 +132,13 @@ public class FamilyMemberProfileService {
     patch
      */
 
+    @Caching(evict = {
+            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public FamilyMemberProfileResponse.Update update(
             Long familyRoomId,
@@ -345,6 +361,13 @@ public class FamilyMemberProfileService {
      */
 
 
+    @Caching(evict = {
+            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public FamilyMemberProfileResponse.Delete quitFamilyRoom(Long familyRoomId, Long profileId , Long memberId) {
 

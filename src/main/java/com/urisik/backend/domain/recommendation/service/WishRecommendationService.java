@@ -15,6 +15,7 @@ import com.urisik.backend.domain.recipe.service.AllergyRiskService;
 import com.urisik.backend.global.apiPayload.code.GeneralErrorCode;
 import com.urisik.backend.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ import com.urisik.backend.domain.allergy.enums.Allergen;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +39,7 @@ public class WishRecommendationService {
     private final AllergyRiskService allergyRiskService;
     private final HighScoreRecommendationConverter converter;
 
+    @Cacheable(value = "recommendWish", key = "#loginUserId + ':' + #category")
     public HighScoreRecommendationResponseDTO recommend(
             Long loginUserId,
             String category
@@ -102,7 +105,7 @@ public class WishRecommendationService {
                                             .isEmpty();
                             return converter.toDto(c, isSafe);
                         })
-                        .toList()
+                        .collect(Collectors.toCollection(ArrayList::new))
         );
     }
 

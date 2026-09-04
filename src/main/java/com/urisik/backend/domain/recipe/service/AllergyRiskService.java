@@ -5,9 +5,12 @@ import com.urisik.backend.domain.allergy.enums.Allergen;
 import com.urisik.backend.domain.allergy.repository.MemberAllergyRepository;
 import com.urisik.backend.global.util.IngredientNormalizer;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,12 +20,13 @@ public class AllergyRiskService {
     private final IngredientNormalizer ingredientNormalizer;
 
     /** 가족방의 알레르기 목록을 1회 조회하여 반환 (N+1 방지용 사전 조회) */
+    @Cacheable(value = "familyAllergens", key = "#familyRoomId")
     public List<Allergen> getFamilyAllergens(Long familyRoomId) {
         return memberAllergyRepository.findByFamilyRoomId(familyRoomId)
                 .stream()
                 .map(MemberAllergy::getAllergen)
                 .distinct()
-                .toList();
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public List<Allergen> detectRiskAllergens(Long familyRoomId, List<String> ingredients) {

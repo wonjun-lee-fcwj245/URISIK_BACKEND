@@ -29,6 +29,8 @@ import com.urisik.backend.global.auth.exception.AuthenExcetion;
 import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
 import com.urisik.backend.global.util.IngredientParser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +53,12 @@ public class MemberWishListService {
     private final AllergyRiskService allergyRiskService;
     private final TransformedRecipeReviewRepository transformedRecipeReviewRepository;
 
+    @Caching(evict = {
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public WishListResponse.PostWishes addWishItems
             (Long memberId, Long familyRoomId, WishListRequest.PostWishes req) {
@@ -116,6 +124,12 @@ public class MemberWishListService {
     }
 
 
+    @Caching(evict = {
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public WishListResponse.DeleteWishes deleteWishItems
             (Long memberId,Long familyRoomId, WishListRequest.DeleteWishes req) {

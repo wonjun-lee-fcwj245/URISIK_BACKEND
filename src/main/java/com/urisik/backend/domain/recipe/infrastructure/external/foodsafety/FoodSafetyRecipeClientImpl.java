@@ -4,13 +4,14 @@ import com.urisik.backend.domain.recipe.infrastructure.external.foodsafety.dto.F
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -62,6 +63,7 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
 
 
     @Override
+    @Cacheable(value = "externalRecipeSearch", key = "#keyword + ':' + #startIdx + ':' + #endIdx")
     public List<FoodSafetyRecipeResponse.Row> searchByName(String keyword, int startIdx, int endIdx) {
         // 외부 API 필터: RCP_NM
         String filter = "RCP_NM=" + keyword;
@@ -74,8 +76,8 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
 
         FoodSafetyRecipeResponse body = res.getBody();
         if (body == null || body.getCookrcp01() == null || body.getCookrcp01().getRow() == null) {
-            return Collections.emptyList();
+            return new ArrayList<>();
         }
-        return body.getCookrcp01().getRow();
+        return new ArrayList<>(body.getCookrcp01().getRow());
     }
 }

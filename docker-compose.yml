@@ -1,9 +1,16 @@
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: urisik-redis
+    restart: always
+
   app:
     image: euuunchae/urisik-app:latest
     container_name: urisik-app
     ports:
       - "8080:8080"
+    depends_on:
+      - redis
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_JPA_HIBERNATE_DDL_AUTO=${HIBERNATE_DDL_AUTO:-update}
@@ -12,6 +19,10 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://urisik-db.crwokauswgl1.ap-northeast-2.rds.amazonaws.com:3306/urisik-db?useSSL=false&serverTimezone=Asia/Seoul
       - SPRING_DATASOURCE_USERNAME=urisik
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+
+      # Redis 연결 정보
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
 
       # Hibernate 배치 설정
       - SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_BATCH_FETCH_SIZE=100
