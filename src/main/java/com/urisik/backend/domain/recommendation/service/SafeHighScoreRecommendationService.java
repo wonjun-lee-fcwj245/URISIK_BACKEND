@@ -26,6 +26,7 @@ import com.urisik.backend.domain.allergy.enums.Allergen;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -129,7 +130,7 @@ public class SafeHighScoreRecommendationService {
                 safeCandidates.stream()
                         .limit(3)
                         .map(c -> converter.toDto(c, true)) // 항상 안전
-                        .toList()
+                        .collect(Collectors.toCollection(ArrayList::new))
         );
     }
 

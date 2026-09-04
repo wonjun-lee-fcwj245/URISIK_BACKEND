@@ -26,6 +26,7 @@ import com.urisik.backend.domain.allergy.enums.Allergen;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -104,7 +105,7 @@ public class WishRecommendationService {
                                             .isEmpty();
                             return converter.toDto(c, isSafe);
                         })
-                        .toList()
+                        .collect(Collectors.toCollection(ArrayList::new))
         );
     }
 

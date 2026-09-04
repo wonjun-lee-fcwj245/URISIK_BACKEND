@@ -46,7 +46,9 @@ public class FamilyMemberProfileService {
     @Caching(evict = {
             @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
             @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true)
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
     })
     @Transactional
     public FamilyMemberProfileResponse.Create create
@@ -133,7 +135,9 @@ public class FamilyMemberProfileService {
     @Caching(evict = {
             @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
             @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true)
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
     })
     @Transactional
     public FamilyMemberProfileResponse.Update update(
@@ -357,6 +361,13 @@ public class FamilyMemberProfileService {
      */
 
 
+    @Caching(evict = {
+            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public FamilyMemberProfileResponse.Delete quitFamilyRoom(Long familyRoomId, Long profileId , Long memberId) {
 
