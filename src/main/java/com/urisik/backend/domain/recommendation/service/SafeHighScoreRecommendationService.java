@@ -15,6 +15,7 @@ import com.urisik.backend.domain.recipe.service.AllergyRiskService;
 import com.urisik.backend.global.apiPayload.code.GeneralErrorCode;
 import com.urisik.backend.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class SafeHighScoreRecommendationService {
     /**
      * 알레르기 안전 + 카테고리 기준 레시피 추천
      */
+    @Cacheable(value = "recommendSafeHighScore", key = "#loginUserId + ':' + #category")
     public HighScoreRecommendationResponseDTO recommendSafeRecipes(
             Long loginUserId,
             String category

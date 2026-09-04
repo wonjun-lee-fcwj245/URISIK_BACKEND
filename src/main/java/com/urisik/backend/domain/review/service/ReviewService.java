@@ -18,6 +18,8 @@ import com.urisik.backend.global.apiPayload.exception.GeneralException;
 import com.urisik.backend.global.auth.exception.AuthenExcetion;
 import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +34,12 @@ public class ReviewService {
     /**
      * 1. 리뷰 작성하기
      */
+    @Caching(evict = {
+            @CacheEvict(value = "recommendSafe", allEntries = true),
+            @CacheEvict(value = "recommendHighScore", allEntries = true),
+            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
+            @CacheEvict(value = "recommendWish", allEntries = true)
+    })
     @Transactional
     public ReviewResponseDto createReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
 

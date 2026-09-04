@@ -5,6 +5,7 @@ import com.urisik.backend.domain.search.enums.RankChange;
 import com.urisik.backend.domain.search.repository.PopularKeywordRepository;
 import com.urisik.backend.domain.search.repository.SearchLogRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ public class PopularKeywordBatch {
     private final SearchLogRepository searchLogRepository;
     private final PopularKeywordRepository popularKeywordRepository;
 
+    @CacheEvict(value = "popularKeywords", allEntries = true)
     @Scheduled(cron = "0 0 */3 * * *") // 3시간마다 실행
     @Transactional
     public void aggregate() {

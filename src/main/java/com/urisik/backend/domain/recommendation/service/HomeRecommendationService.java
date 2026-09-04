@@ -14,6 +14,7 @@ import com.urisik.backend.domain.recipe.service.AllergyRiskService;
 import com.urisik.backend.global.apiPayload.code.GeneralErrorCode;
 import com.urisik.backend.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,7 @@ public class HomeRecommendationService {
     private final AllergyRiskService allergyRiskService;
     private final HomeSafeRecipeConverter converter;
 
+    @Cacheable(value = "recommendSafe", key = "#loginUserId")
     @Transactional(readOnly = true)
     public HomeSafeRecipeResponseDTO recommendSafeRecipes(Long loginUserId) {
 

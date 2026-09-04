@@ -15,6 +15,7 @@ import com.urisik.backend.domain.recipe.service.AllergyRiskService;
 import com.urisik.backend.global.apiPayload.code.GeneralErrorCode;
 import com.urisik.backend.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class WishRecommendationService {
     private final AllergyRiskService allergyRiskService;
     private final HighScoreRecommendationConverter converter;
 
+    @Cacheable(value = "recommendWish", key = "#loginUserId + ':' + #category")
     public HighScoreRecommendationResponseDTO recommend(
             Long loginUserId,
             String category
