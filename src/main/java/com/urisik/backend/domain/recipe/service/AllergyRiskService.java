@@ -16,6 +16,15 @@ public class AllergyRiskService {
     private final MemberAllergyRepository memberAllergyRepository;
     private final IngredientNormalizer ingredientNormalizer;
 
+    /** 가족방의 알레르기 목록을 1회 조회하여 반환 (N+1 방지용 사전 조회) */
+    public List<Allergen> getFamilyAllergens(Long familyRoomId) {
+        return memberAllergyRepository.findByFamilyRoomId(familyRoomId)
+                .stream()
+                .map(MemberAllergy::getAllergen)
+                .distinct()
+                .toList();
+    }
+
     public List<Allergen> detectRiskAllergens(Long familyRoomId, List<String> ingredients) {
         List<Allergen> familyAllergens =
                 memberAllergyRepository.findByFamilyRoomId(familyRoomId)

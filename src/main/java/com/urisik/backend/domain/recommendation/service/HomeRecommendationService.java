@@ -18,6 +18,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urisik.backend.domain.allergy.enums.Allergen;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -66,6 +68,7 @@ public class HomeRecommendationService {
         );
 
         List<HomeSafeRecommendationRecipeDTO> result = new ArrayList<>();
+        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
 
         for (HomeRecommendationRecipeCandidate candidate : candidates) {
 
@@ -73,7 +76,7 @@ public class HomeRecommendationService {
 
             boolean hasRisk =
                     !allergyRiskService
-                            .detectRiskAllergens(familyRoomId, ingredients)
+                            .detectRiskAllergens(familyAllergens, ingredients)
                             .isEmpty();
 
             if (!hasRisk) {

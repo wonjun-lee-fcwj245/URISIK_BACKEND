@@ -16,7 +16,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipe", indexes = {
+        @Index(name = "idx_recipe_source_ref", columnList = "sourceRef"),
+        @Index(name = "idx_recipe_title", columnList = "title")
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Recipe {

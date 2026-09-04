@@ -20,6 +20,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urisik.backend.domain.allergy.enums.Allergen;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -93,13 +95,14 @@ public class SafeHighScoreRecommendationService {
         /* =========================
          * 3. 알레르기 안전 필터 (핵심 차이)
          * ========================= */
+        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
         List<HighScoreRecommendationRecipeCandidate> safeCandidates =
                 new ArrayList<>(
                         candidates.stream()
                                 .filter(c ->
                                         allergyRiskService
                                                 .detectRiskAllergens(
-                                                        familyRoomId,
+                                                        familyAllergens,
                                                         c.getIngredients()
                                                 )
                                                 .isEmpty()

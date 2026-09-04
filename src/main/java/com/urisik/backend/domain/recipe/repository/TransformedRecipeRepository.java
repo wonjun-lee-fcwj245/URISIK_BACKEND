@@ -17,6 +17,7 @@ public interface TransformedRecipeRepository extends JpaRepository<TransformedRe
     @Query("""
     select tr
     from TransformedRecipe tr
+    join fetch tr.baseRecipe
     where lower(tr.title) like lower(concat('%', :keyword, '%'))
 """)
     List<TransformedRecipe> findByTitleLike(

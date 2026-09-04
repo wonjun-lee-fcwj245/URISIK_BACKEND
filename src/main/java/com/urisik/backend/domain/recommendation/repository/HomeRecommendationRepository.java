@@ -25,7 +25,7 @@ public interface HomeRecommendationRepository extends JpaRepository<Recipe, Long
     @Query("""
     select r
     from Recipe r
-    join r.recipeExternalMetadata rem
+    join fetch r.recipeExternalMetadata rem
     order by
         r.avgScore desc,
         r.reviewCount desc,
@@ -39,7 +39,7 @@ public interface HomeRecommendationRepository extends JpaRepository<Recipe, Long
     @Query("""
     select r
     from Recipe r
-    join r.recipeExternalMetadata rem
+    join fetch r.recipeExternalMetadata rem
     where rem.category in :categories
     order by
         r.avgScore desc,
@@ -54,7 +54,7 @@ public interface HomeRecommendationRepository extends JpaRepository<Recipe, Long
     @Query("""
         select r
         from Recipe r
-        join r.recipeExternalMetadata rem
+        join fetch r.recipeExternalMetadata rem
         order by
             r.wishCount desc,
             r.avgScore desc,
@@ -65,7 +65,7 @@ public interface HomeRecommendationRepository extends JpaRepository<Recipe, Long
     @Query("""
         select r
         from Recipe r
-        join r.recipeExternalMetadata rem
+        join fetch r.recipeExternalMetadata rem
         where rem.category in :categories
         order by
             r.wishCount desc,

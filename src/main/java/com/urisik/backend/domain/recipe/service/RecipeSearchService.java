@@ -21,7 +21,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urisik.backend.domain.allergy.enums.Allergen;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -58,28 +61,47 @@ public class RecipeSearchService {
         PageRequest pageable = PageRequest.of(page, size);
         List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
 
+        // 알레르기 1회 사전 조회
+        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
+
         // 1) 내부 원본 레시피
         List<Recipe> recipes = recipeRepository.findByTitleContainingIgnoreCase(keyword, pageable);
+
+        // 2) 공개 변형 레시피
+        List<TransformedRecipe> trs =
+                transformedRecipeRepository.findByTitleLike(keyword, pageable);
+
+        // 3) 메타데이터 배치 로딩 (IN 쿼리 1번)
+        List<Long> recipeIds = new ArrayList<>();
+        recipes.forEach(r -> recipeIds.add(r.getId()));
+        trs.forEach(tr -> recipeIds.add(tr.getBaseRecipe().getId()));
+
+        Map<Long, RecipeExternalMetadata> metadataMap = recipeIds.isEmpty()
+                ? Map.of()
+                : metadataRepository.findByRecipe_IdIn(recipeIds).stream()
+                        .collect(Collectors.toMap(
+                                m -> m.getRecipe().getId(),
+                                m -> m,
+                                (a, b) -> a
+                        ));
+
+        // 4) 결과 변환 (DB 조회 없이 Map 참조)
         for (Recipe r : recipes) {
-            RecipeExternalMetadata meta = metadataRepository.findByRecipe_Id(r.getId()).orElse(null);
+            RecipeExternalMetadata meta = metadataMap.get(r.getId());
 
             Boolean safe = determineSafety(
-                    familyRoomId,
+                    familyAllergens,
                     RecipeTextParser.parseIngredients(r.getIngredientsRaw())
             );
 
             items.add(RecipeSearchConverter.fromRecipe(r, meta, safe));
         }
 
-        // 2) 공개 변형 레시피
-        List<TransformedRecipe> trs =
-                transformedRecipeRepository.findByTitleLike(keyword, pageable);
-
         for (TransformedRecipe tr : trs) {
-            RecipeExternalMetadata meta = metadataRepository.findByRecipe_Id(tr.getBaseRecipe().getId()).orElse(null);
+            RecipeExternalMetadata meta = metadataMap.get(tr.getBaseRecipe().getId());
 
             Boolean safe = determineSafety(
-                    familyRoomId,
+                    familyAllergens,
                     RecipeTextParser.parseIngredients(
                             tr.getIngredientsRaw()
                     )
@@ -106,15 +128,15 @@ public class RecipeSearchService {
     }
 
     private Boolean determineSafety(
-            Long familyRoomId,
+            List<Allergen> familyAllergens,
             List<String> ingredients
     ) {
-        if (familyRoomId == null) {
+        if (familyAllergens == null || familyAllergens.isEmpty()) {
             return null;
         }
 
         return allergyRiskService
-                .detectRiskAllergens(familyRoomId, ingredients)
+                .detectRiskAllergens(familyAllergens, ingredients)
                 .isEmpty();
     }
 

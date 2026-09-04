@@ -20,6 +20,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urisik.backend.domain.allergy.enums.Allergen;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -89,13 +91,14 @@ public class WishRecommendationService {
         );
 
         // 4. Top 3 + 알레르기 여부 표시만
+        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
         return new HighScoreRecommendationResponseDTO(
                 candidates.stream()
                         .limit(3)
                         .map(c -> {
                             boolean isSafe =
                                     allergyRiskService
-                                            .detectRiskAllergens(familyRoomId, c.getIngredients())
+                                            .detectRiskAllergens(familyAllergens, c.getIngredients())
                                             .isEmpty();
                             return converter.toDto(c, isSafe);
                         })
