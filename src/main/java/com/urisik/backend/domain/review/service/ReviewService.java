@@ -20,6 +20,7 @@ import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,21 +49,29 @@ public class ReviewService {
         Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow(() -> new GeneralException(GeneralErrorCode.NOT_FOUND));
 
-        // 리뷰 중복 작성 확인
-        if (reviewRepository.existsByFamilyMemberProfileAndRecipe(familyMember, recipe)) {
-            throw new ReviewException(ReviewErrorCode.REVIEW_ALREADY_EXISTS);
+        // 데이터 저장 — unique constraint로 중복 방지
+        Review review = ReviewConverter.toReview(familyMember, recipe, requestDto);
+        try {
+            reviewRepository.saveAndFlush(review);
+        } catch (DataIntegrityViolationException e) {
+            if (e.getMostSpecificCause() instanceof java.sql.SQLIntegrityConstraintViolationException sqlEx
+                    && sqlEx.getErrorCode() == 1062) {
+                throw new ReviewException(ReviewErrorCode.REVIEW_ALREADY_EXISTS);
+            }
+            throw e;
         }
 
-        // 데이터 저장
-        Review review = ReviewConverter.toReview(familyMember, recipe, requestDto);
-        reviewRepository.save(review);
+        // atomic UPDATE 쿼리로 카운터 갱신 (clearAutomatically=true로 영속성 컨텍스트 자동 비움)
+        int newScore = review.getScore();
+        recipeRepository.incrementReviewCount(recipeId);
+        recipeRepository.updateAvgScore(recipeId, newScore);
 
-        // 메뉴에 대한 평균 별점 반영 + 리뷰 개수 1 증가
-        Integer newScore = review.getScore();
-        recipe.updateReviewCount();
-        recipe.updateAvgScore(newScore);
+        // 영속성 컨텍스트가 비워졌으므로 DB에서 최신 값 조회
+        double updatedAvgScore = recipeRepository.findById(recipeId)
+                .map(Recipe::getAvgScore)
+                .orElse(0.0);
 
-        return ReviewConverter.toReviewResponseDto(review, recipe.getAvgScore());
+        return ReviewConverter.toReviewResponseDto(review, updatedAvgScore);
 
     }
 

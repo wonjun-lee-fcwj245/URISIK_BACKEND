@@ -63,6 +63,9 @@ public class Recipe {
     @Column(length = 255)
     private String sourceRef;
 
+    @Version
+    private Long version;
+
     public Recipe(
             String title,
             String ingredientsRaw,
@@ -77,26 +80,6 @@ public class Recipe {
         this.sourceRef = sourceRef;
     }
 
-    /** 리뷰 개수 증가 */
-    public void updateReviewCount() {
-        this.reviewCount++;
-    }
-
-    /** 평균 점수 갱신 */
-    public void updateAvgScore(int newScore) {
-        double rawAvg =
-                ((this.avgScore * (this.reviewCount - 1)) + newScore)
-                        / this.reviewCount;
-
-        this.avgScore = (int)((rawAvg + 0.05) * 10) / 10.0; // 소수점 첫째 자리까지 반올림
-    }
-    public void incrementWishCount() {
-        wishCount++;
-    }
-
-    public void decrementWishCount() {
-        wishCount--;
-    }
 }
 
 
