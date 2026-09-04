@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "recipe_external_metadata")
+@Table(name = "recipe_external_metadata", indexes = {
+        @Index(name = "idx_rem_category", columnList = "category")
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RecipeExternalMetadata {

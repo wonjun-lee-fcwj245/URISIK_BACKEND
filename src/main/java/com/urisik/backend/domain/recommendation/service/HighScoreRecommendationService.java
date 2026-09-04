@@ -18,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.urisik.backend.domain.allergy.enums.Allergen;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -114,8 +116,9 @@ public class HighScoreRecommendationService {
         /* =========================
          * 3️. 완전 동점자 알레르기 tie-break
          * ========================= */
+        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
         List<HighScoreRecommendationRecipeCandidate> finalSorted =
-                applyAllergyTieBreaker(candidates, profile);
+                applyAllergyTieBreaker(candidates, familyAllergens);
 
         /* =========================
          * 4. Top 3 반환
@@ -127,7 +130,7 @@ public class HighScoreRecommendationService {
                             boolean isSafe =
                                     allergyRiskService
                                             .detectRiskAllergens(
-                                                    familyRoomId,
+                                                    familyAllergens,
                                                     c.getIngredients()
                                             )
                                             .isEmpty();
@@ -146,7 +149,7 @@ public class HighScoreRecommendationService {
      */
     private List<HighScoreRecommendationRecipeCandidate> applyAllergyTieBreaker(
             List<HighScoreRecommendationRecipeCandidate> candidates,
-            FamilyMemberProfile profile
+            List<Allergen> familyAllergens
     ) {
         if (candidates.size() <= 1) return candidates;
 
@@ -174,8 +177,8 @@ public class HighScoreRecommendationService {
             if (sameRankGroup.size() > 1) {
                 sameRankGroup.sort(
                         (a, b) -> Boolean.compare(
-                                isSafeRecipe(profile, b),
-                                isSafeRecipe(profile, a)
+                                isSafeRecipe(familyAllergens, b),
+                                isSafeRecipe(familyAllergens, a)
                         )
                 );
             }
@@ -194,12 +197,12 @@ public class HighScoreRecommendationService {
      * - 하나라도 있으면 → false (위험)
      */
     private boolean isSafeRecipe(
-            FamilyMemberProfile profile,
+            List<Allergen> familyAllergens,
             HighScoreRecommendationRecipeCandidate candidate
     ) {
         return allergyRiskService
                 .detectRiskAllergens(
-                        profile.getFamilyRoom().getId(),
+                        familyAllergens,
                         candidate.getIngredients()
                 )
                 .isEmpty();

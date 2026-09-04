@@ -23,8 +23,8 @@ public interface HomeTransformedRecommendationRecipeRepository
     @Query("""
     select tr
     from TransformedRecipe tr
-    join tr.baseRecipe br
-    left join br.recipeExternalMetadata rem
+    join fetch tr.baseRecipe br
+    left join fetch br.recipeExternalMetadata rem
     order by
         br.avgScore desc,
         br.reviewCount desc,
@@ -36,8 +36,8 @@ public interface HomeTransformedRecommendationRecipeRepository
     @Query("""
     select tr
     from TransformedRecipe tr
-    join tr.baseRecipe br
-    join br.recipeExternalMetadata rem
+    join fetch tr.baseRecipe br
+    join fetch br.recipeExternalMetadata rem
     where rem.category in :categories
     order by
         br.avgScore desc,
@@ -52,8 +52,8 @@ public interface HomeTransformedRecommendationRecipeRepository
     @Query("""
         select tr
         from TransformedRecipe tr
-        join tr.baseRecipe br
-        left join br.recipeExternalMetadata rem
+        join fetch tr.baseRecipe br
+        left join fetch br.recipeExternalMetadata rem
         order by
             tr.wishCount desc,
             br.avgScore desc,
@@ -64,8 +64,8 @@ public interface HomeTransformedRecommendationRecipeRepository
     @Query("""
         select tr
         from TransformedRecipe tr
-        join tr.baseRecipe br
-        join br.recipeExternalMetadata rem
+        join fetch tr.baseRecipe br
+        join fetch br.recipeExternalMetadata rem
         where rem.category in :categories
         order by
             tr.wishCount desc,
