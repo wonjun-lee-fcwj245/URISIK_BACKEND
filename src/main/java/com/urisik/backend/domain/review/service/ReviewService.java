@@ -54,16 +54,19 @@ public class ReviewService {
         try {
             reviewRepository.saveAndFlush(review);
         } catch (DataIntegrityViolationException e) {
-            throw new ReviewException(ReviewErrorCode.REVIEW_ALREADY_EXISTS);
+            if (e.getMostSpecificCause() instanceof java.sql.SQLIntegrityConstraintViolationException sqlEx
+                    && sqlEx.getErrorCode() == 1062) {
+                throw new ReviewException(ReviewErrorCode.REVIEW_ALREADY_EXISTS);
+            }
+            throw e;
         }
 
-        // atomic UPDATE 쿼리로 카운터 갱신
+        // atomic UPDATE 쿼리로 카운터 갱신 (clearAutomatically=true로 영속성 컨텍스트 자동 비움)
         int newScore = review.getScore();
         recipeRepository.incrementReviewCount(recipeId);
         recipeRepository.updateAvgScore(recipeId, newScore);
 
-        // flush 후 DB에서 갱신된 avgScore 조회
-        recipeRepository.flush();
+        // 영속성 컨텍스트가 비워졌으므로 DB에서 최신 값 조회
         double updatedAvgScore = recipeRepository.findById(recipeId)
                 .map(Recipe::getAvgScore)
                 .orElse(0.0);

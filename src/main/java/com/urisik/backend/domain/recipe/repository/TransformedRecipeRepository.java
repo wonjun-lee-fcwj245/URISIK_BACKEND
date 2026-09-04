@@ -19,7 +19,7 @@ public interface TransformedRecipeRepository extends JpaRepository<TransformedRe
     @Query("UPDATE TransformedRecipe r SET r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
     int incrementReviewCount(@Param("id") Long id);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE TransformedRecipe r SET r.avgScore = ROUND(((r.avgScore * (r.reviewCount - 1)) + :newScore) / r.reviewCount, 1) WHERE r.id = :id")
     int updateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
 

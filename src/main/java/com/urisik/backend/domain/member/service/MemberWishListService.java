@@ -102,7 +102,11 @@ public class MemberWishListService {
             // flush해서 unique constraint 위반 즉시 감지
             memberWishListRepository.flush();
         } catch (DataIntegrityViolationException e) {
-            throw new MemberException(MemberErrorCode.WISH_ALREADY_IN);
+            if (e.getMostSpecificCause() instanceof java.sql.SQLIntegrityConstraintViolationException sqlEx
+                    && sqlEx.getErrorCode() == 1062) {
+                throw new MemberException(MemberErrorCode.WISH_ALREADY_IN);
+            }
+            throw e;
         }
 
         // atomic UPDATE 쿼리로 wishCount 갱신
