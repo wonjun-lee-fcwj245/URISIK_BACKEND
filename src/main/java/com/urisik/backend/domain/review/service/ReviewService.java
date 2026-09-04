@@ -20,6 +20,7 @@ import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,21 +49,26 @@ public class ReviewService {
         Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow(() -> new GeneralException(GeneralErrorCode.NOT_FOUND));
 
-        // 리뷰 중복 작성 확인
-        if (reviewRepository.existsByFamilyMemberProfileAndRecipe(familyMember, recipe)) {
+        // 데이터 저장 — unique constraint로 중복 방지
+        Review review = ReviewConverter.toReview(familyMember, recipe, requestDto);
+        try {
+            reviewRepository.saveAndFlush(review);
+        } catch (DataIntegrityViolationException e) {
             throw new ReviewException(ReviewErrorCode.REVIEW_ALREADY_EXISTS);
         }
 
-        // 데이터 저장
-        Review review = ReviewConverter.toReview(familyMember, recipe, requestDto);
-        reviewRepository.save(review);
+        // atomic UPDATE 쿼리로 카운터 갱신
+        int newScore = review.getScore();
+        recipeRepository.incrementReviewCount(recipeId);
+        recipeRepository.updateAvgScore(recipeId, newScore);
 
-        // 메뉴에 대한 평균 별점 반영 + 리뷰 개수 1 증가
-        Integer newScore = review.getScore();
-        recipe.updateReviewCount();
-        recipe.updateAvgScore(newScore);
+        // flush 후 DB에서 갱신된 avgScore 조회
+        recipeRepository.flush();
+        double updatedAvgScore = recipeRepository.findById(recipeId)
+                .map(Recipe::getAvgScore)
+                .orElse(0.0);
 
-        return ReviewConverter.toReviewResponseDto(review, recipe.getAvgScore());
+        return ReviewConverter.toReviewResponseDto(review, updatedAvgScore);
 
     }
 

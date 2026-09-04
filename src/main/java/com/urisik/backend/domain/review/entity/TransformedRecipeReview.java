@@ -9,7 +9,9 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "transformed_recipe_review")
+@Table(name = "transformed_recipe_review", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"family_member_id", "transformed_recipe_id"})
+})
 @Builder
 @AllArgsConstructor
 public class TransformedRecipeReview extends BaseEntity {

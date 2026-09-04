@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "personal_wishList")
+@Table(name = "personal_wishList", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"family_member_profile_id", "recipe_id"})
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberWishList extends BaseEntity {

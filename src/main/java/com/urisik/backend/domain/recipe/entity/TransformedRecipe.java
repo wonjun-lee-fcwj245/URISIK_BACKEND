@@ -65,6 +65,9 @@ public class TransformedRecipe {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Version
+    private Long version;
+
     /* =========================
        생성자
        ========================= */
@@ -86,24 +89,6 @@ public class TransformedRecipe {
         this.imageUrl = imageUrl;
     }
 
-
-    public void updateReviewCount() {
-        this.reviewCount++;
-    }
-
-    public void updateAvgScore(int newScore) {
-        this.avgScore =
-                ((this.avgScore * (this.reviewCount - 1)) + newScore)
-                        / this.reviewCount;
-    }
-
-    public void incrementWishCount() {
-        this.wishCount++;
-    }
-
-    public void decrementWishCount() {
-        this.wishCount--;
-    }
 
     public void updateValidationStatus(boolean status) {
         this.validationStatus = status;
