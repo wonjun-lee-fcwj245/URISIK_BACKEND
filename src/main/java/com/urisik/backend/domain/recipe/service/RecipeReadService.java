@@ -39,6 +39,7 @@ public class RecipeReadService {
 
     private final FamilyMemberProfileRepository familyMemberProfileRepository;
     private final AllergyRiskService allergyRiskService;
+    private final RecipeElasticSearchService recipeElasticSearchService;
 
     /**
      * 내부 레시피 상세 조회 (이미 DB에 있는 recipe)
@@ -175,6 +176,10 @@ public class RecipeReadService {
                     );
 
                     metadataRepository.save(meta);
+
+                    // ES 실시간 동기화
+                    recipeElasticSearchService.indexRecipe(saved, meta);
+
                     return saved;
                 });
     }

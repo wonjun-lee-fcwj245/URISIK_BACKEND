@@ -55,6 +55,7 @@ public class TransformedRecipeCreateService {
     private final S3Uploader s3Uploader;
     private final TransformedRecipeStepImageRepository stepImageRepository;
     private final TransformedRecipeStepImageAsyncService stepImageAsyncService;
+    private final RecipeElasticSearchService recipeElasticSearchService;
 
     public TransformedRecipeCreateResponseDTO create(
             Long recipeId,
@@ -130,6 +131,10 @@ public class TransformedRecipeCreateService {
         tr.updateValidationStatus(valid);
 
         transformedRecipeRepository.save(tr);
+
+        // ES 실시간 동기화
+        RecipeExternalMetadata baseMeta = metadataRepository.findByRecipe_Id(recipe.getId()).orElse(null);
+        recipeElasticSearchService.indexTransformedRecipe(tr, baseMeta);
 
         stepImageAsyncService.generateStepImagesAsync(
                 tr.getId(),
