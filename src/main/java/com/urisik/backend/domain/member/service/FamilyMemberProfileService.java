@@ -18,9 +18,8 @@ import com.urisik.backend.domain.member.repo.*;
 import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.global.external.s3.S3Remover;
 import com.urisik.backend.global.external.s3.S3Uploader;
+import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,15 +40,9 @@ public class FamilyMemberProfileService {
     private final MemberWishListRepository memberWishListRepository;
     private final MemberTransformedRecipeWishRepository transformedRecipeWishRepository;
     private final MemberTransformedRecipeWishRepository memberTransformedRecipeWishRepository;
+    private final KafkaEventProducer kafkaEventProducer;
 
     //post
-    @Caching(evict = {
-            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
-            @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendHighScore", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
-            @CacheEvict(value = "recommendWish", allEntries = true)
-    })
     @Transactional
     public FamilyMemberProfileResponse.Create create
             (Long familyRoomId, Long memberId, FamilyMemberProfileRequest.Create req)
@@ -119,7 +112,10 @@ public class FamilyMemberProfileService {
 
         FamilyMemberProfile saved = familyMemberProfileRepository.save(profile);
 
-
+        kafkaEventProducer.sendCacheEvict(
+                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
+        );
+        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
 
         //4단계 프론트에서 성공응답과 함꼐 저장한 정보 전달.
         return FamilyMemberProfileConverter.toCreate(saved);
@@ -132,13 +128,6 @@ public class FamilyMemberProfileService {
     patch
      */
 
-    @Caching(evict = {
-            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
-            @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendHighScore", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
-            @CacheEvict(value = "recommendWish", allEntries = true)
-    })
     @Transactional
     public FamilyMemberProfileResponse.Update update(
             Long familyRoomId,
@@ -210,6 +199,11 @@ public class FamilyMemberProfileService {
         // 6) 응답 조립을 위해 "컬렉션 2번" 조회 (총 3번 조회)
         List<MemberAllergy> allergies = memberAllergyRepository.findByFamilyMemberProfile_Id(profileId);
         List<DietPreference> diets = dietPreferenceRepository.findAllByFamilyMemberProfile_Id(profileId);
+
+        kafkaEventProducer.sendCacheEvict(
+                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
+        );
+        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
 
         return FamilyMemberProfileConverter.toUpdate(profile, allergies, diets);
     }
@@ -361,13 +355,6 @@ public class FamilyMemberProfileService {
      */
 
 
-    @Caching(evict = {
-            @CacheEvict(value = "familyAllergens", key = "#familyRoomId"),
-            @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendHighScore", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
-            @CacheEvict(value = "recommendWish", allEntries = true)
-    })
     @Transactional
     public FamilyMemberProfileResponse.Delete quitFamilyRoom(Long familyRoomId, Long profileId , Long memberId) {
 
@@ -418,6 +405,11 @@ public class FamilyMemberProfileService {
         // 6) 방 탈퇴
         targetProfile.getMember().setFamilyRoom(null);
         familyMemberProfileRepository.delete(targetProfile);
+
+        kafkaEventProducer.sendCacheEvict(
+                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
+        );
+        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
 
         return FamilyMemberProfileResponse.Delete.builder().isDeleted(true).build();
 

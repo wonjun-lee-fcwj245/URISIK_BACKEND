@@ -8,7 +8,6 @@ import com.urisik.backend.domain.mealplan.ai.generator.MealPlanGenerator;
 import com.urisik.backend.domain.mealplan.ai.service.MealPlanAiService;
 import com.urisik.backend.domain.mealplan.ai.validation.MealPlanGenerationValidator;
 import com.urisik.backend.domain.mealplan.dto.common.RecipeDTO;
-import com.urisik.backend.domain.mealplan.dto.event.MealPlanConfirmedEvent;
 import com.urisik.backend.domain.mealplan.dto.req.CreateMealPlanReqDTO;
 import com.urisik.backend.domain.mealplan.dto.req.CreateMealPlanReqDTO.SlotRequest;
 import com.urisik.backend.domain.mealplan.dto.common.RecipeSelectionDTO;
@@ -25,9 +24,9 @@ import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.domain.recipe.entity.TransformedRecipe;
 import com.urisik.backend.domain.recipe.repository.RecipeRepository;
 import com.urisik.backend.domain.recipe.repository.TransformedRecipeRepository;
+import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,7 +49,7 @@ public class MealPlanService {
     private final MealPlanCandidateProvider candidateProvider;
     private final MealPlanGenerator generator;
     private final MealPlanGenerationValidator validator;
-    private final ApplicationEventPublisher eventPublisher;
+    private final KafkaEventProducer kafkaEventProducer;
 
     /** 식단 생성 API */
     @Transactional
@@ -595,11 +594,11 @@ public class MealPlanService {
         mealPlan.updateStatus(MealPlanStatus.CONFIRMED);
         mealPlan.getFamilyRoom().incrementMealPlanGenerationCount();
 
-        // 식단 확정 이벤트 발행
-        eventPublisher.publishEvent(new MealPlanConfirmedEvent(
+        // 식단 확정 이벤트 발행 (Kafka)
+        kafkaEventProducer.sendNotification(
                 familyRoomId,
                 mealPlan.getFamilyRoom().getMealPlanGenerationCount()
-        ));
+        );
 
         return new ConfirmMealPlanResDTO(
                 mealPlan.getId(),

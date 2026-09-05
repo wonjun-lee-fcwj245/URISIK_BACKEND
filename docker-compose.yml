@@ -4,6 +4,26 @@ services:
     container_name: urisik-redis
     restart: always
 
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: urisik-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: urisik-kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    restart: always
+
   elasticsearch:
     image: elasticsearch:8.15.0
     container_name: urisik-elasticsearch
@@ -20,6 +40,7 @@ services:
       - "8080:8080"
     depends_on:
       - redis
+      - kafka
       - elasticsearch
     environment:
       - SPRING_PROFILES_ACTIVE=prod
@@ -39,6 +60,9 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE=30
       - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS=true
       - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES=true
+
+      # Kafka 연결 정보
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
 
       # Elasticsearch 연결 정보
       - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
