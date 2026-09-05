@@ -27,10 +27,9 @@ import com.urisik.backend.domain.review.repository.ReviewRepository;
 import com.urisik.backend.domain.review.repository.TransformedRecipeReviewRepository;
 import com.urisik.backend.global.auth.exception.AuthenExcetion;
 import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
+import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
 import com.urisik.backend.global.util.IngredientParser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Caching;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -53,13 +52,8 @@ public class MemberWishListService {
     private final ReviewRepository reviewRepository;
     private final AllergyRiskService allergyRiskService;
     private final TransformedRecipeReviewRepository transformedRecipeReviewRepository;
+    private final KafkaEventProducer kafkaEventProducer;
 
-    @Caching(evict = {
-            @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendHighScore", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
-            @CacheEvict(value = "recommendWish", allEntries = true)
-    })
     @Transactional
     public WishListResponse.PostWishes addWishItems
             (Long memberId, Long familyRoomId, WishListRequest.PostWishes req) {
@@ -121,18 +115,16 @@ public class MemberWishListService {
             }
         }
 
+        kafkaEventProducer.sendCacheEvict(
+                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
+        );
+
         return WishListResponse.PostWishes.builder()
                 .isPosted(true)
                 .build();
     }
 
 
-    @Caching(evict = {
-            @CacheEvict(value = "recommendSafe", allEntries = true),
-            @CacheEvict(value = "recommendHighScore", allEntries = true),
-            @CacheEvict(value = "recommendSafeHighScore", allEntries = true),
-            @CacheEvict(value = "recommendWish", allEntries = true)
-    })
     @Transactional
     public WishListResponse.DeleteWishes deleteWishItems
             (Long memberId,Long familyRoomId, WishListRequest.DeleteWishes req) {
@@ -178,6 +170,11 @@ public class MemberWishListService {
                     );
             memberTransformedRecipeWishRepository.decreaseWishCount(req.getTransformedRecipeId());
         }
+
+        kafkaEventProducer.sendCacheEvict(
+                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
+        );
+
         return WishListResponse.DeleteWishes.builder()
                 .isDeleted(true)
                 .deletedNum(deleted)

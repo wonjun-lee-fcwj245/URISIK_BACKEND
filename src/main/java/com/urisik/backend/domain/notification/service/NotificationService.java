@@ -12,11 +12,13 @@ import com.urisik.backend.domain.notification.exception.NotificationException;
 import com.urisik.backend.domain.notification.repository.NotificationRepository;
 import com.urisik.backend.global.auth.exception.AuthenExcetion;
 import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -33,6 +35,8 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final MemberRepository memberRepository;
+    private final RedisTemplate<String, Object> redisTemplate;
+    private final ObjectMapper objectMapper;
 
     /**
      * 1. 알림 전송 메서드
@@ -127,8 +131,35 @@ public class NotificationService {
 
 
 
-    // 유저가 접속 중인 경우 (emitter 갹체가 존재하는 경우) - 실시간 전송 메서드
+    // Redis Pub/Sub를 통해 모든 인스턴스로 SSE 브로드캐스트
     private void sendSseOnly(Long memberId, NotificationType type, Object data) {
+        try {
+            Map<String, Object> message = Map.of(
+                    "memberId", memberId,
+                    "type", type.name(),
+                    "data", data
+            );
+            redisTemplate.convertAndSend("sse-notification", message);
+        } catch (Exception e) {
+            log.warn("[SSE] Redis Pub/Sub 발행 실패, 로컬 전송 시도: memberId={}", memberId);
+            sendSseLocal(memberId, data);
+        }
+    }
+
+    // Redis Subscriber 콜백 — 모든 인스턴스에서 호출됨
+    public void onSseMessage(String message) {
+        try {
+            Map<String, Object> parsed = objectMapper.readValue(message, Map.class);
+            Long memberId = ((Number) parsed.get("memberId")).longValue();
+            Object data = parsed.get("data");
+            sendSseLocal(memberId, data);
+        } catch (Exception e) {
+            log.warn("[SSE] Redis 메시지 파싱 실패", e);
+        }
+    }
+
+    // 로컬 인스턴스의 emitter로 SSE 전송
+    private void sendSseLocal(Long memberId, Object data) {
         SseEmitter emitter = emitters.get(memberId);
         if (emitter != null) {
             try {
@@ -138,10 +169,8 @@ public class NotificationService {
                         .data(data));
             } catch (IOException e) {
                 emitters.remove(memberId);
-                throw new NotificationException(NotificationErrorCode.NOTIFICATION_SEND_FAILED);
             }
         }
     }
-
 
 }
