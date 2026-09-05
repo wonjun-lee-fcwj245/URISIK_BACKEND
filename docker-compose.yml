@@ -4,6 +4,15 @@ services:
     container_name: urisik-redis
     restart: always
 
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    container_name: urisik-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    restart: always
+
   app:
     image: euuunchae/urisik-app:latest
     container_name: urisik-app
@@ -11,6 +20,7 @@ services:
       - "8080:8080"
     depends_on:
       - redis
+      - elasticsearch
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_JPA_HIBERNATE_DDL_AUTO=${HIBERNATE_DDL_AUTO:-update}
@@ -29,6 +39,9 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE=30
       - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS=true
       - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES=true
+
+      # Elasticsearch 연결 정보
+      - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
 
       # JWT 설정
       - JWT_TOKEN_SECRETKEY=${JWT_KEY}
