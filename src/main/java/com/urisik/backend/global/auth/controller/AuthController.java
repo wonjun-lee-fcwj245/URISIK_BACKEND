@@ -23,12 +23,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 import java.util.List;
 
@@ -43,6 +43,7 @@ public class AuthController {
     private final MemberRepository memberRepository;
     private final FamilyMemberProfileRepository familyMemberProfileRepository;
     private final AuthService authService;
+    private final Environment environment;
 
     @PostMapping("/reissue")
     public ApiResponse<AccessTokenDto> reissue(
@@ -119,6 +120,33 @@ public class AuthController {
         );
     }
 
+
+    /**
+     * k6 부하 테스트 전용 토큰 발급 — prod 프로필에서는 동작하지 않음
+     */
+    @PostMapping("/test-token")
+    public ApiResponse<AccessTokenDto> testToken(@RequestParam Long memberId) {
+        if (Arrays.asList(environment.getActiveProfiles()).contains("prod")) {
+            throw new GeneralException(GeneralErrorCode.INTERNAL_SERVER_ERROR);
+        }
+
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new AuthenExcetion(AuthErrorCode.NO_MEMBER));
+
+        String accessToken = jwtUtil.createAccessToken(memberId, member.getRole());
+
+        return ApiResponse.onSuccess(AuthSuccessCode.Login_Access_Token,
+                AccessTokenDto.builder()
+                        .accessToken(accessToken)
+                        .needAgreement(false)
+                        .serviceTermsAgreed(true)
+                        .privacyPolicyAgreed(true)
+                        .familyInfoAgreed(true)
+                        .aiNoticeAgreed(true)
+                        .marketingOptIn(false)
+                        .build()
+        );
+    }
 
     @PostMapping("/delete")
     public ApiResponse<LogoutResponse> withdraw(HttpServletResponse response) {
