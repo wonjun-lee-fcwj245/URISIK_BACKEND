@@ -78,8 +78,12 @@ public class RecipeSearchService {
         int startIdx = page * size + 1;
         int endIdx = startIdx + size - 1;
 
-        List<FoodSafetyRecipeResponse.Row> externals =
-                foodSafetyRecipeClient.searchByName(keyword, startIdx, endIdx);
+        List<FoodSafetyRecipeResponse.Row> externals = List.of();
+        try {
+            externals = foodSafetyRecipeClient.searchByName(keyword, startIdx, endIdx);
+        } catch (Exception e) {
+            log.warn("외부 API 검색 실패, 내부 결과만 반환: {}", e.getMessage());
+        }
 
         for (FoodSafetyRecipeResponse.Row row : externals) {
             items.add(RecipeSearchConverter.fromExternal(row));

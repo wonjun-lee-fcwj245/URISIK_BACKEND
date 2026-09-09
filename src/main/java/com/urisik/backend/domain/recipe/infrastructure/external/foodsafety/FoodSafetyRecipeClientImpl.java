@@ -1,6 +1,8 @@
 package com.urisik.backend.domain.recipe.infrastructure.external.foodsafety;
 
 import com.urisik.backend.domain.recipe.infrastructure.external.foodsafety.dto.FoodSafetyRecipeResponse;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,6 +32,8 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
     private static final String BASE = "http://openapi.foodsafetykorea.go.kr/api";
 
     @Override
+    @Retry(name = "foodSafetyApi")
+    @CircuitBreaker(name = "foodSafetyApi", fallbackMethod = "fetchOneByRcpSeqFallback")
     public FoodSafetyRecipeResponse.Row fetchOneByRcpSeq(String rcpSeq) {
 
         String url = String.format(
@@ -51,21 +55,22 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
             return null;
         }
 
-
         return body.getCookrcp01().getRow().stream()
                 .filter(r -> rcpSeq.equals(r.getRcpSeq()))
                 .findFirst()
                 .orElse(null);
     }
 
-
-
-
+    private FoodSafetyRecipeResponse.Row fetchOneByRcpSeqFallback(String rcpSeq, Throwable t) {
+        log.warn("[FoodSafety] fetchOneByRcpSeq 실패, null 반환. rcpSeq={}, cause={}", rcpSeq, t.getMessage());
+        return null;
+    }
 
     @Override
+    @Retry(name = "foodSafetyApi")
+    @CircuitBreaker(name = "foodSafetyApi", fallbackMethod = "searchByNameFallback")
     @Cacheable(value = "externalRecipeSearch", key = "#keyword + ':' + #startIdx + ':' + #endIdx")
     public List<FoodSafetyRecipeResponse.Row> searchByName(String keyword, int startIdx, int endIdx) {
-        // 외부 API 필터: RCP_NM
         String filter = "RCP_NM=" + keyword;
         String encoded = URLEncoder.encode(filter, StandardCharsets.UTF_8);
 
@@ -79,5 +84,10 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
             return new ArrayList<>();
         }
         return new ArrayList<>(body.getCookrcp01().getRow());
+    }
+
+    private List<FoodSafetyRecipeResponse.Row> searchByNameFallback(String keyword, int startIdx, int endIdx, Throwable t) {
+        log.warn("[FoodSafety] searchByName 실패, 빈 리스트 반환. keyword={}, cause={}", keyword, t.getMessage());
+        return List.of();
     }
 }
