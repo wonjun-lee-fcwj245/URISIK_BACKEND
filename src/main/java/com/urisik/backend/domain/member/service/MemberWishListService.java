@@ -66,7 +66,8 @@ public class MemberWishListService {
         try {
             if (req.getRecipeId() != null) {
                 for (Long recipeId : req.getRecipeId()) {
-                    Recipe recipe = recipeRepository.findById(recipeId)
+                    // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
+                    Recipe recipe = recipeRepository.findByIdForUpdate(recipeId)
                             .orElseThrow(() -> new MemberException(MemberErrorCode.NO_RECIPE));
 
                     profile.addWish(MemberWishList.of(recipe));

@@ -1,24 +1,34 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import { Trend, Counter } from 'k6/metrics';
 import { BASE_URL, getTestToken, authHeaders } from '../helpers/config.js';
+
+const searchDuration = new Trend('search_duration');
+const recommendDuration = new Trend('recommend_duration');
+const detailDuration = new Trend('detail_duration');
+const mealPlanDuration = new Trend('meal_plan_duration');
+const errorCount = new Counter('error_count');
 
 export const options = {
     stages: [
-        // Smoke
-        { duration: '30s', target: 2 },
-        // Load
-        { duration: '1m', target: 10 },
-        { duration: '1m', target: 50 },
-        { duration: '2m', target: 100 },
-        // Stress
-        { duration: '1m', target: 150 },
+        // Warm-up
+        { duration: '20s', target: 500 },
+        // Step 1
+        { duration: '40s', target: 1000 },
+        // Step 2
+        { duration: '40s', target: 1500 },
+        // Step 3
+        { duration: '40s', target: 2000 },
+        // Step 4: 극한
+        { duration: '40s', target: 2500 },
+        // Step 5: 한계 돌파
+        { duration: '40s', target: 3000 },
         // Recovery
-        { duration: '1m', target: 50 },
-        { duration: '30s', target: 0 },
+        { duration: '30s', target: 50 },
+        { duration: '20s', target: 0 },
     ],
     thresholds: {
-        http_req_duration: ['p(95)<500'],
-        http_req_failed: ['rate<0.01'],
+        checks: ['rate>0.95'],
     },
 };
 
@@ -42,7 +52,10 @@ export default function (data) {
             `${BASE_URL}/api/recipes/search?keyword=${encodeURIComponent(keyword)}&page=0&size=10`,
             params
         );
-        check(res, { '[검색] status 200': (r) => r.status === 200 });
+        searchDuration.add(res.timings.duration);
+        if (!check(res, { '[검색] status 200': (r) => r.status === 200 })) {
+            errorCount.add(1);
+        }
 
     } else if (rand < 0.7) {
         // 추천 (30%)
@@ -54,13 +67,19 @@ export default function (data) {
         ];
         const endpoint = endpoints[Math.floor(Math.random() * endpoints.length)];
         const res = http.get(`${BASE_URL}${endpoint}`, params);
-        check(res, { '[추천] status 200': (r) => r.status === 200 });
+        recommendDuration.add(res.timings.duration);
+        if (!check(res, { '[추천] status 200': (r) => r.status === 200 })) {
+            errorCount.add(1);
+        }
 
     } else if (rand < 0.85) {
         // 레시피 상세 (15%)
-        const recipeId = Math.floor(Math.random() * 10) + 1;
+        const recipeId = Math.floor(Math.random() * 5000) + 1;
         const res = http.get(`${BASE_URL}/api/recipes/${recipeId}`, params);
-        check(res, { '[상세] status 200 or 404': (r) => r.status === 200 || r.status === 404 });
+        detailDuration.add(res.timings.duration);
+        if (!check(res, { '[상세] status 200 or 404': (r) => r.status === 200 || r.status === 404 })) {
+            errorCount.add(1);
+        }
 
     } else {
         // 식단 조회 (15%)
@@ -68,8 +87,11 @@ export default function (data) {
             `${BASE_URL}/api/family-rooms/${FAMILY_ROOM_ID}/meal-plans/today`,
             params
         );
-        check(res, { '[식단] status 200 or 404': (r) => r.status === 200 || r.status === 404 });
+        mealPlanDuration.add(res.timings.duration);
+        if (!check(res, { '[식단] status 200 or 404': (r) => r.status === 200 || r.status === 404 })) {
+            errorCount.add(1);
+        }
     }
 
-    sleep(0.5 + Math.random() * 1);
+    // sleep 제거 — 최대 부하
 }

@@ -42,7 +42,8 @@ public class ReviewService {
 
         FamilyMemberProfile familyMember = getFamilyMember(memberId);
 
-        Recipe recipe = recipeRepository.findById(recipeId)
+        // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
+        Recipe recipe = recipeRepository.findByIdForUpdate(recipeId)
                 .orElseThrow(() -> new GeneralException(GeneralErrorCode.NOT_FOUND));
 
         // 데이터 저장 — unique constraint로 중복 방지
@@ -57,10 +58,9 @@ public class ReviewService {
             throw e;
         }
 
-        // atomic UPDATE 쿼리로 카운터 갱신 (clearAutomatically=true로 영속성 컨텍스트 자동 비움)
+        // atomic UPDATE 단일 쿼리로 카운터 + 평균 점수 동시 갱신
         int newScore = review.getScore();
-        recipeRepository.incrementReviewCount(recipeId);
-        recipeRepository.updateAvgScore(recipeId, newScore);
+        recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
 
         // 영속성 컨텍스트가 비워졌으므로 DB에서 최신 값 조회
         double updatedAvgScore = recipeRepository.findById(recipeId)

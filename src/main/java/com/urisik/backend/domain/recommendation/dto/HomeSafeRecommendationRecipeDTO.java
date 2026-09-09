@@ -2,8 +2,10 @@ package com.urisik.backend.domain.recommendation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class HomeSafeRecommendationRecipeDTO {
 
@@ -16,8 +18,8 @@ public class HomeSafeRecommendationRecipeDTO {
     private String category;
     private double avgScore;
     private int reviewCount;
-    private boolean isTransformed;
-    private boolean isSafe;
+    private boolean transformed;
+    private boolean safe;
 
 }
 

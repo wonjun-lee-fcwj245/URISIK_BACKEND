@@ -1,0 +1,174 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: urisik-mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=200
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: urisik
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: urisik-redis
+    restart: always
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: urisik-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-logs:/var/lib/zookeeper/log
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: urisik-kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    restart: always
+
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    container_name: urisik-elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+    restart: always
+    command: >
+      bash -c "
+        elasticsearch-plugin install --batch analysis-nori || true;
+        /usr/local/bin/docker-entrypoint.sh
+      "
+
+  app:
+    build: .
+    container_name: urisik-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_started
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+      # MySQL 연결 정보
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/urisik?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+
+      # Redis 연결 정보
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
+
+      # HikariCP 커넥션 풀 튜닝
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=50
+      - SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE=20
+      - SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT=30000
+      - SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT=600000
+      - SPRING_DATASOURCE_HIKARI_MAX_LIFETIME=1800000
+
+      # Tomcat 스레드 풀 튜닝
+      - SERVER_TOMCAT_THREADS_MAX=500
+      - SERVER_TOMCAT_THREADS_MIN_SPARE=50
+      - SERVER_TOMCAT_MAX_CONNECTIONS=10000
+      - SERVER_TOMCAT_ACCEPT_COUNT=500
+
+      # Hibernate 배치 설정
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_BATCH_FETCH_SIZE=100
+      - SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE=30
+      - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES=true
+
+      # Kafka 연결 정보
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+
+      # Elasticsearch 연결 정보
+      - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
+
+      # JWT 설정
+      - JWT_TOKEN_SECRETKEY=${JWT_KEY}
+      - JWT_TOKEN_EXPIRATION_ACCESS=14400000
+      - JWT_TOKEN_EXPIRATION_REFRESH=604800000
+
+      # AWS S3 (더미 — k6 테스트에서 사용하지 않음)
+      - CLOUD_AWS_CREDENTIALS_ACCESS_KEY=dummy
+      - CLOUD_AWS_CREDENTIALS_SECRET_KEY=dummy
+      - CLOUD_AWS_REGION_STATIC=ap-northeast-2
+      - CLOUD_AWS_S3_BUCKET=dummy-bucket
+
+      # Gemini AI (더미)
+      - GEMINI_API_KEY=dummy
+      - GOOGLE_GEMINI_API_KEY=dummy
+      - GOOGLE_GEMINI_MODEL=gemini-2.0-flash
+
+      # 식약처 API (더미)
+      - FOODSAFETY_API_KEY=dummy
+
+      # 초대 토큰
+      - INVITE_TOKEN_PEPPER=local-test-pepper-value
+
+      # OAuth2 (더미 — test-token API 사용)
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID=dummy
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET=dummy
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI=http://localhost:8080/login/oauth2/code/google
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_SCOPE=email,profile
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_AUTHORIZATION_URI=https://accounts.google.com/o/oauth2/v2/auth
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_TOKEN_URI=https://oauth2.googleapis.com/token
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_USER_INFO_URI=https://www.googleapis.com/oauth2/v3/userinfo
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_USER_NAME_ATTRIBUTE=sub
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_ID=dummy
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_SECRET=dummy
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_REDIRECT_URI=http://localhost:8080/login/oauth2/code/kakao
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_AUTHORIZATION_GRANT_TYPE=authorization_code
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_SCOPE=profile_nickname
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_AUTHENTICATION_METHOD=client_secret_post
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_AUTHORIZATION_URI=https://kauth.kakao.com/oauth/authorize
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_TOKEN_URI=https://kauth.kakao.com/oauth/token
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_USER_INFO_URI=https://kapi.kakao.com/v2/user/me
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_USER_NAME_ATTRIBUTE=id
+
+    restart: always
+
+volumes:
+  mysql-data:
+  zookeeper-data:
+  zookeeper-logs:
+  kafka-data:
+  es-data:
