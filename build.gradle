@@ -68,6 +68,10 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
+	// Resilience4j
+	implementation 'io.github.resilience4j:resilience4j-spring-boot3:2.2.0'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+
 	//구글
 	implementation("com.google.genai:google-genai:0.3.0")
 
