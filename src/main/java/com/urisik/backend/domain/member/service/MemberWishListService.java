@@ -66,8 +66,8 @@ public class MemberWishListService {
         try {
             if (req.getRecipeId() != null) {
                 for (Long recipeId : req.getRecipeId()) {
-                    // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
-                    Recipe recipe = recipeRepository.findByIdForUpdate(recipeId)
+                    // [Before 측정] FOR UPDATE 없이 일반 조회
+                    Recipe recipe = recipeRepository.findById(recipeId)
                             .orElseThrow(() -> new MemberException(MemberErrorCode.NO_RECIPE));
 
                     profile.addWish(MemberWishList.of(recipe));
@@ -81,7 +81,8 @@ public class MemberWishListService {
             }
             if (req.getTransformedRecipeId() != null) {
                 for (Long recipeId : req.getTransformedRecipeId()) {
-                    TransformedRecipe recipe = transformedRecipeRepository.findById(recipeId)
+                    // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
+                    TransformedRecipe recipe = transformedRecipeRepository.findByIdForUpdate(recipeId)
                             .orElseThrow(() -> new MemberException(MemberErrorCode.NO_TRANS_RECIPE));
 
                     profile.addTransWish(MemberTransformedRecipeWish.of(recipe));

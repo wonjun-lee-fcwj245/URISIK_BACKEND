@@ -1,0 +1,71 @@
+LATEST DETECTED DEADLOCK
+------------------------
+2026-11-05 04:23:48 134326927828544
+*** (1) TRANSACTION:
+TRANSACTION 336095, ACTIVE 0 sec starting index read
+mysql tables in use 1, locked 1
+LOCK WAIT 7 lock struct(s), heap size 1128, 3 row lock(s), undo log entries 1
+MySQL thread id 15, OS thread handle 134326787204672, query id 6105 172.20.0.7 root updating
+update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=700
+
+*** (1) HOLDS THE LOCK(S):
+RECORD LOCKS space id 19 page no 25 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 336095 lock mode S locks rec but not gap
+Record lock, heap no 33 PHYSICAL RECORD: n_fields 12; compact format; info bits 0
+ 0: len 8; hex 80000000000002bc; asc         ;;
+ 1: len 6; hex 0000000520ce; asc       ;;
+ 2: len 7; hex 01000001320da8; asc     2  ;;
+ 3: len 8; hex 9a99999999991340; asc        @;;
+ 4: len 30; hex eab3a0ecb694ec9ea52032ed81b0ec88a02c20ebb680ecb6942031303067; asc           2      ,        100g; (total 109 bytes);
+ 5: len 30; hex 312e20ebb0a5eab3bc20ed95a8eabb9820eb8bb4ec9584eb82b8eb8ba40a; asc 1.                            ; (total 112 bytes);
+ 6: len 4; hex 80000018; asc     ;;
+ 7: len 7; hex 5243505f373030; asc RCP_700;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 25; hex eca09ceca3bcec8b9d20ebacb4eb909cec9ea5ecb08ceab09c; asc                          ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 80000002; asc     ;;
+
+
+*** (1) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 19 page no 25 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 336095 lock_mode X locks rec but not gap waiting
+Record lock, heap no 33 PHYSICAL RECORD: n_fields 12; compact format; info bits 0
+ 0: len 8; hex 80000000000002bc; asc         ;;
+ 1: len 6; hex 0000000520ce; asc       ;;
+ 2: len 7; hex 01000001320da8; asc     2  ;;
+ 3: len 8; hex 9a99999999991340; asc        @;;
+ 4: len 30; hex eab3a0ecb694ec9ea52032ed81b0ec88a02c20ebb680ecb6942031303067; asc           2      ,        100g; (total 109 bytes);
+ 5: len 30; hex 312e20ebb0a5eab3bc20ed95a8eabb9820eb8bb4ec9584eb82b8eb8ba40a; asc 1.                            ; (total 112 bytes);
+ 6: len 4; hex 80000018; asc     ;;
+ 7: len 7; hex 5243505f373030; asc RCP_700;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 25; hex eca09ceca3bcec8b9d20ebacb4eb909cec9ea5ecb08ceab09c; asc                          ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 80000002; asc     ;;
+
+
+*** (2) TRANSACTION:
+TRANSACTION 336097, ACTIVE 1 sec starting index read
+mysql tables in use 1, locked 1
+LOCK WAIT 7 lock struct(s), heap size 1128, 3 row lock(s), undo log entries 1
+MySQL thread id 20, OS thread handle 134326781920832, query id 6110 172.20.0.7 root updating
+update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=700
+
+*** (2) HOLDS THE LOCK(S):
+RECORD LOCKS space id 19 page no 25 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 336097 lock mode S locks rec but not gap
+Record lock, heap no 33 PHYSICAL RECORD: n_fields 12; compact format; info bits 0
+ 0: len 8; hex 80000000000002bc; asc         ;;
+ 1: len 6; hex 0000000520ce; asc       ;;
+ 2: len 7; hex 01000001320da8; asc     2  ;;
+ 3: len 8; hex 9a99999999991340; asc        @;;
+ 4: len 30; hex eab3a0ecb694ec9ea52032ed81b0ec88a02c20ebb680ecb6942031303067; asc           2      ,        100g; (total 109 bytes);
+ 5: len 30; hex 312e20ebb0a5eab3bc20ed95a8eabb9820eb8bb4ec9584eb82b8eb8ba40a; asc 1.                            ; (total 112 bytes);
+ 6: len 4; hex 80000018; asc     ;;
+ 7: len 7; hex 5243505f373030; asc RCP_700;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 25; hex eca09ceca3bcec8b9d20ebacb4eb909cec9ea5ecb08ceab09c; asc                          ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 80000002; asc     ;;
+
+
+*** (2) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 19 page no 25 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 336097 lock_mode X locks rec but not gap waiting
+Record lock, heap no 33 PHYSICAL RECORD: n_fields 12; compact format; info bits 0

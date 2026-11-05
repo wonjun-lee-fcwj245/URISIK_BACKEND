@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 })
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@org.hibernate.annotations.DynamicUpdate
 public class Recipe {
 
     @Id

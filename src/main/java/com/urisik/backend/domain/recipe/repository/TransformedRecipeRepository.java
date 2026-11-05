@@ -1,8 +1,10 @@
 package com.urisik.backend.domain.recipe.repository;
 
 import com.urisik.backend.domain.recipe.entity.TransformedRecipe;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +17,10 @@ public interface TransformedRecipeRepository extends JpaRepository<TransformedRe
 
     Optional<TransformedRecipe> findById(Long transformedRecipeId);
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT r FROM TransformedRecipe r WHERE r.id = :id")
+    Optional<TransformedRecipe> findByIdForUpdate(@Param("id") Long id);
+
     @Modifying
     @Query("UPDATE TransformedRecipe r SET r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
     int incrementReviewCount(@Param("id") Long id);
@@ -22,6 +28,10 @@ public interface TransformedRecipeRepository extends JpaRepository<TransformedRe
     @Modifying(clearAutomatically = true)
     @Query("UPDATE TransformedRecipe r SET r.avgScore = ROUND(((r.avgScore * (r.reviewCount - 1)) + :newScore) / r.reviewCount, 1) WHERE r.id = :id")
     int updateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
+
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE TransformedRecipe r SET r.reviewCount = r.reviewCount + 1, r.avgScore = ROUND(((r.avgScore * r.reviewCount) + :newScore) / (r.reviewCount + 1), 1) WHERE r.id = :id")
+    int incrementReviewCountAndUpdateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
 
     @Modifying
     @Query("UPDATE TransformedRecipe r SET r.wishCount = r.wishCount + 1 WHERE r.id = :id")

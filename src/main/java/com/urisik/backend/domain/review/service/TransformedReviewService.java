@@ -47,8 +47,9 @@ public class TransformedReviewService {
 
         FamilyMemberProfile familyMember = getFamilyMember(memberId);
 
+        // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
         TransformedRecipe recipe =
-                transformedRecipeRepository.findById(transformedRecipeId)
+                transformedRecipeRepository.findByIdForUpdate(transformedRecipeId)
                         .orElseThrow(() ->
                                 new GeneralException(GeneralErrorCode.NOT_FOUND)
                         );
@@ -66,10 +67,9 @@ public class TransformedReviewService {
             throw e;
         }
 
-        // atomic UPDATE 쿼리로 카운터 갱신 (clearAutomatically=true로 영속성 컨텍스트 자동 비움)
+        // atomic UPDATE 단일 쿼리로 카운터 + 평균 점수 동시 갱신
         int newScore = review.getScore();
-        transformedRecipeRepository.incrementReviewCount(transformedRecipeId);
-        transformedRecipeRepository.updateAvgScore(transformedRecipeId, newScore);
+        transformedRecipeRepository.incrementReviewCountAndUpdateAvgScore(transformedRecipeId, newScore);
 
         // 영속성 컨텍스트가 비워졌으므로 DB에서 최신 값 조회
         double updatedAvgScore = transformedRecipeRepository.findById(transformedRecipeId)
