@@ -1,5 +1,16 @@
-// 5000건 레시피 시드 데이터 생성 스크립트
-// 실행: node db/init/generate-seed.js > db/init/seed-data.sql
+// 레시피 시드 데이터 생성 스크립트
+// 실행: node db/init/generate-seed.js [건수] > db/init/seed-data.sql
+// 예시: node db/init/generate-seed.js 1000  > db/init/seed-1k.sql
+//       node db/init/generate-seed.js 10000 > db/init/seed-10k.sql
+//       node db/init/generate-seed.js 50000 > db/init/seed-50k.sql
+
+const TARGET_COUNT = parseInt(process.argv[2] || '5000');
+if (Number.isNaN(TARGET_COUNT)) {
+  throw new Error('건수는 숫자여야 합니다: ' + process.argv[2]);
+}
+if (TARGET_COUNT <= 0) {
+  throw new Error('건수는 1 이상이어야 합니다: ' + TARGET_COUNT);
+}
 
 const titles = [
   // 찌개 (50개)
@@ -137,7 +148,7 @@ function getCategoryFor(title) {
 let out = '';
 
 out += `-- =============================================
--- URISIK 로컬 테스트용 시드 데이터 (5000건)
+-- URISIK 로컬 테스트용 시드 데이터 (${TARGET_COUNT}건)
 -- JPA ddl-auto=update로 테이블 생성 후 실행
 -- =============================================
 
@@ -165,28 +176,79 @@ VALUES (1, 1, 'SHRIMP');
 `;
 
 // 중복 제거
-const uniqueTitles = [...new Set(titles)].slice(0, 5000);
+const uniqueTitles = [...new Set(titles)].slice(0, TARGET_COUNT);
+const titleSet = new Set(uniqueTitles);
 
 // 부족하면 변형 추가
 const suffixes = ['(매운맛)', '(순한맛)', '(특제)', '(엄마표)', '(간편)', '(프리미엄)', '(한그릇)', '(저칼로리)', '(고단백)', '(다이어트)'];
 const prefixes = ['엄마의 ', '할머니의 ', '우리집 ', '시골식 ', '서울식 ', '부산식 ', '제주식 ', '전주식 ', '대구식 ', '인천식 '];
 const seasonPrefixes = ['봄 ', '여름 ', '가을 ', '겨울 '];
 const methodPrefixes = ['간단 ', '초간단 ', '자취생 ', '캠핑용 ', '도시락용 ', '야식용 ', '브런치 ', '해장용 ', '손님접대용 ', '다이어트용 '];
+// 50000건 이상 생성 시 추가 변형 패턴
+const regionPrefixes = ['강원도식 ', '충청도식 ', '경상도식 ', '전라도식 ', '광주식 ', '대전식 ', '울산식 ', '수원식 ', '춘천식 ', '목포식 '];
+const ingredientVariants = ['닭가슴살 ', '소고기 ', '돼지고기 ', '해물 ', '채소 ', '버섯 ', '새우 ', '연어 ', '참치 ', '오리 '];
+const styleSuffixes = [' 스타일', ' 레시피', ' 버전', ' 리뉴얼', ' 시즌2', ' 한정판', ' 골드', ' 스페셜', ' 클래식', ' 퓨전'];
 
-while (uniqueTitles.length < 5000) {
-  const base = titles[rand(0, titles.length - 1)];
-  const type = rand(0, 3);
-  let variant;
-  if (type === 0) {
-    variant = base + suffixes[rand(0, suffixes.length - 1)];
-  } else if (type === 1) {
-    variant = prefixes[rand(0, prefixes.length - 1)] + base;
-  } else if (type === 2) {
-    variant = seasonPrefixes[rand(0, seasonPrefixes.length - 1)] + base;
-  } else {
-    variant = methodPrefixes[rand(0, methodPrefixes.length - 1)] + base;
+// 체계적으로 모든 변형 조합을 먼저 생성 (50K 이상 지원)
+const allPrefixSets = [prefixes, seasonPrefixes, methodPrefixes, regionPrefixes, ingredientVariants];
+const allSuffixSets = [suffixes, styleSuffixes];
+
+// 1단계: 단일 접두사/접미사 변형
+for (const prefixSet of allPrefixSets) {
+  if (uniqueTitles.length >= TARGET_COUNT) break;
+  for (const prefix of prefixSet) {
+    if (uniqueTitles.length >= TARGET_COUNT) break;
+    for (const base of titles) {
+      if (uniqueTitles.length >= TARGET_COUNT) break;
+      const variant = prefix + base;
+      if (!titleSet.has(variant)) {
+        titleSet.add(variant);
+        uniqueTitles.push(variant);
+      }
+    }
   }
-  if (!uniqueTitles.includes(variant)) uniqueTitles.push(variant);
+}
+for (const suffixSet of allSuffixSets) {
+  if (uniqueTitles.length >= TARGET_COUNT) break;
+  for (const suffix of suffixSet) {
+    if (uniqueTitles.length >= TARGET_COUNT) break;
+    for (const base of titles) {
+      if (uniqueTitles.length >= TARGET_COUNT) break;
+      const variant = base + suffix;
+      if (!titleSet.has(variant)) {
+        titleSet.add(variant);
+        uniqueTitles.push(variant);
+      }
+    }
+  }
+}
+
+// 2단계: 접두사 + 접미사 조합 (필요 시)
+if (uniqueTitles.length < TARGET_COUNT) {
+  for (const prefixSet of allPrefixSets) {
+    if (uniqueTitles.length >= TARGET_COUNT) break;
+    for (const prefix of prefixSet) {
+      if (uniqueTitles.length >= TARGET_COUNT) break;
+      for (const suffixSet of allSuffixSets) {
+        if (uniqueTitles.length >= TARGET_COUNT) break;
+        for (const suffix of suffixSet) {
+          if (uniqueTitles.length >= TARGET_COUNT) break;
+          for (const base of titles) {
+            if (uniqueTitles.length >= TARGET_COUNT) break;
+            const variant = prefix + base + suffix;
+            if (!titleSet.has(variant)) {
+              titleSet.add(variant);
+              uniqueTitles.push(variant);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+if (uniqueTitles.length < TARGET_COUNT) {
+  throw new Error(`요청한 ${TARGET_COUNT}건 중 ${uniqueTitles.length}건만 생성할 수 있습니다.`);
 }
 
 const BATCH = 50;
