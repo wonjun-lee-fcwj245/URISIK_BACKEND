@@ -225,7 +225,7 @@ for TYPO in "${!TYPO_CASES[@]}"; do
         \"bool\": {
           \"should\": [
             {\"multi_match\": {\"query\": \"${TYPO}\", \"fields\": [\"title^2\", \"ingredientsRaw\"]}},
-            {\"match\": {\"titleJamo\": {\"query\": \"${JAMO}\", \"fuzziness\": \"AUTO\"}}}
+            {\"match\": {\"titleJamo\": {\"query\": \"${JAMO}\", \"fuzziness\": \"AUTO\", \"boost\": 3}}}
           ]
         }
       },
@@ -251,9 +251,21 @@ echo "  titleJamo fuzziness AUTO 오타 결과:        ${HITS_JAMO}건"
 echo "  Nori+Jamo 조합 (앱 실제 쿼리) 결과:       ${HITS_COMBINED}건"
 echo "  정상 '김치찌개' 결과:                      ${HITS_EXACT}건"
 echo ""
+TOP1_COMBINED=$(echo "${RESULT_COMBINED}" | python -c "
+import sys, json
+d = json.load(sys.stdin)
+hits = d['hits']['hits']
+print(hits[0]['_source']['title'] if hits else '')" 2>/dev/null || echo "")
+
 if [ "${HITS_JAMO}" != "0" ] && [ "${HITS_JAMO}" != "parse error" ]; then
   echo "  >> 자모 fuzziness AUTO가 오타 보정에 효과가 있습니다!"
   echo "  >> Nori-only(${HITS_NORI}건)과 비교해 titleJamo(${HITS_JAMO}건)가 오타를 보정합니다."
+  # 조합 쿼리의 1위 제목에 "김치찌개"가 포함되는지 확인
+  if echo "${TOP1_COMBINED}" | grep -q "김치찌개"; then
+    echo "  >> 1위 제목 '${TOP1_COMBINED}'에 '김치찌개' 포함: PASS"
+  else
+    echo "  >> 1위 제목 '${TOP1_COMBINED}'에 '김치찌개' 미포함: WARN — 순위 확인 필요"
+  fi
 else
   echo "  >> 자모 fuzziness AUTO가 효과 없음 — 설정 확인 필요"
 fi

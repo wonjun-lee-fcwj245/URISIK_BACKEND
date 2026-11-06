@@ -109,7 +109,7 @@ export default function (data) {
             relevantInTop5++;
         }
     }
-    const p5 = top5.length > 0 ? relevantInTop5 / top5.length : 0;
+    const p5 = relevantInTop5 / 5;
 
     // Recall: 정답 중 상위 결과에서 찾아낸 비율
     let foundExpected = 0;

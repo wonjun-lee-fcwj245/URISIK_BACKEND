@@ -34,6 +34,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 
 
 	// 인증 인가 관련 의존성 추가 SECURITY, Oauth2-client

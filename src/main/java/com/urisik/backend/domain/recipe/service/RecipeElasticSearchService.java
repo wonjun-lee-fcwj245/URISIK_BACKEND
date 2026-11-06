@@ -40,7 +40,7 @@ public class RecipeElasticSearchService {
      * <p>Resilience4j 서킷 브레이커를 적용하여 ES 장애에 대응한다.
      * 검색은 사용자 대기가 걸리므로 재시도 없이 즉시 fallback 전환한다.</p>
      */
-    @CircuitBreaker(name = "elasticsearchApi", fallbackMethod = "searchFallback")
+    @CircuitBreaker(name = "elasticsearchapi", fallbackMethod = "searchFallback")
     public List<RecipeDocument> search(String keyword, Pageable pageable) {
         String keywordJamo = JamoUtils.decompose(keyword);
 

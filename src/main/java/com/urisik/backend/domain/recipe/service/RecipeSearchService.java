@@ -29,6 +29,7 @@ import com.urisik.backend.domain.allergy.enums.Allergen;
 import com.urisik.backend.global.util.QwertyToKoreanConverter;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,13 +56,18 @@ public class RecipeSearchService {
             "EXTERNAL", 2
     );
 
+    /** FULLTEXT BOOLEAN MODE 특수문자 패턴 (#5) */
+    private static final Pattern BOOLEAN_OPERATORS = Pattern.compile("[+\\-*()~<>\"@]");
+
     @Transactional(readOnly = true)
     public RecipeSearchResponseDTO search(Long loginUserId, String keyword, int page, int size) {
+
+        String originalKeyword = keyword;
 
         // 영문 자판 입력 감지 및 한글 변환 (예: "rlaclWlro" → "김치찌개")
         if (QwertyToKoreanConverter.isEnglishKeyboard(keyword)) {
             String converted = QwertyToKoreanConverter.convert(keyword);
-            log.debug("영문 자판 입력 감지: '{}' → '{}'", keyword, converted);
+            log.info("영문 자판 입력 감지: '{}' → '{}'", keyword, converted);
             keyword = converted;
         }
 
@@ -91,6 +97,23 @@ public class RecipeSearchService {
             } catch (Exception e) {
                 log.warn("ES 검색 실패, MySQL fallback 사용: {}", e.getMessage());
                 items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+            }
+        }
+
+        // (#6) 영문 변환 후 결과가 0건이면 원본 키워드로 재검색
+        if (items.isEmpty() && !originalKeyword.equals(keyword)) {
+            log.info("변환된 키워드 '{}' 결과 0건, 원본 '{}' 로 재검색", keyword, originalKeyword);
+            keyword = originalKeyword;
+            if ("mysql".equals(searchEngine)) {
+                items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+            } else if ("fulltext".equals(searchEngine)) {
+                items.addAll(searchFromFulltext(keyword, pageable, familyAllergens));
+            } else {
+                try {
+                    items.addAll(searchFromElasticsearch(keyword, pageable, familyAllergens));
+                } catch (Exception e) {
+                    items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+                }
             }
         }
 
@@ -197,84 +220,111 @@ public class RecipeSearchService {
 
     /**
      * MySQL LIKE 기반 검색 (ES 장애 시 fallback 또는 search.engine=mysql)
+     * (#7) 타이머는 DB 쿼리만 감싼다.
      */
     private List<RecipeSearchResponseDTO.Item> searchFromMySQL(
             String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
 
-        return meterRegistry.timer("search.mysql.query").record(() -> {
-            List<Recipe> recipes = recipeRepository.findByTitleContainingIgnoreCase(keyword, pageable);
-            List<TransformedRecipe> trs = transformedRecipeRepository.findByTitleLike(keyword, pageable);
+        List<Recipe> recipes = meterRegistry.timer("search.mysql.query")
+                .record(() -> recipeRepository.findByTitleContainingIgnoreCase(keyword, pageable));
+        List<TransformedRecipe> trs = transformedRecipeRepository.findByTitleLike(keyword, pageable);
 
-            List<Long> recipeIds = new ArrayList<>();
-            recipes.forEach(r -> recipeIds.add(r.getId()));
-            trs.forEach(tr -> recipeIds.add(tr.getBaseRecipe().getId()));
+        List<Long> recipeIds = new ArrayList<>();
+        recipes.forEach(r -> recipeIds.add(r.getId()));
+        trs.forEach(tr -> recipeIds.add(tr.getBaseRecipe().getId()));
 
-            Map<Long, RecipeExternalMetadata> metadataMap = recipeIds.isEmpty()
-                    ? Map.of()
-                    : metadataRepository.findByRecipe_IdIn(recipeIds).stream()
-                            .collect(Collectors.toMap(
-                                    m -> m.getRecipe().getId(),
-                                    m -> m,
-                                    (a, b) -> a
-                            ));
+        Map<Long, RecipeExternalMetadata> metadataMap = recipeIds.isEmpty()
+                ? Map.of()
+                : metadataRepository.findByRecipe_IdIn(recipeIds).stream()
+                        .collect(Collectors.toMap(
+                                m -> m.getRecipe().getId(),
+                                m -> m,
+                                (a, b) -> a
+                        ));
 
-            List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
+        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
 
-            for (Recipe r : recipes) {
-                RecipeExternalMetadata meta = metadataMap.get(r.getId());
-                Boolean safe = determineSafety(
-                        familyAllergens,
-                        RecipeTextParser.parseIngredients(r.getIngredientsRaw())
-                );
-                items.add(RecipeSearchConverter.fromRecipe(r, meta, safe));
-            }
+        for (Recipe r : recipes) {
+            RecipeExternalMetadata meta = metadataMap.get(r.getId());
+            Boolean safe = determineSafety(
+                    familyAllergens,
+                    RecipeTextParser.parseIngredients(r.getIngredientsRaw())
+            );
+            items.add(RecipeSearchConverter.fromRecipe(r, meta, safe));
+        }
 
-            for (TransformedRecipe tr : trs) {
-                RecipeExternalMetadata meta = metadataMap.get(tr.getBaseRecipe().getId());
-                Boolean safe = determineSafety(
-                        familyAllergens,
-                        RecipeTextParser.parseIngredients(tr.getIngredientsRaw())
-                );
-                items.add(RecipeSearchConverter.fromTransformed(tr, meta, safe));
-            }
+        for (TransformedRecipe tr : trs) {
+            RecipeExternalMetadata meta = metadataMap.get(tr.getBaseRecipe().getId());
+            Boolean safe = determineSafety(
+                    familyAllergens,
+                    RecipeTextParser.parseIngredients(tr.getIngredientsRaw())
+            );
+            items.add(RecipeSearchConverter.fromTransformed(tr, meta, safe));
+        }
 
-            return items;
-        });
+        return items;
     }
 
     /**
      * MySQL FULLTEXT(ngram) 기반 검색 (search.engine=fulltext)
+     * (#5) Boolean 특수문자 strip, (#7) 타이머는 DB 쿼리만, (#8) TransformedRecipe 포함, (#8-1) 1글자 LIKE fallback
      */
     private List<RecipeSearchResponseDTO.Item> searchFromFulltext(
             String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
 
-        return meterRegistry.timer("search.fulltext.query").record(() -> {
-            List<Recipe> recipes = recipeRepository.findByTitleFulltext(keyword, pageable);
+        // (#5) Boolean 연산자 제거
+        String sanitized = BOOLEAN_OPERATORS.matcher(keyword).replaceAll("");
+        if (sanitized.isBlank()) {
+            return List.of();
+        }
 
-            List<Long> recipeIds = recipes.stream().map(Recipe::getId).toList();
+        // (#8-1) 1글자 검색어는 ngram_token_size=2에서 토큰화 불가 → LIKE fallback
+        List<Recipe> recipes;
+        if (sanitized.length() == 1) {
+            recipes = meterRegistry.timer("search.fulltext.query")
+                    .record(() -> recipeRepository.findByTitleContainingIgnoreCase(sanitized, pageable));
+        } else {
+            recipes = meterRegistry.timer("search.fulltext.query")
+                    .record(() -> recipeRepository.findByTitleFulltext(sanitized, pageable));
+        }
 
-            Map<Long, RecipeExternalMetadata> metadataMap = recipeIds.isEmpty()
-                    ? Map.of()
-                    : metadataRepository.findByRecipe_IdIn(recipeIds).stream()
-                            .collect(Collectors.toMap(
-                                    m -> m.getRecipe().getId(),
-                                    m -> m,
-                                    (a, b) -> a
-                            ));
+        // (#8) TransformedRecipe도 검색 (FULLTEXT 인덱스 없으므로 LIKE 사용)
+        List<TransformedRecipe> trs = transformedRecipeRepository.findByTitleLike(sanitized, pageable);
 
-            List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
+        List<Long> recipeIds = new ArrayList<>();
+        recipes.forEach(r -> recipeIds.add(r.getId()));
+        trs.forEach(tr -> recipeIds.add(tr.getBaseRecipe().getId()));
 
-            for (Recipe r : recipes) {
-                RecipeExternalMetadata meta = metadataMap.get(r.getId());
-                Boolean safe = determineSafety(
-                        familyAllergens,
-                        RecipeTextParser.parseIngredients(r.getIngredientsRaw())
-                );
-                items.add(RecipeSearchConverter.fromRecipe(r, meta, safe));
-            }
+        Map<Long, RecipeExternalMetadata> metadataMap = recipeIds.isEmpty()
+                ? Map.of()
+                : metadataRepository.findByRecipe_IdIn(recipeIds).stream()
+                        .collect(Collectors.toMap(
+                                m -> m.getRecipe().getId(),
+                                m -> m,
+                                (a, b) -> a
+                        ));
 
-            return items;
-        });
+        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
+
+        for (Recipe r : recipes) {
+            RecipeExternalMetadata meta = metadataMap.get(r.getId());
+            Boolean safe = determineSafety(
+                    familyAllergens,
+                    RecipeTextParser.parseIngredients(r.getIngredientsRaw())
+            );
+            items.add(RecipeSearchConverter.fromRecipe(r, meta, safe));
+        }
+
+        for (TransformedRecipe tr : trs) {
+            RecipeExternalMetadata meta = metadataMap.get(tr.getBaseRecipe().getId());
+            Boolean safe = determineSafety(
+                    familyAllergens,
+                    RecipeTextParser.parseIngredients(tr.getIngredientsRaw())
+            );
+            items.add(RecipeSearchConverter.fromTransformed(tr, meta, safe));
+        }
+
+        return items;
     }
 
     private Boolean determineSafety(

@@ -30,6 +30,14 @@ public final class QwertyToKoreanConverter {
         KEY_MAP.put('u', 'ㅕ'); KEY_MAP.put('P', 'ㅖ'); KEY_MAP.put('h', 'ㅗ');
         KEY_MAP.put('y', 'ㅛ'); KEY_MAP.put('n', 'ㅜ'); KEY_MAP.put('b', 'ㅠ');
         KEY_MAP.put('m', 'ㅡ'); KEY_MAP.put('l', 'ㅣ');
+        // Shift+일반키 → 소문자와 동일 자모 (쌍자음·ㅒ·ㅖ 외)
+        KEY_MAP.put('S', 'ㄴ'); KEY_MAP.put('F', 'ㄹ'); KEY_MAP.put('A', 'ㅁ');
+        KEY_MAP.put('D', 'ㅇ'); KEY_MAP.put('C', 'ㅊ'); KEY_MAP.put('Z', 'ㅋ');
+        KEY_MAP.put('X', 'ㅌ'); KEY_MAP.put('V', 'ㅍ'); KEY_MAP.put('G', 'ㅎ');
+        KEY_MAP.put('K', 'ㅏ'); KEY_MAP.put('I', 'ㅑ'); KEY_MAP.put('J', 'ㅓ');
+        KEY_MAP.put('U', 'ㅕ'); KEY_MAP.put('H', 'ㅗ'); KEY_MAP.put('Y', 'ㅛ');
+        KEY_MAP.put('N', 'ㅜ'); KEY_MAP.put('B', 'ㅠ'); KEY_MAP.put('M', 'ㅡ');
+        KEY_MAP.put('L', 'ㅣ');
     }
 
     // 초성 배열 (Unicode 순서)

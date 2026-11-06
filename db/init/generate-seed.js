@@ -5,6 +5,12 @@
 //       node db/init/generate-seed.js 50000 > db/init/seed-50k.sql
 
 const TARGET_COUNT = parseInt(process.argv[2] || '5000');
+if (Number.isNaN(TARGET_COUNT)) {
+  throw new Error('건수는 숫자여야 합니다: ' + process.argv[2]);
+}
+if (TARGET_COUNT <= 0) {
+  throw new Error('건수는 1 이상이어야 합니다: ' + TARGET_COUNT);
+}
 
 const titles = [
   // 찌개 (50개)
@@ -239,6 +245,10 @@ if (uniqueTitles.length < TARGET_COUNT) {
       }
     }
   }
+}
+
+if (uniqueTitles.length < TARGET_COUNT) {
+  throw new Error(`요청한 ${TARGET_COUNT}건 중 ${uniqueTitles.length}건만 생성할 수 있습니다.`);
 }
 
 const BATCH = 50;

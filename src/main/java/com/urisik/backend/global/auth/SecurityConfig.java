@@ -76,6 +76,7 @@ public class SecurityConfig  {
                                 "/oauth2/authorize/**",
                                 "/login/oauth2/**",          // provider callback 경로(환경에 따라 필요)
                                 "/api/auth/**",
+                                "/actuator/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/css/**", "/js/**", "/images/**"

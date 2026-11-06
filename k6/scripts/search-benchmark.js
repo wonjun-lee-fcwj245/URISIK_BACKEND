@@ -89,7 +89,7 @@ export default function (data) {
     // 기본 체크
     check(res, {
         'status 200': (r) => r.status === 200,
-        '결과 존재': () => items.length > 0,
+        '결과 존재': () => q._expectNoConvert || items.length > 0,
     });
 
     // 오타 보정 상세 체크 (ES 모드에서만 의미 있음)
@@ -104,8 +104,8 @@ export default function (data) {
         });
     }
 
-    // 재료 검색 체크 (단일 재료 키워드)
-    if (!isTypo && keyword.length <= 3) {
+    // 재료 검색 체크 (fixture 기반)
+    if (q.isIngredient) {
         check(res, {
             '[재료] 다양한 결과 포함': () => {
                 if (items.length < 2) return false;

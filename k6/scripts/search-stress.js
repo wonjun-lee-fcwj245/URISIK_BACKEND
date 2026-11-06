@@ -25,6 +25,10 @@ const errorRate = new Rate('stress_error_rate');
 
 const MODE = __ENV.SEARCH_MODE || 'after';
 
+// stage 경계 시각(초) — VU 태그 결정용
+const STAGE_BOUNDARIES = [30, 90, 150, 210, 240, 270];
+const STAGE_LABELS = ['ramp-30', 'ramp-100', 'ramp-200', 'ramp-300', 'hold-300', 'cool-down'];
+
 export const options = {
     stages: [
         { duration: '30s', target: 30 },
@@ -45,8 +49,22 @@ export function setup() {
     return { token };
 }
 
+function currentStage() {
+    // __ENV.__ITER_TIMESTAMP 없으므로 Date 기반 추정
+    const elapsed = (Date.now() - startTime) / 1000;
+    for (let i = 0; i < STAGE_BOUNDARIES.length; i++) {
+        if (elapsed < STAGE_BOUNDARIES[i]) return STAGE_LABELS[i];
+    }
+    return STAGE_LABELS[STAGE_LABELS.length - 1];
+}
+
+let startTime;
+
 export default function (data) {
+    if (!startTime) startTime = Date.now();
+
     const params = authHeaders(data.token);
+    const stage = currentStage();
 
     const q = queries[Math.floor(Math.random() * queries.length)];
 
@@ -55,13 +73,13 @@ export default function (data) {
         params
     );
 
-    searchDuration.add(res.timings.duration);
+    searchDuration.add(res.timings.duration, { stage });
 
     const success = res.status === 200;
-    errorRate.add(!success);
+    errorRate.add(!success, { stage });
 
     if (!success) {
-        searchErrors.add(1);
+        searchErrors.add(1, { stage });
     }
 
     check(res, {
@@ -69,4 +87,25 @@ export default function (data) {
     });
 
     sleep(0.1 + Math.random() * 0.2);
+}
+
+/**
+ * 시계열 CSV 출력: --out csv=results.csv 와 병행하거나 단독 사용.
+ * 구간별 p95 분석이 가능하도록 stage 태그를 포함한다.
+ *
+ * 사용법:
+ *   k6 run search-stress.js --out csv=stress-results.csv
+ */
+export function handleSummary(data) {
+    const summary = {
+        mode: MODE,
+        stages: STAGE_LABELS,
+        metrics: {
+            stress_search_duration: data.metrics.stress_search_duration,
+            stress_error_rate: data.metrics.stress_error_rate,
+        },
+    };
+    return {
+        stdout: JSON.stringify(summary, null, 2) + '\n',
+    };
 }
