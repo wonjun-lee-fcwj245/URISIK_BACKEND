@@ -1,0 +1,62 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: k6/scripts/wish-concurrency-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 1m0s max duration (incl. graceful stop):
+              * concurrent_wishes: 50 iterations shared among 50 VUs (maxDuration: 30s, gracefulStop: 30s)
+
+
+running (0m01.0s), 47/50 VUs, 3 complete and 0 interrupted iterations
+concurrent_wishes   [   6% ] 50 VUs  00.2s/30s  03/50 shared iters
+time="2026-11-05T14:15:54+09:00" level=info msg="=== 위시 동시성 검증 ===" source=console
+time="2026-11-05T14:15:54+09:00" level=info msg="초기 wishCount: 0, 최종: 50, 증가분: 50" source=console
+time="2026-11-05T14:15:54+09:00" level=info msg="기대 증가분: 50 (50명이 각각 1회 찜)" source=console
+time="2026-11-05T14:15:54+09:00" level=info msg="결과: ✅ 정확히 50건 — lost update 없음" source=console
+
+
+  █ THRESHOLDS 
+
+    http_req_failed
+    ✓ 'rate<0.05' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 50      25.93842/s
+    checks_succeeded...: 100.00% 50 out of 50
+    checks_failed......: 0.00%   0 out of 50
+
+    ✓ [위시] 추가 성공
+
+    CUSTOM
+    wish_success_count.............: 50    25.93842/s
+
+    HTTP
+    http_req_duration..............: avg=310.43ms min=8.99ms  med=28.38ms max=998.1ms p(90)=848.73ms p(95)=915.88ms
+      { expected_response:true }...: avg=310.43ms min=8.99ms  med=28.38ms max=998.1ms p(90)=848.73ms p(95)=915.88ms
+    http_req_failed................: 0.00% 0 out of 102
+    http_reqs......................: 102   52.914376/s
+
+    EXECUTION
+    iteration_duration.............: avg=632.46ms min=121.7ms med=643.5ms max=1.03s   p(90)=937.95ms p(95)=985.52ms
+    iterations.....................: 50    25.93842/s
+    vus............................: 47    min=47       max=47
+    vus_max........................: 50    min=50       max=50
+
+    NETWORK
+    data_received..................: 70 kB 36 kB/s
+    data_sent......................: 29 kB 15 kB/s
+
+
+
+
+running (0m01.9s), 00/50 VUs, 50 complete and 0 interrupted iterations
+concurrent_wishes ✓ [ 100% ] 50 VUs  01.1s/30s  50/50 shared iters

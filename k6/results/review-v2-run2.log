@@ -1,0 +1,66 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: k6/scripts/review-concurrency-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 1m0s max duration (incl. graceful stop):
+              * concurrent_reviews: 100 iterations shared among 100 VUs (maxDuration: 30s, gracefulStop: 30s)
+
+
+Run                  [ 100% ] setup()
+concurrent_reviews   [   0% ]
+
+running (0m01.9s), 046/100 VUs, 54 complete and 0 interrupted iterations
+concurrent_reviews   [  54% ] 100 VUs  01.0s/30s  054/100 shared iters
+time="2026-11-05T14:16:28+09:00" level=info msg="=== 리뷰 동시성 검증 ===" source=console
+time="2026-11-05T14:16:28+09:00" level=info msg="초기 reviewCount: 0, 최종: 100, 증가분: 100" source=console
+time="2026-11-05T14:16:28+09:00" level=info msg="초기 avgScore: 0, 최종: 2.8" source=console
+time="2026-11-05T14:16:28+09:00" level=info msg="기대 증가분: 100 (100명이 각각 1회 리뷰)" source=console
+time="2026-11-05T14:16:28+09:00" level=info msg="결과: ✅ 정확히 100건 — lost update 없음" source=console
+
+
+  █ THRESHOLDS 
+
+    http_req_failed
+    ✓ 'rate<0.05' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100     35.482825/s
+    checks_succeeded...: 100.00% 100 out of 100
+    checks_failed......: 0.00%   0 out of 100
+
+    ✓ [리뷰] 생성 성공
+
+    CUSTOM
+    review_success_count...........: 100    35.482825/s
+
+    HTTP
+    http_req_duration..............: avg=444.31ms min=5.91ms  med=17.17ms  max=1.68s p(90)=1.36s p(95)=1.53s
+      { expected_response:true }...: avg=444.31ms min=5.91ms  med=17.17ms  max=1.68s p(90)=1.36s p(95)=1.53s
+    http_req_failed................: 0.00%  0 out of 202
+    http_reqs......................: 202    71.675306/s
+
+    EXECUTION
+    iteration_duration.............: avg=892.84ms min=71.08ms med=894.55ms max=1.7s  p(90)=1.53s p(95)=1.63s
+    iterations.....................: 100    35.482825/s
+    vus............................: 46     min=0        max=46 
+    vus_max........................: 100    min=100      max=100
+
+    NETWORK
+    data_received..................: 142 kB 50 kB/s
+    data_sent......................: 54 kB  19 kB/s
+
+
+
+
+running (0m02.8s), 000/100 VUs, 100 complete and 0 interrupted iterations
+concurrent_reviews ✓ [ 100% ] 100 VUs  01.7s/30s  100/100 shared iters

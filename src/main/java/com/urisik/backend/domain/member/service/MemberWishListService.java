@@ -66,10 +66,14 @@ public class MemberWishListService {
         try {
             if (req.getRecipeId() != null) {
                 for (Long recipeId : req.getRecipeId()) {
-                    // [Before 측정] FOR UPDATE 없이 일반 조회
-                    Recipe recipe = recipeRepository.findById(recipeId)
-                            .orElseThrow(() -> new MemberException(MemberErrorCode.NO_RECIPE));
+                    // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
+                    int updated = recipeRepository.incrementWishCount(recipeId);
+                    if (updated == 0) {
+                        throw new MemberException(MemberErrorCode.NO_RECIPE);
+                    }
 
+                    // proxy만 얻음 — SELECT 쿼리 0회
+                    Recipe recipe = recipeRepository.getReferenceById(recipeId);
                     profile.addWish(MemberWishList.of(recipe));
 
                     // 가족 위시리스트 삭제DB 업데이트
@@ -81,10 +85,14 @@ public class MemberWishListService {
             }
             if (req.getTransformedRecipeId() != null) {
                 for (Long recipeId : req.getTransformedRecipeId()) {
-                    // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
-                    TransformedRecipe recipe = transformedRecipeRepository.findByIdForUpdate(recipeId)
-                            .orElseThrow(() -> new MemberException(MemberErrorCode.NO_TRANS_RECIPE));
+                    // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
+                    int updated = transformedRecipeRepository.incrementWishCount(recipeId);
+                    if (updated == 0) {
+                        throw new MemberException(MemberErrorCode.NO_TRANS_RECIPE);
+                    }
 
+                    // proxy만 얻음 — SELECT 쿼리 0회
+                    TransformedRecipe recipe = transformedRecipeRepository.getReferenceById(recipeId);
                     profile.addTransWish(MemberTransformedRecipeWish.of(recipe));
 
                     // 가족 위시리스트 삭제DB 업데이트
@@ -103,18 +111,6 @@ public class MemberWishListService {
                 throw new MemberException(MemberErrorCode.WISH_ALREADY_IN);
             }
             throw e;
-        }
-
-        // atomic UPDATE 쿼리로 wishCount 갱신
-        if (req.getRecipeId() != null) {
-            for (Long recipeId : req.getRecipeId()) {
-                recipeRepository.incrementWishCount(recipeId);
-            }
-        }
-        if (req.getTransformedRecipeId() != null) {
-            for (Long recipeId : req.getTransformedRecipeId()) {
-                transformedRecipeRepository.incrementWishCount(recipeId);
-            }
         }
 
         kafkaEventProducer.sendCacheEvict(

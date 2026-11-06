@@ -40,11 +40,18 @@ public class ReviewService {
     @Transactional
     public ReviewResponseDto createReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
 
+        // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
+        int newScore = requestDto.score();
+        int updated = recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
+        if (updated == 0) {
+            throw new GeneralException(GeneralErrorCode.NOT_FOUND);
+        }
+
+        // clearAutomatically=true로 PC가 비워졌으므로 familyMember를 여기서 로드
         FamilyMemberProfile familyMember = getFamilyMember(memberId);
 
-        // SELECT ... FOR UPDATE로 레시피 row를 먼저 잠금 (데드락 방지)
-        Recipe recipe = recipeRepository.findByIdForUpdate(recipeId)
-                .orElseThrow(() -> new GeneralException(GeneralErrorCode.NOT_FOUND));
+        // proxy만 얻음 — SELECT 쿼리 0회
+        Recipe recipe = recipeRepository.getReferenceById(recipeId);
 
         // 데이터 저장 — unique constraint로 중복 방지
         Review review = ReviewConverter.toReview(familyMember, recipe, requestDto);
@@ -58,11 +65,7 @@ public class ReviewService {
             throw e;
         }
 
-        // atomic UPDATE 단일 쿼리로 카운터 + 평균 점수 동시 갱신
-        int newScore = review.getScore();
-        recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
-
-        // 영속성 컨텍스트가 비워졌으므로 DB에서 최신 값 조회
+        // 영속성 컨텍스트에서 최신 avgScore 조회
         double updatedAvgScore = recipeRepository.findById(recipeId)
                 .map(Recipe::getAvgScore)
                 .orElse(0.0);

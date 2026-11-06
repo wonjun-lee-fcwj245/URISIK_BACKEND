@@ -1,0 +1,77 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: k6/scripts/wish-concurrency-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 1m0s max duration (incl. graceful stop):
+              * concurrent_wishes: 50 iterations shared among 50 VUs (maxDuration: 30s, gracefulStop: 30s)
+
+
+Run                 [ 100% ] setup()
+concurrent_wishes   [   0% ]
+
+running (0m02.0s), 50/50 VUs, 0 complete and 0 interrupted iterations
+concurrent_wishes   [   0% ] 50 VUs  00.9s/30s  00/50 shared iters
+
+running (0m03.0s), 38/50 VUs, 12 complete and 0 interrupted iterations
+concurrent_wishes   [  24% ] 50 VUs  01.9s/30s  12/50 shared iters
+
+running (0m04.0s), 22/50 VUs, 28 complete and 0 interrupted iterations
+concurrent_wishes   [  56% ] 50 VUs  02.9s/30s  28/50 shared iters
+
+running (0m05.1s), 16/50 VUs, 34 complete and 0 interrupted iterations
+concurrent_wishes   [  68% ] 50 VUs  04.0s/30s  34/50 shared iters
+
+running (0m06.0s), 03/50 VUs, 47 complete and 0 interrupted iterations
+concurrent_wishes   [  94% ] 50 VUs  04.9s/30s  47/50 shared iters
+time="2026-11-05T13:31:21+09:00" level=info msg="=== 위시 동시성 검증 ===" source=console
+time="2026-11-05T13:31:21+09:00" level=info msg="초기 wishCount: 0, 최종: 50, 증가분: 50" source=console
+time="2026-11-05T13:31:21+09:00" level=info msg="기대 증가분: 50 (50명이 각각 1회 찜)" source=console
+time="2026-11-05T13:31:21+09:00" level=info msg="결과: ✅ 정확히 50건 — lost update 없음" source=console
+
+
+  █ THRESHOLDS 
+
+    http_req_failed
+    ✓ 'rate<0.05' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 50      8.010151/s
+    checks_succeeded...: 100.00% 50 out of 50
+    checks_failed......: 0.00%   0 out of 50
+
+    ✓ [위시] 추가 성공
+
+    CUSTOM
+    wish_success_count.............: 50    8.010151/s
+
+    HTTP
+    http_req_duration..............: avg=1.44s min=12.66ms med=116.76ms max=4.83s p(90)=4.44s p(95)=4.65s
+      { expected_response:true }...: avg=1.44s min=12.66ms med=116.76ms max=4.83s p(90)=4.44s p(95)=4.65s
+    http_req_failed................: 0.00% 0 out of 102
+    http_reqs......................: 102   16.340707/s
+
+    EXECUTION
+    iteration_duration.............: avg=2.93s min=1.23s   med=2.69s    max=4.83s p(90)=4.7s  p(95)=4.77s
+    iterations.....................: 50    8.010151/s
+    vus............................: 3     min=0        max=50
+    vus_max........................: 50    min=50       max=50
+
+    NETWORK
+    data_received..................: 70 kB 11 kB/s
+    data_sent......................: 29 kB 4.6 kB/s
+
+
+
+
+running (0m06.2s), 00/50 VUs, 50 complete and 0 interrupted iterations
+concurrent_wishes ✓ [ 100% ] 50 VUs  04.9s/30s  50/50 shared iters
