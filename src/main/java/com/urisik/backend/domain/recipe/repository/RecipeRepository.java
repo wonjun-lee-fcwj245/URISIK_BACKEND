@@ -7,10 +7,16 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import org.springframework.data.jpa.repository.EntityGraph;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+
+    @EntityGraph(attributePaths = "recipeExternalMetadata")
+    @Query("SELECT r FROM Recipe r WHERE r.id IN :ids")
+    List<Recipe> findAllByIdWithMetadata(@Param("ids") List<Long> ids);
 
     Optional<Recipe> findBySourceRef(String sourceRef);
 
@@ -35,6 +41,9 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     int decrementWishCount(@Param("id") Long id);
 
     List<Recipe> findByTitleContainingIgnoreCase(String keyword, Pageable pageable);
+
+    @Query(value = "SELECT * FROM recipe WHERE MATCH(title) AGAINST(:keyword IN BOOLEAN MODE)", nativeQuery = true)
+    List<Recipe> findByTitleFulltext(@Param("keyword") String keyword, Pageable pageable);
 
     /** Lightweight candidate row for meal plan generation (avoid loading full entity graph) */
     interface RecipeCandidateRow {

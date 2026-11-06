@@ -3,6 +3,7 @@ package com.urisik.backend.domain.recipe.document;
 import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.domain.recipe.entity.RecipeExternalMetadata;
 import com.urisik.backend.domain.recipe.entity.TransformedRecipe;
+import com.urisik.backend.global.util.JamoUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,6 +33,9 @@ public class RecipeDocument {
 
     @Field(type = FieldType.Text, analyzer = "nori")
     private String title;
+
+    @Field(type = FieldType.Text, analyzer = "jamo")
+    private String titleJamo;
 
     @Field(type = FieldType.Text, analyzer = "nori")
     private String ingredientsRaw;
@@ -63,6 +67,7 @@ public class RecipeDocument {
                 .type("RECIPE")
                 .recipeId(recipe.getId())
                 .title(recipe.getTitle())
+                .titleJamo(JamoUtils.decompose(recipe.getTitle()))
                 .ingredientsRaw(recipe.getIngredientsRaw())
                 .category(metadata != null ? metadata.getCategory() : null)
                 .avgScore(recipe.getAvgScore())
@@ -78,6 +83,7 @@ public class RecipeDocument {
                 .type("TRANSFORMED")
                 .recipeId(tr.getId())
                 .title(tr.getTitle())
+                .titleJamo(JamoUtils.decompose(tr.getTitle()))
                 .ingredientsRaw(tr.getIngredientsRaw())
                 .category(metadata != null ? metadata.getCategory() : null)
                 .avgScore(tr.getAvgScore())

@@ -5,6 +5,9 @@ import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.domain.recipe.entity.RecipeExternalMetadata;
 import com.urisik.backend.domain.recipe.entity.TransformedRecipe;
 import com.urisik.backend.domain.recipe.repository.RecipeDocumentRepository;
+import com.urisik.backend.global.util.JamoUtils;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -23,25 +26,56 @@ public class RecipeElasticSearchService {
 
     private final ElasticsearchOperations elasticsearchOperations;
     private final RecipeDocumentRepository recipeDocumentRepository;
+    private final MeterRegistry meterRegistry;
 
     /**
-     * ES multi_match 검색 (title^2 + ingredientsRaw, fuzziness 오타 보정)
+     * ES 검색: nori multi_match + 자모 fuzziness 오타 보정.
+     *
+     * <p>bool should로 두 쿼리를 조합한다.</p>
+     * <ul>
+     *   <li>should[0]: nori 분석 multi_match (title^2, ingredientsRaw) — 형태소 매칭</li>
+     *   <li>should[1]: jamo 분석 match (titleJamo^3, fuzziness AUTO) — 자모 레벨 오타 보정</li>
+     * </ul>
+     *
+     * <p>Resilience4j 서킷 브레이커를 적용하여 ES 장애에 대응한다.
+     * 검색은 사용자 대기가 걸리므로 재시도 없이 즉시 fallback 전환한다.</p>
      */
+    @CircuitBreaker(name = "elasticsearchApi", fallbackMethod = "searchFallback")
     public List<RecipeDocument> search(String keyword, Pageable pageable) {
-        NativeQuery query = NativeQuery.builder()
-                .withQuery(q -> q.multiMatch(m -> m
-                        .query(keyword)
-                        .fields("title^2", "ingredientsRaw")
-                        .fuzziness("AUTO")
-                ))
-                .withPageable(pageable)
-                .build();
+        String keywordJamo = JamoUtils.decompose(keyword);
 
-        SearchHits<RecipeDocument> hits = elasticsearchOperations.search(query, RecipeDocument.class);
+        return meterRegistry.timer("search.es.query").record(() -> {
+            NativeQuery query = NativeQuery.builder()
+                    .withQuery(q -> q.bool(b -> b
+                            .should(s -> s.multiMatch(m -> m
+                                    .query(keyword)
+                                    .fields("title^2", "ingredientsRaw")
+                            ))
+                            .should(s -> s.match(m -> m
+                                    .field("titleJamo")
+                                    .query(keywordJamo)
+                                    .fuzziness("AUTO")
+                                    .boost(3.0f)
+                            ))
+                    ))
+                    .withPageable(pageable)
+                    .build();
 
-        return hits.getSearchHits().stream()
-                .map(SearchHit::getContent)
-                .toList();
+            SearchHits<RecipeDocument> hits = elasticsearchOperations.search(query, RecipeDocument.class);
+
+            return hits.getSearchHits().stream()
+                    .map(SearchHit::getContent)
+                    .toList();
+        });
+    }
+
+    /**
+     * ES 검색 실패 시 fallback. 서킷 OPEN 또는 재시도 소진 시 호출된다.
+     * RuntimeException을 던져 RecipeSearchService에서 catch → MySQL fallback 전환.
+     */
+    private List<RecipeDocument> searchFallback(String keyword, Pageable pageable, Throwable t) {
+        log.warn("ES CircuitBreaker fallback: {}", t.getMessage());
+        throw new RuntimeException("ES 검색 불가, MySQL fallback 전환", t);
     }
 
     /**

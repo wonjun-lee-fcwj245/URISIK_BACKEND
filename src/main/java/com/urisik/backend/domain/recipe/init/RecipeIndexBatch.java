@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.IndexOperations;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -28,11 +30,21 @@ public class RecipeIndexBatch {
     private final TransformedRecipeRepository transformedRecipeRepository;
     private final RecipeExternalMetadataRepository metadataRepository;
     private final RecipeElasticSearchService recipeElasticSearchService;
+    private final ElasticsearchOperations elasticsearchOperations;
 
     @EventListener(ApplicationReadyEvent.class)
     public void indexAllRecipes() {
         try {
             log.info("ES 초기 인덱싱 시작");
+
+            // 0) 인덱스 삭제 후 재생성 (매핑·설정 최신화)
+            IndexOperations indexOps = elasticsearchOperations.indexOps(RecipeDocument.class);
+            if (indexOps.exists()) {
+                indexOps.delete();
+                log.info("기존 ES 인덱스 삭제");
+            }
+            indexOps.createWithMapping();
+            log.info("ES 인덱스 생성 완료 (settings + mapping 적용)");
 
             // 1) 모든 Recipe 조회
             List<Recipe> recipes = recipeRepository.findAll();
@@ -61,8 +73,12 @@ public class RecipeIndexBatch {
                 documents.add(RecipeDocument.from(tr, meta));
             }
 
-            // 5) bulk 인덱싱
-            recipeElasticSearchService.indexAll(documents);
+            // 5) bulk 인덱싱 (500건씩 분할 — socket timeout 내 처리)
+            int batchSize = 500;
+            for (int i = 0; i < documents.size(); i += batchSize) {
+                List<RecipeDocument> batch = documents.subList(i, Math.min(i + batchSize, documents.size()));
+                recipeElasticSearchService.indexAll(batch);
+            }
 
             log.info("ES 초기 인덱싱 완료: Recipe {}건, TransformedRecipe {}건",
                     recipes.size(), transformedRecipes.size());

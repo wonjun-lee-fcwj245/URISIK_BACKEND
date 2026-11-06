@@ -5,6 +5,11 @@
         "type": "custom",
         "tokenizer": "nori_tokenizer",
         "filter": ["lowercase", "nori_part_of_speech"]
+      },
+      "jamo": {
+        "type": "custom",
+        "tokenizer": "standard",
+        "filter": ["lowercase"]
       }
     }
   }
