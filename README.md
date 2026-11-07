@@ -90,6 +90,18 @@ AI 기반 맞춤형 식단 관리 플랫폼입니다.
   <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=flat-square&logo=amazonrds&logoColor=white">
 </div>
 
+### 🔍 Search · Cache · Messaging
+<div>
+  <img src="https://img.shields.io/badge/Elasticsearch (Nori)-005571?style=flat-square&logo=elasticsearch&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white">
+  <img src="https://img.shields.io/badge/Apache Kafka-231F20?style=flat-square&logo=apachekafka&logoColor=white">
+</div>
+
+### 🤖 AI
+<div>
+  <img src="https://img.shields.io/badge/Gemini API-8E75B2?style=flat-square&logo=googlegemini&logoColor=white">
+</div>
+
 ### ☁ Cloud & Infrastructure
 <div>
   <img src="https://img.shields.io/badge/AWS EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white">
