@@ -1,0 +1,5 @@
+# 실험 2 검색 엔진 전환 (앱 코드의 search.engine 설정값, 코드 변경 없음)
+services:
+  app:
+    environment:
+      - SEARCH_ENGINE=${SEARCH_ENGINE:-elasticsearch}

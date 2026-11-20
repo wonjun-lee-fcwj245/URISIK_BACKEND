@@ -1,0 +1,232 @@
+name: urisik_backend
+services:
+  app:
+    build:
+      context: C:\Users\이원준\Desktop\URISIK_BACKEND
+      dockerfile: Dockerfile
+    container_name: urisik-app
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+        required: true
+      kafka:
+        condition: service_started
+        required: true
+      mysql:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_started
+        required: true
+    environment:
+      CLOUD_AWS_CREDENTIALS_ACCESS_KEY: "<masked>"
+      CLOUD_AWS_CREDENTIALS_SECRET_KEY: "<masked>"
+      CLOUD_AWS_REGION_STATIC: ap-northeast-2
+      CLOUD_AWS_S3_BUCKET: dummy-bucket
+      FOODSAFETY_API_KEY: "<masked>"
+      GEMINI_API_KEY: "<masked>"
+      GOOGLE_GEMINI_API_KEY: "<masked>"
+      GOOGLE_GEMINI_MODEL: gemini-2.0-flash
+      INVITE_TOKEN_PEPPER: local-test-pepper-value
+      JWT_TOKEN_EXPIRATION_ACCESS: "14400000"
+      JWT_TOKEN_EXPIRATION_REFRESH: "604800000"
+      JWT_TOKEN_SECRETKEY: "<masked>"
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,metrics,prometheus,circuitbreakers,circuitbreakerevents
+      RESILIENCE4J_CIRCUITBREAKER_CIRCUITBREAKERASPECTORDER: "1"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_FAILURE_RATE_THRESHOLD: "50"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_MINIMUM_NUMBER_OF_CALLS: "5"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_PERMITTED_NUMBER_OF_CALLS_IN_HALF_OPEN_STATE: "3"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_SLIDING_WINDOW_SIZE: "10"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_SLOW_CALL_DURATION_THRESHOLD: 500ms
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_SLOW_CALL_RATE_THRESHOLD: "80"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_ELASTICSEARCHAPI_WAIT_DURATION_IN_OPEN_STATE: 15s
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_FAILURE_RATE_THRESHOLD: "50"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_MINIMUM_NUMBER_OF_CALLS: "10"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_PERMITTED_NUMBER_OF_CALLS_IN_HALF_OPEN_STATE: "3"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_SLIDING_WINDOW_SIZE: "10"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_SLOW_CALL_DURATION_THRESHOLD: 3s
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_SLOW_CALL_RATE_THRESHOLD: "80"
+      RESILIENCE4J_CIRCUITBREAKER_INSTANCES_FOODSAFETYAPI_WAIT_DURATION_IN_OPEN_STATE: 30s
+      RESILIENCE4J_RETRY_INSTANCES_FOODSAFETYAPI_MAX_ATTEMPTS: "3"
+      RESILIENCE4J_RETRY_INSTANCES_FOODSAFETYAPI_WAIT_DURATION: 1s
+      RESILIENCE4J_RETRY_RETRYASPECTORDER: "2"
+      REVIEW_RETRY_MAX: "3"
+      REVIEW_RETRY_MODE: none
+      SEARCH_ENGINE: elasticsearch
+      SERVER_TOMCAT_ACCEPT_COUNT: "500"
+      SERVER_TOMCAT_MAX_CONNECTIONS: "10000"
+      SERVER_TOMCAT_MBEANREGISTRY_ENABLED: "true"
+      SERVER_TOMCAT_THREADS_MAX: "500"
+      SERVER_TOMCAT_THREADS_MIN_SPARE: "50"
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: "6379"
+      SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT: "30000"
+      SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT: "600000"
+      SPRING_DATASOURCE_HIKARI_MAX_LIFETIME: "1800000"
+      SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: "50"
+      SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE: "20"
+      SPRING_DATASOURCE_PASSWORD: "<masked>"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/urisik?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_ELASTICSEARCH_CONNECTION_TIMEOUT: 1s
+      SPRING_ELASTICSEARCH_SOCKET_TIMEOUT: 5s
+      SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_BATCH_FETCH_SIZE: "100"
+      SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE: "30"
+      SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATES: "true"
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_PROFILES_ACTIVE: local
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_AUTHORIZATION_URI: https://accounts.google.com/o/oauth2/v2/auth
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_TOKEN_URI: https://oauth2.googleapis.com/token
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_USER_INFO_URI: https://www.googleapis.com/oauth2/v3/userinfo
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_GOOGLE_USER_NAME_ATTRIBUTE: sub
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_AUTHORIZATION_URI: https://kauth.kakao.com/oauth/authorize
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_TOKEN_URI: https://kauth.kakao.com/oauth/token
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_USER_INFO_URI: https://kapi.kakao.com/v2/user/me
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KAKAO_USER_NAME_ATTRIBUTE: id
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID: dummy
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET: "<masked>"
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_REDIRECT_URI: http://localhost:8080/login/oauth2/code/google
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_SCOPE: email,profile
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_AUTHORIZATION_GRANT_TYPE: authorization_code
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_AUTHENTICATION_METHOD: client_secret_post
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_ID: dummy
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_CLIENT_SECRET: "<masked>"
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_REDIRECT_URI: http://localhost:8080/login/oauth2/code/kakao
+      SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_SCOPE: profile_nickname
+    image: urisik-app:v4
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+    restart: always
+  elasticsearch:
+    command:
+      - bash
+      - -c
+      - |2
+          elasticsearch-plugin install --batch analysis-nori || true;
+          /usr/local/bin/docker-entrypoint.sh
+    container_name: urisik-elasticsearch
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -f http://localhost:9200/_cluster/health || exit 1
+      timeout: 10s
+      interval: 15s
+      retries: 10
+    image: elasticsearch:8.15.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 9200
+        published: "9200"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: es-data
+        target: /usr/share/elasticsearch/data
+        volume: {}
+  kafka:
+    container_name: urisik-kafka
+    depends_on:
+      zookeeper:
+        condition: service_started
+        required: true
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_BROKER_ID: "1"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    image: confluentinc/cp-kafka:7.5.0
+    networks:
+      default: null
+    restart: always
+    volumes:
+      - type: volume
+        source: kafka-data
+        target: /var/lib/kafka/data
+        volume: {}
+  mysql:
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max-connections=200
+    container_name: urisik-mysql
+    environment:
+      MYSQL_DATABASE: urisik
+      MYSQL_ROOT_PASSWORD: "<masked>"
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - -h
+        - localhost
+      timeout: 5s
+      interval: 10s
+      retries: 5
+    image: mysql:8.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 3306
+        published: "3307"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+        volume: {}
+  redis:
+    container_name: urisik-redis
+    image: redis:7-alpine
+    networks:
+      default: null
+    restart: always
+  zookeeper:
+    container_name: urisik-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: "2181"
+      ZOOKEEPER_TICK_TIME: "2000"
+    image: confluentinc/cp-zookeeper:7.5.0
+    networks:
+      default: null
+    restart: always
+    volumes:
+      - type: volume
+        source: zookeeper-data
+        target: /var/lib/zookeeper/data
+        volume: {}
+      - type: volume
+        source: zookeeper-logs
+        target: /var/lib/zookeeper/log
+        volume: {}
+networks:
+  default:
+    name: urisik_backend_default
+volumes:
+  es-data:
+    name: urisik_backend_es-data
+  kafka-data:
+    name: urisik_backend_kafka-data
+  mysql-data:
+    name: urisik_backend_mysql-data
+  zookeeper-data:
+    name: urisik_backend_zookeeper-data
+  zookeeper-logs:
+    name: urisik_backend_zookeeper-logs

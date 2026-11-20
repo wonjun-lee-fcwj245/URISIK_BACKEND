@@ -1,0 +1,355 @@
+  Container urisik-mysql  Running
+ Container urisik-zookeeper  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-redis  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v0 (image=urisik-app:v0), ready in 19s
+warmed up
+A_v0_review_vu100_same_run1 {"requests": 100, "success_200": 8, "duplicate_4xx": 0, "error_5xx": 92, "error_other": 0, "mysql_1213_applog": 92, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 92, "innodb_lock_timeouts_delta": 0, "p50_ms": 371.4539, "p95_ms": 593.5484749999999, "p99_ms": 609.462452, "max_ms": 609.9626, "rows_inserted": 8, "counter_total": 8, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.07500000000000018}
+B_v0_review_vu100_distinct_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 275.60564999999997, "p95_ms": 423.4087, "p99_ms": 431.127498, "max_ms": 432.246, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu10_same_run1 {"requests": 10, "success_200": 2, "duplicate_4xx": 0, "error_5xx": 8, "error_other": 0, "mysql_1213_applog": 8, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 8, "innodb_lock_timeouts_delta": 0, "p50_ms": 48.77145, "p95_ms": 61.68158, "p99_ms": 62.104796, "max_ms": 62.2106, "rows_inserted": 2, "counter_total": 2, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu25_same_run1 {"requests": 25, "success_200": 3, "duplicate_4xx": 0, "error_5xx": 22, "error_other": 0, "mysql_1213_applog": 22, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 22, "innodb_lock_timeouts_delta": 0, "p50_ms": 84.2825, "p95_ms": 110.78412, "p99_ms": 111.1653, "max_ms": 111.1653, "rows_inserted": 3, "counter_total": 3, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu50_same_run1 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 133.42669999999998, "p95_ms": 185.214825, "p99_ms": 187.15225199999998, "max_ms": 188.1691, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.04999999999999982}
+C_v0_review_vu200_same_run1 {"requests": 200, "success_200": 13, "duplicate_4xx": 0, "error_5xx": 187, "error_other": 0, "mysql_1213_applog": 187, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 187, "innodb_lock_timeouts_delta": 0, "p50_ms": 494.14845, "p95_ms": 735.9663149999999, "p99_ms": 752.09347, "max_ms": 754.8335, "rows_inserted": 13, "counter_total": 13, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.09229999999999983}
+D_v0_treview_vu100_same_run1 {"requests": 100, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 93, "error_other": 0, "mysql_1213_applog": 93, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 93, "innodb_lock_timeouts_delta": 0, "p50_ms": 209.23935, "p95_ms": 286.2729, "p99_ms": 294.250284, "max_ms": 297.9909, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.04289999999999994}
+D_v0_wish_vu100_same_run1 {"requests": 100, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 93, "error_other": 0, "mysql_1213_applog": 93, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 93, "innodb_lock_timeouts_delta": 0, "p50_ms": 242.09385, "p95_ms": 304.9279, "p99_ms": 312.601339, "max_ms": 313.1101, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v0_twish_vu100_same_run1 {"requests": 100, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 93, "error_other": 0, "mysql_1213_applog": 93, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 93, "innodb_lock_timeouts_delta": 0, "p50_ms": 195.74475, "p95_ms": 285.301875, "p99_ms": 290.28331, "max_ms": 291.8683, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v0_wish_vu50_same_run1 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 109.7376, "p95_ms": 156.12768, "p99_ms": 158.184124, "max_ms": 158.4352, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v3 (image=urisik-app:v3), ready in 22s
+warmed up
+A_v3_review_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 943.89815, "p95_ms": 1689.21936, "p99_ms": 1733.551647, "max_ms": 1745.2086, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+B_v3_review_vu100_distinct_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 153.25189999999998, "p95_ms": 265.6888, "p99_ms": 269.336902, "max_ms": 269.8618, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 100, "avg_max_abs_diff_vs_true": 2.5}
+C_v3_review_vu10_same_run1 {"requests": 10, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 80.61155, "p95_ms": 125.24905999999999, "p99_ms": 128.526932, "max_ms": 129.3464, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.3999999999999999}
+C_v3_review_vu25_same_run1 {"requests": 25, "success_200": 25, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 178.7723, "p95_ms": 294.96255999999994, "p99_ms": 307.12816, "max_ms": 310.1386, "rows_inserted": 25, "counter_total": 25, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+C_v3_review_vu50_same_run1 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 336.2092, "p95_ms": 570.005085, "p99_ms": 597.221182, "max_ms": 605.4523, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+C_v3_review_vu200_same_run1 {"requests": 200, "success_200": 200, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1782.7264, "p95_ms": 2894.90016, "p99_ms": 2982.528425, "max_ms": 3004.4993, "rows_inserted": 200, "counter_total": 200, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_treview_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 654.79015, "p95_ms": 1287.0195449999999, "p99_ms": 1333.3073769999999, "max_ms": 1343.2546, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+D_v3_wish_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 773.85355, "p95_ms": 1340.93092, "p99_ms": 1394.192364, "max_ms": 1409.7912, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v3_twish_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 630.5574, "p95_ms": 1113.946535, "p99_ms": 1160.3327410000002, "max_ms": 1170.9694, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v3_wish_vu50_same_run1 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 366.8456, "p95_ms": 583.946285, "p99_ms": 599.176437, "max_ms": 602.9341, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v1 (image=urisik-app:v1), ready in 25s
+warmed up
+A_v1_review_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1009.7510500000001, "p95_ms": 1822.129635, "p99_ms": 1899.5142850000002, "max_ms": 1912.8085, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v1_wish_vu100_same_run1 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 824.8261, "p95_ms": 1404.85406, "p99_ms": 1444.314818, "max_ms": 1459.4141, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v1_wish_vu50_same_run1 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 435.69010000000003, "p95_ms": 749.975455, "p99_ms": 774.460435, "max_ms": 779.9918, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-redis  Running
+ Container urisik-mysql  Running
+ Container urisik-zookeeper  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-elasticsearch  Healthy
+ Container urisik-mysql  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v1 (image=urisik-app:v1), ready in 22s
+warmed up
+A_v1_review_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1118.8662, "p95_ms": 1812.155565, "p99_ms": 1864.1733470000001, "max_ms": 1881.9881, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v1_wish_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1341.4068, "p95_ms": 2201.12048, "p99_ms": 2267.0184750000003, "max_ms": 2288.1228, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v1_wish_vu50_same_run2 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 533.9229, "p95_ms": 1012.62765, "p99_ms": 1064.171348, "max_ms": 1072.4253, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v3 (image=urisik-app:v3), ready in 31s
+warmed up
+A_v3_review_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1150.1203999999998, "p95_ms": 2010.268385, "p99_ms": 2074.832136, "max_ms": 2095.2495, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+B_v3_review_vu100_distinct_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 338.9635, "p95_ms": 481.82344, "p99_ms": 489.6638, "max_ms": 489.6638, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 100, "avg_max_abs_diff_vs_true": 2.5}
+C_v3_review_vu10_same_run2 {"requests": 10, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 117.5001, "p95_ms": 203.11262999999997, "p99_ms": 212.000526, "max_ms": 214.2225, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+C_v3_review_vu25_same_run2 {"requests": 25, "success_200": 25, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 180.5271, "p95_ms": 308.73704, "p99_ms": 320.6888, "max_ms": 323.6612, "rows_inserted": 25, "counter_total": 25, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v3_review_vu50_same_run2 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 565.876, "p95_ms": 958.169595, "p99_ms": 1010.876076, "max_ms": 1016.3433, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+C_v3_review_vu200_same_run2 {"requests": 200, "success_200": 200, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 2265.92065, "p95_ms": 5757.833739999999, "p99_ms": 5929.79455, "max_ms": 5954.2078, "rows_inserted": 200, "counter_total": 200, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_treview_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 662.83015, "p95_ms": 1165.365635, "p99_ms": 1196.2945550000002, "max_ms": 1210.7738, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v3_wish_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1216.5985, "p95_ms": 1953.5673049999998, "p99_ms": 2006.8965309999999, "max_ms": 2015.275, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v3_twish_vu100_same_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 691.60515, "p95_ms": 1217.76792, "p99_ms": 1286.2614620000002, "max_ms": 1318.8584, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v3_wish_vu50_same_run2 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 371.51725, "p95_ms": 579.70275, "p99_ms": 600.998115, "max_ms": 606.8519, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v0 (image=urisik-app:v0), ready in 25s
+warmed up
+A_v0_review_vu100_same_run2 {"requests": 100, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 95, "error_other": 0, "mysql_1213_applog": 95, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 95, "innodb_lock_timeouts_delta": 0, "p50_ms": 741.5909999999999, "p95_ms": 876.451065, "p99_ms": 891.2340530000001, "max_ms": 906.4259, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+B_v0_review_vu100_distinct_run2 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 479.17595, "p95_ms": 540.10789, "p99_ms": 547.819932, "max_ms": 549.4764, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu10_same_run2 {"requests": 10, "success_200": 2, "duplicate_4xx": 0, "error_5xx": 8, "error_other": 0, "mysql_1213_applog": 8, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 8, "innodb_lock_timeouts_delta": 0, "p50_ms": 46.515649999999994, "p95_ms": 69.02957999999998, "p99_ms": 73.469676, "max_ms": 74.5797, "rows_inserted": 2, "counter_total": 2, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu25_same_run2 {"requests": 25, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 21, "error_other": 0, "mysql_1213_applog": 21, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 21, "innodb_lock_timeouts_delta": 0, "p50_ms": 330.5345, "p95_ms": 436.26919999999996, "p99_ms": 438.90543199999996, "max_ms": 439.4108, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.04999999999999982}
+C_v0_review_vu50_same_run2 {"requests": 50, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 45, "error_other": 0, "mysql_1213_applog": 45, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 45, "innodb_lock_timeouts_delta": 0, "p50_ms": 515.52405, "p95_ms": 667.8214300000001, "p99_ms": 673.511485, "max_ms": 678.0457, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu200_same_run2 {"requests": 200, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 190, "error_other": 0, "mysql_1213_applog": 190, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 190, "innodb_lock_timeouts_delta": 0, "p50_ms": 874.3430000000001, "p95_ms": 1200.0198349999998, "p99_ms": 1385.9943669999996, "max_ms": 1449.3558, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v0_treview_vu100_same_run2 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 308.4059, "p95_ms": 410.71340499999997, "p99_ms": 416.461007, "max_ms": 416.7686, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.033299999999999885}
+D_v0_wish_vu100_same_run2 {"requests": 100, "success_200": 8, "duplicate_4xx": 0, "error_5xx": 92, "error_other": 0, "mysql_1213_applog": 92, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 92, "innodb_lock_timeouts_delta": 0, "p50_ms": 1051.3898, "p95_ms": 1665.5106549999998, "p99_ms": 1692.6306040000002, "max_ms": 1709.6095, "rows_inserted": 8, "counter_total": 8, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v0_twish_vu100_same_run2 {"requests": 100, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 96, "error_other": 0, "mysql_1213_applog": 96, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 96, "innodb_lock_timeouts_delta": 0, "p50_ms": 429.68724999999995, "p95_ms": 511.590715, "p99_ms": 550.4592170000001, "max_ms": 564.4298, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v0_wish_vu50_same_run2 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 335.69885, "p95_ms": 454.875765, "p99_ms": 465.115058, "max_ms": 469.9493, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-mysql  Running
+ Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v0 (image=urisik-app:v0), ready in 32s
+warmed up
+A_v0_review_vu100_same_run3 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 587.45975, "p95_ms": 913.99447, "p99_ms": 941.0276870000001, "max_ms": 951.2333, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.03330000000000011}
+B_v0_review_vu100_distinct_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 647.9973, "p95_ms": 748.30351, "p99_ms": 769.211036, "max_ms": 793.4003, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu10_same_run3 {"requests": 10, "success_200": 2, "duplicate_4xx": 0, "error_5xx": 8, "error_other": 0, "mysql_1213_applog": 8, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 8, "innodb_lock_timeouts_delta": 0, "p50_ms": 65.06705, "p95_ms": 74.10363000000001, "p99_ms": 74.728086, "max_ms": 74.8842, "rows_inserted": 2, "counter_total": 2, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu25_same_run3 {"requests": 25, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 21, "error_other": 0, "mysql_1213_applog": 21, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 21, "innodb_lock_timeouts_delta": 0, "p50_ms": 274.2079, "p95_ms": 358.42082, "p99_ms": 359.680388, "max_ms": 359.9747, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu50_same_run3 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 265.57005000000004, "p95_ms": 335.61209, "p99_ms": 337.57584, "max_ms": 337.6366, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu200_same_run3 {"requests": 200, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 193, "error_other": 0, "mysql_1213_applog": 193, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 193, "innodb_lock_timeouts_delta": 0, "p50_ms": 2009.5774000000001, "p95_ms": 2578.602025, "p99_ms": 2719.9261039999997, "max_ms": 2772.3701, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v0_treview_vu100_same_run3 {"requests": 100, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 93, "error_other": 0, "mysql_1213_applog": 93, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 93, "innodb_lock_timeouts_delta": 0, "p50_ms": 302.59270000000004, "p95_ms": 390.907375, "p99_ms": 393.23327400000005, "max_ms": 396.0225, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.01429999999999998}
+D_v0_wish_vu100_same_run3 {"requests": 100, "success_200": 7, "duplicate_4xx": 0, "error_5xx": 93, "error_other": 0, "mysql_1213_applog": 93, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 93, "innodb_lock_timeouts_delta": 0, "p50_ms": 365.53315, "p95_ms": 510.83978, "p99_ms": 519.738106, "max_ms": 527.0845, "rows_inserted": 7, "counter_total": 7, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v0_twish_vu100_same_run3 {"requests": 100, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 96, "error_other": 0, "mysql_1213_applog": 96, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 96, "innodb_lock_timeouts_delta": 0, "p50_ms": 1110.0675, "p95_ms": 1321.38011, "p99_ms": 1343.46, "max_ms": 1343.46, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v0_wish_vu50_same_run3 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 192.7414, "p95_ms": 244.01095, "p99_ms": 260.375452, "max_ms": 263.4846, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-mysql  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-mysql  Waiting
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v3 (image=urisik-app:v3), ready in 37s
+warmed up
+A_v3_review_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 953.98855, "p95_ms": 1708.6434, "p99_ms": 1764.548299, "max_ms": 1777.2301, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+B_v3_review_vu100_distinct_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 270.30629999999996, "p95_ms": 385.01696499999997, "p99_ms": 392.20616800000005, "max_ms": 392.8069, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 100, "avg_max_abs_diff_vs_true": 2.5}
+C_v3_review_vu10_same_run3 {"requests": 10, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 96.47675, "p95_ms": 142.46479, "p99_ms": 146.90351800000002, "max_ms": 148.0132, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+C_v3_review_vu25_same_run3 {"requests": 25, "success_200": 25, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 176.785, "p95_ms": 301.87206, "p99_ms": 316.537672, "max_ms": 320.4922, "rows_inserted": 25, "counter_total": 25, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+C_v3_review_vu50_same_run3 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 343.4112, "p95_ms": 593.05881, "p99_ms": 628.239692, "max_ms": 635.3443, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v3_review_vu200_same_run3 {"requests": 200, "success_200": 200, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1576.8163, "p95_ms": 2822.1100349999997, "p99_ms": 2950.041754, "max_ms": 2978.6619, "rows_inserted": 200, "counter_total": 200, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_treview_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 758.00225, "p95_ms": 1315.2097800000001, "p99_ms": 1353.097069, "max_ms": 1362.8752, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v3_wish_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 724.83005, "p95_ms": 1188.459745, "p99_ms": 1238.868191, "max_ms": 1255.5686, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v3_twish_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 651.18625, "p95_ms": 1171.422145, "p99_ms": 1204.753001, "max_ms": 1220.2862, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v3_wish_vu50_same_run3 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 558.1376, "p95_ms": 908.41044, "p99_ms": 940.869258, "max_ms": 948.717, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-mysql  Running
+ Container urisik-kafka  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v1 (image=urisik-app:v1), ready in 28s
+warmed up
+A_v1_review_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1581.9344, "p95_ms": 2303.8451050000003, "p99_ms": 2376.004863, "max_ms": 2384.8716, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v1_wish_vu100_same_run3 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1332.62775, "p95_ms": 2265.4900249999996, "p99_ms": 2340.931475, "max_ms": 2354.9573, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v1_wish_vu50_same_run3 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 389.7767, "p95_ms": 671.770145, "p99_ms": 687.249882, "max_ms": 689.9783, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-elasticsearch  Running
+ Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-mysql  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v1 (image=urisik-app:v1), ready in 25s
+warmed up
+A_v1_review_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1249.7375, "p95_ms": 2083.76177, "p99_ms": 2154.659008, "max_ms": 2170.8463, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+D_v1_wish_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 807.5738, "p95_ms": 1333.644765, "p99_ms": 1364.959979, "max_ms": 1374.5213, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v1_wish_vu50_same_run4 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 401.44314999999995, "p95_ms": 689.420585, "p99_ms": 721.168688, "max_ms": 728.0918, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-kafka  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-mysql  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v3 (image=urisik-app:v3), ready in 31s
+warmed up
+A_v3_review_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1006.6079, "p95_ms": 1824.659655, "p99_ms": 1894.262106, "max_ms": 1894.8369, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+B_v3_review_vu100_distinct_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 195.2576, "p95_ms": 273.71362999999997, "p99_ms": 281.210433, "max_ms": 282.2334, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 100, "avg_max_abs_diff_vs_true": 2.5}
+C_v3_review_vu10_same_run4 {"requests": 10, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 319.06345, "p95_ms": 456.63962499999997, "p99_ms": 467.535205, "max_ms": 470.2591, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+C_v3_review_vu25_same_run4 {"requests": 25, "success_200": 25, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 312.0672, "p95_ms": 533.3671199999999, "p99_ms": 551.611356, "max_ms": 555.8157, "rows_inserted": 25, "counter_total": 25, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+C_v3_review_vu50_same_run4 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 418.99705, "p95_ms": 749.669235, "p99_ms": 813.092817, "max_ms": 825.0766, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+C_v3_review_vu200_same_run4 {"requests": 200, "success_200": 200, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1909.0973, "p95_ms": 3312.626285, "p99_ms": 3462.923978, "max_ms": 3502.7625, "rows_inserted": 200, "counter_total": 200, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.20000000000000018}
+D_v3_treview_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 768.84485, "p95_ms": 1427.786105, "p99_ms": 1483.9338220000002, "max_ms": 1499.7364, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_wish_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 731.22955, "p95_ms": 1395.72048, "p99_ms": 1463.123231, "max_ms": 1477.6298, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v3_twish_vu100_same_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 640.8734, "p95_ms": 1149.30313, "p99_ms": 1192.215034, "max_ms": 1198.0297, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v3_wish_vu50_same_run4 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 313.39025, "p95_ms": 518.35099, "p99_ms": 531.3593279999999, "max_ms": 537.7846, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-mysql  Running
+ Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-kafka  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v0 (image=urisik-app:v0), ready in 25s
+warmed up
+A_v0_review_vu100_same_run4 {"requests": 100, "success_200": 8, "duplicate_4xx": 0, "error_5xx": 92, "error_other": 0, "mysql_1213_applog": 92, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 92, "innodb_lock_timeouts_delta": 0, "p50_ms": 934.9111, "p95_ms": 1260.50001, "p99_ms": 1273.186844, "max_ms": 1287.7937, "rows_inserted": 8, "counter_total": 8, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+B_v0_review_vu100_distinct_run4 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1062.1898999999999, "p95_ms": 1319.8806, "p99_ms": 1350.5949200000005, "max_ms": 1465.3181, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu10_same_run4 {"requests": 10, "success_200": 2, "duplicate_4xx": 0, "error_5xx": 8, "error_other": 0, "mysql_1213_applog": 8, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 8, "innodb_lock_timeouts_delta": 0, "p50_ms": 53.5792, "p95_ms": 58.3276, "p99_ms": 59.8828, "max_ms": 60.2716, "rows_inserted": 2, "counter_total": 2, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu25_same_run4 {"requests": 25, "success_200": 3, "duplicate_4xx": 0, "error_5xx": 22, "error_other": 0, "mysql_1213_applog": 22, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 22, "innodb_lock_timeouts_delta": 0, "p50_ms": 160.0557, "p95_ms": 189.98901999999998, "p99_ms": 196.416744, "max_ms": 198.3066, "rows_inserted": 3, "counter_total": 3, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.03330000000000011}
+C_v0_review_vu50_same_run4 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 176.67845, "p95_ms": 225.895005, "p99_ms": 230.343391, "max_ms": 232.4426, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.04999999999999982}
+C_v0_review_vu200_same_run4 {"requests": 200, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 190, "error_other": 0, "mysql_1213_applog": 190, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 190, "innodb_lock_timeouts_delta": 0, "p50_ms": 871.8163999999999, "p95_ms": 1251.48288, "p99_ms": 1268.152967, "max_ms": 1273.9687, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v0_treview_vu100_same_run4 {"requests": 100, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 95, "error_other": 0, "mysql_1213_applog": 95, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 95, "innodb_lock_timeouts_delta": 0, "p50_ms": 376.90470000000005, "p95_ms": 510.81247, "p99_ms": 515.4524, "max_ms": 521.3924, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v0_wish_vu100_same_run4 {"requests": 100, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 95, "error_other": 0, "mysql_1213_applog": 95, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 95, "innodb_lock_timeouts_delta": 0, "p50_ms": 452.35015, "p95_ms": 675.2081549999999, "p99_ms": 696.1331540000001, "max_ms": 708.6026, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v0_twish_vu100_same_run4 {"requests": 100, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 95, "error_other": 0, "mysql_1213_applog": 95, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 95, "innodb_lock_timeouts_delta": 0, "p50_ms": 371.2308, "p95_ms": 471.73285999999996, "p99_ms": 484.10165600000005, "max_ms": 491.7203, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v0_wish_vu50_same_run4 {"requests": 50, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 45, "error_other": 0, "mysql_1213_applog": 45, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 45, "innodb_lock_timeouts_delta": 0, "p50_ms": 146.1418, "p95_ms": 200.595625, "p99_ms": 203.014364, "max_ms": 205.0412, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-mysql  Running
+ Container urisik-kafka  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v0 (image=urisik-app:v0), ready in 28s
+warmed up
+A_v0_review_vu100_same_run5 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 675.8959, "p95_ms": 934.3535049999999, "p99_ms": 952.1955690000001, "max_ms": 968.8938, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+B_v0_review_vu100_distinct_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 452.58405, "p95_ms": 539.3050949999999, "p99_ms": 545.271682, "max_ms": 548.4973, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu10_same_run5 {"requests": 10, "success_200": 2, "duplicate_4xx": 0, "error_5xx": 8, "error_other": 0, "mysql_1213_applog": 8, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 8, "innodb_lock_timeouts_delta": 0, "p50_ms": 91.1898, "p95_ms": 104.31888499999998, "p99_ms": 112.327697, "max_ms": 114.3299, "rows_inserted": 2, "counter_total": 2, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu25_same_run5 {"requests": 25, "success_200": 3, "duplicate_4xx": 0, "error_5xx": 22, "error_other": 0, "mysql_1213_applog": 22, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 22, "innodb_lock_timeouts_delta": 0, "p50_ms": 147.1546, "p95_ms": 214.47208, "p99_ms": 214.9104, "max_ms": 214.9104, "rows_inserted": 3, "counter_total": 3, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.03330000000000011}
+C_v0_review_vu50_same_run5 {"requests": 50, "success_200": 5, "duplicate_4xx": 0, "error_5xx": 45, "error_other": 0, "mysql_1213_applog": 45, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 45, "innodb_lock_timeouts_delta": 0, "p50_ms": 222.7351, "p95_ms": 336.97922, "p99_ms": 341.198947, "max_ms": 343.0265, "rows_inserted": 5, "counter_total": 5, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v0_review_vu200_same_run5 {"requests": 200, "success_200": 8, "duplicate_4xx": 0, "error_5xx": 192, "error_other": 0, "mysql_1213_applog": 192, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 192, "innodb_lock_timeouts_delta": 0, "p50_ms": 1518.53105, "p95_ms": 2138.905675, "p99_ms": 2191.42705, "max_ms": 2202.2871, "rows_inserted": 8, "counter_total": 8, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.04999999999999982}
+D_v0_treview_vu100_same_run5 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 202.8365, "p95_ms": 273.20696, "p99_ms": 279.046318, "max_ms": 279.3946, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v0_wish_vu100_same_run5 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 284.7123, "p95_ms": 401.795615, "p99_ms": 413.281299, "max_ms": 414.0039, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v0_twish_vu100_same_run5 {"requests": 100, "success_200": 6, "duplicate_4xx": 0, "error_5xx": 94, "error_other": 0, "mysql_1213_applog": 94, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 94, "innodb_lock_timeouts_delta": 0, "p50_ms": 327.95975, "p95_ms": 398.69998000000004, "p99_ms": 419.49012400000004, "max_ms": 426.4621, "rows_inserted": 6, "counter_total": 6, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v0_wish_vu50_same_run5 {"requests": 50, "success_200": 4, "duplicate_4xx": 0, "error_5xx": 46, "error_other": 0, "mysql_1213_applog": 46, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 46, "innodb_lock_timeouts_delta": 0, "p50_ms": 133.8331, "p95_ms": 170.756305, "p99_ms": 173.057226, "max_ms": 173.3084, "rows_inserted": 4, "counter_total": 4, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-mysql  Running
+ Container urisik-redis  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-zookeeper  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v3 (image=urisik-app:v3), ready in 28s
+warmed up
+A_v3_review_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1166.9097000000002, "p95_ms": 1886.4995, "p99_ms": 1958.1773500000002, "max_ms": 1977.9229, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+B_v3_review_vu100_distinct_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 250.88344999999998, "p95_ms": 327.201065, "p99_ms": 328.603799, "max_ms": 329.1878, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 100, "avg_max_abs_diff_vs_true": 2.5}
+C_v3_review_vu10_same_run5 {"requests": 10, "success_200": 10, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 84.45224999999999, "p95_ms": 138.82850999999997, "p99_ms": 143.74762199999998, "max_ms": 144.9774, "rows_inserted": 10, "counter_total": 10, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+C_v3_review_vu25_same_run5 {"requests": 25, "success_200": 25, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 170.2707, "p95_ms": 295.8958999999999, "p99_ms": 306.781752, "max_ms": 309.4932, "rows_inserted": 25, "counter_total": 25, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.2999999999999998}
+C_v3_review_vu50_same_run5 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 327.57124999999996, "p95_ms": 589.256935, "p99_ms": 625.9166879999999, "max_ms": 633.3837, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+C_v3_review_vu200_same_run5 {"requests": 200, "success_200": 200, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1321.1386499999999, "p95_ms": 2275.95291, "p99_ms": 2360.633363, "max_ms": 2430.3109, "rows_inserted": 200, "counter_total": 200, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_treview_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 510.2884, "p95_ms": 948.96712, "p99_ms": 976.0221110000001, "max_ms": 984.7748, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 1, "avg_max_abs_diff_vs_true": 0.10000000000000009}
+D_v3_wish_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 526.9158500000001, "p95_ms": 929.17972, "p99_ms": 956.31208, "max_ms": 961.6858, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+D_v3_twish_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 521.2792, "p95_ms": 863.3357149999999, "p99_ms": 894.1233970000001, "max_ms": 903.7063, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v3_wish_vu50_same_run5 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 334.13469999999995, "p95_ms": 510.12942, "p99_ms": 524.012023, "max_ms": 527.5338, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+  Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v1 (image=urisik-app:v1), ready in 22s
+warmed up
+A_v1_review_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 1111.5198, "p95_ms": 1917.4558049999998, "p99_ms": 1987.169628, "max_ms": 1997.3496, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": 0, "avg_max_abs_diff_vs_true": 0.0}
+D_v1_wish_vu100_same_run5 {"requests": 100, "success_200": 100, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 760.75505, "p95_ms": 1280.8073749999999, "p99_ms": 1322.733494, "max_ms": 1327.7621, "rows_inserted": 100, "counter_total": 100, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}
+E_v1_wish_vu50_same_run5 {"requests": 50, "success_200": 50, "duplicate_4xx": 0, "error_5xx": 0, "error_other": 0, "mysql_1213_applog": 0, "mysql_1205_applog": 0, "innodb_lock_deadlocks_delta": 0, "innodb_lock_timeouts_delta": 0, "p50_ms": 298.9551, "p95_ms": 533.77145, "p99_ms": 551.938026, "max_ms": 556.6041, "rows_inserted": 50, "counter_total": 50, "counter_mismatch_targets": 0, "avg_mismatch_targets_round1": "", "avg_max_abs_diff_vs_true": ""}

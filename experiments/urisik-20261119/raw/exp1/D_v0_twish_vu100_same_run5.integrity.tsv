@@ -1,0 +1,2 @@
+select t.id, t.wish_count, count(c.id) from transformed_recipe t left join `personal-transformed-recipe-wishlist` c on c.transformed_recipe_id=t.id where t.id in (45) group by t.id, t.wish_count
+45	6	6

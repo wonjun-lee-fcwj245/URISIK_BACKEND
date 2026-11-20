@@ -1,0 +1,146 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp3-cache.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 20m30s max duration (incl. graceful stop):
+              * s: 1000 iterations shared among 1 VUs (maxDuration: 20m0s, gracefulStop: 30s)
+
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+running (00m07.0s), 1/1 VUs, 50 complete and 0 interrupted iterations
+s      [   5% ] 1 VUs  00m01.0s/20m0s  0050/1000 shared iters
+
+running (00m08.0s), 1/1 VUs, 102 complete and 0 interrupted iterations
+s      [  10% ] 1 VUs  00m02.0s/20m0s  0102/1000 shared iters
+
+running (00m09.0s), 1/1 VUs, 158 complete and 0 interrupted iterations
+s      [  16% ] 1 VUs  00m03.0s/20m0s  0158/1000 shared iters
+
+running (00m10.0s), 1/1 VUs, 210 complete and 0 interrupted iterations
+s      [  21% ] 1 VUs  00m04.0s/20m0s  0210/1000 shared iters
+
+running (00m11.0s), 1/1 VUs, 263 complete and 0 interrupted iterations
+s      [  26% ] 1 VUs  00m05.0s/20m0s  0263/1000 shared iters
+
+running (00m12.0s), 1/1 VUs, 320 complete and 0 interrupted iterations
+s      [  32% ] 1 VUs  00m06.0s/20m0s  0320/1000 shared iters
+
+running (00m13.0s), 1/1 VUs, 378 complete and 0 interrupted iterations
+s      [  38% ] 1 VUs  00m07.0s/20m0s  0378/1000 shared iters
+
+running (00m14.0s), 1/1 VUs, 437 complete and 0 interrupted iterations
+s      [  44% ] 1 VUs  00m08.0s/20m0s  0437/1000 shared iters
+
+running (00m15.0s), 1/1 VUs, 495 complete and 0 interrupted iterations
+s      [  50% ] 1 VUs  00m09.0s/20m0s  0495/1000 shared iters
+
+running (00m16.0s), 1/1 VUs, 550 complete and 0 interrupted iterations
+s      [  55% ] 1 VUs  00m10.0s/20m0s  0550/1000 shared iters
+
+running (00m17.0s), 1/1 VUs, 606 complete and 0 interrupted iterations
+s      [  61% ] 1 VUs  00m11.0s/20m0s  0606/1000 shared iters
+
+running (00m18.0s), 1/1 VUs, 661 complete and 0 interrupted iterations
+s      [  66% ] 1 VUs  00m12.0s/20m0s  0661/1000 shared iters
+
+running (00m19.0s), 1/1 VUs, 717 complete and 0 interrupted iterations
+s      [  72% ] 1 VUs  00m13.0s/20m0s  0717/1000 shared iters
+
+running (00m20.0s), 1/1 VUs, 772 complete and 0 interrupted iterations
+s      [  77% ] 1 VUs  00m14.0s/20m0s  0772/1000 shared iters
+
+running (00m21.0s), 1/1 VUs, 826 complete and 0 interrupted iterations
+s      [  83% ] 1 VUs  00m15.0s/20m0s  0826/1000 shared iters
+
+running (00m22.0s), 1/1 VUs, 883 complete and 0 interrupted iterations
+s      [  88% ] 1 VUs  00m16.0s/20m0s  0883/1000 shared iters
+
+running (00m23.0s), 1/1 VUs, 941 complete and 0 interrupted iterations
+s      [  94% ] 1 VUs  00m17.0s/20m0s  0941/1000 shared iters
+
+running (00m24.0s), 1/1 VUs, 995 complete and 0 interrupted iterations
+s      [ 100% ] 1 VUs  00m18.0s/20m0s  0995/1000 shared iters
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{ep:high-score}
+    ✓ 'max>=0' max=33.02ms
+
+    http_req_duration{ep:safe-high-score}
+    ✓ 'max>=0' max=35.39ms
+
+    http_req_duration{ep:safe-recipes}
+    ✓ 'max>=0' max=27.46ms
+
+    http_req_duration{ep:wish}
+    ✓ 'max>=0' max=36.78ms
+
+    http_req_duration{name:reco}
+    ✓ 'max>=0' max=36.78ms
+
+    http_req_failed{name:reco}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 1000    41.544007/s
+    checks_succeeded...: 100.00% 1000 out of 1000
+    checks_failed......: 0.00%   0 out of 1000
+
+    ✓ status 200
+
+    HTTP
+    http_req_duration..............: avg=11.66ms med=12.05ms p(90)=19.81ms p(95)=21.43ms p(99)=25.38ms max=36.78ms
+      { ep:high-score }............: avg=17.72ms med=17.29ms p(90)=21.5ms  p(95)=22.95ms p(99)=25.74ms max=33.02ms
+      { ep:safe-high-score }.......: avg=18.52ms med=18.1ms  p(90)=22.1ms  p(95)=24.2ms  p(99)=27.24ms max=35.39ms
+      { ep:safe-recipes }..........: avg=16.29ms med=15.86ms p(90)=20.06ms p(95)=21.61ms p(99)=25.08ms max=27.46ms
+      { ep:wish }..................: avg=17.96ms med=17.54ms p(90)=21.49ms p(95)=23.09ms p(99)=27.78ms max=36.78ms
+      { expected_response:true }...: avg=11.66ms med=12.05ms p(90)=19.81ms p(95)=21.43ms p(99)=25.38ms max=36.78ms
+      { name:reco }................: avg=17.62ms med=17.24ms p(90)=21.42ms p(95)=23.09ms p(99)=27.05ms max=36.78ms
+    http_req_failed................: 0.00%  0 out of 2000
+      { name:reco }................: 0.00%  0 out of 1000
+    http_reqs......................: 2000   83.088014/s
+
+    EXECUTION
+    iteration_duration.............: avg=17.99ms med=17.59ms p(90)=21.88ms p(95)=23.46ms p(99)=27.05ms max=36.78ms
+    iterations.....................: 1000   41.544007/s
+    vus............................: 1      min=0         max=1
+    vus_max........................: 1      min=1         max=1
+
+    NETWORK
+    data_received..................: 2.1 MB 88 kB/s
+    data_sent......................: 445 kB 19 kB/s
+
+
+
+
+running (00m24.1s), 0/1 VUs, 1000 complete and 0 interrupted iterations
+s    ✓ [ 100% ] 1 VUs  00m18.0s/20m0s  1000/1000 shared iters
+

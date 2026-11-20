@@ -1,0 +1,69 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\C_v0_review_vu10_same_run1.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 10 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 10 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=62.21ms
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=80.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 10     59.37107/s
+    checks_succeeded...: 20.00% 2 out of 10
+    checks_failed......: 80.00% 8 out of 10
+
+    ✗ status 200
+      ↳  20% — ✓ 2 / ✗ 8
+
+    CUSTOM
+    target_5xx.....................: 8      47.496856/s
+    target_ok......................: 2      11.874214/s
+
+    HTTP
+    http_req_duration..............: avg=27.12ms min=3.51ms  med=21.6ms  p(90)=60.01ms p(95)=61.09ms p(99)=61.98ms max=62.21ms
+      { expected_response:true }...: avg=12.56ms min=3.51ms  med=5.49ms  p(90)=36.09ms p(95)=48.58ms p(99)=57.64ms max=59.9ms 
+      { name:createReview }........: avg=49.1ms  min=36.29ms med=48.77ms p(90)=61.15ms p(95)=61.68ms p(99)=62.1ms  max=62.21ms
+    http_req_failed................: 40.00% 8 out of 20
+      { name:createReview }........: 80.00% 8 out of 10
+    http_reqs......................: 20     118.742141/s
+
+    EXECUTION
+    iteration_duration.............: avg=88.43ms min=39.85ms med=97.93ms p(90)=97.93ms p(95)=97.93ms p(99)=97.93ms max=97.93ms
+    iterations.....................: 10     59.37107/s
+
+    NETWORK
+    data_received..................: 14 kB  81 kB/s
+    data_sent......................: 5.1 kB 30 kB/s
+
+
+
+
+running (0m00.2s), 00/10 VUs, 10 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 10 VUs  0m00.1s/2m0s  10/10 iters, 1 per VU
+
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU8 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU5 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU9 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU1 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU6 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU7 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU3 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-19T17:26:53+09:00" level=info msg="[NON200] VU2 target=2699 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console

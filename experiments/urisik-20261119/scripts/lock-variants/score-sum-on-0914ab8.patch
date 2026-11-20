@@ -1,0 +1,58 @@
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/entity/Recipe.java b/src/main/java/com/urisik/backend/domain/recipe/entity/Recipe.java
+index 9cd4296..33a15ae 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/entity/Recipe.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/entity/Recipe.java
+@@ -60,6 +60,10 @@ public class Recipe {
+     @Column(nullable = false)
+     private double avgScore = 0.0;
+ 
++    // 점수 합계. 평균을 매번 반올림해 다시 계산에 쓰면 오차가 쌓이므로 합계를 저장하고 평균은 합계/개수로 계산한다
++    @Column(name = "score_sum", nullable = false, columnDefinition = "BIGINT NOT NULL DEFAULT 0")
++    private long scoreSum = 0L;
++
+     // 외부 API RCP_SEQ 또는 AI 요청 ID
+     @Column(length = 255)
+     private String sourceRef;
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/entity/TransformedRecipe.java b/src/main/java/com/urisik/backend/domain/recipe/entity/TransformedRecipe.java
+index 5acce71..aabd8e5 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/entity/TransformedRecipe.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/entity/TransformedRecipe.java
+@@ -46,6 +46,10 @@ public class TransformedRecipe {
+     @Column(nullable = false)
+     private double avgScore = 0.0;
+ 
++    // 점수 합계. 평균을 매번 반올림해 다시 계산에 쓰면 오차가 쌓이므로 합계를 저장하고 평균은 합계/개수로 계산한다
++    @Column(name = "score_sum", nullable = false, columnDefinition = "BIGINT NOT NULL DEFAULT 0")
++    private long scoreSum = 0L;
++
+     @Column(nullable = false)
+     private int wishCount = 0;
+ 
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java b/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
+index 1896939..25b68e4 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
+@@ -31,7 +31,8 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+     @Modifying(clearAutomatically = true)
+     // MySQL은 SET 절을 왼쪽부터 평가해 앞에서 바꾼 값을 뒤 식에서 사용한다.
+     // reviewCount를 먼저 올리면 평균 계산에 증가된 값이 쓰여 평균이 작게(첫 리뷰는 절반) 저장되므로 avgScore를 먼저 계산한다.
+-    @Query("UPDATE Recipe r SET r.avgScore = ROUND(((r.avgScore * r.reviewCount) + :newScore) / (r.reviewCount + 1), 1), r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
++    // SET은 왼쪽부터 평가된다: avgScore는 갱신 전 scoreSum·reviewCount로 계산하고, 그 뒤에 두 값을 갱신한다
++    @Query("UPDATE Recipe r SET r.avgScore = ROUND((r.scoreSum + :newScore) / (r.reviewCount + 1), 1), r.scoreSum = r.scoreSum + :newScore, r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
+     int incrementReviewCountAndUpdateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
+ 
+     @Modifying
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/repository/TransformedRecipeRepository.java b/src/main/java/com/urisik/backend/domain/recipe/repository/TransformedRecipeRepository.java
+index 1447aff..45565b0 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/repository/TransformedRecipeRepository.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/repository/TransformedRecipeRepository.java
+@@ -26,7 +26,8 @@ public interface TransformedRecipeRepository extends JpaRepository<TransformedRe
+     @Modifying(clearAutomatically = true)
+     // MySQL은 SET 절을 왼쪽부터 평가해 앞에서 바꾼 값을 뒤 식에서 사용한다.
+     // reviewCount를 먼저 올리면 평균 계산에 증가된 값이 쓰여 평균이 작게(첫 리뷰는 절반) 저장되므로 avgScore를 먼저 계산한다.
+-    @Query("UPDATE TransformedRecipe r SET r.avgScore = ROUND(((r.avgScore * r.reviewCount) + :newScore) / (r.reviewCount + 1), 1), r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
++    // SET은 왼쪽부터 평가된다: avgScore는 갱신 전 scoreSum·reviewCount로 계산하고, 그 뒤에 두 값을 갱신한다
++    @Query("UPDATE TransformedRecipe r SET r.avgScore = ROUND((r.scoreSum + :newScore) / (r.reviewCount + 1), 1), r.scoreSum = r.scoreSum + :newScore, r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
+     int incrementReviewCountAndUpdateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
+ 
+     @Modifying

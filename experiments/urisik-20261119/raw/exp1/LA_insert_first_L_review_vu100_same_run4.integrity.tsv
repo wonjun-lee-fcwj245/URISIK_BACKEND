@@ -1,0 +1,2 @@
+select t.id, t.review_count, count(c.id), t.avg_score, round(coalesce(avg(c.score),0),1), round(coalesce(avg(c.score),0),4) from recipe t left join recipe_review c on c.recipe_id=t.id where t.id in (2158) group by t.id, t.review_count, t.avg_score
+2158	6	6	2.8	2.8	2.8333

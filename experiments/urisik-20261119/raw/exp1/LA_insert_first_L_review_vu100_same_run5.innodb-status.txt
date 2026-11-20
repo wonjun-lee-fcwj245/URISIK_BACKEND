@@ -1,0 +1,283 @@
+*************************** 1. row ***************************
+  Type: InnoDB
+  Name: 
+Status: 
+=====================================
+2026-11-20 03:44:16 137568696755776 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 5 seconds
+-----------------
+BACKGROUND THREAD
+-----------------
+srv_master_thread loops: 392 srv_active, 0 srv_shutdown, 30386 srv_idle
+srv_master_thread log flush and writes: 0
+----------
+SEMAPHORES
+----------
+OS WAIT ARRAY INFO: reservation count 3802
+OS WAIT ARRAY INFO: signal count 3453
+RW-shared spins 0, rounds 0, OS waits 0
+RW-excl spins 0, rounds 0, OS waits 0
+RW-sx spins 0, rounds 0, OS waits 0
+Spin rounds per wait: 0.00 RW-shared, 0.00 RW-excl, 0.00 RW-sx
+------------------------
+LATEST DETECTED DEADLOCK
+------------------------
+2026-11-20 03:44:12 137569144665664
+*** (1) TRANSACTION:
+TRANSACTION 30768321, ACTIVE 0 sec starting index read
+mysql tables in use 1, locked 1
+LOCK WAIT 7 lock struct(s), heap size 1128, 3 row lock(s), undo log entries 1
+MySQL thread id 4857, OS thread handle 137568702039616, query id 267360 172.20.0.7 root updating
+update recipe r1_0 set avg_score=round((((r1_0.avg_score*r1_0.review_count)+5.0)/(r1_0.review_count+1)),1),review_count=(r1_0.review_count+1) where r1_0.id=2368
+
+*** (1) HOLDS THE LOCK(S):
+RECORD LOCKS space id 729 page no 88 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 30768321 lock mode S locks rec but not gap
+Record lock, heap no 40 PHYSICAL RECORD: n_fields 13; compact format; info bits 0
+ 0: len 8; hex 8000000000000940; asc        @;;
+ 1: len 6; hex 000001d57caa; asc     | ;;
+ 2: len 7; hex 020000023c2df7; asc     <- ;;
+ 3: len 8; hex 6666666666660640; asc ffffff @;;
+ 4: len 30; hex ed98b8ebb09520312f32eab09c2c20eb909cec9ea52032ed81b0ec88a02c; asc        1/2   ,        2      ,; (total 61 bytes);
+ 5: len 30; hex 312e20eb8c80ed8c8ceba5bc20eb84a3eab3a020ed959cec868ceb819420; asc 1.                            ; (total 115 bytes);
+ 6: len 4; hex 80000005; asc     ;;
+ 7: len 8; hex 5243505f32333638; asc RCP_2368;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 22; hex ec849cec9ab8ec8b9d20ed9d91ec9e84ec9e90eca3bd; asc                       ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 8000000f; asc     ;;
+ 12: len 8; hex 000000000000094d; asc        M;;
+
+
+*** (1) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 729 page no 88 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 30768321 lock_mode X locks rec but not gap waiting
+Record lock, heap no 40 PHYSICAL RECORD: n_fields 13; compact format; info bits 0
+ 0: len 8; hex 8000000000000940; asc        @;;
+ 1: len 6; hex 000001d57caa; asc     | ;;
+ 2: len 7; hex 020000023c2df7; asc     <- ;;
+ 3: len 8; hex 6666666666660640; asc ffffff @;;
+ 4: len 30; hex ed98b8ebb09520312f32eab09c2c20eb909cec9ea52032ed81b0ec88a02c; asc        1/2   ,        2      ,; (total 61 bytes);
+ 5: len 30; hex 312e20eb8c80ed8c8ceba5bc20eb84a3eab3a020ed959cec868ceb819420; asc 1.                            ; (total 115 bytes);
+ 6: len 4; hex 80000005; asc     ;;
+ 7: len 8; hex 5243505f32333638; asc RCP_2368;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 22; hex ec849cec9ab8ec8b9d20ed9d91ec9e84ec9e90eca3bd; asc                       ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 8000000f; asc     ;;
+ 12: len 8; hex 000000000000094d; asc        M;;
+
+
+*** (2) TRANSACTION:
+TRANSACTION 30768338, ACTIVE 0 sec starting index read
+mysql tables in use 1, locked 1
+LOCK WAIT 7 lock struct(s), heap size 1128, 3 row lock(s), undo log entries 1
+MySQL thread id 4860, OS thread handle 137568698869312, query id 267364 172.20.0.7 root updating
+update recipe r1_0 set avg_score=round((((r1_0.avg_score*r1_0.review_count)+5.0)/(r1_0.review_count+1)),1),review_count=(r1_0.review_count+1) where r1_0.id=2368
+
+*** (2) HOLDS THE LOCK(S):
+RECORD LOCKS space id 729 page no 88 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 30768338 lock mode S locks rec but not gap
+Record lock, heap no 40 PHYSICAL RECORD: n_fields 13; compact format; info bits 0
+ 0: len 8; hex 8000000000000940; asc        @;;
+ 1: len 6; hex 000001d57caa; asc     | ;;
+ 2: len 7; hex 020000023c2df7; asc     <- ;;
+ 3: len 8; hex 6666666666660640; asc ffffff @;;
+ 4: len 30; hex ed98b8ebb09520312f32eab09c2c20eb909cec9ea52032ed81b0ec88a02c; asc        1/2   ,        2      ,; (total 61 bytes);
+ 5: len 30; hex 312e20eb8c80ed8c8ceba5bc20eb84a3eab3a020ed959cec868ceb819420; asc 1.                            ; (total 115 bytes);
+ 6: len 4; hex 80000005; asc     ;;
+ 7: len 8; hex 5243505f32333638; asc RCP_2368;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 22; hex ec849cec9ab8ec8b9d20ed9d91ec9e84ec9e90eca3bd; asc                       ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 8000000f; asc     ;;
+ 12: len 8; hex 000000000000094d; asc        M;;
+
+
+*** (2) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 729 page no 88 n bits 112 index PRIMARY of table `urisik`.`recipe` trx id 30768338 lock_mode X locks rec but not gap waiting
+Record lock, heap no 40 PHYSICAL RECORD: n_fields 13; compact format; info bits 0
+ 0: len 8; hex 8000000000000940; asc        @;;
+ 1: len 6; hex 000001d57caa; asc     | ;;
+ 2: len 7; hex 020000023c2df7; asc     <- ;;
+ 3: len 8; hex 6666666666660640; asc ffffff @;;
+ 4: len 30; hex ed98b8ebb09520312f32eab09c2c20eb909cec9ea52032ed81b0ec88a02c; asc        1/2   ,        2      ,; (total 61 bytes);
+ 5: len 30; hex 312e20eb8c80ed8c8ceba5bc20eb84a3eab3a020ed959cec868ceb819420; asc 1.                            ; (total 115 bytes);
+ 6: len 4; hex 80000005; asc     ;;
+ 7: len 8; hex 5243505f32333638; asc RCP_2368;;
+ 8: len 1; hex 02; asc  ;;
+ 9: len 22; hex ec849cec9ab8ec8b9d20ed9d91ec9e84ec9e90eca3bd; asc                       ;;
+ 10: len 8; hex 8000000000000000; asc         ;;
+ 11: len 4; hex 8000000f; asc     ;;
+ 12: len 8; hex 000000000000094d; asc        M;;
+
+*** WE ROLL BACK TRANSACTION (2)
+------------
+TRANSACTIONS
+------------
+Trx id counter 30768342
+Purge done for trx's n:o < 30768342 undo n:o < 0 state: running but idle
+History list length 5
+LIST OF TRANSACTIONS FOR EACH SESSION:
+---TRANSACTION 419044805276064, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805275256, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805274448, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805273640, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805272832, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805272024, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805271216, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805270408, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805269600, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805268792, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805267984, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805267176, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805266368, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805265560, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805264752, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805263944, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805263136, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805262328, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805261520, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805260712, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805259904, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805259096, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805258288, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805257480, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805256672, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805255864, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805255056, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805254248, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805253440, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805252632, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805251824, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805250208, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805251016, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805249400, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805248592, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805247784, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805246976, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805246168, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805245360, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+---TRANSACTION 419044805244552, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+--------
+FILE I/O
+--------
+I/O thread 0 state: waiting for completed aio requests (insert buffer thread)
+I/O thread 1 state: waiting for completed aio requests (read thread)
+I/O thread 2 state: waiting for completed aio requests (read thread)
+I/O thread 3 state: waiting for completed aio requests (read thread)
+I/O thread 4 state: waiting for completed aio requests (read thread)
+I/O thread 5 state: waiting for completed aio requests (write thread)
+I/O thread 6 state: waiting for completed aio requests (write thread)
+I/O thread 7 state: waiting for completed aio requests (write thread)
+I/O thread 8 state: waiting for completed aio requests (write thread)
+Pending normal aio reads: [0, 0, 0, 0] , aio writes: [0, 0, 0, 0] ,
+ ibuf aio reads:
+Pending flushes (fsync) log: 0; buffer pool: 0
+6023 OS file reads, 97846 OS file writes, 52712 OS fsyncs
+0.00 reads/s, 0 avg bytes/read, 107.14 writes/s, 42.89 fsyncs/s
+-------------------------------------
+INSERT BUFFER AND ADAPTIVE HASH INDEX
+-------------------------------------
+Ibuf: size 1, free list len 0, seg size 2, 1 merges
+merged operations:
+ insert 35, delete mark 0, delete 0
+discarded operations:
+ insert 0, delete mark 0, delete 0
+Hash table size 34679, node heap has 11 buffer(s)
+Hash table size 34679, node heap has 2 buffer(s)
+Hash table size 34679, node heap has 3 buffer(s)
+Hash table size 34679, node heap has 3 buffer(s)
+Hash table size 34679, node heap has 4 buffer(s)
+Hash table size 34679, node heap has 2 buffer(s)
+Hash table size 34679, node heap has 3 buffer(s)
+Hash table size 34679, node heap has 9 buffer(s)
+209.16 hash searches/s, 98.98 non-hash searches/s
+---
+LOG
+---
+Log capacity                 104857600
+Log capacity used            104857600
+Log sequence number          1299370440
+Log buffer assigned up to    1299370440
+Log buffer completed up to   1299370440
+Log written up to            1299370440
+Log flushed up to            1299370440
+Added dirty pages up to      1299370440
+Pages flushed up to          1299370387
+Last checkpoint at           1299370387
+Log minimum file id is       389
+Log maximum file id is       396
+44082 log i/o's done, 44.00 log i/o's/second
+----------------------
+BUFFER POOL AND MEMORY
+----------------------
+Total large memory allocated 0
+Dictionary memory allocated 1050242
+Buffer pool size   8192
+Free buffers       1741
+Database pages     6414
+Old database pages 2347
+Modified db pages  1
+Pending reads      0
+Pending writes: LRU 0, flush list 0, single page 0
+Pages made young 1220, not young 6241
+2.27 youngs/s, 0.00 non-youngs/s
+Pages read 5778, created 1083, written 41912
+0.00 reads/s, 0.19 creates/s, 52.15 writes/s
+Buffer pool hit rate 1000 / 1000, young-making rate 2 / 1000 not 0 / 1000
+Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
+LRU len: 6414, unzip_LRU len: 0
+I/O sum[544]:cur[0], unzip sum[0]:cur[0]
+--------------
+ROW OPERATIONS
+--------------
+0 queries inside InnoDB, 0 queries in queue
+0 read views open inside InnoDB
+Process ID=1, Main thread ID=137569136272960 , state=sleeping
+Number of rows inserted 22544, updated 8592, deleted 24, read 2590604
+20.00 inserts/s, 1.20 updates/s, 0.00 deletes/s, 64.59 reads/s
+Number of system rows inserted 9236, updated 20770, deleted 9114, read 226642
+0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
+----------------------------
+END OF INNODB MONITOR OUTPUT
+============================
+

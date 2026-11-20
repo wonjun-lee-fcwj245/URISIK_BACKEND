@@ -1,0 +1,45 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\k6\scripts\search-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 30 max VUs, 2m50s max duration (incl. graceful stop):
+              * default: Up to 30 looping VUs for 2m20s over 5 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<1000' p(95)=6.68ms
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    HTTP
+    http_req_duration...: avg=6.68ms min=6.68ms med=6.68ms max=6.68ms p(90)=6.68ms p(95)=6.68ms
+    http_req_failed.....: 100.00% 1 out of 1
+    http_reqs...........: 1       3.357637/s
+
+    NETWORK
+    data_received.......: 0 B     0 B/s
+    data_sent...........: 120 B   403 B/s
+
+
+
+
+Run       [ 100% ] setup()
+default   [   0% ]
+
+time="2026-11-19T19:15:38+09:00" level=warning msg="Request Failed" error="Post \"http://localhost:8080/api/auth/test-token?memberId=1\": EOF"
+time="2026-11-19T19:15:39+09:00" level=error msg="TypeError: Cannot read property 'result' of undefined\n\tat getTestToken (file:///C:/Users/%EC%9D%B4%EC%9B%90%EC%A4%80/Desktop/URISIK_BACKEND/k6/helpers/config.js:8:17(23))\n\tat setup (file:///C:/Users/%EC%9D%B4%EC%9B%90%EC%A4%80/Desktop/URISIK_BACKEND/k6/scripts/search-test.js:25:31(4))\n" hint="script exception" source=stacktrace

@@ -1,0 +1,38 @@
+moved invalid rows: 93
+arrival_default_run3 r300 {"target_rps": 300, "achieved_rps": 299.8, "ok200_rps": 299.8, "p95_success_ms": 1059.1124559999998, "p99_success_ms": 1732.6682406500008, "p50_success_ms": 34.713037, "p95_all_ms": 1059.1124559999998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 15, "meets_slo": 0}
+arrival_default_run3 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 36.321183, "p99_success_ms": 99.237558, "p50_success_ms": 11.186649, "p95_all_ms": 36.321183, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 206.45666, "p99_success_ms": 309.868167, "p50_success_ms": 12.673639, "p95_all_ms": 206.45666, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 90.635202, "p99_success_ms": 179.450043, "p50_success_ms": 13.651111, "p95_all_ms": 90.635202, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 229.10361574999973, "p99_success_ms": 408.039342289999, "p50_success_ms": 34.771448, "p95_all_ms": 229.10361574999973, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 524.964739, "p99_success_ms": 877.67969, "p50_success_ms": 84.737651, "p95_all_ms": 524.964739, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r600 {"target_rps": 600, "achieved_rps": 599.2, "ok200_rps": 599.2, "p95_success_ms": 1116.7113207999998, "p99_success_ms": 1501.83817052, "p50_success_ms": 373.414761, "p95_all_ms": 1116.7113207999998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 45, "meets_slo": 0}
+arrival_default_run3 max_rps_slo = 550 first_failing = 300
+ Container urisik-elasticsearch  Recreate
+ Container urisik-zookeeper  Recreate
+ Container urisik-mysql  Recreate
+ Container urisik-redis  Recreate
+ Container urisik-redis  Recreated
+ Container urisik-zookeeper  Recreated
+ Container urisik-kafka  Recreate
+ Container urisik-elasticsearch  Recreated
+ Container urisik-mysql  Recreated
+ Container urisik-kafka  Recreated
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Starting
+ Container urisik-zookeeper  Starting
+ Container urisik-redis  Starting
+ Container urisik-mysql  Starting
+ Container urisik-redis  Started
+ Container urisik-mysql  Started
+ Container urisik-elasticsearch  Started
+ Container urisik-zookeeper  Started
+ Container urisik-kafka  Starting
+ Container urisik-kafka  Started
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+RERUN_DONE

@@ -1,0 +1,148 @@
+diff --git a/src/main/java/com/urisik/backend/domain/member/service/MemberWishListService.java b/src/main/java/com/urisik/backend/domain/member/service/MemberWishListService.java
+index 476b38e..9aa4554 100644
+--- a/src/main/java/com/urisik/backend/domain/member/service/MemberWishListService.java
++++ b/src/main/java/com/urisik/backend/domain/member/service/MemberWishListService.java
+@@ -30,6 +30,7 @@ import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
+ import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
+ import com.urisik.backend.global.util.IngredientParser;
+ import lombok.RequiredArgsConstructor;
++import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.dao.DataIntegrityViolationException;
+ import org.springframework.data.domain.PageRequest;
+ import org.springframework.stereotype.Service;
+@@ -48,6 +49,10 @@ public class MemberWishListService {
+     private final FamilyMemberProfileRepository familyMemberProfileRepository;
+     private final FamilyWishListExclusionRepository familyWishListExclusionRepository;
+     private final TransformedRecipeRepository transformedRecipeRepository;
++
++    // [실험용] 락 획득 순서만 바꿔 비교 (원본 레시피 경로만): update_first | for_update | insert_first
++    @Value("${lock.mode:update_first}")
++    private String lockMode;
+     private final MemberTransformedRecipeWishRepository memberTransformedRecipeWishRepository;
+     private final ReviewRepository reviewRepository;
+     private final AllergyRiskService allergyRiskService;
+@@ -62,14 +67,23 @@ public class MemberWishListService {
+                 .findByFamilyRoom_IdAndMember_Id(familyRoomId, memberId)
+                 .orElseThrow(() -> new MemberException(MemberErrorCode.NO_PROFILE_IN_FAMILY));
+ 
++        List<Long> deferredWishIncrements = new ArrayList<>();
+         // unique constraint로 중복 방지 — check-then-act 제거
+         try {
+             if (req.getRecipeId() != null) {
+                 for (Long recipeId : req.getRecipeId()) {
+-                    // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
+-                    int updated = recipeRepository.incrementWishCount(recipeId);
+-                    if (updated == 0) {
+-                        throw new MemberException(MemberErrorCode.NO_RECIPE);
++                    if ("update_first".equals(lockMode)) {
++                        // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
++                        int updated = recipeRepository.incrementWishCount(recipeId);
++                        if (updated == 0) {
++                            throw new MemberException(MemberErrorCode.NO_RECIPE);
++                        }
++                    } else {
++                        if ("for_update".equals(lockMode)) {
++                            recipeRepository.findByIdForUpdate(recipeId)
++                                    .orElseThrow(() -> new MemberException(MemberErrorCode.NO_RECIPE));
++                        }
++                        deferredWishIncrements.add(recipeId);
+                     }
+ 
+                     // proxy만 얻음 — SELECT 쿼리 0회
+@@ -105,6 +119,13 @@ public class MemberWishListService {
+ 
+             // flush해서 unique constraint 위반 즉시 감지
+             memberWishListRepository.flush();
++
++            // 락 순서 비교용: INSERT 이후에 카운터 UPDATE
++            for (Long id : deferredWishIncrements) {
++                if (recipeRepository.incrementWishCount(id) == 0) {
++                    throw new MemberException(MemberErrorCode.NO_RECIPE);
++                }
++            }
+         } catch (DataIntegrityViolationException e) {
+             if (e.getMostSpecificCause() instanceof java.sql.SQLIntegrityConstraintViolationException sqlEx
+                     && sqlEx.getErrorCode() == 1062) {
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java b/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
+index 1896939..63f9c30 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/repository/RecipeRepository.java
+@@ -3,6 +3,8 @@ package com.urisik.backend.domain.recipe.repository;
+ import com.urisik.backend.domain.recipe.entity.Recipe;
+ import org.springframework.data.domain.Pageable;
+ import org.springframework.data.jpa.repository.JpaRepository;
++import jakarta.persistence.LockModeType;
++import org.springframework.data.jpa.repository.Lock;
+ import org.springframework.data.jpa.repository.Modifying;
+ import org.springframework.data.jpa.repository.Query;
+ import org.springframework.data.repository.query.Param;
+@@ -20,6 +22,11 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+ 
+     Optional<Recipe> findBySourceRef(String sourceRef);
+ 
++    // [실험용] lock.mode=for_update 에서 사용
++    @Lock(LockModeType.PESSIMISTIC_WRITE)
++    @Query("SELECT r FROM Recipe r WHERE r.id = :id")
++    Optional<Recipe> findByIdForUpdate(@Param("id") Long id);
++
+     @Modifying
+     @Query("UPDATE Recipe r SET r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
+     int incrementReviewCount(@Param("id") Long id);
+diff --git a/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java b/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
+index d45f99c..35fc6fe 100644
+--- a/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
++++ b/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
+@@ -19,6 +19,7 @@ import com.urisik.backend.global.auth.exception.AuthenExcetion;
+ import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
+ import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
+ import lombok.RequiredArgsConstructor;
++import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.dao.DataIntegrityViolationException;
+ import org.springframework.stereotype.Service;
+ import org.springframework.transaction.annotation.Transactional;
+@@ -34,17 +35,27 @@ public class ReviewService {
+     private final RecipeRepository recipeRepository;
+     private final KafkaEventProducer kafkaEventProducer;
+ 
++    // [실험용] 락 획득 순서만 바꿔 비교: update_first(현재) | for_update(선잠금 후 INSERT→UPDATE) | insert_first(INSERT→UPDATE)
++    @Value("${lock.mode:update_first}")
++    private String lockMode;
++
+     /**
+      * 1. 리뷰 작성하기
+      */
+     @Transactional
+     public ReviewResponseDto createReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
+ 
+-        // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
+         int newScore = requestDto.score();
+-        int updated = recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
+-        if (updated == 0) {
+-            throw new GeneralException(GeneralErrorCode.NOT_FOUND);
++        boolean updateFirst = "update_first".equals(lockMode);
++        if (updateFirst) {
++            // UPDATE 먼저 실행 → X락 획득 (SELECT FOR UPDATE 불필요)
++            int updated = recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
++            if (updated == 0) {
++                throw new GeneralException(GeneralErrorCode.NOT_FOUND);
++            }
++        } else if ("for_update".equals(lockMode)) {
++            recipeRepository.findByIdForUpdate(recipeId)
++                    .orElseThrow(() -> new GeneralException(GeneralErrorCode.NOT_FOUND));
+         }
+ 
+         // clearAutomatically=true로 PC가 비워졌으므로 familyMember를 여기서 로드
+@@ -65,6 +76,13 @@ public class ReviewService {
+             throw e;
+         }
+ 
++        if (!updateFirst) {
++            int updated = recipeRepository.incrementReviewCountAndUpdateAvgScore(recipeId, newScore);
++            if (updated == 0) {
++                throw new GeneralException(GeneralErrorCode.NOT_FOUND);
++            }
++        }
++
+         // 영속성 컨텍스트에서 최신 avgScore 조회
+         double updatedAvgScore = recipeRepository.findById(recipeId)
+                 .map(Recipe::getAvgScore)

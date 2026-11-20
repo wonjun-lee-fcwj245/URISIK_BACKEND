@@ -1,0 +1,8 @@
+# 실험 4 CPU 제한: 18 논리 CPU 중 서버 측에 14.5개, 나머지(약 3.5개)는 k6와 호스트용으로 남긴다
+services:
+  app:            { cpus: 6 }
+  mysql:          { cpus: 4 }
+  redis:          { cpus: 1 }
+  elasticsearch:  { cpus: 2 }
+  kafka:          { cpus: 1 }
+  zookeeper:      { cpus: 0.5 }

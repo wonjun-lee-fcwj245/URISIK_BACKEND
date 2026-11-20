@@ -1,0 +1,67 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\LD_update_first_L_wish_vu100_same_run2.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 100 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+running (0m01.0s), 099/100 VUs, 1 complete and 0 interrupted iterations
+burst   [   1% ] 100 VUs  0m00.1s/2m0s  001/100 iters, 1 per VU
+
+running (0m02.0s), 046/100 VUs, 54 complete and 0 interrupted iterations
+burst   [  54% ] 100 VUs  0m01.1s/2m0s  054/100 iters, 1 per VU
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:addWish}
+    ✓ 'max>=0' max=1.76s
+
+    http_req_failed{name:addWish}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100     36.642073/s
+    checks_succeeded...: 100.00% 100 out of 100
+    checks_failed......: 0.00%   0 out of 100
+
+    ✓ status 200
+
+    CUSTOM
+    target_ok......................: 100    36.642073/s
+
+    HTTP
+    http_req_duration..............: avg=527.01ms min=5.21ms   med=57.27ms p(90)=1.49s p(95)=1.59s p(99)=1.74s max=1.76s
+      { expected_response:true }...: avg=527.01ms min=5.21ms   med=57.27ms p(90)=1.49s p(95)=1.59s p(99)=1.74s max=1.76s
+      { name:addWish }.............: avg=1.04s    min=99.31ms  med=1.05s   p(90)=1.6s  p(95)=1.7s  p(99)=1.74s max=1.76s
+    http_req_failed................: 0.00%  0 out of 200
+      { name:addWish }.............: 0.00%  0 out of 100
+    http_reqs......................: 200    73.284147/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.05s    min=116.21ms med=1.05s   p(90)=1.61s p(95)=1.71s p(99)=1.79s max=1.81s
+    iterations.....................: 100    36.642073/s
+    vus............................: 46     min=46       max=99 
+    vus_max........................: 100    min=100      max=100
+
+    NETWORK
+    data_received..................: 133 kB 49 kB/s
+    data_sent......................: 54 kB  20 kB/s
+
+
+
+
+running (0m02.7s), 000/100 VUs, 100 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 100 VUs  0m01.9s/2m0s  100/100 iters, 1 per VU
+

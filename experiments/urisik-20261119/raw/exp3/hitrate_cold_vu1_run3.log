@@ -1,0 +1,116 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp3-cache.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 20m30s max duration (incl. graceful stop):
+              * s: 1000 iterations shared among 1 VUs (maxDuration: 20m0s, gracefulStop: 30s)
+
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+Run    [ 100% ] setup()
+s      [   0% ]
+
+running (00m04.0s), 1/1 VUs, 63 complete and 0 interrupted iterations
+s      [   6% ] 1 VUs  00m00.7s/20m0s  0063/1000 shared iters
+
+running (00m05.0s), 1/1 VUs, 151 complete and 0 interrupted iterations
+s      [  15% ] 1 VUs  00m01.7s/20m0s  0151/1000 shared iters
+
+running (00m06.0s), 1/1 VUs, 245 complete and 0 interrupted iterations
+s      [  24% ] 1 VUs  00m02.7s/20m0s  0245/1000 shared iters
+
+running (00m07.0s), 1/1 VUs, 350 complete and 0 interrupted iterations
+s      [  35% ] 1 VUs  00m03.7s/20m0s  0350/1000 shared iters
+
+running (00m08.0s), 1/1 VUs, 441 complete and 0 interrupted iterations
+s      [  44% ] 1 VUs  00m04.7s/20m0s  0441/1000 shared iters
+
+running (00m09.0s), 1/1 VUs, 532 complete and 0 interrupted iterations
+s      [  53% ] 1 VUs  00m05.7s/20m0s  0532/1000 shared iters
+
+running (00m10.0s), 1/1 VUs, 616 complete and 0 interrupted iterations
+s      [  62% ] 1 VUs  00m06.7s/20m0s  0616/1000 shared iters
+
+running (00m11.0s), 1/1 VUs, 688 complete and 0 interrupted iterations
+s      [  69% ] 1 VUs  00m07.7s/20m0s  0688/1000 shared iters
+
+running (00m12.0s), 1/1 VUs, 770 complete and 0 interrupted iterations
+s      [  77% ] 1 VUs  00m08.7s/20m0s  0770/1000 shared iters
+
+running (00m13.0s), 1/1 VUs, 863 complete and 0 interrupted iterations
+s      [  86% ] 1 VUs  00m09.7s/20m0s  0863/1000 shared iters
+
+running (00m14.0s), 1/1 VUs, 984 complete and 0 interrupted iterations
+s      [  98% ] 1 VUs  00m10.7s/20m0s  0984/1000 shared iters
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{ep:high-score}
+    ✓ 'max>=0' max=35.92ms
+
+    http_req_duration{ep:safe-high-score}
+    ✓ 'max>=0' max=35.02ms
+
+    http_req_duration{ep:safe-recipes}
+    ✓ 'max>=0' max=20.49ms
+
+    http_req_duration{ep:wish}
+    ✓ 'max>=0' max=23.64ms
+
+    http_req_duration{name:reco}
+    ✓ 'max>=0' max=35.92ms
+
+    http_req_failed{name:reco}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 1000    70.826924/s
+    checks_succeeded...: 100.00% 1000 out of 1000
+    checks_failed......: 0.00%   0 out of 1000
+
+    ✓ status 200
+
+    HTTP
+    http_req_duration..............: avg=6.91ms  med=5.54ms  p(90)=13.19ms p(95)=15.06ms p(99)=20.04ms max=35.92ms
+      { ep:high-score }............: avg=11.14ms med=10.31ms p(90)=15.77ms p(95)=17.6ms  p(99)=22.99ms max=35.92ms
+      { ep:safe-high-score }.......: avg=11.35ms med=10.38ms p(90)=16.33ms p(95)=18.39ms p(99)=24.06ms max=35.02ms
+      { ep:safe-recipes }..........: avg=9.4ms   med=9.12ms  p(90)=12.92ms p(95)=14.5ms  p(99)=19.31ms max=20.49ms
+      { ep:wish }..................: avg=10.78ms med=10.59ms p(90)=14.47ms p(95)=15.88ms p(99)=21.82ms max=23.64ms
+      { expected_response:true }...: avg=6.91ms  med=5.54ms  p(90)=13.19ms p(95)=15.06ms p(99)=20.04ms max=35.92ms
+      { name:reco }................: avg=10.66ms med=10.1ms  p(90)=15.06ms p(95)=17.09ms p(99)=22.56ms max=35.92ms
+    http_req_failed................: 0.00%  0 out of 2000
+      { name:reco }................: 0.00%  0 out of 1000
+    http_reqs......................: 2000   141.653847/s
+
+    EXECUTION
+    iteration_duration.............: avg=10.84ms med=10.26ms p(90)=15.24ms p(95)=17.24ms p(99)=22.61ms max=35.92ms
+    iterations.....................: 1000   70.826924/s
+    vus............................: 1      min=0         max=1
+    vus_max........................: 1      min=1         max=1
+
+    NETWORK
+    data_received..................: 2.1 MB 150 kB/s
+    data_sent......................: 445 kB 32 kB/s
+
+
+
+
+running (00m14.1s), 0/1 VUs, 1000 complete and 0 interrupted iterations
+s    ✓ [ 100% ] 1 VUs  00m10.9s/20m0s  1000/1000 shared iters
+

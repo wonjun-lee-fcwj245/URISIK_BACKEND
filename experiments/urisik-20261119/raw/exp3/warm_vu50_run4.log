@@ -1,0 +1,77 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp3-cache.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 20m30s max duration (incl. graceful stop):
+              * s: 1000 iterations shared among 50 VUs (maxDuration: 20m0s, gracefulStop: 30s)
+
+
+running (00m01.0s), 50/50 VUs, 787 complete and 0 interrupted iterations
+s      [  79% ] 50 VUs  00m00.4s/20m0s  0787/1000 shared iters
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{ep:high-score}
+    ✓ 'max>=0' max=222.4ms
+
+    http_req_duration{ep:safe-high-score}
+    ✓ 'max>=0' max=221.99ms
+
+    http_req_duration{ep:safe-recipes}
+    ✓ 'max>=0' max=223.01ms
+
+    http_req_duration{ep:wish}
+    ✓ 'max>=0' max=209.6ms
+
+    http_req_duration{name:reco}
+    ✓ 'max>=0' max=223.01ms
+
+    http_req_failed{name:reco}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 1000    939.338814/s
+    checks_succeeded...: 100.00% 1000 out of 1000
+    checks_failed......: 0.00%   0 out of 1000
+
+    ✓ status 200
+
+    HTTP
+    http_req_duration..............: avg=19.4ms  med=12.49ms p(90)=36.08ms p(95)=48.31ms p(99)=148.98ms max=223.01ms
+      { ep:high-score }............: avg=21.12ms med=14.5ms  p(90)=39.07ms p(95)=49.07ms p(99)=160.05ms max=222.4ms 
+      { ep:safe-high-score }.......: avg=20.25ms med=13.94ms p(90)=36.1ms  p(95)=46.67ms p(99)=157.26ms max=221.99ms
+      { ep:safe-recipes }..........: avg=21.09ms med=13.9ms  p(90)=37.3ms  p(95)=50.71ms p(99)=173.54ms max=223.01ms
+      { ep:wish }..................: avg=20.87ms med=12.92ms p(90)=37.51ms p(95)=56.14ms p(99)=138.26ms max=209.6ms 
+      { expected_response:true }...: avg=19.4ms  med=12.49ms p(90)=36.08ms p(95)=48.31ms p(99)=148.98ms max=223.01ms
+      { name:reco }................: avg=20.83ms med=13.69ms p(90)=37.09ms p(95)=49.33ms p(99)=180.15ms max=223.01ms
+    http_req_failed................: 0.00%  0 out of 1100
+      { name:reco }................: 0.00%  0 out of 1000
+    http_reqs......................: 1100   1033.272696/s
+
+    EXECUTION
+    iteration_duration.............: avg=22.77ms med=14.6ms  p(90)=40.72ms p(95)=54.37ms p(99)=190.9ms  max=235.95ms
+    iterations.....................: 1000   939.338814/s
+    vus............................: 50     min=50        max=50
+    vus_max........................: 50     min=50        max=50
+
+    NETWORK
+    data_received..................: 1.4 MB 1.3 MB/s
+    data_sent......................: 334 kB 314 kB/s
+
+
+
+
+running (00m01.1s), 00/50 VUs, 1000 complete and 0 interrupted iterations
+s    ✓ [ 100% ] 50 VUs  00m00.5s/20m0s  1000/1000 shared iters
+

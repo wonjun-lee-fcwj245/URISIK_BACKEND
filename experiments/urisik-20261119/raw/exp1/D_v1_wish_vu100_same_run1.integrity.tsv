@@ -1,0 +1,2 @@
+select t.id, t.wish_count, count(c.id) from recipe t left join personal_wish_list c on c.recipe_id=t.id where t.id in (2817) group by t.id, t.wish_count
+2817	100	100

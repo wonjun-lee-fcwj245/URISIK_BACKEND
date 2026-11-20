@@ -1,0 +1,195 @@
+{
+    "root_group": {
+        "groups": {},
+        "checks": {
+                "[정상검색] status 200": {
+                    "id": "f1a1f095ca7142e7ee11d2300c803d1a",
+                    "passes": 1305,
+                    "fails": 0,
+                    "name": "[정상검색] status 200",
+                    "path": "::[정상검색] status 200"
+                },
+                "[정상검색] 결과 존재": {
+                    "id": "c89484d3e1e9c8aa99c3fb56034a2b98",
+                    "passes": 1305,
+                    "fails": 0,
+                    "name": "[정상검색] 결과 존재",
+                    "path": "::[정상검색] 결과 존재"
+                },
+                "[오타보정] status 200": {
+                    "name": "[오타보정] status 200",
+                    "path": "::[오타보정] status 200",
+                    "id": "802f7042d819ccc4593623f322cd3331",
+                    "passes": 1305,
+                    "fails": 0
+                },
+                "[오타보정] 결과 존재": {
+                    "fails": 0,
+                    "name": "[오타보정] 결과 존재",
+                    "path": "::[오타보정] 결과 존재",
+                    "id": "7ffd3016ba251661aae9f72dd64f3307",
+                    "passes": 1305
+                },
+                "[재료검색] status 200": {
+                    "name": "[재료검색] status 200",
+                    "path": "::[재료검색] status 200",
+                    "id": "bf74ce8708512df48e75707c7e526286",
+                    "passes": 1305,
+                    "fails": 0
+                },
+                "[재료검색] 결과 존재": {
+                    "name": "[재료검색] 결과 존재",
+                    "path": "::[재료검색] 결과 존재",
+                    "id": "fdb8a2b0588c46a957af6731ce47f1d0",
+                    "passes": 1305,
+                    "fails": 0
+                }
+            },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "metrics": {
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "typo_search_duration": {
+            "avg": 17.954767356321856,
+            "min": 9.7073,
+            "med": 16.4266,
+            "max": 49.4323,
+            "p(90)": 25.376260000000006,
+            "p(95)": 28.7715
+        },
+        "vus_max": {
+            "min": 30,
+            "max": 30,
+            "value": 30
+        },
+        "vus": {
+            "value": 2,
+            "min": 1,
+            "max": 30
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 3916,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "min": 0,
+            "med": 0,
+            "max": 21.7647,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.015872037793667013
+        },
+        "http_req_sending": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.0033671348314606737,
+            "min": 0,
+            "med": 0,
+            "max": 0.8977
+        },
+        "exact_search_duration": {
+            "avg": 18.3176023754789,
+            "min": 9.8137,
+            "med": 16.5782,
+            "max": 391.1434,
+            "p(90)": 25.34206,
+            "p(95)": 28.05432
+        },
+        "http_reqs": {
+            "count": 3916,
+            "rate": 27.823820777556396
+        },
+        "http_req_duration{expected_response:true}": {
+            "med": 15.40405,
+            "max": 391.1434,
+            "p(90)": 23.99845,
+            "p(95)": 26.7377,
+            "avg": 16.740218513789596,
+            "min": 7.3253
+        },
+        "http_req_waiting": {
+            "med": 14.9336,
+            "max": 387.4408,
+            "p(90)": 23.459,
+            "p(95)": 26.431275,
+            "avg": 16.298031103166466,
+            "min": 7.3253
+        },
+        "ingredient_search_duration": {
+            "p(95)": 22.19314,
+            "avg": 13.949761839080457,
+            "min": 7.3253,
+            "med": 12.7332,
+            "max": 32.3227,
+            "p(90)": 19.8657
+        },
+        "http_req_connecting": {
+            "min": 0,
+            "med": 0,
+            "max": 1.1846,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.00900444330949949
+        },
+        "checks": {
+            "passes": 7830,
+            "fails": 0,
+            "value": 1
+        },
+        "data_sent": {
+            "count": 1526970,
+            "rate": 10849.371709066723
+        },
+        "data_received": {
+            "count": 12501910,
+            "rate": 88828.11624543925
+        },
+        "http_req_receiving": {
+            "avg": 0.4388202757916235,
+            "min": 0,
+            "med": 0.38605,
+            "max": 17.9686,
+            "p(90)": 1.0077,
+            "p(95)": 1.39605
+        },
+        "iterations": {
+            "count": 1305,
+            "rate": 9.272238537975255
+        },
+        "http_req_duration": {
+            "avg": 16.740218513789596,
+            "min": 7.3253,
+            "med": 15.40405,
+            "max": 391.1434,
+            "p(90)": 23.99845,
+            "p(95)": 26.7377,
+            "thresholds": {
+                "p(95)<1000": false
+            }
+        },
+        "iteration_duration": {
+            "avg": 1552.3049429885061,
+            "min": 1532.0341,
+            "med": 1550.0728,
+            "max": 1975.2181,
+            "p(90)": 1565.91458,
+            "p(95)": 1570.8765
+        }
+    },
+    "setup_data": {
+        "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwicm9sZSI6IlJPTEVfVVNFUiIsInR5cCI6ImFjY2VzcyIsImlhdCI6MTc5NTA4NTg4OCwiZXhwIjoxNzk1MTAwMjg4fQ.1oYaSd6RFAg_62LaR8CCVUE8pKjSQIh_58G-rtps6V65Hjf_Dl84y08MSI7Octeg"
+    }
+}

@@ -1,0 +1,76 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\A_v4_review_vu100_same_run1.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 100 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+Run     [ 100% ] setup()
+burst   [   0% ]
+
+running (0m02.0s), 090/100 VUs, 10 complete and 0 interrupted iterations
+burst   [  10% ] 100 VUs  0m00.7s/2m0s  010/100 iters, 1 per VU
+
+running (0m03.0s), 065/100 VUs, 35 complete and 0 interrupted iterations
+burst   [  35% ] 100 VUs  0m01.7s/2m0s  035/100 iters, 1 per VU
+
+running (0m04.0s), 035/100 VUs, 65 complete and 0 interrupted iterations
+burst   [  65% ] 100 VUs  0m02.7s/2m0s  065/100 iters, 1 per VU
+
+running (0m05.0s), 002/100 VUs, 98 complete and 0 interrupted iterations
+burst   [  98% ] 100 VUs  0m03.7s/2m0s  098/100 iters, 1 per VU
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=3.71s
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100     19.925102/s
+    checks_succeeded...: 100.00% 100 out of 100
+    checks_failed......: 0.00%   0 out of 100
+
+    ✓ status 200
+
+    CUSTOM
+    target_ok......................: 100    19.925102/s
+
+    HTTP
+    http_req_duration..............: avg=1.05s min=6.66ms  med=48.83ms p(90)=3.12s p(95)=3.38s p(99)=3.67s max=3.71s
+      { expected_response:true }...: avg=1.05s min=6.66ms  med=48.83ms p(90)=3.12s p(95)=3.38s p(99)=3.67s max=3.71s
+      { name:createReview }........: avg=2.1s  min=69.92ms med=2.16s   p(90)=3.38s p(95)=3.54s p(99)=3.69s max=3.71s
+    http_req_failed................: 0.00%  0 out of 200
+      { name:createReview }........: 0.00%  0 out of 100
+    http_reqs......................: 200    39.850204/s
+
+    EXECUTION
+    iteration_duration.............: avg=2.1s  min=71.7ms  med=2.17s   p(90)=3.38s p(95)=3.54s p(99)=3.69s max=3.72s
+    iterations.....................: 100    19.925102/s
+    vus............................: 2      min=0        max=90 
+    vus_max........................: 100    min=100      max=100
+
+    NETWORK
+    data_received..................: 138 kB 28 kB/s
+    data_sent......................: 51 kB  10 kB/s
+
+
+
+
+running (0m05.0s), 000/100 VUs, 100 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 100 VUs  0m03.7s/2m0s  100/100 iters, 1 per VU
+
