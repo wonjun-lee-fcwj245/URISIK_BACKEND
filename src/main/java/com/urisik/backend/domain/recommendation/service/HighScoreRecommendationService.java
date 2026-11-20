@@ -31,6 +31,14 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class HighScoreRecommendationService {
 
+    /** 평균 별점 ↓, 리뷰 수 ↓, 찜 수 ↓. reversed()를 키마다 호출하면 직전까지의 전체 비교기가 뒤집혀 2순위가 오름차순이 되므로 한 번만 호출한다. */
+    static final java.util.Comparator<HighScoreRecommendationRecipeCandidate> BY_SCORE_REVIEW_WISH_DESC =
+            java.util.Comparator.comparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore)
+                    .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount)
+                    .thenComparingInt(HighScoreRecommendationRecipeCandidate::getWishCount)
+                    .reversed();
+
+
     private final HomeRecommendationRepository homeRecommendationRepository;
     private final HomeTransformedRecommendationRecipeRepository homeTransformedRecommendationRecipeRepository;
     private final HighScoreRecommendationConverter converter;
@@ -110,11 +118,7 @@ public class HighScoreRecommendationService {
          * 2️. 1차 정렬
          * 평점 → 리뷰 수 → 위시 수
          * ========================= */
-        candidates.sort(
-                Comparator.comparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore).reversed()
-                        .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount).reversed()
-                        .thenComparingInt(HighScoreRecommendationRecipeCandidate::getWishCount).reversed()
-        );
+        candidates.sort(BY_SCORE_REVIEW_WISH_DESC);
 
         /* =========================
          * 3️. 완전 동점자 알레르기 tie-break

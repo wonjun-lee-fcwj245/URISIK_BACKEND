@@ -33,6 +33,14 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class WishRecommendationService {
 
+    /** 찜 수 ↓, 평균 별점 ↓, 리뷰 수 ↓. reversed()는 마지막에 한 번만 호출한다(키마다 호출하면 2순위가 오름차순이 된다). */
+    static final Comparator<HighScoreRecommendationRecipeCandidate> BY_WISH_SCORE_REVIEW_DESC =
+            Comparator.comparingInt(HighScoreRecommendationRecipeCandidate::getWishCount)
+                    .thenComparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore)
+                    .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount)
+                    .reversed();
+
+
     private final HomeRecommendationRepository homeRecommendationRepository;
     private final HomeTransformedRecommendationRecipeRepository transformedRecipeRepository;
     private final FamilyMemberProfileRepository familyMemberProfileRepository;
@@ -87,11 +95,7 @@ public class WishRecommendationService {
         }
 
         // 3. 최종 정렬 (알레르기 X)
-        candidates.sort(
-                Comparator.comparingInt(HighScoreRecommendationRecipeCandidate::getWishCount).reversed()
-                        .thenComparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore).reversed()
-                        .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount).reversed()
-        );
+        candidates.sort(BY_WISH_SCORE_REVIEW_DESC);
 
         // 4. Top 3 + 알레르기 여부 표시만
         List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);

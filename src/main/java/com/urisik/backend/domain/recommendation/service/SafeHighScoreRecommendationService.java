@@ -33,6 +33,14 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class SafeHighScoreRecommendationService {
 
+    /** 평균 별점 ↓, 리뷰 수 ↓, 찜 수 ↓. reversed()를 키마다 호출하면 직전까지의 전체 비교기가 뒤집혀 2순위가 오름차순이 되므로 한 번만 호출한다. */
+    static final java.util.Comparator<HighScoreRecommendationRecipeCandidate> BY_SCORE_REVIEW_WISH_DESC =
+            java.util.Comparator.comparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore)
+                    .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount)
+                    .thenComparingInt(HighScoreRecommendationRecipeCandidate::getWishCount)
+                    .reversed();
+
+
     private final HomeRecommendationRepository homeRecommendationRepository;
     private final HomeTransformedRecommendationRecipeRepository homeTransformedRecommendationRecipeRepository;
     private final FamilyMemberProfileRepository familyMemberProfileRepository;
@@ -116,12 +124,7 @@ public class SafeHighScoreRecommendationService {
         /* =========================
          * 4️. 정렬 기준 유지
          * ========================= */
-        safeCandidates.sort(
-                Comparator
-                        .comparingDouble(HighScoreRecommendationRecipeCandidate::getAvgScore).reversed()
-                        .thenComparingInt(HighScoreRecommendationRecipeCandidate::getReviewCount).reversed()
-                        .thenComparingInt(HighScoreRecommendationRecipeCandidate::getWishCount).reversed()
-        );
+        safeCandidates.sort(BY_SCORE_REVIEW_WISH_DESC);
 
         /* =========================
          * 5️. 결과 반환

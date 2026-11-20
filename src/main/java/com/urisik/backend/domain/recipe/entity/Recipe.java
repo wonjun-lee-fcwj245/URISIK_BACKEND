@@ -60,6 +60,10 @@ public class Recipe {
     @Column(nullable = false)
     private double avgScore = 0.0;
 
+    // 점수 합계. 평균을 매번 반올림해 다시 계산에 쓰면 오차가 쌓이므로 합계를 저장하고 평균은 합계/개수로 계산한다
+    @Column(name = "score_sum", nullable = false, columnDefinition = "BIGINT NOT NULL DEFAULT 0")
+    private long scoreSum = 0L;
+
     // 외부 API RCP_SEQ 또는 AI 요청 ID
     @Column(length = 255)
     private String sourceRef;
