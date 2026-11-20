@@ -8458,3 +8458,996 @@ scoresum,20recipes_2000reviews,fix19,3,count_mismatch,0,
 scoresum,20recipes_2000reviews,fix19,3,avg_mismatch_rounded,0,
 scoresum,20recipes_2000reviews,fix19,3,max_abs_diff_vs_exact,0.0,
 scoresum,20recipes_2000reviews,fix19,3,score_sum_mismatch,0,
+exp5,search_stub20,v4,1,requests,3386,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,borrows_per_request,2.03,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,usage_ms_per_borrow,433.4,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,usage_ms_per_request,879.59,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,acquire_ms_per_borrow,3032.294,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,usage_max_ms,10145.0,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,req_avg_ms,7881.22,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,req_p95_ms,19847.81,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,1,fail_rate,0,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,requests,3865,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,borrows_per_request,2.026,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,usage_ms_per_borrow,482.3,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,usage_ms_per_request,977.08,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,acquire_ms_per_borrow,3558.046,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,usage_max_ms,10145.0,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,req_avg_ms,8908.0,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,req_p95_ms,17793.9,api=search;rate=100rps;60s;warmup=yes
+exp5,search_stub300,v4,1,fail_rate,0,api=search;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,requests,6001,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,borrows_per_request,0.033,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,usage_ms_per_borrow,10.02,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,usage_ms_per_request,0.33,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,acquire_ms_per_borrow,0.011,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,usage_max_ms,10066.0,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,req_avg_ms,2.53,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,req_p95_ms,3.66,api=recommend;rate=100rps;60s;warmup=yes
+exp5,recommend,v4,1,fail_rate,0,api=recommend;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,requests,6000,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,borrows_per_request,1.017,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,usage_ms_per_borrow,3.17,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,usage_ms_per_request,3.22,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,acquire_ms_per_borrow,0.021,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,usage_max_ms,19.0,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,req_avg_ms,5.23,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,req_p95_ms,7.67,api=detail;rate=100rps;60s;warmup=yes
+exp5,detail,v4,1,fail_rate,0,api=detail;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,requests,6001,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,borrows_per_request,1.017,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,usage_ms_per_borrow,4.62,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,usage_ms_per_request,4.7,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,acquire_ms_per_borrow,0.023,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,usage_max_ms,39.0,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,req_avg_ms,6.75,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,req_p95_ms,11.34,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,mealplan,v4,1,fail_rate,0,api=mealplan;rate=100rps;60s;warmup=yes
+exp5,search_stub20,v4,2,requests,4898,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,borrows_per_request,2.02,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,usage_ms_per_borrow,269.26,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,usage_ms_per_request,544.01,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,acquire_ms_per_borrow,1509.342,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,usage_max_ms,10044.0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,req_avg_ms,3785.52,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,req_p95_ms,18511.83,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,2,fail_rate,0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,requests,5529,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,borrows_per_request,2.018,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,usage_ms_per_borrow,270.55,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,usage_ms_per_request,545.99,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,acquire_ms_per_borrow,1185.114,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,usage_max_ms,10044.0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,req_avg_ms,2900.14,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,req_p95_ms,7558.62,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,2,fail_rate,0,api=search;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,requests,6001,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,borrows_per_request,0.033,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,usage_ms_per_borrow,7.12,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,usage_ms_per_request,0.24,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,acquire_ms_per_borrow,0.007,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,usage_max_ms,10044.0,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,req_avg_ms,2.3,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,req_p95_ms,3.19,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,2,fail_rate,0,api=recommend;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,requests,6001,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,borrows_per_request,1.017,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,usage_ms_per_borrow,4.03,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,usage_ms_per_request,4.09,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,acquire_ms_per_borrow,0.024,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,usage_max_ms,10028.0,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,req_avg_ms,6.35,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,req_p95_ms,8.63,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,2,fail_rate,0,api=detail;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,requests,6001,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,borrows_per_request,1.017,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,usage_ms_per_borrow,5.82,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,usage_ms_per_request,5.92,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,acquire_ms_per_borrow,0.025,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,usage_max_ms,19.0,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,req_avg_ms,8.41,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,req_p95_ms,10.41,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,2,fail_rate,0,api=mealplan;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,requests,5722,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,borrows_per_request,2.017,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,usage_ms_per_borrow,180.65,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,usage_ms_per_request,364.47,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,acquire_ms_per_borrow,404.051,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,usage_max_ms,10037.0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,req_avg_ms,1130.57,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,req_p95_ms,5566.3,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub20,v4,3,fail_rate,0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,requests,5355,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,borrows_per_request,2.019,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,usage_ms_per_borrow,251.1,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,usage_ms_per_request,506.89,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,acquire_ms_per_borrow,1146.21,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,usage_max_ms,10037.0,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,req_avg_ms,2862.63,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,req_p95_ms,9080.36,api=search;rate=100rps;60s;warmup=no
+exp5,search_stub300,v4,3,fail_rate,0,api=search;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,requests,6001,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,borrows_per_request,0.033,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,usage_ms_per_borrow,7.9,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,usage_ms_per_request,0.26,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,acquire_ms_per_borrow,0.004,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,usage_max_ms,10037.0,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,req_avg_ms,2.38,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,req_p95_ms,3.46,api=recommend;rate=100rps;60s;warmup=no
+exp5,recommend,v4,3,fail_rate,0,api=recommend;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,requests,6001,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,borrows_per_request,1.017,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,usage_ms_per_borrow,2.79,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,usage_ms_per_request,2.84,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,acquire_ms_per_borrow,0.02,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,usage_max_ms,10033.0,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,req_avg_ms,4.77,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,req_p95_ms,6.93,api=detail;rate=100rps;60s;warmup=no
+exp5,detail,v4,3,fail_rate,0,api=detail;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,requests,6001,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,borrows_per_request,1.017,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,usage_ms_per_borrow,3.97,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,usage_ms_per_request,4.04,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,acquire_ms_per_borrow,0.021,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,usage_max_ms,23.0,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,req_avg_ms,6.02,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,req_p95_ms,8.93,api=mealplan;rate=100rps;60s;warmup=no
+exp5,mealplan,v4,3,fail_rate,0,api=mealplan;rate=100rps;60s;warmup=no
+exp6,baseline_150s,v3,1,statuses,"[500, 500, 500, 500, 500]","Redis 중단, 추천 5건 동시"
+exp6,baseline_150s,v3,1,seconds_min,60.1,
+exp6,baseline_150s,v3,1,seconds_max,60.1,
+exp6,before_search,v3,1,n,780,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,1,p50_success_ms,17.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,1,p95_success_ms,28.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,n,612,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,fail_rate,0.0016,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,status5xx_rate,0.0016,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,p50_success_ms,5.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,1,p95_success_ms,24.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,n,301,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,p50_success_ms,9.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,1,p95_success_ms,19.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,n,321,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,p50_success_ms,12.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,1,p95_success_ms,22.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,n,2014,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,fail_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,status5xx_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,p50_success_ms,13.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,1,p95_success_ms,26.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,n,405,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,status0_timeout_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,n,301,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,status0_timeout_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,n,143,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,fail_rate,0.8671,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,status0_timeout_rate,0.8671,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,p50_success_ms,16.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,n,142,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,fail_rate,0.8732,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,status0_timeout_rate,0.8732,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,p50_success_ms,23.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,n,991,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,fail_rate,0.9627,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,status0_timeout_rate,0.9627,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,p50_success_ms,20.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,1,p95_success_ms,78.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,n,980,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,p50_success_ms,17.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,1,p95_success_ms,1672.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,n,699,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,p50_success_ms,3.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,1,p95_success_ms,808.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,n,347,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,p50_success_ms,9.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,1,p95_success_ms,1246.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,n,368,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,p50_success_ms,12.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,1,p95_success_ms,1454.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,n,2394,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,p50_success_ms,12.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,1,p95_success_ms,1047.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,v3,1,seconds_until_5s_all_200,0,Redis 복구 후
+exp6,before_search,redisfix,1,n,829,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,1,p50_success_ms,15.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,1,p95_success_ms,23.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,n,567,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,p50_success_ms,3.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,1,p95_success_ms,5.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,n,290,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,p50_success_ms,8.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,1,p95_success_ms,13.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,n,323,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,p50_success_ms,10.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,1,p95_success_ms,18.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,n,2009,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,p50_success_ms,10.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,1,p95_success_ms,21.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,n,708,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,n,568,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,1,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,n,273,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,p50_success_ms,10.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,1,p95_success_ms,17.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,n,233,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,p50_success_ms,12.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,1,p95_success_ms,20.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,n,1782,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,fail_rate,0.716,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,status5xx_rate,0.716,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,p50_success_ms,11.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,1,p95_success_ms,19.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,n,939,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,fail_rate,0.1864,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,status5xx_rate,0.1864,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,p50_success_ms,12.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,1,p95_success_ms,22.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,n,598,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,fail_rate,0.1555,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,status5xx_rate,0.1555,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,p50_success_ms,2.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,1,p95_success_ms,4.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,n,319,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,p50_success_ms,6.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,1,p95_success_ms,12.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,n,353,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,p50_success_ms,8.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,1,p95_success_ms,15.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,n,2209,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,fail_rate,0.1213,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,status5xx_rate,0.1213,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,p50_success_ms,8.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,1,p95_success_ms,18.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix,1,seconds_until_5s_all_200,7,Redis 복구 후
+exp6,before_search,v3,2,n,819,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,2,p50_success_ms,17.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,2,p95_success_ms,27.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,n,584,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,fail_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,status5xx_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,p50_success_ms,4.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,2,p95_success_ms,23.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,n,307,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,p50_success_ms,9.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,2,p95_success_ms,19.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,n,310,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,p50_success_ms,13.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,2,p95_success_ms,25.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,n,2020,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,fail_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,status5xx_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,p50_success_ms,13.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,2,p95_success_ms,25.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,n,382,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,status0_timeout_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,n,308,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,status0_timeout_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,n,146,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,fail_rate,0.9247,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,status0_timeout_rate,0.9247,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,p50_success_ms,8.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,n,157,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,fail_rate,0.8917,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,status0_timeout_rate,0.8917,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,p50_success_ms,13.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,n,993,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,fail_rate,0.9718,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,status0_timeout_rate,0.9718,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,p50_success_ms,10.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,2,p95_success_ms,67.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,n,945,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,p50_success_ms,14.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,2,p95_success_ms,1233.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,n,725,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,p50_success_ms,3.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,2,p95_success_ms,759.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,n,370,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,p50_success_ms,7.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,2,p95_success_ms,1297.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,n,347,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,p50_success_ms,8.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,2,p95_success_ms,1287.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,n,2387,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,p50_success_ms,10.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,2,p95_success_ms,918.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,v3,2,seconds_until_5s_all_200,0,Redis 복구 후
+exp6,before_search,redisfix,2,n,790,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,2,fail_rate,0.0013,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,2,status5xx_rate,0.0013,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,2,p50_success_ms,17.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,2,p95_success_ms,27.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,n,598,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,fail_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,status5xx_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,p50_success_ms,3.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,2,p95_success_ms,6.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,n,301,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,p50_success_ms,9.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,2,p95_success_ms,16.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,n,322,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,p50_success_ms,12.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,2,p95_success_ms,23.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,n,2011,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,fail_rate,0.001,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,status5xx_rate,0.001,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,p50_success_ms,11.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,2,p95_success_ms,24.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,n,711,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,n,530,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,2,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,n,264,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,p50_success_ms,9.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,2,p95_success_ms,20.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,n,299,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,p50_success_ms,11.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,2,p95_success_ms,24.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,n,1804,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,fail_rate,0.6879,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,status5xx_rate,0.6879,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,p50_success_ms,10.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,2,p95_success_ms,22.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,n,859,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,fail_rate,0.156,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,status5xx_rate,0.156,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,p50_success_ms,11.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,2,p95_success_ms,17.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,n,655,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,fail_rate,0.1832,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,status5xx_rate,0.1832,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,p50_success_ms,2.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,2,p95_success_ms,4.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,n,309,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,p50_success_ms,5.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,2,p95_success_ms,9.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,n,363,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,p50_success_ms,7.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,2,p95_success_ms,12.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,n,2186,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,fail_rate,0.1162,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,status5xx_rate,0.1162,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,p50_success_ms,7.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,2,p95_success_ms,14.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix,2,seconds_until_5s_all_200,6,Redis 복구 후
+exp6,before_search,v3,3,n,811,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,3,p50_success_ms,17.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,v3,3,p95_success_ms,22.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,n,588,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,p50_success_ms,4.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,v3,3,p95_success_ms,18.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,n,291,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,p50_success_ms,9.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,v3,3,p95_success_ms,12.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,n,300,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,p50_success_ms,12.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,v3,3,p95_success_ms,17.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,n,1990,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,p50_success_ms,13.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,v3,3,p95_success_ms,21.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,n,299,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,fail_rate,0.9967,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,status0_timeout_rate,0.9933,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,status5xx_rate,0.0033,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,p50_success_ms,17.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,v3,3,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,n,230,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,fail_rate,0.9957,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,status0_timeout_rate,0.9957,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,p50_success_ms,13.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,v3,3,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,n,109,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,fail_rate,0.8532,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,status0_timeout_rate,0.8532,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,p50_success_ms,10.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,v3,3,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,n,123,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,fail_rate,0.8374,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,status0_timeout_rate,0.8374,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,p50_success_ms,13.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,v3,3,p95_success_ms,67.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,n,761,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,fail_rate,0.9501,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,status0_timeout_rate,0.9488,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,status5xx_rate,0.0013,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,p50_success_ms,12.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,v3,3,p95_success_ms,55.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,n,1066,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,fail_rate,0.0919,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,status0_timeout_rate,0.0919,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,p50_success_ms,17.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,v3,3,p95_success_ms,1081.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,n,793,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,fail_rate,0.0946,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,status0_timeout_rate,0.0946,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,p50_success_ms,4.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,v3,3,p95_success_ms,816.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,n,395,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,fail_rate,0.0835,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,status0_timeout_rate,0.0835,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,p50_success_ms,9.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,v3,3,p95_success_ms,829.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,n,395,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,fail_rate,0.0987,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,status0_timeout_rate,0.0987,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,p50_success_ms,11.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,v3,3,p95_success_ms,1164.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,n,2649,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,fail_rate,0.0925,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,status0_timeout_rate,0.0925,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,p50_success_ms,13.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,v3,3,p95_success_ms,930.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,v3,3,seconds_until_5s_all_200,1,Redis 복구 후
+exp6,before_search,redisfix,3,n,758,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,3,fail_rate,0.0013,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,3,status5xx_rate,0.0013,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,3,p50_success_ms,15.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix,3,p95_success_ms,24.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,n,610,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,p50_success_ms,3.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix,3,p95_success_ms,6.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,n,312,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,p50_success_ms,8.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix,3,p95_success_ms,14.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,n,338,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,p50_success_ms,10.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix,3,p95_success_ms,18.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,n,2018,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,fail_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,status5xx_rate,0.0005,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,p50_success_ms,10.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix,3,p95_success_ms,20.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,n,760,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix,3,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,n,522,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,fail_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,status5xx_rate,1.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,p50_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix,3,p95_success_ms,,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,n,262,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,p50_success_ms,10.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix,3,p95_success_ms,16.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,n,257,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,p50_success_ms,12.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix,3,p95_success_ms,22.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,n,1801,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,fail_rate,0.7118,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,status5xx_rate,0.7118,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,p50_success_ms,11.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix,3,p95_success_ms,21.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,n,856,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,fail_rate,0.1565,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,status5xx_rate,0.1565,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,p50_success_ms,14.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix,3,p95_success_ms,25.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,n,687,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,fail_rate,0.1499,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,status5xx_rate,0.1499,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,p50_success_ms,2.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix,3,p95_success_ms,7.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,n,320,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,p50_success_ms,7.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix,3,p95_success_ms,14.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,n,318,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,p50_success_ms,10.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix,3,p95_success_ms,18.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,n,2181,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,fail_rate,0.1087,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,status5xx_rate,0.1087,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,p50_success_ms,9.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix,3,p95_success_ms,21.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix,3,seconds_until_5s_all_200,6,Redis 복구 후
+exp7,jamo_ft_1,like,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_2,like,seeds42-7-2026,value_median,0.07,min=0.0450;max=0.0850
+exp7,jamo_ft_3,like,seeds42-7-2026,value_median,0.085,min=0.0650;max=0.1000
+exp7,jamo_ft_1-jamo-only,like,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_2-jamo-only,like,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_3-jamo-only,like,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_1,fulltext,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_2,fulltext,seeds42-7-2026,value_median,0.07,min=0.0450;max=0.0850
+exp7,jamo_ft_3,fulltext,seeds42-7-2026,value_median,0.09,min=0.0700;max=0.0950
+exp7,jamo_ft_1-jamo-only,fulltext,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_2-jamo-only,fulltext,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_3-jamo-only,fulltext,seeds42-7-2026,value_median,0.0,min=0.0000;max=0.0000
+exp7,jamo_ft_1,es_b3,seeds42-7-2026,value_median,1.0,min=0.9950;max=1.0000
+exp7,jamo_ft_2,es_b3,seeds42-7-2026,value_median,0.955,min=0.9350;max=0.9600
+exp7,jamo_ft_3,es_b3,seeds42-7-2026,value_median,0.245,min=0.1950;max=0.2700
+exp7,jamo_ft_1-jamo-only,es_b3,seeds42-7-2026,value_median,1.0,min=0.9950;max=1.0000
+exp7,jamo_ft_2-jamo-only,es_b3,seeds42-7-2026,value_median,0.9591,min=0.9477;max=0.9591
+exp7,jamo_ft_3-jamo-only,es_b3,seeds42-7-2026,value_median,0.1759,min=0.1393;max=0.1967
+exp7,jamo_ft_1,ft_jamo,seeds42-7-2026,value_median,0.925,min=0.8900;max=0.9300
+exp7,jamo_ft_2,ft_jamo,seeds42-7-2026,value_median,0.77,min=0.7350;max=0.7900
+exp7,jamo_ft_3,ft_jamo,seeds42-7-2026,value_median,0.64,min=0.5650;max=0.7000
+exp7,jamo_ft_1-jamo-only,ft_jamo,seeds42-7-2026,value_median,0.925,min=0.8900;max=0.9300
+exp7,jamo_ft_2-jamo-only,ft_jamo,seeds42-7-2026,value_median,0.7544,min=0.7093;max=0.7544
+exp7,jamo_ft_3-jamo-only,ft_jamo,seeds42-7-2026,value_median,0.541,min=0.5370;max=0.6557
+exp7,jamo_ft_normal_p5,like,seeds42-7-2026,value_median,0.9647,min=0.9647;max=0.9647
+exp7,jamo_ft_typo_top1,like,seeds42-7-2026,value_median,0,min=0.0000;max=0.0000
+exp7,jamo_ft_holdout_top1,like,seeds42-7-2026,value_median,0,min=0.0000;max=0.0000
+exp7,jamo_ft_normal_p5,fulltext,seeds42-7-2026,value_median,0.9941,min=0.9941;max=0.9941
+exp7,jamo_ft_typo_top1,fulltext,seeds42-7-2026,value_median,1,min=1.0000;max=1.0000
+exp7,jamo_ft_holdout_top1,fulltext,seeds42-7-2026,value_median,0,min=0.0000;max=0.0000
+exp7,jamo_ft_normal_p5,es_b3,seeds42-7-2026,value_median,0.9824,min=0.9824;max=0.9824
+exp7,jamo_ft_typo_top1,es_b3,seeds42-7-2026,value_median,20,min=20.0000;max=20.0000
+exp7,jamo_ft_holdout_top1,es_b3,seeds42-7-2026,value_median,12,min=12.0000;max=12.0000
+exp7,jamo_ft_normal_p5,ft_jamo,seeds42-7-2026,value_median,0.9647,min=0.9647;max=0.9647
+exp7,jamo_ft_typo_top1,ft_jamo,seeds42-7-2026,value_median,15,min=15.0000;max=15.0000
+exp7,jamo_ft_holdout_top1,ft_jamo,seeds42-7-2026,value_median,8,min=8.0000;max=8.0000
+exp6,before_search,redisfix2,1,n,771,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,1,p50_success_ms,17.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,1,p95_success_ms,28.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,n,632,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,p50_success_ms,4.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,1,p95_success_ms,22.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,n,305,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,p50_success_ms,9.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,1,p95_success_ms,17.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,n,307,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,p50_success_ms,12.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,1,p95_success_ms,21.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,n,2015,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,p50_success_ms,13.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,1,p95_success_ms,25.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,n,706,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,p50_success_ms,848.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,1,p95_success_ms,861.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,n,518,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,p50_success_ms,821.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,1,p95_success_ms,834.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,n,265,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,p50_success_ms,9.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,1,p95_success_ms,17.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,n,286,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,p50_success_ms,13.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,1,p95_success_ms,22.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,n,1775,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,p50_success_ms,823.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,1,p95_success_ms,856.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,n,928,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,p50_success_ms,15.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,1,p95_success_ms,849.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,n,640,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,p50_success_ms,3.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,1,p95_success_ms,822.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,n,322,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,p50_success_ms,7.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,1,p95_success_ms,14.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,n,320,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,p50_success_ms,9.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,1,p95_success_ms,17.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,n,2210,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,p50_success_ms,11.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,1,p95_success_ms,843.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix2,1,seconds_until_5s_all_200,0,Redis 복구 후
+exp6,before_search,redisfix2,2,n,814,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,2,p50_success_ms,16.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,2,p95_success_ms,27.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,n,624,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,p50_success_ms,3.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,2,p95_success_ms,8.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,n,275,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,p50_success_ms,8.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,2,p95_success_ms,19.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,n,289,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,p50_success_ms,11.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,2,p95_success_ms,22.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,n,2002,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,p50_success_ms,11.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,2,p95_success_ms,24.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,n,716,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,fail_rate,0.0042,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,status0_timeout_rate,0.0042,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,p50_success_ms,850.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,2,p95_success_ms,4541.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,n,550,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,p50_success_ms,822.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,2,p95_success_ms,1553.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,n,264,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,p50_success_ms,11.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,2,p95_success_ms,817.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,n,243,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,p50_success_ms,14.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,2,p95_success_ms,770.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,n,1773,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,fail_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,status0_timeout_rate,0.0017,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,p50_success_ms,831.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,2,p95_success_ms,1637.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,n,882,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,p50_success_ms,14.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,2,p95_success_ms,849.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,n,669,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,p50_success_ms,2.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,2,p95_success_ms,821.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,n,321,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,p50_success_ms,7.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,2,p95_success_ms,15.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,n,347,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,p50_success_ms,9.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,2,p95_success_ms,18.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,n,2219,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,p50_success_ms,10.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,2,p95_success_ms,842.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix2,2,seconds_until_5s_all_200,0,Redis 복구 후
+exp6,before_search,redisfix2,3,n,786,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,3,p50_success_ms,19.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_search,redisfix2,3,p95_success_ms,30.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,n,612,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,p50_success_ms,4.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_recommend,redisfix2,3,p95_success_ms,26.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,n,292,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,p50_success_ms,9.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_detail,redisfix2,3,p95_success_ms,20.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,n,301,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,p50_success_ms,13.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_mealplan,redisfix2,3,p95_success_ms,24.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,n,1991,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,p50_success_ms,14.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,before_all,redisfix2,3,p95_success_ms,27.9,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,n,715,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,p50_success_ms,846.4,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_search,redisfix2,3,p95_success_ms,862.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,n,540,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,p50_success_ms,818.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_recommend,redisfix2,3,p95_success_ms,833.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,n,255,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,p50_success_ms,8.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_detail,redisfix2,3,p95_success_ms,18.1,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,n,262,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,p50_success_ms,11.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_mealplan,redisfix2,3,p95_success_ms,22.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,n,1772,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,p50_success_ms,822.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,down_all,redisfix2,3,p95_success_ms,857.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,n,904,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,p50_success_ms,15.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_search,redisfix2,3,p95_success_ms,854.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,n,690,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,p50_success_ms,3.3,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_recommend,redisfix2,3,p95_success_ms,821.7,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,n,314,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,p50_success_ms,7.5,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_detail,redisfix2,3,p95_success_ms,13.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,n,330,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,p50_success_ms,9.8,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_mealplan,redisfix2,3,p95_success_ms,18.2,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,n,2238,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,fail_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,status0_timeout_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,status5xx_rate,0.0,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,p50_success_ms,11.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,after_all,redisfix2,3,p95_success_ms,842.6,rate=60rps;redis down ~30s;client timeout 5s
+exp6,recovery,redisfix2,3,seconds_until_5s_all_200,0,Redis 복구 후

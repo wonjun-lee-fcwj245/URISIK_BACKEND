@@ -1,0 +1,141 @@
+step1 done 02:52
+BUILD SUCCESSFUL in 3m 12s
+4 actionable tasks: 4 executed
+exit 0
+sha256:caa50e38491d6c4cc701aef5a58ca6afe1301eadf62ba44764110425321c25f6
+baseline (Redis down, client timeout 150s): [(500, 60.1), (500, 60.1), (500, 60.1), (500, 60.1), (500, 60.1)]
+before_all n 2014
+before_all fail_rate 0.0005
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.0005
+before_all p50_success_ms 13.4
+before_all p95_success_ms 26.1
+down_all n 991
+down_all fail_rate 0.9627
+down_all status0_timeout_rate 0.9627
+down_all status5xx_rate 0.0
+down_all p50_success_ms 20.5
+down_all p95_success_ms 78.5
+after_all n 2394
+after_all fail_rate 0.0
+after_all status0_timeout_rate 0.0
+after_all status5xx_rate 0.0
+after_all p50_success_ms 12.5
+after_all p95_success_ms 1047.5
+recovery seconds_until_5s_all_200 0
+before_all n 2009
+before_all fail_rate 0.0
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.0
+before_all p50_success_ms 10.6
+before_all p95_success_ms 21.0
+down_all n 1782
+down_all fail_rate 0.716
+down_all status0_timeout_rate 0.0
+down_all status5xx_rate 0.716
+down_all p50_success_ms 11.0
+down_all p95_success_ms 19.4
+after_all n 2209
+after_all fail_rate 0.1213
+after_all status0_timeout_rate 0.0
+after_all status5xx_rate 0.1213
+after_all p50_success_ms 8.8
+after_all p95_success_ms 18.5
+recovery seconds_until_5s_all_200 7
+before_all n 2020
+before_all fail_rate 0.0005
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.0005
+before_all p50_success_ms 13.8
+before_all p95_success_ms 25.9
+down_all n 993
+down_all fail_rate 0.9718
+down_all status0_timeout_rate 0.9718
+down_all status5xx_rate 0.0
+down_all p50_success_ms 10.7
+down_all p95_success_ms 67.0
+after_all n 2387
+after_all fail_rate 0.0
+after_all status0_timeout_rate 0.0
+after_all status5xx_rate 0.0
+after_all p50_success_ms 10.3
+after_all p95_success_ms 918.0
+recovery seconds_until_5s_all_200 0
+before_all n 2011
+before_all fail_rate 0.001
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.001
+before_all p50_success_ms 11.7
+before_all p95_success_ms 24.1
+down_all n 1804
+down_all fail_rate 0.6879
+down_all status0_timeout_rate 0.0
+down_all status5xx_rate 0.6879
+down_all p50_success_ms 10.8
+down_all p95_success_ms 22.5
+after_all n 2186
+after_all fail_rate 0.1162
+after_all status0_timeout_rate 0.0
+after_all status5xx_rate 0.1162
+after_all p50_success_ms 7.4
+after_all p95_success_ms 14.5
+recovery seconds_until_5s_all_200 6
+before_all n 1990
+before_all fail_rate 0.0
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.0
+before_all p50_success_ms 13.5
+before_all p95_success_ms 21.2
+down_all n 761
+down_all fail_rate 0.9501
+down_all status0_timeout_rate 0.9488
+down_all status5xx_rate 0.0013
+down_all p50_success_ms 12.9
+down_all p95_success_ms 55.3
+after_all n 2649
+after_all fail_rate 0.0925
+after_all status0_timeout_rate 0.0925
+after_all status5xx_rate 0.0
+after_all p50_success_ms 13.1
+after_all p95_success_ms 930.5
+recovery seconds_until_5s_all_200 1
+before_all n 2018
+before_all fail_rate 0.0005
+before_all status0_timeout_rate 0.0
+before_all status5xx_rate 0.0005
+before_all p50_success_ms 10.2
+before_all p95_success_ms 20.7
+down_all n 1801
+down_all fail_rate 0.7118
+down_all status0_timeout_rate 0.0
+down_all status5xx_rate 0.7118
+down_all p50_success_ms 11.5
+down_all p95_success_ms 21.1
+after_all n 2181
+after_all fail_rate 0.1087
+after_all status0_timeout_rate 0.0
+after_all status5xx_rate 0.1087
+after_all p50_success_ms 9.9
+after_all p95_success_ms 21.9
+recovery seconds_until_5s_all_200 6
+STEP2_DONE
+index build s 0.8 rows 5000
+
+| 방식 | 자모 1곳(느슨@5) | 2곳 | 3곳 | 정상 P@5 | 오타 1위 | 처음 보는 오타 1위 |
+|---|---|---|---|---|---|---|
+| MySQL LIKE | 0.0% | 4.5%~8.5% | 6.5%~10.0% | 96.5% | 0/20 | 0/12 |
+| FULLTEXT(제목 ngram) | 0.0% | 4.5%~8.5% | 7.0%~9.5% | 99.4% | 1/20 | 0/12 |
+| **FULLTEXT(자모 컬럼 ngram)** | 89.0%~93.0% | 73.5%~79.0% | 56.5%~70.0% | 96.5% | 15/20 | 8/12 |
+| ES+Nori+Jamo | 99.5%~100.0% | 93.5%~96.0% | 19.5%~27.0% | 98.2% | 20/20 | 12/12 |
+
+자모만 고친 오타(음절 누락 제외, 느슨@5):
+| 방식 | 1곳 | 2곳 | 3곳 |
+|---|---|---|---|
+| MySQL LIKE | 0.0% | 0.0% | 0.0% |
+| FULLTEXT(제목 ngram) | 0.0% | 0.0% | 0.0% |
+| **FULLTEXT(자모 컬럼 ngram)** | 89.0%~93.0% | 70.9%~75.4% | 53.7%~65.6% |
+| ES+Nori+Jamo | 99.5%~100.0% | 94.8%~95.9% | 13.9%~19.7% |
+
+FULLTEXT(자모) 질의 600건 한 세션 평균 소요(ms/질의, 클라이언트 오버헤드 포함): {'42': 4.73, '7': 4.94, '2026': 5.08}
+cleaned up title_jamo column and index
+STEP3_DONE

@@ -55,7 +55,7 @@
 | Tomcat threads max / min-spare | 500 / 50 |
 | Tomcat max-connections / accept-count | 10000 / 500 |
 | ddl-auto | update |
-| Redis 명령 타임아웃 / 캐시 오류 처리기 | 설정 없음 (코드 확인) |
+| Redis 명령 타임아웃 / 캐시 오류 처리기 | 설정 없음 (코드 확인, main 기준). 실험 6의 수정 이미지는 `SPRING_DATA_REDIS_TIMEOUT`·`CONNECT_TIMEOUT`=200ms를 compose 설정으로 추가(`scripts/exp6/redis-timeout.yml`) |
 
 실험 4의 설정 5종은 `scripts/exp4/cfg-*.yml`. "기본값" = Hikari 10/10, Tomcat 200/10/8192/100, max_connections 151. 다섯 설정 모두 관측용으로 `SERVER_TOMCAT_MBEANREGISTRY_ENABLED=true`(튜닝 아님)를 켰다.
 
@@ -73,3 +73,19 @@
 | 11-19 20:25~21:15 | 노트북 절전(Modern Standby) 50분 | 실험 4 `maxconn` 1회차 무효 후 재측정(`raw/exp4/invalid-system-sleep/`) |
 | 11-19 22:34 | 덮개 닫힘 1초 절전 | 해당 회차(`maxconn` 3회차) 단계별 요청 수·수집 간격 확인 후 유효 판정 |
 | 11-20 02:59 | 1초 절전 기록 | 최종 실험 시작 전이라 영향 없음 |
+| 11-20 | 메모리 부족으로 백그라운드 래퍼(절전 방지, 2차 수정 검증 체인)가 중단 | 하위 프로세스(docker build, bash)가 살아 있는 것을 PowerShell로 확인하고 이어서 실행, 절전 방지는 독립 프로세스로 재기동 |
+| 11-21 | 실험 6 1차 수정 측정 중 2차 수정 코드를 작성 | 1차 수정 결과는 기록용으로 남기고 별도 변형(`redisfix2`)으로 3회 재측정 |
+
+## 추가 이미지·변형 (실험 5~7)
+| 이미지 | 내용 | 용도 |
+|---|---|---|
+| `urisik-app:v4` | 0914ab8 (main에 반영된 평균 별점 수정) | 실험 5 커넥션 점유 |
+| `urisik-app:v3` | 36a6f03(main HEAD) | 실험 6 수정 전 기준 |
+| `urisik-app:redisfix` | 36a6f03 + `CacheErrorHandler`(1차, 폐기) | 실험 6, 패치 `redis-error-handler-v1-on-36a6f03.patch` |
+| `urisik-app:redisfix2` | 36a6f03 + `FailureTolerantCache`(2차, 브랜치 `fix/#20`, 커밋 218709b) | 실험 6, 패치 `redis-tolerant-cache-v2-on-36a6f03.patch` |
+| `urisik-app:fix19` | 정렬 비교자·`score_sum` 수정(브랜치 `fix/#19`, 커밋 e244134) | 점수 합계 검증 |
+
+- 실험 5: Hikari 50(원래 compose), 외부 API stub 20ms·300ms, API별 단독 100 RPS 60초, 설정당 3회(1회차 제외).
+- 실험 6: 60 RPS(검색 40%·추천 30%·상세 15%·식단 15%), 장애 전 약 30초·중단 30초·복구 후, 클라이언트 타임아웃 5초, 변형당 3회. 기준선은 추천 5건, 타임아웃 150초.
+- 실험 7: 로컬 DB에 임시 `title_jamo` 컬럼과 FULLTEXT(ngram) 인덱스를 만들고 측정 뒤 삭제(스키마 원복 확인).
+- 알려진 결함: `src/test/.../allergy/RecipeAllergyControllerTest.java`가 없는 메서드를 참조해 테스트 컴파일이 안 된다(기존 문제). 수정 검증 때 임시로 옆에 치우고 실행한 뒤 복구했다.

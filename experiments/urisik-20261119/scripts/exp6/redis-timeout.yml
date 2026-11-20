@@ -1,0 +1,6 @@
+# Redis 장애 격리 수정 후 설정: 명령·연결 타임아웃을 짧게 (코드가 아니라 배포 설정)
+services:
+  app:
+    environment:
+      - SPRING_DATA_REDIS_TIMEOUT=200ms
+      - SPRING_DATA_REDIS_CONNECT_TIMEOUT=200ms
