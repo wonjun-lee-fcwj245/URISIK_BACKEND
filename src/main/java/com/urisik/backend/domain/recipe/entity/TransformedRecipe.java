@@ -46,6 +46,10 @@ public class TransformedRecipe {
     @Column(nullable = false)
     private double avgScore = 0.0;
 
+    // 점수 합계. 평균을 매번 반올림해 다시 계산에 쓰면 오차가 쌓이므로 합계를 저장하고 평균은 합계/개수로 계산한다
+    @Column(name = "score_sum", nullable = false, columnDefinition = "BIGINT NOT NULL DEFAULT 0")
+    private long scoreSum = 0L;
+
     @Column(nullable = false)
     private int wishCount = 0;
 
