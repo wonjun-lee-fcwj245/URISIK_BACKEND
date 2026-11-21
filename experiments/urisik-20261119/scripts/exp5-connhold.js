@@ -36,7 +36,8 @@ export default function (d) {
     const headers = { Authorization: `Bearer ${d.tokens[u]}` };
     let url;
     if (API === 'search') {
-        const kw = `${KEYWORDS[it % KEYWORDS.length]} ${1000 + Math.floor(Math.random() * 9000)}`;
+        // KW_MODE=repeat: 실험 4와 같이 7개 검색어를 반복(외부 API 캐시 적중). 기본은 매번 미적중
+        const kw = __ENV.KW_MODE === 'repeat' ? KEYWORDS[it % KEYWORDS.length] : `${KEYWORDS[it % KEYWORDS.length]} ${1000 + Math.floor(Math.random() * 9000)}`;
         url = `${BASE_URL}/api/recipes/search?keyword=${encodeURIComponent(kw)}&page=0&size=10`;
     } else if (API === 'recommend') {
         url = `${BASE_URL}/api/recommendations/home/${RECO[it % 4]}`;

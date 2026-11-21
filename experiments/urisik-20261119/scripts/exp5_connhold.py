@@ -31,11 +31,11 @@ def restart_stub(delay_ms):
     time.sleep(2)
 
 
-def run_cond(label, api, rate, run_no):
+def run_cond(label, api, rate, run_no, kw_mode='unique'):
     u0, u1 = metric('hikaricp.connections.usage'), None
     a0 = metric('hikaricp.connections.acquire')
     jout = os.path.join(RAW, f'{label}_run{run_no}.json')
-    env = dict(os.environ, API=api, RATE=str(rate), DURATION_S='60', USERS='100')
+    env = dict(os.environ, API=api, RATE=str(rate), DURATION_S='60', USERS='100', KW_MODE=kw_mode)
     r = sh(['k6', 'run', '--no-color', '-q', '--summary-export', jout, os.path.join(HERE, 'exp5-connhold.js')], env=env)
     open(os.path.join(RAW, f'{label}_run{run_no}.log'), 'w', encoding='utf-8').write(r.stdout + r.stderr)
     time.sleep(2)
@@ -81,5 +81,18 @@ def main():
     print('CONNHOLD_DONE')
 
 
+def main_extra():
+    """리뷰 반영 추가 조건: 검색어 반복(캐시 적중) 100 RPS, 저부하 10 RPS(매번 미적중·반복). 외부 stub 20ms."""
+    os.makedirs(RAW, exist_ok=True)
+    restart_stub(20)
+    conds = [('search_repeat_100rps', 100, 'repeat'), ('search_unique_10rps', 10, 'unique'), ('search_repeat_10rps', 10, 'repeat')]
+    for run_no in (1, 2, 3):
+        for label, rate, mode in conds:
+            vals = run_cond(label, 'search', rate, run_no, mode)
+            append([['exp5', label, 'v4', run_no, k, v, f'api=search;rate={rate}rps;60s;kw={mode};warmup={"yes" if run_no == 1 else "no"}'] for k, v in vals.items()])
+            print(label, 'run', run_no, json.dumps(vals))
+    print('CONNHOLD_EXTRA_DONE')
+
+
 if __name__ == '__main__':
-    main()
+    main_extra() if (len(sys.argv) > 1 and sys.argv[1] == 'extra') else main()
