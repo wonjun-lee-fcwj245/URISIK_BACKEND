@@ -34,6 +34,8 @@ def compose_files(cfg, nocpu=False):
         files += ['-f', os.path.join(HERE, 'exp4', 'cpus.yml')]
     if os.environ.get('EXP4_STUB'):   # 외부 API(식품안전나라)를 호스트의 stub으로 연결해 인터넷 변동을 제거
         files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
+    if os.environ.get('EXP4_OSIV_OFF'):   # 진단용: 환경 변수만으로 OSIV를 끈다(앱 코드 변경 없음)
+        files += ['-f', os.path.join(HERE, 'exp10', 'osiv-off.yml')]
     return files + ['-f', os.path.join(HERE, 'exp4', f'cfg-{cfg}.yml')]
 
 

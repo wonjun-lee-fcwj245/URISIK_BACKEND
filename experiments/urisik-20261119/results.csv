@@ -10270,3 +10270,1546 @@ exp16b,search_unique_100rps,sf_off,3,es_fallback_requests,1468,netstub;stub_dela
 exp16b,search_unique_100rps,sf_off,3,es_fallback_share,0.2464,netstub;stub_delay=300ms;rate=100rps;kw=unique;warmup=no
 exp16b,search_unique_100rps,sf_off,3,external_retry_success,0.0,netstub;stub_delay=300ms;rate=100rps;kw=unique;warmup=no
 exp16b,search_unique_100rps,sf_off,3,external_retry_failed,0.0,netstub;stub_delay=300ms;rate=100rps;kw=unique;warmup=no
+exp4c_cold_start_protocol,arrival_r500,default,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,achieved_rps,414.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,ok200_rps,414.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,p95_success_ms,6481.70438675,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,p99_success_ms,6883.393637199999,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,p50_success_ms,5028.489714,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,p95_all_ms,6481.70438675,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,dropped_iterations,5155,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,achieved_rps,541.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,ok200_rps,541.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,p95_success_ms,1897.3990175,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,p99_success_ms,2329.0060482699996,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,p50_success_ms,1238.740054,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,p95_all_ms,1897.3990175,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,dropped_iterations,537,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,achieved_rps,528.8,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,ok200_rps,528.8,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,p95_success_ms,5300.77922725,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,p99_success_ms,5771.63587391,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,p50_success_ms,3052.3096735,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,p95_all_ms,5300.77922725,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,dropped_iterations,4269,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_summary,default,1,max_rps_slo,0,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_cold_start_protocol,arrival_summary,default,1,first_failing_rps,500,
+exp4c_cold_start_protocol,stage_r550,default,1,window_s,36.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,borrows_per_s,389.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,usage_ms_per_borrow,21.66,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,avg_connections_in_use,8.42,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,predicted_connections_from_solo_usage,4.65,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,acquire_ms_per_borrow,492.85,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,hikari_active_median,10.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,hikari_pending_median,198.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,hikari_pending_max,198.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,es_circuit_blocked_per_s,0.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,default,1,es_circuit_blocked_share_of_search,0.0,window=middle40s;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,arrival_r500,tuned,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,achieved_rps,316.4,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,ok200_rps,316.4,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,p95_success_ms,12696.375256750001,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,p99_success_ms,15569.32239895001,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,p50_success_ms,6886.442081,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,p95_all_ms,12696.375256750001,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,dropped_iterations,10778,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,achieved_rps,276.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,ok200_rps,276.1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,p95_success_ms,15192.795337799966,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,p99_success_ms,18671.950252639996,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,p50_success_ms,8621.014153,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,p95_all_ms,15192.795337799966,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,dropped_iterations,16374,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,achieved_rps,499.8,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,ok200_rps,499.8,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,p95_success_ms,7599.0943061,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,p99_success_ms,9142.01648038,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,p50_success_ms,3855.54416,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,p95_all_ms,7599.0943061,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,dropped_iterations,6014,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_summary,tuned,1,max_rps_slo,0,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_cold_start_protocol,arrival_summary,tuned,1,first_failing_rps,500,
+exp4c_cold_start_protocol,arrival_r500,tuned,2,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,achieved_rps,475.5,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,ok200_rps,475.5,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,p95_success_ms,4353.608552049999,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,p99_success_ms,5471.988987459999,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,p50_success_ms,1466.8132715000002,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,p95_all_ms,4353.608552049999,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,dropped_iterations,1472,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r500,tuned,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,achieved_rps,533.7,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,ok200_rps,533.7,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,p95_success_ms,3657.4981525,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,p99_success_ms,4602.023983370001,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,p50_success_ms,1551.884384,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,p95_all_ms,3657.4981525,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,dropped_iterations,976,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r550,tuned,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,achieved_rps,600.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,ok200_rps,600.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,p95_success_ms,498.66528729999965,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,p99_success_ms,698.1610885200001,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,p50_success_ms,26.540017499999998,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,p95_all_ms,498.66528729999965,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_r600,tuned,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4c_cold_start_protocol,arrival_summary,tuned,2,max_rps_slo,600,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_cold_start_protocol,arrival_summary,tuned,2,first_failing_rps,500,
+exp4c_cold_start_protocol,stage_r500,tuned,2,window_s,49.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,borrows_per_s,339.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,usage_ms_per_borrow,124.94,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,avg_connections_in_use,42.41,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,acquire_ms_per_borrow,974.92,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,hikari_active_median,47.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,hikari_pending_median,422.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,hikari_pending_max,457.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,es_circuit_blocked_per_s,55.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r500,tuned,2,es_circuit_blocked_share_of_search,0.279,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,borrows_per_s,396.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,usage_ms_per_borrow,103.19,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,avg_connections_in_use,40.88,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,acquire_ms_per_borrow,957.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,hikari_active_median,49.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,hikari_pending_median,453.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,hikari_pending_max,456.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r550,tuned,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,borrows_per_s,712.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,usage_ms_per_borrow,49.98,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,avg_connections_in_use,35.61,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,acquire_ms_per_borrow,51.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,hikari_active_median,49.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,hikari_pending_median,7.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,hikari_pending_max,114.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_cold_start_protocol,stage_r600,tuned,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,arrival_r400,default,1,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,achieved_rps,380.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,ok200_rps,380.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,p95_success_ms,3642.61882145,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,p99_success_ms,4242.642695410001,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,p50_success_ms,1850.343507,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,p95_all_ms,3642.61882145,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,dropped_iterations,1160,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,achieved_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,ok200_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,p95_success_ms,118.99242364999999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,p99_success_ms,193.55751010999998,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,p50_success_ms,16.109312,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,p95_all_ms,118.99242364999999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,achieved_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,ok200_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,p95_success_ms,245.765161,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,p99_success_ms,396.761247,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,p50_success_ms,32.458381,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,p95_all_ms,245.765161,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,achieved_rps,550.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,ok200_rps,550.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,p95_success_ms,439.09014405,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,p99_success_ms,664.4254023099995,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,p50_success_ms,87.7928105,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,p95_all_ms,439.09014405,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,achieved_rps,562.6,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,ok200_rps,562.6,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,p95_success_ms,3977.4186865,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,p99_success_ms,4256.2415263499925,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,p50_success_ms,837.4689539999999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,p95_all_ms,3977.4186865,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,dropped_iterations,2245,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_summary,default,1,max_rps_slo,550,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_start400_invalid_m_on,arrival_summary,default,1,first_failing_rps,400,
+exp4c_start400_invalid_m_on,stage_r400,default,1,window_s,30.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,borrows_per_s,389.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,usage_ms_per_borrow,17.15,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,avg_connections_in_use,6.67,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,acquire_ms_per_borrow,79.27,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,hikari_pending_median,35.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r400,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,borrows_per_s,490.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,usage_ms_per_borrow,13.33,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,avg_connections_in_use,6.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,acquire_ms_per_borrow,13.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,hikari_pending_median,2.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,hikari_pending_max,32.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r450,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,borrows_per_s,501.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,usage_ms_per_borrow,15.95,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,avg_connections_in_use,8.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,acquire_ms_per_borrow,64.48,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,hikari_pending_median,20.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,hikari_pending_max,76.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,borrows_per_s,531.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,usage_ms_per_borrow,15.95,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,avg_connections_in_use,8.47,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,acquire_ms_per_borrow,103.32,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,hikari_pending_median,36.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,hikari_pending_max,64.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r550,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,borrows_per_s,387.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,usage_ms_per_borrow,22.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,avg_connections_in_use,8.73,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,acquire_ms_per_borrow,502.51,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r600,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,achieved_rps,380.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,ok200_rps,380.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,p95_success_ms,3630.690008,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,p99_success_ms,4323.911820399988,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,p50_success_ms,2331.490846,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,p95_all_ms,3630.690008,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,dropped_iterations,1160,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,achieved_rps,449.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,ok200_rps,449.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,p95_success_ms,1011.3772721999999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,p99_success_ms,1502.60015366,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,p50_success_ms,147.42469599999998,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,p95_all_ms,1011.3772721999999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,dropped_iterations,41,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,achieved_rps,489.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,ok200_rps,489.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,p95_success_ms,1897.2397245,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,p99_success_ms,2449.7726906999997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,p50_success_ms,534.1301095,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,p95_all_ms,1897.2397245,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,dropped_iterations,635,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,achieved_rps,533.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,ok200_rps,533.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,p95_success_ms,2403.855646199999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,p99_success_ms,2979.1846633199993,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,p50_success_ms,1216.939759,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,p95_all_ms,2403.855646199999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,dropped_iterations,1012,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,achieved_rps,578.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,ok200_rps,578.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,p95_success_ms,2693.2758166000003,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,p99_success_ms,3195.9403711200002,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,p50_success_ms,1738.182343,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,p95_all_ms,2693.2758166000003,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,dropped_iterations,1318,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_summary,default,1,max_rps_slo,0,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_start400_invalid_sf_off,arrival_summary,default,1,first_failing_rps,400,
+exp4c_start400_invalid_sf_off,stage_r400,default,1,window_s,35.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,borrows_per_s,296.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,usage_ms_per_borrow,15.52,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,avg_connections_in_use,4.59,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,acquire_ms_per_borrow,299.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,hikari_active_median,9.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,hikari_pending_median,166.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,es_circuit_blocked_per_s,61.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,1,es_circuit_blocked_share_of_search,0.385,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,borrows_per_s,593.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,usage_ms_per_borrow,13.95,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,avg_connections_in_use,8.28,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,acquire_ms_per_borrow,109.74,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,hikari_pending_median,67.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,es_circuit_blocked_per_s,151.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,1,es_circuit_blocked_share_of_search,0.843,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,window_s,44.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,borrows_per_s,575.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,usage_ms_per_borrow,13.06,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,avg_connections_in_use,7.52,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,acquire_ms_per_borrow,229.68,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,hikari_pending_median,142.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,es_circuit_blocked_per_s,144.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r500,default,1,es_circuit_blocked_share_of_search,0.721,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,window_s,46.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,borrows_per_s,537.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,usage_ms_per_borrow,12.36,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,avg_connections_in_use,6.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,acquire_ms_per_borrow,268.44,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,hikari_pending_median,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,es_circuit_blocked_per_s,149.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r550,default,1,es_circuit_blocked_share_of_search,0.677,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,window_s,36.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,borrows_per_s,594.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,usage_ms_per_borrow,12.24,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,avg_connections_in_use,7.28,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,acquire_ms_per_borrow,262.59,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,es_circuit_blocked_per_s,167.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r600,default,1,es_circuit_blocked_share_of_search,0.699,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,achieved_rps,386.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,ok200_rps,386.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,p95_success_ms,3248.7477166999993,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,p99_success_ms,3869.9384111299996,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,p50_success_ms,1789.267355,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,p95_all_ms,3248.7477166999993,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,dropped_iterations,836,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r400,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,achieved_rps,444.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,ok200_rps,444.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,p95_success_ms,1632.5401053999997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,p99_success_ms,2190.701441199998,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,p50_success_ms,267.955221,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,p95_all_ms,1632.5401053999997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,dropped_iterations,344,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r450,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,achieved_rps,436.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,ok200_rps,436.1,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,p95_success_ms,5372.333402,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,p99_success_ms,5964.096659349999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,p50_success_ms,3802.1920179999997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,p95_all_ms,5372.333402,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,dropped_iterations,3835,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r500,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,achieved_rps,470.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,ok200_rps,470.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,p95_success_ms,5627.244167,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,p99_success_ms,6298.214466319999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,p50_success_ms,3770.743584,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,p95_all_ms,5627.244167,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,dropped_iterations,4775,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r550,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,achieved_rps,501.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,ok200_rps,501.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,p95_success_ms,5915.51586855,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,p99_success_ms,6384.895046289999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,p50_success_ms,4677.397347,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,p95_all_ms,5915.51586855,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,dropped_iterations,5923,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_r600,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_sf_off,arrival_summary,default,2,max_rps_slo,0,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_start400_invalid_sf_off,arrival_summary,default,2,first_failing_rps,400,
+exp4c_start400_invalid_sf_off,stage_r400,default,2,window_s,44.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,borrows_per_s,339.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,usage_ms_per_borrow,16.28,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,avg_connections_in_use,5.52,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,acquire_ms_per_borrow,328.31,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,hikari_active_median,9.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,hikari_pending_median,153.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,es_circuit_blocked_per_s,76.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r400,default,2,es_circuit_blocked_share_of_search,0.479,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,window_s,46.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,borrows_per_s,570.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,usage_ms_per_borrow,14.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,avg_connections_in_use,8.44,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,acquire_ms_per_borrow,194.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,hikari_pending_median,53.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,hikari_pending_max,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,es_circuit_blocked_per_s,147.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_sf_off,stage_r450,default,2,es_circuit_blocked_share_of_search,0.821,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,arrival_r400,default,2,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,achieved_rps,272.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,ok200_rps,272.3,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,p95_success_ms,10483.3615051,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,p99_success_ms,11468.708323609999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,p50_success_ms,8531.651308,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,p95_all_ms,10483.3615051,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,dropped_iterations,7663,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r400,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,achieved_rps,389.2,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,ok200_rps,389.2,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,p95_success_ms,7734.108923499999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,p99_success_ms,8100.80451432,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,p50_success_ms,4790.2957715,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,p95_all_ms,7734.108923499999,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,dropped_iterations,3651,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r450,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,achieved_rps,467.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,ok200_rps,467.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,p95_success_ms,4397.816049,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,p99_success_ms,5152.545857,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,p50_success_ms,2278.006464,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,p95_all_ms,4397.816049,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,dropped_iterations,1979,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r500,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,achieved_rps,519.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,ok200_rps,519.7,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,p95_success_ms,3983.6315121999974,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,p99_success_ms,4412.358410530001,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,p50_success_ms,2997.6895045,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,p95_all_ms,3983.6315121999974,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,dropped_iterations,1818,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r550,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,achieved_rps,486.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,ok200_rps,486.4,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,p95_success_ms,6414.307115099997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,p99_success_ms,6709.0084455,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,p50_success_ms,4610.082844,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,p95_all_ms,6414.307115099997,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,dropped_iterations,6813,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_r600,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4c_start400_invalid_m_on,arrival_summary,default,2,max_rps_slo,0,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4c_start400_invalid_m_on,arrival_summary,default,2,first_failing_rps,400,
+exp4c_start400_invalid_m_on,stage_r500,default,2,window_s,6.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,borrows_per_s,551.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,usage_ms_per_borrow,26.14,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,avg_connections_in_use,14.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,acquire_ms_per_borrow,605.07,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4c_start400_invalid_m_on,stage_r500,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,arrival_r300,default,1,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,achieved_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,ok200_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,p95_success_ms,32.032102599999966,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,p99_success_ms,74.6085260899997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,p50_success_ms,10.8256515,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,p95_all_ms,32.032102599999966,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,achieved_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,ok200_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,p95_success_ms,20.685252,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,p99_success_ms,39.855702,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,p50_success_ms,9.715511,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,p95_all_ms,20.685252,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,p95_success_ms,22.535681,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,p99_success_ms,49.462762,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,p50_success_ms,9.732569,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,p95_all_ms,22.535681,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,achieved_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,ok200_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,p95_success_ms,21.892761,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,p99_success_ms,39.241635,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,p50_success_ms,9.667106,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,p95_all_ms,21.892761,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,achieved_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,ok200_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,p95_success_ms,57.297617,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,p99_success_ms,175.082139,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,p50_success_ms,10.985767,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,p95_all_ms,57.297617,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,achieved_rps,550.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,ok200_rps,550.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,p95_success_ms,55.8150012,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,p99_success_ms,148.0865754799997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,p50_success_ms,11.244071,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,p95_all_ms,55.8150012,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,achieved_rps,600.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,ok200_rps,600.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,p95_success_ms,124.661227,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,p99_success_ms,220.583093,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,p50_success_ms,20.193476,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,p95_all_ms,124.661227,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_summary,default,1,max_rps_slo,600,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_m_on,arrival_summary,default,1,first_failing_rps,,
+exp4d_sf_off,arrival_r300,default,1,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,achieved_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,ok200_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,p95_success_ms,192.62139974999982,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,p99_success_ms,552.1361074199992,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,p50_success_ms,11.8813855,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,p95_all_ms,192.62139974999982,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,achieved_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,ok200_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,p95_success_ms,77.70611149999995,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,p99_success_ms,122.01248106999961,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,p50_success_ms,11.5979935,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,p95_all_ms,77.70611149999995,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,p95_success_ms,139.897529,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,p99_success_ms,400.189568,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,p50_success_ms,14.265381,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,p95_all_ms,139.897529,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,achieved_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,ok200_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,p95_success_ms,341.61239359999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,p99_success_ms,785.1600867999999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,p50_success_ms,32.031445000000005,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,p95_all_ms,341.61239359999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,1,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,achieved_rps,481.4,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,ok200_rps,481.4,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,p95_success_ms,2440.745764,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,p99_success_ms,3015.8948855500007,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,p50_success_ms,836.736824,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,p95_all_ms,2440.745764,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,dropped_iterations,1116,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,achieved_rps,505.9,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,ok200_rps,505.9,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,p95_success_ms,4240.8279841999965,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,p99_success_ms,4676.339966679999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,p50_success_ms,2402.384076,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,p95_all_ms,4240.8279841999965,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,dropped_iterations,2644,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,achieved_rps,539.2,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,ok200_rps,539.2,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,p95_success_ms,4961.9892524,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,p99_success_ms,5366.5543484400005,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,p50_success_ms,2898.710677,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,p95_all_ms,4961.9892524,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,dropped_iterations,3647,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,1,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_summary,default,1,max_rps_slo,450,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_sf_off,arrival_summary,default,1,first_failing_rps,500,
+exp4d_sf_off,arrival_r300,default,2,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,achieved_rps,293.5,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,ok200_rps,293.5,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,p95_success_ms,2939.8389725999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,p99_success_ms,3771.0151923199996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,p50_success_ms,1280.26916,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,p95_all_ms,2939.8389725999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,dropped_iterations,391,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,achieved_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,ok200_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,p95_success_ms,546.4229683499999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,p99_success_ms,1057.1815693599992,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,p50_success_ms,65.8358075,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,p95_all_ms,546.4229683499999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,p95_success_ms,620.187949,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,p99_success_ms,1127.906551,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,p50_success_ms,94.585606,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,p95_all_ms,620.187949,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,achieved_rps,441.7,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,ok200_rps,441.7,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,p95_success_ms,2037.8756431499999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,p99_success_ms,2727.9929922299734,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,p50_success_ms,637.940601,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,p95_all_ms,2037.8756431499999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,dropped_iterations,501,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,achieved_rps,489.3,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,ok200_rps,489.3,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,p95_success_ms,2344.8435401999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,p99_success_ms,2870.8320807599994,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,p50_success_ms,1440.654215,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,p95_all_ms,2344.8435401999996,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,dropped_iterations,644,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,achieved_rps,510.6,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,ok200_rps,510.6,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,p95_success_ms,3972.3769953999995,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,p99_success_ms,4490.183609039999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,p50_success_ms,2502.630986,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,p95_all_ms,3972.3769953999995,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,dropped_iterations,2364,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,achieved_rps,533.3,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,ok200_rps,533.3,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,p95_success_ms,5116.37516285,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,p99_success_ms,5637.806532849999,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,p50_success_ms,3371.7234825,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,p95_all_ms,5116.37516285,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,dropped_iterations,4001,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_summary,default,2,max_rps_slo,400,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_sf_off,arrival_summary,default,2,first_failing_rps,300,
+exp4d_m_on,arrival_r300,default,2,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,achieved_rps,286.5,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,ok200_rps,286.5,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,p95_success_ms,3798.81200225,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,p99_success_ms,4645.3412137000005,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,p50_success_ms,2259.928254,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,p95_all_ms,3798.81200225,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,dropped_iterations,810,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,achieved_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,ok200_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,p95_success_ms,869.602288,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,p99_success_ms,1512.701338,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,p50_success_ms,329.537872,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,p95_all_ms,869.602288,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,p95_success_ms,513.363235,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,p99_success_ms,845.404376,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,p50_success_ms,95.111155,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,p95_all_ms,513.363235,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,achieved_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,ok200_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,p95_success_ms,971.22119,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,p99_success_ms,1411.931712,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,p50_success_ms,364.914455,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,p95_all_ms,971.22119,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,2,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,achieved_rps,495.1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,ok200_rps,495.1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,p95_success_ms,1745.4222701999997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,p99_success_ms,2133.993069899999,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,p50_success_ms,1015.311714,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,p95_all_ms,1745.4222701999997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,dropped_iterations,298,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,achieved_rps,501.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,ok200_rps,501.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,p95_success_ms,5923.714200999996,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,p99_success_ms,6566.03802292,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,p50_success_ms,2160.230393,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,p95_all_ms,5923.714200999996,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,dropped_iterations,2887,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,achieved_rps,530.6,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,ok200_rps,530.6,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,p95_success_ms,5351.9245889,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,p99_success_ms,5799.4221850799995,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,p50_success_ms,3653.145254,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,p95_all_ms,5351.9245889,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,dropped_iterations,4167,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,2,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_summary,default,2,max_rps_slo,450,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_m_on,arrival_summary,default,2,first_failing_rps,300,
+exp4d_m_on,arrival_r300,default,3,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,achieved_rps,290.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,ok200_rps,290.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,p95_success_ms,2997.6748090999995,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,p99_success_ms,3785.388044939998,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,p50_success_ms,1373.926058,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,p95_all_ms,2997.6748090999995,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,dropped_iterations,579,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r300,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,achieved_rps,326.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,ok200_rps,326.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,p95_success_ms,3808.9981088,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,p99_success_ms,4429.7114568000015,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,p50_success_ms,2045.134089,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,p95_all_ms,3808.9981088,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,dropped_iterations,1385,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r350,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,p95_success_ms,198.251718,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,p99_success_ms,331.581726,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,p50_success_ms,40.823488,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,p95_all_ms,198.251718,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r400,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,achieved_rps,444.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,ok200_rps,444.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,p95_success_ms,1569.832121399997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,p99_success_ms,1989.4435657600006,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,p50_success_ms,198.520096,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,p95_all_ms,1569.832121399997,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,dropped_iterations,332,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r450,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,achieved_rps,490.2,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,ok200_rps,490.2,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,p95_success_ms,1956.7254712499998,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,p99_success_ms,2410.5140272599992,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,p50_success_ms,201.66429449999998,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,p95_all_ms,1956.7254712499998,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,dropped_iterations,591,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r500,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,achieved_rps,544.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,ok200_rps,544.9,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,p95_success_ms,1438.7177780000002,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,p99_success_ms,1877.361351699999,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,p50_success_ms,483.636256,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,p95_all_ms,1438.7177780000002,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,dropped_iterations,310,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r550,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,achieved_rps,597.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,ok200_rps,597.4,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,p95_success_ms,1318.924249,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,p99_success_ms,1673.127687039998,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,p50_success_ms,564.592851,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,p95_all_ms,1318.924249,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,dropped_iterations,155,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_r600,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_m_on,arrival_summary,default,3,max_rps_slo,400,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_m_on,arrival_summary,default,3,first_failing_rps,300,
+exp4d_sf_off,arrival_r300,default,3,target_rps,300,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,achieved_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,ok200_rps,300.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,p95_success_ms,793.2776654499983,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,p99_success_ms,1517.6625249199988,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,p50_success_ms,25.744670499999998,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,p95_all_ms,793.2776654499983,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r300,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,target_rps,350,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,achieved_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,ok200_rps,350.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,p95_success_ms,270.92637419999994,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,p99_success_ms,578.9707333299916,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,p50_success_ms,11.863620000000001,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,p95_all_ms,270.92637419999994,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r350,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,target_rps,400,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,achieved_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,ok200_rps,400.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,p95_success_ms,345.689454,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,p99_success_ms,779.204736,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,p50_success_ms,18.339641,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,p95_all_ms,345.689454,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r400,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,target_rps,450,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,achieved_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,ok200_rps,450.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,p95_success_ms,323.83191,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,p99_success_ms,612.687845,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,p50_success_ms,20.228371,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,p95_all_ms,323.83191,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r450,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,target_rps,500,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,achieved_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,ok200_rps,500.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,p95_success_ms,595.955376,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,p99_success_ms,1126.711756,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,p50_success_ms,72.961146,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,p95_all_ms,595.955376,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,dropped_iterations,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r500,default,3,meets_slo,1,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,target_rps,550,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,achieved_rps,533.2,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,ok200_rps,533.2,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,p95_success_ms,2076.198992,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,p99_success_ms,2758.8627991999997,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,p50_success_ms,356.995408,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,p95_all_ms,2076.198992,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,dropped_iterations,1010,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r550,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,target_rps,600,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,achieved_rps,589.9,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,ok200_rps,589.9,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,p95_success_ms,1868.0578285000001,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,p99_success_ms,2326.0454380999986,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,p50_success_ms,1022.329883,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,p95_all_ms,1868.0578285000001,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,non200_rate,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,rate_404,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,rate_5xx,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,rate_conn_fail_other,0.0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,dropped_iterations,610,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_r600,default,3,meets_slo,0,stage_s=60;k6=container(3.5cpus)
+exp4d_sf_off,arrival_summary,default,3,max_rps_slo,500,"p95(success)<=1000ms, non200<=1%, drop<=1%"
+exp4d_sf_off,arrival_summary,default,3,first_failing_rps,550,
+exp4d_m_on,stage_r300,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,borrows_per_s,315.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,usage_ms_per_borrow,11.58,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,avg_connections_in_use,3.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,acquire_ms_per_borrow,0.27,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,hikari_active_median,4.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,hikari_pending_max,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,borrows_per_s,367.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,usage_ms_per_borrow,10.68,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,avg_connections_in_use,3.93,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,acquire_ms_per_borrow,0.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,hikari_active_median,4.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,hikari_pending_max,3.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,borrows_per_s,422.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,usage_ms_per_borrow,11.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,avg_connections_in_use,4.73,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,acquire_ms_per_borrow,1.48,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,hikari_active_median,8.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,hikari_pending_max,11.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,borrows_per_s,474.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,usage_ms_per_borrow,10.89,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,avg_connections_in_use,5.17,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,acquire_ms_per_borrow,1.21,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,hikari_active_median,9.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,hikari_pending_max,21.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,borrows_per_s,532.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,usage_ms_per_borrow,11.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,avg_connections_in_use,6.37,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,acquire_ms_per_borrow,8.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,hikari_active_median,9.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,hikari_pending_median,1.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,hikari_pending_max,34.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,borrows_per_s,576.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,usage_ms_per_borrow,11.76,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,avg_connections_in_use,6.78,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,acquire_ms_per_borrow,9.26,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,hikari_pending_median,3.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,hikari_pending_max,61.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,borrows_per_s,632.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,usage_ms_per_borrow,12.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,avg_connections_in_use,8.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,acquire_ms_per_borrow,28.12,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,hikari_pending_median,19.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,hikari_pending_max,53.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,window_s,42.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,borrows_per_s,188.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,usage_ms_per_borrow,25.86,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,avg_connections_in_use,4.87,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,acquire_ms_per_borrow,374.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,hikari_pending_median,83.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,borrows_per_s,311.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,usage_ms_per_borrow,27.79,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,avg_connections_in_use,8.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,acquire_ms_per_borrow,350.07,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,hikari_pending_median,89.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,borrows_per_s,403.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,usage_ms_per_borrow,21.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,avg_connections_in_use,8.57,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,acquire_ms_per_borrow,124.75,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,hikari_pending_median,36.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,hikari_pending_max,150.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,borrows_per_s,367.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,usage_ms_per_borrow,23.26,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,avg_connections_in_use,8.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,acquire_ms_per_borrow,423.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,hikari_pending_median,120.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,hikari_pending_max,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,window_s,49.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,borrows_per_s,358.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,usage_ms_per_borrow,21.86,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,avg_connections_in_use,7.84,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,acquire_ms_per_borrow,470.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,2,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,window_s,39.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,borrows_per_s,180.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,usage_ms_per_borrow,38.59,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,avg_connections_in_use,6.98,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,acquire_ms_per_borrow,716.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,hikari_pending_median,195.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r300,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,window_s,38.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,borrows_per_s,242.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,usage_ms_per_borrow,21.91,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,avg_connections_in_use,5.32,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,acquire_ms_per_borrow,264.82,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,hikari_pending_median,91.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r350,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,borrows_per_s,494.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,usage_ms_per_borrow,17.31,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,avg_connections_in_use,8.57,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,acquire_ms_per_borrow,38.22,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,hikari_pending_median,16.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,hikari_pending_max,31.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r400,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,borrows_per_s,397.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,usage_ms_per_borrow,23.77,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,avg_connections_in_use,9.46,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,acquire_ms_per_borrow,351.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,hikari_pending_median,61.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,hikari_pending_max,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r450,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,window_s,40.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,borrows_per_s,432.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,usage_ms_per_borrow,17.13,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,avg_connections_in_use,7.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,acquire_ms_per_borrow,123.63,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,hikari_pending_median,37.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r500,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,window_s,41.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,borrows_per_s,447.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,usage_ms_per_borrow,20.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,avg_connections_in_use,9.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,acquire_ms_per_borrow,414.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,hikari_pending_median,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r550,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,borrows_per_s,453.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,usage_ms_per_borrow,19.26,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,avg_connections_in_use,8.72,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,acquire_ms_per_borrow,427.36,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_m_on,stage_r600,default,3,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,borrows_per_s,436.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,usage_ms_per_borrow,7.97,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,avg_connections_in_use,3.48,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,acquire_ms_per_borrow,0.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,hikari_active_median,4.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,hikari_pending_max,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,es_circuit_blocked_per_s,75.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,1,es_circuit_blocked_share_of_search,0.629,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,window_s,44.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,borrows_per_s,515.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,usage_ms_per_borrow,6.66,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,avg_connections_in_use,3.43,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,acquire_ms_per_borrow,0.47,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,hikari_active_median,4.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,hikari_pending_max,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,borrows_per_s,541.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,usage_ms_per_borrow,9.85,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,avg_connections_in_use,5.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,acquire_ms_per_borrow,8.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,hikari_pending_median,3.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,hikari_pending_max,23.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,es_circuit_blocked_per_s,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,1,es_circuit_blocked_share_of_search,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,window_s,44.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,borrows_per_s,648.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,usage_ms_per_borrow,12.88,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,avg_connections_in_use,8.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,acquire_ms_per_borrow,59.37,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,hikari_pending_median,23.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,hikari_pending_max,35.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,es_circuit_blocked_per_s,59.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,1,es_circuit_blocked_share_of_search,0.332,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,window_s,50.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,borrows_per_s,534.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,usage_ms_per_borrow,15.35,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,avg_connections_in_use,8.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,acquire_ms_per_borrow,313.15,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,hikari_pending_median,195.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,es_circuit_blocked_per_s,138.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,1,es_circuit_blocked_share_of_search,0.691,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,window_s,46.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,borrows_per_s,420.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,usage_ms_per_borrow,15.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,avg_connections_in_use,6.31,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,acquire_ms_per_borrow,303.88,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,hikari_pending_median,120.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,hikari_pending_max,195.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,es_circuit_blocked_per_s,98.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,1,es_circuit_blocked_share_of_search,0.447,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,window_s,47.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,borrows_per_s,323.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,usage_ms_per_borrow,23.14,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,avg_connections_in_use,7.49,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,acquire_ms_per_borrow,462.63,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,hikari_active_median,9.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,hikari_pending_median,183.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,hikari_pending_max,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,es_circuit_blocked_per_s,89.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,2,es_circuit_blocked_share_of_search,0.744,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,borrows_per_s,573.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,usage_ms_per_borrow,14.73,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,avg_connections_in_use,8.44,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,acquire_ms_per_borrow,53.06,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,hikari_pending_median,20.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,hikari_pending_max,48.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,es_circuit_blocked_per_s,125.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,2,es_circuit_blocked_share_of_search,0.895,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,borrows_per_s,562.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,usage_ms_per_borrow,14.86,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,avg_connections_in_use,8.37,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,acquire_ms_per_borrow,85.43,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,hikari_pending_median,25.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,hikari_pending_max,67.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,es_circuit_blocked_per_s,133.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,2,es_circuit_blocked_share_of_search,0.833,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,window_s,42.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,borrows_per_s,466.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,usage_ms_per_borrow,14.92,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,avg_connections_in_use,6.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,acquire_ms_per_borrow,265.82,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,hikari_pending_median,160.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,es_circuit_blocked_per_s,130.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,2,es_circuit_blocked_share_of_search,0.727,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,window_s,29.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,borrows_per_s,586.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,usage_ms_per_borrow,14.25,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,avg_connections_in_use,8.36,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,acquire_ms_per_borrow,294.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,hikari_pending_median,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,es_circuit_blocked_per_s,160.9,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,2,es_circuit_blocked_share_of_search,0.804,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,borrows_per_s,443.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,usage_ms_per_borrow,14.37,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,avg_connections_in_use,6.37,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,predicted_connections_from_solo_usage,2.54,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,acquire_ms_per_borrow,27.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,hikari_active_median,8.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,hikari_pending_median,4.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,hikari_pending_max,58.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,es_circuit_blocked_per_s,106.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r300,default,3,es_circuit_blocked_share_of_search,0.884,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,borrows_per_s,504.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,usage_ms_per_borrow,9.41,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,avg_connections_in_use,4.75,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,predicted_connections_from_solo_usage,2.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,acquire_ms_per_borrow,1.93,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,hikari_active_median,7.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,hikari_pending_median,0.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,hikari_pending_max,8.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,es_circuit_blocked_per_s,122.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r350,default,3,es_circuit_blocked_share_of_search,0.873,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,borrows_per_s,573.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,usage_ms_per_borrow,12.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,avg_connections_in_use,7.34,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,predicted_connections_from_solo_usage,3.38,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,acquire_ms_per_borrow,40.94,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,hikari_active_median,9.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,hikari_pending_median,6.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,hikari_pending_max,43.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,es_circuit_blocked_per_s,133.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r400,default,3,es_circuit_blocked_share_of_search,0.831,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,borrows_per_s,638.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,usage_ms_per_borrow,12.31,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,avg_connections_in_use,7.86,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,predicted_connections_from_solo_usage,3.81,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,acquire_ms_per_borrow,45.03,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,hikari_pending_median,20.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,hikari_pending_max,42.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,es_circuit_blocked_per_s,151.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r450,default,3,es_circuit_blocked_share_of_search,0.839,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,window_s,45.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,borrows_per_s,702.2,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,usage_ms_per_borrow,11.96,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,avg_connections_in_use,8.4,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,predicted_connections_from_solo_usage,4.23,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,acquire_ms_per_borrow,84.58,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,hikari_pending_median,35.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,es_circuit_blocked_per_s,175.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r500,default,3,es_circuit_blocked_share_of_search,0.879,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,window_s,47.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,borrows_per_s,639.8,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,usage_ms_per_borrow,12.98,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,avg_connections_in_use,8.3,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,predicted_connections_from_solo_usage,4.65,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,acquire_ms_per_borrow,226.01,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,hikari_pending_median,150.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,hikari_pending_max,198.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,es_circuit_blocked_per_s,176.5,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r550,default,3,es_circuit_blocked_share_of_search,0.802,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,window_s,40.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,borrows_per_s,606.7,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,usage_ms_per_borrow,11.53,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,avg_connections_in_use,6.99,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,predicted_connections_from_solo_usage,5.08,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,acquire_ms_per_borrow,232.6,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,hikari_active_median,10.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,hikari_pending_median,196.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,hikari_pending_max,197.0,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,es_circuit_blocked_per_s,159.1,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5
+exp4d_sf_off,stage_r600,default,3,es_circuit_blocked_share_of_search,0.663,window=start+10s..start+62s;samples~14s apart;predict_ms_per_req=8.5

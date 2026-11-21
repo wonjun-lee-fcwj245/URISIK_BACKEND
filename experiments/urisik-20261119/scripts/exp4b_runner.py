@@ -5,12 +5,13 @@ import argparse, csv, json, os, subprocess, sys, time
 import exp4_runner as e4
 
 HERE = e4.HERE
-RAW = os.path.join(e4.ROOT, 'raw', 'exp4b')
+RAW = os.path.join(e4.ROOT, 'raw', os.environ.get('EXP4_RAW', 'exp4b'))   # 다른 실험이 exp4b 원본을 덮어쓰지 않게 폴더를 분리한다
+LABEL = os.environ.get('EXP4_LABEL', 'exp4b')
 CSV_PATH = e4.CSV_PATH
 SCRIPT_DIR = HERE.replace(chr(92), '/')
 RAW_DIR = RAW.replace(chr(92), '/')
 K6_CPUS = '3.5'
-RATES = '300,350,400,450,500,550,600'
+RATES = os.environ.get('EXP4_RATES', '300,350,400,450,500,550,600')
 STAGE_S = 60
 
 
@@ -43,6 +44,7 @@ def arrival(cfg, run_no):
     if os.path.exists(stop):
         os.remove(stop)
     col = subprocess.Popen([sys.executable, os.path.join(HERE, 'exp4_collect.py'), '--out', os.path.join(RAW, f'{label}.resources.csv'), '--stop-file', stop])
+    open(os.path.join(RAW, f'{label}.k6start.txt'), 'w').write(str(time.time()))   # 단계 시각 계산용
     r = k6_container({'RATES': RATES, 'STAGE_S': str(STAGE_S)}, label, f'{label}.json')
     open(os.path.join(RAW, f'{label}.log'), 'w', encoding='utf-8').write((r.stdout or '') + '\n' + (r.stderr or ''))
     open(stop, 'w').close()
@@ -70,10 +72,10 @@ def arrival(cfg, run_no):
             best = rate
         elif first_fail is None:
             first_fail = rate
-        rows += [['exp4b', f'arrival_{sc}', cfg, run_no, k, v, f'stage_s={STAGE_S};k6=container({K6_CPUS}cpus)'] for k, v in vals.items()]
+        rows += [[LABEL, f'arrival_{sc}', cfg, run_no, k, v, f'stage_s={STAGE_S};k6=container({K6_CPUS}cpus)'] for k, v in vals.items()]
         print(label, sc, json.dumps(vals))
-    rows.append(['exp4b', 'arrival_summary', cfg, run_no, 'max_rps_slo', best, 'p95(success)<=1000ms, non200<=1%, drop<=1%'])
-    rows.append(['exp4b', 'arrival_summary', cfg, run_no, 'first_failing_rps', first_fail if first_fail else '', ''])
+    rows.append([LABEL, 'arrival_summary', cfg, run_no, 'max_rps_slo', best, 'p95(success)<=1000ms, non200<=1%, drop<=1%'])
+    rows.append([LABEL, 'arrival_summary', cfg, run_no, 'first_failing_rps', first_fail if first_fail else '', ''])
     append(rows)
     print(label, 'max_rps_slo =', best, 'first_failing =', first_fail)
 
