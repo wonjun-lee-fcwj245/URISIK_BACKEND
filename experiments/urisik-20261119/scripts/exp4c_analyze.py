@@ -27,7 +27,8 @@ def fnum(x):
 
 def main():
     cfg, run_no = sys.argv[1], int(sys.argv[2])
-    rates = [int(x) for x in os.environ.get('EXP4_RATES', '500,550,600').split(',')]
+    # 기본 단계 목록은 실행기(exp4b_runner)의 기본값과 같게 둔다
+    rates = [int(x) for x in os.environ.get('EXP4_RATES', '300,350,400,450,500,550,600').split(',')]
     label = f'arrival_{cfg}_run{run_no}'
     t_k6 = float(open(os.path.join(RAW, label + '.k6start.txt')).read())
     rows = list(csv.DictReader(open(os.path.join(RAW, label + '.resources.csv'), encoding='utf-8')))
@@ -47,7 +48,9 @@ def main():
         d_use_s = fnum(b['hikari_usage_total_s']) - fnum(a['hikari_usage_total_s'])
         d_acq_n = fnum(b['hikari_acquire_count']) - fnum(a['hikari_acquire_count'])
         d_acq_s = fnum(b['hikari_acquire_total_s']) - fnum(a['hikari_acquire_total_s'])
-        npc = (fnum(b['es_cb_not_permitted']) or 0) - (fnum(a['es_cb_not_permitted']) or 0)
+        # ES 카운터는 두 끝점이 모두 숫자일 때만 계산한다(결측을 0으로 보면 증가분이 틀린다). 실제 값 0은 유효하다.
+        e_a, e_b = fnum(a.get('es_cb_not_permitted')), fnum(b.get('es_cb_not_permitted'))
+        npc = (e_b - e_a) if (e_a is not None and e_b is not None) else None
         act = [fnum(r['hikari_active']) for r in win if fnum(r['hikari_active']) is not None]
         pend = [fnum(r['hikari_pending']) for r in win if fnum(r['hikari_pending']) is not None]
         vals = {
@@ -60,8 +63,8 @@ def main():
             'hikari_active_median': st.median(act) if act else '',
             'hikari_pending_median': st.median(pend) if pend else '',
             'hikari_pending_max': max(pend) if pend else '',
-            'es_circuit_blocked_per_s': round(npc / dt, 1),
-            'es_circuit_blocked_share_of_search': round(npc / (rate * 0.4 * dt), 3),
+            'es_circuit_blocked_per_s': round(npc / dt, 1) if npc is not None else '',
+            'es_circuit_blocked_share_of_search': round(npc / (rate * 0.4 * dt), 3) if npc is not None else '',
         }
         print(cfg, run_no, f'r{rate}', vals, flush=True)
         out += [[LABEL, f'stage_r{rate}', cfg, run_no, k, v, f'window=start+10s..start+62s;samples~14s apart;predict_ms_per_req={PREDICT_MS_PER_REQ:.1f}'] for k, v in vals.items()]

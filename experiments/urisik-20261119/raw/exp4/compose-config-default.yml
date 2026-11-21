@@ -75,7 +75,6 @@ services:
       SPRING_ELASTICSEARCH_SOCKET_TIMEOUT: 5s
       SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_OPEN_IN_VIEW: "false"
       SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_BATCH_FETCH_SIZE: "100"
       SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE: "30"
       SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERTS: "true"
@@ -102,7 +101,7 @@ services:
       SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_KAKAO_SCOPE: profile_nickname
     extra_hosts:
       - openapi.foodsafetykorea.go.kr=host-gateway
-    image: urisik-app:sf
+    image: urisik-app:v4
     networks:
       default: null
     ports:

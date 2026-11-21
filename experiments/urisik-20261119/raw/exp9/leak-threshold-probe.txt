@@ -1,0 +1,4 @@
+누수 탐지 임계값 확인 (2026-11-21 14:54 UTC)
+설정: SPRING_DATASOURCE_HIKARI_LEAK_DETECTION_THRESHOLD=100 (scripts/exp9/leak.yml), 수정 전 이미지(m), 외부 API stub 300ms(도커 네트워크 안)
+검색 요청 3건(소요 1151/390/401ms, 트랜잭션 안에서 외부 호출 중 커넥션 보유 약 350ms) 직후 앱 로그에서 "Connection leak detection triggered" 4건 확인.
+=> 100ms(2초 미만) 임계값이 이 빌드에서 적용된다. (리뷰는 Hikari 5.1.0이 2초 미만을 끈다고 지적했으나 실측과 다름)

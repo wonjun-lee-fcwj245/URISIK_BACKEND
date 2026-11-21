@@ -95,9 +95,10 @@ def main():
         out[mode] = {'results': res, 'lazy_errors': lazy[:20], 'lazy_count': len(lazy)}
         print(mode, 'endpoints', len(res), 'lazy errors in log', len(lazy), flush=True)
     json.dump(out, open(os.path.join(RAW, f'smoke-{VARIANT}.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    diffs = [(p, out['on']['results'][p], out['off']['results'][p]) for p in out['on']['results']
-             if out['on']['results'][p][0] != out['off']['results'].get(p, [None])[0]]
-    print('status differs between OSIV on/off:', len(diffs))
+    # 상태 코드뿐 아니라 응답 길이도 비교한다(문서의 "상태 코드와 응답 길이가 같다"는 서술과 맞추기 위해)
+    diffs = [(p, out['on']['results'][p], out['off']['results'].get(p)) for p in out['on']['results']
+             if list(out['on']['results'][p]) != list(out['off']['results'].get(p, [None, None]))]
+    print('status or length differs between OSIV on/off:', len(diffs))
     for p, a, b in diffs:
         print('  ', p, a, '->', b)
     st = collections.Counter(v[0] for v in out['off']['results'].values())

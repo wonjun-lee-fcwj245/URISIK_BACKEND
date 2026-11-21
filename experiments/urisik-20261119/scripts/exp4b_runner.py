@@ -50,6 +50,9 @@ def arrival(cfg, run_no):
     open(stop, 'w').close()
     col.wait(timeout=60)
     os.remove(stop)
+    from scrub_tokens import scrub_file   # k6 요약에 setup()의 토큰이 평문으로 남으므로 바로 지운다
+    for _f in (f'{label}.json', 'warm.json'):
+        scrub_file(os.path.join(RAW, _f))
     m = json.load(open(os.path.join(RAW, f'{label}.json'), encoding='utf-8'))['metrics']
     rows, best, first_fail = [], 0, None
     for rate in map(int, RATES.split(',')):
