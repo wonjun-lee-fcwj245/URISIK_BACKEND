@@ -1,0 +1,244 @@
+{
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "status 200": {
+                    "path": "::status 200",
+                    "id": "fad9fa412b86fcb03bee97c80dcd61f1",
+                    "passes": 4891,
+                    "fails": 0,
+                    "name": "status 200"
+                }
+            }
+    },
+    "metrics": {
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 4991,
+            "value": 0
+        },
+        "http_req_duration": {
+            "avg": 4439.342673572423,
+            "med": 2426.8908,
+            "p(95)": 15463.3652,
+            "p(99)": 19111.00234000002,
+            "max": 24269.2237
+        },
+        "http_req_connecting": {
+            "avg": 0.14531771188138662,
+            "med": 0,
+            "p(95)": 1.11195,
+            "p(99)": 2.0476600000000005,
+            "max": 9.5747
+        },
+        "vus_max": {
+            "value": 600,
+            "min": 100,
+            "max": 600
+        },
+        "iterations": {
+            "count": 4891,
+            "rate": 59.26016493813493
+        },
+        "http_req_failed{name:target}": {
+            "passes": 0,
+            "fails": 4891,
+            "thresholds": {
+                "rate>=0": false
+            },
+            "value": 0
+        },
+        "http_req_sending": {
+            "avg": 0.06285992787016632,
+            "med": 0,
+            "p(95)": 0.53945,
+            "p(99)": 0.7604700000000082,
+            "max": 18.166
+        },
+        "vus": {
+            "value": 5,
+            "min": 0,
+            "max": 600
+        },
+        "data_sent": {
+            "count": 1883851,
+            "rate": 22825.050292142798
+        },
+        "http_req_blocked": {
+            "med": 0,
+            "p(95)": 1.2571500000000002,
+            "p(99)": 2.250120000000002,
+            "max": 20.5958,
+            "avg": 0.18261001803245866
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 4439.342673572423,
+            "med": 2426.8908,
+            "p(95)": 15463.3652,
+            "p(99)": 19111.00234000002,
+            "max": 24269.2237
+        },
+        "http_req_waiting": {
+            "avg": 4438.273594009218,
+            "med": 2425.7506,
+            "p(95)": 15462.82775,
+            "p(99)": 19111.00234000002,
+            "max": 24268.7173
+        },
+        "iteration_duration": {
+            "avg": 4530.532175710486,
+            "med": 2497.407,
+            "p(95)": 15479.36275,
+            "p(99)": 19163.130370000028,
+            "max": 24269.2237
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "med": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "max": 0
+        },
+        "http_req_receiving": {
+            "avg": 1.0062196353436212,
+            "med": 0.5064,
+            "p(95)": 4.48845,
+            "p(99)": 12.757940000000042,
+            "max": 95.8561
+        },
+        "http_req_duration{name:target}": {
+            "p(99)": 19162.60201000003,
+            "max": 24269.2237,
+            "avg": 4529.868094295638,
+            "med": 2497.407,
+            "p(95)": 15479.10025,
+            "thresholds": {
+                "max>=0": false
+            }
+        },
+        "data_received": {
+            "count": 15903069,
+            "rate": 192684.21426345134
+        },
+        "dropped_iterations": {
+            "count": 1110,
+            "rate": 13.448943586450577
+        },
+        "http_reqs": {
+            "count": 4991,
+            "rate": 60.4717814774548
+        },
+        "checks": {
+            "passes": 4891,
+            "fails": 0,
+            "value": 1
+        }
+    },
+    "setup_data": {
+        "tokens": [
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>",
+            "<redacted-jwt>"
+        ]
+    }
+}

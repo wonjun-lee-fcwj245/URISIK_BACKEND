@@ -35,11 +35,13 @@ def run_cond(label, api, rate, run_no, kw_mode='unique'):
     u0, u1 = metric('hikaricp.connections.usage'), None
     a0 = metric('hikaricp.connections.acquire')
     jout = os.path.join(RAW, f'{label}_run{run_no}.json')
-    env = dict(os.environ, API=api, RATE=str(rate), DURATION_S='60', USERS='100', KW_MODE=kw_mode)
+    env = dict(os.environ, API=api, RATE=str(rate), DURATION_S='60', USERS='100', KW_MODE=kw_mode, SALT=str(time.time_ns()))
     r = sh(['k6', 'run', '--no-color', '-q', '--summary-export', jout, os.path.join(HERE, 'exp5-connhold.js')], env=env)
     open(os.path.join(RAW, f'{label}_run{run_no}.log'), 'w', encoding='utf-8').write(r.stdout + r.stderr)
     time.sleep(2)
     u1, a1 = metric('hikaricp.connections.usage'), metric('hikaricp.connections.acquire')
+    from scrub_tokens import scrub_file   # k6 요약에 setup()의 토큰이 평문으로 남으므로 바로 지운다
+    scrub_file(jout)
     m = json.load(open(jout, encoding='utf-8'))['metrics']
     reqs = m['http_reqs{name:target}']['count'] if 'http_reqs{name:target}' in m else None
     d = m['http_req_duration{name:target}']

@@ -1,0 +1,41 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:target}
+    ✓ 'max>=0' max=24.26s
+
+    http_req_failed{name:target}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 4891    59.260165/s
+    checks_succeeded...: 100.00% 4891 out of 4891
+    checks_failed......: 0.00%   0 out of 4891
+
+    ✓ status 200
+
+    HTTP
+    http_req_duration..............: avg=4.43s med=2.42s p(95)=15.46s p(99)=19.11s max=24.26s
+      { expected_response:true }...: avg=4.43s med=2.42s p(95)=15.46s p(99)=19.11s max=24.26s
+      { name:target }..............: avg=4.52s med=2.49s p(95)=15.47s p(99)=19.16s max=24.26s
+    http_req_failed................: 0.00%  0 out of 4991
+      { name:target }..............: 0.00%  0 out of 4891
+    http_reqs......................: 4991   60.471781/s
+
+    EXECUTION
+    dropped_iterations.............: 1110   13.448944/s
+    iteration_duration.............: avg=4.53s med=2.49s p(95)=15.47s p(99)=19.16s max=24.26s
+    iterations.....................: 4891   59.260165/s
+    vus............................: 5      min=0         max=600
+    vus_max........................: 600    min=100       max=600
+
+    NETWORK
+    data_received..................: 16 MB  193 kB/s
+    data_sent......................: 1.9 MB 23 kB/s
+
+
+
+time="2026-11-21T13:45:59+09:00" level=warning msg="Insufficient VUs, reached 600 active VUs and cannot initialize more" executor=constant-arrival-rate scenario=s

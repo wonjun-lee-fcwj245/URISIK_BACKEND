@@ -35,4 +35,6 @@ if __name__ == '__main__':
     p.add_argument('--delay-ms', type=float, default=20)
     a = p.parse_args()
     DELAY = a.delay_ms / 1000
+    # 기본 연결 대기열(request_queue_size=5)이면 100 RPS에서 연결이 몰릴 때 Windows가 연결을 3초 뒤 재시도해 측정이 왜곡된다
+    ThreadingHTTPServer.request_queue_size = 1024
     ThreadingHTTPServer(('0.0.0.0', a.port), H).serve_forever()

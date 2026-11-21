@@ -1,0 +1,31 @@
+{
+ "events": 2256,
+ "top_frame": [
+  [
+   "com.urisik.backend.domain.recipe.service.RecipeSearchService$$SpringCGLIB$$0.search",
+   2223
+  ],
+  [
+   "(앱 프레임 없음)",
+   32
+  ],
+  [
+   "com.urisik.backend.global.auth.controller.AuthController.testToken",
+   1
+  ]
+ ],
+ "top_chain": [
+  [
+   "RecipeSearchService$$SpringCGLIB$$0.search > RecipeSearchController.search > JwtAuthFilter.doFilterInternal",
+   2223
+  ],
+  [
+   "",
+   32
+  ],
+  [
+   "AuthController.testToken > JwtAuthFilter.doFilterInternal",
+   1
+  ]
+ ]
+}

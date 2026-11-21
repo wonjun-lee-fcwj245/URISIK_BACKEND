@@ -1,0 +1,5 @@
+# Hikari 누수 탐지: 100ms 넘게 빌린 커넥션의 획득 위치를 WARN 로그로 남긴다(앱 코드 변경 없음, 진단 전용)
+services:
+  app:
+    environment:
+      - SPRING_DATASOURCE_HIKARI_LEAK_DETECTION_THRESHOLD=100

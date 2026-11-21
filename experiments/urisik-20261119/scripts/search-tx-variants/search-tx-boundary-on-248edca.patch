@@ -1,0 +1,281 @@
+commit b33a7cb3765bbdc028dfc252c81a00b4420d8346
+Author: wonjun-lee-fcwj245 <fcwj24@gail.com>
+Date:   Sat Nov 21 13:21:23 2026 +0900
+
+    [Perf]#24 검색에서 ES·외부 API 호출을 트랜잭션 밖으로 이동 (실험 결과 효과 미확인, 푸시하지 않음)
+    
+    search() 전체의 @Transactional(readOnly)을 없애고 DB 조회 구간만 TransactionTemplate으로 감쌌다.
+    RecipeSearchServiceTxBoundaryTest 2개 통과. 다만 전/후 측정(exp8, 2회)에서 커넥션 점유 시간이
+    달라지지 않아 PR로 올리지 않고 참고용으로만 보관한다.
+    
+    Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+
+diff --git a/src/main/java/com/urisik/backend/domain/recipe/service/RecipeSearchService.java b/src/main/java/com/urisik/backend/domain/recipe/service/RecipeSearchService.java
+index f0b3394..183d3c4 100644
+--- a/src/main/java/com/urisik/backend/domain/recipe/service/RecipeSearchService.java
++++ b/src/main/java/com/urisik/backend/domain/recipe/service/RecipeSearchService.java
+@@ -23,13 +23,15 @@ import lombok.extern.slf4j.Slf4j;
+ import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.data.domain.PageRequest;
+ import org.springframework.stereotype.Service;
+-import org.springframework.transaction.annotation.Transactional;
++import org.springframework.transaction.PlatformTransactionManager;
++import org.springframework.transaction.support.TransactionTemplate;
+ 
+ import com.urisik.backend.domain.allergy.enums.Allergen;
+ import com.urisik.backend.global.util.QwertyToKoreanConverter;
+ 
+ import java.util.*;
+ import java.util.regex.Pattern;
++import java.util.function.Supplier;
+ import java.util.stream.Collectors;
+ 
+ @Service
+@@ -46,6 +48,7 @@ public class RecipeSearchService {
+     private final SearchLogService searchLogService;
+     private final RecipeElasticSearchService recipeElasticSearchService;
+     private final MeterRegistry meterRegistry;
++    private final PlatformTransactionManager transactionManager;
+ 
+     @Value("${search.engine:elasticsearch}")
+     private String searchEngine;
+@@ -59,7 +62,12 @@ public class RecipeSearchService {
+     /** FULLTEXT BOOLEAN MODE 특수문자 패턴 (#5) */
+     private static final Pattern BOOLEAN_OPERATORS = Pattern.compile("[+\\-*()~<>\"@]");
+ 
+-    @Transactional(readOnly = true)
++    /**
++     * 검색. 메서드 전체를 하나의 트랜잭션으로 묶지 않는다.
++     * 트랜잭션을 길게 잡으면 첫 SQL부터 커밋까지 DB 커넥션을 쥔 채 ES·외부 API 응답을 기다려
++     * 호출이 몰릴 때 커넥션 풀이 포화한다(#24). DB를 읽는 구간(프로필·알레르기, 엔티티 조회와 변환)만
++     * 짧은 읽기 트랜잭션으로 감싸고, ES 조회와 외부 API 호출은 트랜잭션 밖에서 실행한다.
++     */
+     public RecipeSearchResponseDTO search(Long loginUserId, String keyword, int page, int size) {
+ 
+         String originalKeyword = keyword;
+@@ -73,51 +81,28 @@ public class RecipeSearchService {
+ 
+         searchLogService.logSearch(loginUserId, keyword);
+ 
+-        FamilyMemberProfile profile =
+-                familyMemberProfileRepository.findByMember_Id(loginUserId)
+-                        .orElseThrow(() ->
+-                                new GeneralException(GeneralErrorCode.NOT_FOUND));
++        List<Allergen> familyAllergens = inReadOnlyTx(() -> {
++            FamilyMemberProfile profile =
++                    familyMemberProfileRepository.findByMember_Id(loginUserId)
++                            .orElseThrow(() ->
++                                    new GeneralException(GeneralErrorCode.NOT_FOUND));
+ 
+-        Long familyRoomId = profile.getFamilyRoom().getId();
++            Long familyRoomId = profile.getFamilyRoom().getId();
++            return allergyRiskService.getFamilyAllergens(familyRoomId);
++        });
+ 
+         PageRequest pageable = PageRequest.of(page, size);
+-        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
+-
+-        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
+-
+-        // search.engine 설정에 따라 분기
+-        if ("mysql".equals(searchEngine)) {
+-            items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+-        } else if ("fulltext".equals(searchEngine)) {
+-            items.addAll(searchFromFulltext(keyword, pageable, familyAllergens));
+-        } else {
+-            // elasticsearch (기본) → ES 시도 + MySQL fallback
+-            try {
+-                items.addAll(searchFromElasticsearch(keyword, pageable, familyAllergens));
+-            } catch (Exception e) {
+-                log.warn("ES 검색 실패, MySQL fallback 사용: {}", e.getMessage());
+-                items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+-            }
+-        }
++        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>(
++                searchInternal(keyword, pageable, familyAllergens));
+ 
+         // (#6) 영문 변환 후 결과가 0건이면 원본 키워드로 재검색
+         if (items.isEmpty() && !originalKeyword.equals(keyword)) {
+             log.info("변환된 키워드 '{}' 결과 0건, 원본 '{}' 로 재검색", keyword, originalKeyword);
+             keyword = originalKeyword;
+-            if ("mysql".equals(searchEngine)) {
+-                items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+-            } else if ("fulltext".equals(searchEngine)) {
+-                items.addAll(searchFromFulltext(keyword, pageable, familyAllergens));
+-            } else {
+-                try {
+-                    items.addAll(searchFromElasticsearch(keyword, pageable, familyAllergens));
+-                } catch (Exception e) {
+-                    items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
+-                }
+-            }
++            items.addAll(searchInternal(keyword, pageable, familyAllergens));
+         }
+ 
+-        // 외부 API 검색 (기존 유지)
++        // 외부 API 검색 (기존 유지). 트랜잭션 밖이라 응답을 기다리는 동안 DB 커넥션을 쥐지 않는다.
+         int startIdx = page * size + 1;
+         int endIdx = startIdx + size - 1;
+ 
+@@ -138,18 +123,51 @@ public class RecipeSearchService {
+         return new RecipeSearchResponseDTO(items);
+     }
+ 
++    /** search.engine 설정에 따라 내부(DB·ES) 검색을 수행한다. DB를 읽는 구간만 읽기 트랜잭션이다. */
++    private List<RecipeSearchResponseDTO.Item> searchInternal(
++            String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
++
++        if ("mysql".equals(searchEngine)) {
++            return inReadOnlyTx(() -> searchFromMySQL(keyword, pageable, familyAllergens));
++        }
++        if ("fulltext".equals(searchEngine)) {
++            return inReadOnlyTx(() -> searchFromFulltext(keyword, pageable, familyAllergens));
++        }
++        // elasticsearch (기본) → ES 시도 + MySQL fallback
++        try {
++            return searchFromElasticsearch(keyword, pageable, familyAllergens);
++        } catch (Exception e) {
++            log.warn("ES 검색 실패, MySQL fallback 사용: {}", e.getMessage());
++            return inReadOnlyTx(() -> searchFromMySQL(keyword, pageable, familyAllergens));
++        }
++    }
++
++    private <T> T inReadOnlyTx(Supplier<T> work) {
++        TransactionTemplate template = new TransactionTemplate(transactionManager);
++        template.setReadOnly(true);
++        return template.execute(status -> work.get());
++    }
++
+     /**
+      * Elasticsearch 기반 검색
+      */
+     private List<RecipeSearchResponseDTO.Item> searchFromElasticsearch(
+             String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
+ 
++        // ES 조회는 네트워크 호출이라 트랜잭션 밖에서 실행한다
+         List<RecipeDocument> esResults = recipeElasticSearchService.search(keyword, pageable);
+ 
+         if (esResults.isEmpty()) {
+             return List.of();
+         }
+ 
++        return inReadOnlyTx(() -> itemsFromDocuments(esResults, familyAllergens));
++    }
++
++    /** ES 결과 문서를 엔티티로 조회해 응답 항목으로 변환한다(DB 조회 구간, 읽기 트랜잭션 안에서 호출). */
++    private List<RecipeSearchResponseDTO.Item> itemsFromDocuments(
++            List<RecipeDocument> esResults, List<Allergen> familyAllergens) {
++
+         List<Long> recipeIds = new ArrayList<>();
+         List<Long> transformedIds = new ArrayList<>();
+ 
+diff --git a/src/test/java/com/urisik/backend/domain/recipe/service/RecipeSearchServiceTxBoundaryTest.java b/src/test/java/com/urisik/backend/domain/recipe/service/RecipeSearchServiceTxBoundaryTest.java
+new file mode 100644
+index 0000000..e7da5fb
+--- /dev/null
++++ b/src/test/java/com/urisik/backend/domain/recipe/service/RecipeSearchServiceTxBoundaryTest.java
+@@ -0,0 +1,104 @@
++package com.urisik.backend.domain.recipe.service;
++
++import com.urisik.backend.domain.allergy.enums.Allergen;
++import com.urisik.backend.domain.member.entity.FamilyMemberProfile;
++import com.urisik.backend.domain.member.repo.FamilyMemberProfileRepository;
++import com.urisik.backend.domain.recipe.document.RecipeDocument;
++import com.urisik.backend.domain.recipe.infrastructure.external.foodsafety.FoodSafetyRecipeClient;
++import com.urisik.backend.domain.recipe.repository.RecipeExternalMetadataRepository;
++import com.urisik.backend.domain.recipe.repository.RecipeRepository;
++import com.urisik.backend.domain.recipe.repository.TransformedRecipeRepository;
++import com.urisik.backend.domain.search.service.SearchLogService;
++import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
++import org.junit.jupiter.api.DisplayName;
++import org.junit.jupiter.api.Test;
++import org.springframework.test.util.ReflectionTestUtils;
++import org.springframework.transaction.TransactionDefinition;
++import org.springframework.transaction.support.AbstractPlatformTransactionManager;
++import org.springframework.transaction.support.DefaultTransactionStatus;
++import org.springframework.transaction.support.TransactionSynchronizationManager;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Optional;
++
++import static org.assertj.core.api.Assertions.assertThat;
++import static org.mockito.Answers.RETURNS_DEEP_STUBS;
++import static org.mockito.ArgumentMatchers.any;
++import static org.mockito.ArgumentMatchers.anyInt;
++import static org.mockito.ArgumentMatchers.anyLong;
++import static org.mockito.ArgumentMatchers.anyString;
++import static org.mockito.Mockito.mock;
++import static org.mockito.Mockito.when;
++
++/** 검색에서 외부 API·ES 호출은 트랜잭션(DB 커넥션 점유) 밖에서, DB 조회는 트랜잭션 안에서 실행되는지 고정한다(#24). */
++class RecipeSearchServiceTxBoundaryTest {
++
++    /** 실제 DB 없이 "트랜잭션이 활성인 구간"만 만들어 주는 트랜잭션 매니저 */
++    private static class MarkerTransactionManager extends AbstractPlatformTransactionManager {
++        @Override protected Object doGetTransaction() { return new Object(); }
++        @Override protected void doBegin(Object transaction, TransactionDefinition definition) { }
++        @Override protected void doCommit(DefaultTransactionStatus status) { }
++        @Override protected void doRollback(DefaultTransactionStatus status) { }
++    }
++
++    private static boolean inTx() {
++        return TransactionSynchronizationManager.isActualTransactionActive();
++    }
++
++    private final RecipeRepository recipeRepository = mock(RecipeRepository.class);
++    private final TransformedRecipeRepository transformedRecipeRepository = mock(TransformedRecipeRepository.class);
++    private final FamilyMemberProfileRepository profileRepository = mock(FamilyMemberProfileRepository.class);
++    private final FoodSafetyRecipeClient externalClient = mock(FoodSafetyRecipeClient.class);
++    private final RecipeElasticSearchService elasticSearchService = mock(RecipeElasticSearchService.class);
++    private final AllergyRiskService allergyRiskService = mock(AllergyRiskService.class);
++
++    private final List<String> observed = new ArrayList<>();
++
++    private RecipeSearchService service(String engine) {
++        FamilyMemberProfile profile = mock(FamilyMemberProfile.class, RETURNS_DEEP_STUBS);
++        when(profile.getFamilyRoom().getId()).thenReturn(1L);
++        when(profileRepository.findByMember_Id(anyLong())).thenAnswer(inv -> {
++            observed.add("profile:" + inTx());
++            return Optional.of(profile);
++        });
++        when(allergyRiskService.getFamilyAllergens(anyLong())).thenReturn(List.<Allergen>of());
++        when(recipeRepository.findByTitleContainingIgnoreCase(anyString(), any())).thenAnswer(inv -> {
++            observed.add("recipeDb:" + inTx());
++            return List.of();
++        });
++        when(transformedRecipeRepository.findByTitleLike(anyString(), any())).thenReturn(List.of());
++        when(externalClient.searchByName(anyString(), anyInt(), anyInt())).thenAnswer(inv -> {
++            observed.add("external:" + inTx());
++            return List.of();
++        });
++        when(elasticSearchService.search(anyString(), any())).thenAnswer(inv -> {
++            observed.add("es:" + inTx());
++            return List.<RecipeDocument>of();
++        });
++
++        RecipeSearchService service = new RecipeSearchService(
++                recipeRepository, transformedRecipeRepository, mock(RecipeExternalMetadataRepository.class),
++                externalClient, allergyRiskService, profileRepository, mock(SearchLogService.class),
++                elasticSearchService, new SimpleMeterRegistry(), new MarkerTransactionManager());
++        ReflectionTestUtils.setField(service, "searchEngine", engine);
++        return service;
++    }
++
++    @Test
++    @DisplayName("MySQL 검색: DB 조회는 트랜잭션 안, 외부 API 호출은 트랜잭션 밖")
++    void externalCallIsOutsideTransaction() {
++        service("mysql").search(1L, "김치찌개", 0, 10);
++
++        assertThat(observed).contains("profile:true", "recipeDb:true", "external:false");
++    }
++
++    @Test
++    @DisplayName("ES 검색: ES 조회와 외부 API 호출 모두 트랜잭션 밖")
++    void esAndExternalCallsAreOutsideTransaction() {
++        service("elasticsearch").search(1L, "김치찌개", 0, 10);
++
++        assertThat(observed).contains("profile:true", "es:false", "external:false");
++        assertThat(observed).doesNotContain("es:true", "external:true");
++    }
++}

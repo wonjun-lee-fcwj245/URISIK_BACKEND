@@ -1,0 +1,7 @@
+stub container: stub up on 80 delay 20ms
+net-stub sf rate 10 requests 601 median 68 p95 93 slow(>1.5s) 0
+  retry successful_without_retry 601.0
+  retry successful_with_retry 0.0
+  retry failed_with_retry 0.0
+  retry failed_without_retry 0.0
+NETSTUB_DONE

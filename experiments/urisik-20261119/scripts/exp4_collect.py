@@ -32,6 +32,17 @@ def act(name, tag=None):
         return ''
 
 
+def act_all(name, tag=None):
+    """타이머/카운터의 통계(COUNT, TOTAL_TIME 등)를 모두 읽는다."""
+    url = ACT + name + (f'?tag={tag}' if tag else '')
+    try:
+        with urllib.request.urlopen(url, timeout=3) as r:
+            d = json.load(r)
+        return {m['statistic']: m['value'] for m in d['measurements']}
+    except Exception:
+        return {}
+
+
 def mysql_status():
     r = subprocess.run(['docker', 'exec', '-i', 'urisik-mysql', 'sh', '-c',
                         'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -N -B'],
@@ -80,7 +91,8 @@ def main():
     for c in CONTAINERS:
         cols += [f'{c}_cpu', f'{c}_mem']
     cols += ['hikari_active', 'hikari_pending', 'tomcat_busy', 'tomcat_current', 'heap_used_mb', 'app_process_cpu',
-             'mysql_threads_connected', 'mysql_threads_running', 'k6_cpu_pct', 'host_cpu_pct']
+             'mysql_threads_connected', 'mysql_threads_running', 'k6_cpu_pct', 'host_cpu_pct',
+             'hikari_usage_count', 'hikari_usage_total_s', 'hikari_acquire_count', 'hikari_acquire_total_s', 'es_cb_not_permitted']
     procs = {}
     psutil.cpu_percent(None)
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
@@ -98,6 +110,9 @@ def main():
                     round(heap / 1048576, 1) if heap != '' else '', act('process.cpu.usage')]
             row += list(mysql_status())
             row += [k6_cpu(procs), psutil.cpu_percent(None)]
+            us, aq = act_all('hikaricp.connections.usage'), act_all('hikaricp.connections.acquire')
+            npc = act_all('resilience4j.circuitbreaker.not.permitted.calls', 'name:elasticsearchapi')
+            row += [us.get('COUNT', ''), us.get('TOTAL_TIME', ''), aq.get('COUNT', ''), aq.get('TOTAL_TIME', ''), npc.get('COUNT', '')]
             w.writerow(row)
             f.flush()
             time.sleep(max(0, args.interval - (time.time() - t0)))

@@ -14,3 +14,10 @@ raw/exp4/*.stop
 raw/exp1/id-state.json
 # 임시 파일 (이전 실행에서 남은 보조 로그)
 raw/*.done
+
+# 진단 원본 로그(수십 MB, 재생성 가능): 요약 JSON만 커밋한다
+raw/exp9/leak-app.log
+raw/exp9/threaddumps-*.log
+
+__pycache__/
+*.pyc

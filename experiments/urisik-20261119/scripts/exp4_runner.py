@@ -34,6 +34,8 @@ def compose_files(cfg, nocpu=False):
         files += ['-f', os.path.join(HERE, 'exp4', 'cpus.yml')]
     if os.environ.get('EXP4_STUB'):   # 외부 API(식품안전나라)를 호스트의 stub으로 연결해 인터넷 변동을 제거
         files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
+    if os.environ.get('EXP4_OSIV_OFF'):   # 진단용: 환경 변수만으로 OSIV를 끈다(앱 코드 변경 없음)
+        files += ['-f', os.path.join(HERE, 'exp10', 'osiv-off.yml')]
     return files + ['-f', os.path.join(HERE, 'exp4', f'cfg-{cfg}.yml')]
 
 
@@ -60,7 +62,10 @@ def switch(cfg, nocpu=False):
     cfg_dump = _re.sub(r'^(\s*[A-Z0-9_]*(?:PASSWORD|SECRETKEY|SECRET|JWT_KEY|API_KEY|ACCESS_KEY|SECRET_KEY)[A-Z0-9_]*\s*:\s*).*$',
                        lambda m: m.group(1) + '"<masked>"', cfg_dump, flags=_re.M)
     os.makedirs(RAW, exist_ok=True)
-    open(os.path.join(RAW, f'compose-config-{cfg}{"-nocpu" if nocpu else ""}.yml'), 'w', encoding='utf-8').write(cfg_dump)
+    # EXP4_RAW가 지정되면(실험 4c/4d) 그 폴더에 저장해 원래 실험 4의 구성 기록을 덮어쓰지 않는다
+    cfg_dir = os.path.join(ROOT, 'raw', os.environ['EXP4_RAW']) if os.environ.get('EXP4_RAW') else RAW
+    os.makedirs(cfg_dir, exist_ok=True)
+    open(os.path.join(cfg_dir, f'compose-config-{cfg}{"-nocpu" if nocpu else ""}.yml'), 'w', encoding='utf-8').write(cfg_dump)
     # 매 회차 DB·앱을 새로 띄워 커넥션·캐시 상태를 같게 맞춘다 (Redis는 FLUSHALL)
     r = sh(['docker', 'compose'] + files + ['up', '-d', '--no-build', '--pull', 'never', '--force-recreate',
                                             'mysql', 'redis', 'elasticsearch', 'kafka', 'zookeeper', 'app'],
