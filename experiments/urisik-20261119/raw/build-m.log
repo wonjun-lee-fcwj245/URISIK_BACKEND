@@ -1,0 +1,99 @@
+sha256:03251da3670991a89208748741d18854954d5cea56e0a066c02f12debe808678
+nal] load build definition from Dockerfile
+#1 transferring dockerfile: 498B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:17-jre
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/gradle:8.5-jdk17
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:17-jre
+#2 DONE 1.2s
+
+#4 [builder 1/7] FROM docker.io/library/gradle:8.5-jdk17
+#4 DONE 0.0s
+
+#5 [stage-1 1/2] FROM docker.io/library/eclipse-temurin:17-jre@sha256:541b08fc7f494edf14e436ff6bfb55767e4a115c87bfc547b8c5de957b58737f
+#5 resolve docker.io/library/eclipse-temurin:17-jre@sha256:541b08fc7f494edf14e436ff6bfb55767e4a115c87bfc547b8c5de957b58737f 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 88B 0.0s done
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 transferring context: 89.52MB 5.0s
+#7 transferring context: 192.28MB 10.0s
+#7 transferring context: 291.53MB 15.1s
+#7 transferring context: 396.41MB 20.2s
+#7 transferring context: 495.16MB 25.4s
+#7 transferring context: 594.17MB 30.6s
+#7 transferring context: 694.49MB 35.7s
+#7 transferring context: 770.72MB 40.7s
+#7 transferring context: 846.22MB 45.8s
+#7 transferring context: 887.35MB 50.8s done
+#7 DONE 50.9s
+
+#8 [builder 5/7] RUN gradle --no-daemon dependencies
+#8 CACHED
+
+#9 [builder 2/7] WORKDIR /workspace
+#9 CACHED
+
+#10 [builder 3/7] COPY build.gradle settings.gradle ./
+#10 CACHED
+
+#11 [builder 4/7] COPY gradle gradle
+#11 CACHED
+
+#12 [builder 5/7] RUN gradle --no-daemon dependencies
+#12 CACHED
+
+#13 [builder 6/7] COPY . .
+#13 DONE 11.6s
+
+#14 [builder 7/7] RUN gradle --no-daemon clean bootJar
+#14 6.054 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.5/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+#14 9.251 Daemon will be stopped at the end of the build 
+#14 25.85 > Task :clean UP-TO-DATE
+#14 55.85 > Task :compileJava
+#14 58.65 /workspace/src/main/java/com/urisik/backend/domain/notification/entity/Notification.java:27: warning: @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+#14 58.65     private boolean isRead = false;
+#14 58.65                     ^
+#14 66.25 Note: Some input files use unchecked or unsafe operations.
+#14 66.25 Note: Recompile with -Xlint:unchecked for details.
+#14 66.25 1 warning
+#14 ...
+
+#5 [stage-1 1/2] FROM docker.io/library/eclipse-temurin:17-jre@sha256:541b08fc7f494edf14e436ff6bfb55767e4a115c87bfc547b8c5de957b58737f
+#5 CACHED
+
+#14 [builder 7/7] RUN gradle --no-daemon clean bootJar
+#14 79.34 
+#14 79.34 > Task :processResources
+#14 79.35 > Task :classes
+#14 79.44 > Task :resolveMainClassName
+#14 86.94 > Task :bootJar
+#14 87.04 
+#14 87.04 BUILD SUCCESSFUL in 1m 23s
+#14 87.04 5 actionable tasks: 4 executed, 1 up-to-date
+#14 DONE 87.5s
+
+#15 [stage-1 2/2] COPY --from=builder /workspace/build/libs/*.jar /app/app.jar
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.2s done
+#16 writing image sha256:c9097e84f6e1a2475e7e30696b62dbde6ee800baf6b346b92b966b33c48c9814 done
+#16 naming to docker.io/library/urisik-app:m done
+#16 DONE 0.3s
+
+ [33m2 warnings found (use docker --debug to expand):
+[0m - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ARG "DB_PASSWORD") (line 14)
+ - SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data (ENV "DB_PASSWORD") (line 15)
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/i82oy243avtd5afnth2y6cjdk
+build m exit 0
