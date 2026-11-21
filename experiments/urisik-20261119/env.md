@@ -75,6 +75,8 @@
 | 11-20 02:59 | 1초 절전 기록 | 최종 실험 시작 전이라 영향 없음 |
 | 11-20 | 메모리 부족으로 백그라운드 래퍼(절전 방지, 2차 수정 검증 체인)가 중단 | 하위 프로세스(docker build, bash)가 살아 있는 것을 PowerShell로 확인하고 이어서 실행, 절전 방지는 독립 프로세스로 재기동 |
 | 11-21 | 실험 6 1차 수정 측정 중 2차 수정 코드를 작성 | 1차 수정 결과는 기록용으로 남기고 별도 변형(`redisfix2`)으로 3회 재측정 |
+| 11-21 오후 | 절전(Modern Standby)이 실험 4c 3회차 시작 직전(앱 기동 단계) 약 2시간 걸림 | 절전 방지 프로세스가 사라져 있었음. 다시 걸고, 수집 CSV에 큰 시간 간격이 없어 앞 회차는 유효 판정, 무효가 된 400부터 시작한 실행은 별도 표시 |
+| 11-21 | 실험 4c가 원본 실험 4 결과 파일 9개와 구성 덤프 1개를 같은 이름으로 덮어씀 | git에서 복구, 이후 `EXP4_RAW`·`EXP4_LABEL`로 폴더와 실험 이름 분리 |
 
 ## 추가 이미지·변형 (실험 5~7)
 | 이미지 | 내용 | 용도 |
@@ -89,3 +91,19 @@
 - 실험 6: 60 RPS(검색 40%·추천 30%·상세 15%·식단 15%), 장애 전 약 30초·중단 30초·복구 후, 클라이언트 타임아웃 5초, 변형당 3회. 기준선은 추천 5건, 타임아웃 150초.
 - 실험 7: 로컬 DB에 임시 `title_jamo` 컬럼과 FULLTEXT(ngram) 인덱스를 만들고 측정 뒤 삭제(스키마 원복 확인).
 - 알려진 결함: `src/test/.../allergy/RecipeAllergyControllerTest.java`가 없는 메서드를 참조해 테스트 컴파일이 안 된다(기존 문제). 수정 검증 때 임시로 옆에 치우고 실행한 뒤 복구했다.
+
+## 추가 이미지·변형·조건 (실험 8~16)
+| 이미지/구성 | 내용 | 용도 |
+|---|---|---|
+| `urisik-app:m` | main 248edca(#21~#23 머지 직후) | 수정 전 기준(`m_on`) |
+| `urisik-app:sf` | `m` + 검색 트랜잭션 범위 축소(브랜치 `perf/#24-search-tx-boundary`, PR #26) | 수정 후(`sf_off`), OSIV 끔과 함께 |
+| OSIV 끔 | 환경 변수 `SPRING_JPA_OPEN_IN_VIEW=false`만 부여(`scripts/exp10/osiv-off.yml`), 앱 코드 변경 없음 | 수정 후 구성 |
+| Hikari 누수 탐지 | `SPRING_DATASOURCE_HIKARI_LEAK_DETECTION_THRESHOLD=100`(`scripts/exp9/leak.yml`), 100ms 적용은 실측 확인 | 커넥션 보유 위치 진단 |
+| 외부 API stub (A) | 호스트 PC 파이썬 stub(`exp2/foodsafety_stub.py`), `host-gateway` 경로. **부하 중 `Connect timed out`(약 3초)이 생겨 100 RPS 결과를 왜곡함(무효 표시)** | 실험 2·4(검색어 반복), 이전 실험 8~14 |
+| 외부 API stub (B) | **도커 네트워크 안 자바 stub 컨테이너 `urisik-stubnet`**(`exp15/Stub.java`, 별칭 `openapi.foodsafetykorea.go.kr`, 지연 20/300ms) | 실험 15b, 16, 16b (정상 환경 기준) |
+| ES 서킷브레이커 | `elasticsearchapi`: 느린 호출 500ms, 느린 호출 비율 80% 이상, 창 10건·최소 5건, 열림 유지 15초(컨테이너 환경 변수) | 부하 중 25~90% 우회 관찰 |
+
+실험 이름과 `results.csv` 표시: `exp8`·`exp10`·`exp11`·`exp14`는 호스트 stub 조건이라 `*_hoststub_artifact`, 검색어 오염이 있던 `exp5`·`exp8`은 `*_invalid_cache_warming`, 500/400부터 시작해 무효인 실행은 `exp4c_cold_start_protocol`·`exp4c_start400_invalid_*`로 표시해 **지우지 않고 보관**했다. 유효한 값은 `exp16`·`exp16b`(20/300ms), `exp4d_m_on`·`exp4d_sf_off`(원래 사다리), `exp9`(진단 기록)다.
+- 실험 4d: 기본 설정(Hikari 10, Tomcat 200), 사다리 300→600(50 단위, 단계당 60초), 회차 3(1회차 워밍업), 수정 전/후 번갈아, 수집기에 Hikari 점유·대기 타이머와 ES 서킷 차단 카운터 추가(표본 간격 약 14초).
+- 실험 16: 캐시 미적중(검색어 유일) 검색 100 RPS 60초, 외부 stub 20ms·300ms, 3회(1회차 워밍업), ES 우회 비율과 재시도 횟수 기록.
+- **결과 파일의 토큰**: k6 요약 JSON에 테스트 Bearer 토큰이 남아 667개 파일에서 제거(`scripts/scrub_tokens.py`), 이미 머지된 #21의 git 기록에는 남아 있음(모두 만료).
