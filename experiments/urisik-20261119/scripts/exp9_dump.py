@@ -48,7 +48,11 @@ def main():
         subprocess.run(['docker', 'exec', 'urisik-app', 'sh', '-c', 'kill -3 1'], capture_output=True)
         time.sleep(7)
     proc.communicate()
+    if proc.returncode != 0:
+        raise SystemExit(f'k6 실패(returncode={proc.returncode}): 덤프 분류를 중단')
     logs = subprocess.run(['docker', 'logs', '--since', t0, 'urisik-app'], capture_output=True, text=True, errors='replace')
+    if logs.returncode != 0:
+        raise SystemExit('docker logs 실패: 스레드 덤프를 읽을 수 없어 중단')
     text = logs.stdout + logs.stderr
     open(os.path.join(RAW, f'threaddumps-{VARIANT}.log'), 'w', encoding='utf-8').write(text)
     dumps = text.split('Full thread dump')[1:]

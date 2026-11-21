@@ -29,8 +29,10 @@ def main():
     csv_path = os.path.join(RAW, f'tail-{VARIANT}-{RATE}rps.csv')
     t0 = datetime.datetime.now(datetime.timezone.utc)
     env = dict(os.environ, API='search', RATE=RATE, DURATION_S='60', USERS='100', KW_MODE='unique', SALT=str(time.time_ns()))
-    subprocess.run(['k6', 'run', '--no-color', '-q', '--out', 'csv=' + csv_path, os.path.join(HERE, 'exp5-connhold.js')],
-                   env=env, capture_output=True, text=True)
+    k6 = subprocess.run(['k6', 'run', '--no-color', '-q', '--out', 'csv=' + csv_path, os.path.join(HERE, 'exp5-connhold.js')],
+                        env=env, capture_output=True, text=True)
+    if k6.returncode != 0:
+        raise SystemExit(f'k6 실패(returncode={k6.returncode}): 부분 CSV를 분석하지 않고 중단')
     rows = []
     for r in csv.DictReader(open(csv_path, encoding='utf-8')):
         if r['metric_name'] == 'http_req_duration' and r.get('name') == 'target':

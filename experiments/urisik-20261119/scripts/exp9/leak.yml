@@ -1,4 +1,5 @@
 # Hikari 누수 탐지: 100ms 넘게 빌린 커넥션의 획득 위치를 WARN 로그로 남긴다(앱 코드 변경 없음, 진단 전용)
+# 100ms 임계값이 이 빌드에서 적용됨은 실측으로 확인했다(raw/exp9/leak-threshold-probe.txt, Hikari가 2초 미만을 끈다는 리뷰 지적과 다름)
 services:
   app:
     environment:
