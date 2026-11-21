@@ -1,0 +1,2358 @@
+[
+ {
+  "scenario": "A",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 6.0,
+   "min": 5.0,
+   "max": 8.0
+  },
+  "error_5xx": {
+   "median": 94.0,
+   "min": 92.0,
+   "max": 95.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 94.0,
+   "min": 92.0,
+   "max": 95.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 94.0,
+   "min": 92,
+   "max": 95
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 708.7434499999999,
+   "min": 587.45975,
+   "max": 934.9111
+  },
+  "p95_ms": {
+   "median": 924.1739875,
+   "min": 876.451065,
+   "max": 1260.50001
+  },
+  "p99_ms": {
+   "median": 946.6116280000001,
+   "min": 891.2340530000001,
+   "max": 1273.186844
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 746.4012499999999,
+  "pooled_p95_ms": 1188.5386449999999,
+  "pooled_p99_ms": 1267.088926,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.03330000000000011
+  },
+  "rows_inserted": {
+   "median": 6.0,
+   "min": 5.0,
+   "max": 8.0
+  }
+ },
+ {
+  "scenario": "A",
+  "variant": "v1",
+  "kind": "review",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 1184.3018499999998,
+   "min": 1111.5198,
+   "max": 1581.9344
+  },
+  "p95_ms": {
+   "median": 2000.6087874999998,
+   "min": 1812.155565,
+   "max": 2303.8451050000003
+  },
+  "p99_ms": {
+   "median": 2070.914318,
+   "min": 1864.1733470000001,
+   "max": 2376.004863
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 1244.05755,
+  "pooled_p95_ms": 2109.93879,
+  "pooled_p99_ms": 2325.8008419999996,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.5,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.050000000000000044,
+   "min": 0.0,
+   "max": 0.2999999999999998
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "A",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 1078.3641499999999,
+   "min": 953.98855,
+   "max": 1166.9097000000002
+  },
+  "p95_ms": {
+   "median": 1855.5795775,
+   "min": 1708.6434,
+   "max": 2010.268385
+  },
+  "p99_ms": {
+   "median": 1926.219728,
+   "min": 1764.548299,
+   "max": 2074.832136
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 1057.35625,
+  "pooled_p95_ms": 1884.94681,
+  "pooled_p99_ms": 2023.6604699999998,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.15000000000000013,
+   "min": 0.10000000000000009,
+   "max": 0.20000000000000018
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "A",
+  "variant": "v4",
+  "kind": "review",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 611.5569750000001,
+   "min": 485.1891,
+   "max": 966.00585
+  },
+  "p95_ms": {
+   "median": 1065.1808525000001,
+   "min": 925.0098449999999,
+   "max": 1538.347315
+  },
+  "p99_ms": {
+   "median": 1105.596377,
+   "min": 965.7119540000001,
+   "max": 1602.6358
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 651.4121,
+  "pooled_p95_ms": 1383.723275,
+  "pooled_p99_ms": 1564.371895,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.10000000000000009
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "B",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 100,
+  "mode": "distinct",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 563.586625,
+   "min": 452.58405,
+   "max": 1062.1898999999999
+  },
+  "p95_ms": {
+   "median": 644.2057,
+   "min": 539.3050949999999,
+   "max": 1319.8806
+  },
+  "p99_ms": {
+   "median": 658.515484,
+   "min": 545.271682,
+   "max": 1350.5949200000005
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 499.1414,
+  "pooled_p95_ms": 1257.6668100000002,
+  "pooled_p99_ms": 1319.9007279999998,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "B",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 100,
+  "mode": "distinct",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 260.594875,
+   "min": 195.2576,
+   "max": 338.9635
+  },
+  "p95_ms": {
+   "median": 356.109015,
+   "min": 273.71362999999997,
+   "max": 481.82344
+  },
+  "p99_ms": {
+   "median": 360.4049835,
+   "min": 281.210433,
+   "max": 489.6638
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 238.8253,
+  "pooled_p95_ms": 454.50898,
+  "pooled_p99_ms": 483.68128899999994,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 2.5,
+   "min": 2.5,
+   "max": 2.5
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "B",
+  "variant": "v4",
+  "kind": "review",
+  "vus": 100,
+  "mode": "distinct",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 147.256125,
+   "min": 115.17455,
+   "max": 231.54985
+  },
+  "p95_ms": {
+   "median": 210.12407000000002,
+   "min": 190.5424,
+   "max": 334.96972
+  },
+  "p99_ms": {
+   "median": 212.2743295,
+   "min": 191.68340700000005,
+   "max": 341.45052699999997
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 153.9008,
+  "pooled_p95_ms": 323.361745,
+  "pooled_p99_ms": 337.283564,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 10,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 2.0,
+   "min": 2.0,
+   "max": 2.0
+  },
+  "error_5xx": {
+   "median": 8.0,
+   "min": 8.0,
+   "max": 8.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 8.0,
+   "min": 8.0,
+   "max": 8.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 8.0,
+   "min": 8,
+   "max": 8
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 59.323125,
+   "min": 46.515649999999994,
+   "max": 91.1898
+  },
+  "p95_ms": {
+   "median": 71.566605,
+   "min": 58.3276,
+   "max": 104.31888499999998
+  },
+  "p99_ms": {
+   "median": 74.098881,
+   "min": 59.8828,
+   "max": 112.327697
+  },
+  "pooled_n": 40,
+  "pooled_p50_ms": 55.078,
+  "pooled_p95_ms": 92.0832,
+  "pooled_p99_ms": 105.65368699999999,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "rows_inserted": {
+   "median": 2.0,
+   "min": 2.0,
+   "max": 2.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 10,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 10.0,
+   "min": 10.0,
+   "max": 10.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 106.988425,
+   "min": 84.45224999999999,
+   "max": 319.06345
+  },
+  "p95_ms": {
+   "median": 172.78870999999998,
+   "min": 138.82850999999997,
+   "max": 456.63962499999997
+  },
+  "p99_ms": {
+   "median": 179.452022,
+   "min": 143.74762199999998,
+   "max": 467.535205
+  },
+  "pooled_n": 40,
+  "pooled_p50_ms": 117.1888,
+  "pooled_p95_ms": 404.9663399999999,
+  "pooled_p99_ms": 458.455555,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.2999999999999998,
+   "min": 0.2999999999999998,
+   "max": 0.2999999999999998
+  },
+  "rows_inserted": {
+   "median": 10.0,
+   "min": 10.0,
+   "max": 10.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 25,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 3.5,
+   "min": 3.0,
+   "max": 4.0
+  },
+  "error_5xx": {
+   "median": 21.5,
+   "min": 21.0,
+   "max": 22.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 21.5,
+   "min": 21.0,
+   "max": 22.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 21.5,
+   "min": 21,
+   "max": 22
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 217.1318,
+   "min": 147.1546,
+   "max": 330.5345
+  },
+  "p95_ms": {
+   "median": 286.44645,
+   "min": 189.98901999999998,
+   "max": 436.26919999999996
+  },
+  "p99_ms": {
+   "median": 287.295394,
+   "min": 196.416744,
+   "max": 438.90543199999996
+  },
+  "pooled_n": 100,
+  "pooled_p50_ms": 197.7963,
+  "pooled_p95_ms": 415.006375,
+  "pooled_p99_ms": 437.32615699999997,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.03330000000000011,
+   "min": 0.0,
+   "max": 0.04999999999999982
+  },
+  "rows_inserted": {
+   "median": 3.5,
+   "min": 3.0,
+   "max": 4.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 25,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 25.0,
+   "min": 25.0,
+   "max": 25.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 178.65605,
+   "min": 170.2707,
+   "max": 312.0672
+  },
+  "p95_ms": {
+   "median": 305.30454999999995,
+   "min": 295.8958999999999,
+   "max": 533.3671199999999
+  },
+  "p99_ms": {
+   "median": 318.61323600000003,
+   "min": 306.781752,
+   "max": 551.611356
+  },
+  "pooled_n": 100,
+  "pooled_p50_ms": 201.24325,
+  "pooled_p95_ms": 454.4353449999999,
+  "pooled_p99_ms": 538.472781,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 1.0,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.15000000000000013,
+   "min": 0.0,
+   "max": 0.2999999999999998
+  },
+  "rows_inserted": {
+   "median": 25.0,
+   "min": 25.0,
+   "max": 25.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 50,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 4.5,
+   "min": 4.0,
+   "max": 5.0
+  },
+  "error_5xx": {
+   "median": 45.5,
+   "min": 45.0,
+   "max": 46.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 45.5,
+   "min": 45.0,
+   "max": 46.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 45.5,
+   "min": 45,
+   "max": 46
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 244.152575,
+   "min": 176.67845,
+   "max": 515.52405
+  },
+  "p95_ms": {
+   "median": 336.295655,
+   "min": 225.895005,
+   "max": 667.8214300000001
+  },
+  "p99_ms": {
+   "median": 339.38739350000003,
+   "min": 230.343391,
+   "max": 673.511485
+  },
+  "pooled_n": 200,
+  "pooled_p50_ms": 222.7351,
+  "pooled_p95_ms": 611.274625,
+  "pooled_p99_ms": 668.284924,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.04999999999999982
+  },
+  "rows_inserted": {
+   "median": 4.5,
+   "min": 4.0,
+   "max": 5.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 50,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 381.204125,
+   "min": 327.57124999999996,
+   "max": 565.876
+  },
+  "p95_ms": {
+   "median": 671.3640224999999,
+   "min": 589.256935,
+   "max": 958.169595
+  },
+  "p99_ms": {
+   "median": 720.6662544999999,
+   "min": 625.9166879999999,
+   "max": 1010.876076
+  },
+  "pooled_n": 200,
+  "pooled_p50_ms": 397.51959999999997,
+  "pooled_p95_ms": 825.6793250000002,
+  "pooled_p99_ms": 962.9962559999997,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.5,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.050000000000000044,
+   "min": 0.0,
+   "max": 0.20000000000000018
+  },
+  "rows_inserted": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v0",
+  "kind": "review",
+  "vus": 200,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 9.0,
+   "min": 7.0,
+   "max": 10.0
+  },
+  "error_5xx": {
+   "median": 191.0,
+   "min": 190.0,
+   "max": 193.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 191.0,
+   "min": 190.0,
+   "max": 193.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 191.0,
+   "min": 190,
+   "max": 193
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 1196.4370250000002,
+   "min": 871.8163999999999,
+   "max": 2009.5774000000001
+  },
+  "p95_ms": {
+   "median": 1695.1942775,
+   "min": 1200.0198349999998,
+   "max": 2578.602025
+  },
+  "p99_ms": {
+   "median": 1788.7107084999998,
+   "min": 1268.152967,
+   "max": 2719.9261039999997
+  },
+  "pooled_n": 800,
+  "pooled_p50_ms": 1113.8495,
+  "pooled_p95_ms": 2340.2359499999993,
+  "pooled_p99_ms": 2582.66565,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.04999999999999982
+  },
+  "rows_inserted": {
+   "median": 9.0,
+   "min": 7.0,
+   "max": 10.0
+  }
+ },
+ {
+  "scenario": "C",
+  "variant": "v3",
+  "kind": "review",
+  "vus": 200,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 200.0,
+   "min": 200.0,
+   "max": 200.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 1742.9568,
+   "min": 1321.1386499999999,
+   "max": 2265.92065
+  },
+  "p95_ms": {
+   "median": 3067.36816,
+   "min": 2275.95291,
+   "max": 5757.833739999999
+  },
+  "p99_ms": {
+   "median": 3206.482866,
+   "min": 2360.633363,
+   "max": 5929.79455
+  },
+  "pooled_n": 800,
+  "pooled_p50_ms": 1653.1361000000002,
+  "pooled_p95_ms": 4829.283129999999,
+  "pooled_p99_ms": 5789.863463,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 1.0,
+   "min": 1.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.10000000000000009,
+   "min": 0.10000000000000009,
+   "max": 0.20000000000000018
+  },
+  "rows_inserted": {
+   "median": 200.0,
+   "min": 200.0,
+   "max": 200.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v0",
+  "kind": "treview",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 6.0,
+   "min": 5.0,
+   "max": 7.0
+  },
+  "error_5xx": {
+   "median": 94.0,
+   "min": 93.0,
+   "max": 95.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 94.0,
+   "min": 93.0,
+   "max": 95.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 94.0,
+   "min": 93,
+   "max": 95
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 305.4993,
+   "min": 202.8365,
+   "max": 376.90470000000005
+  },
+  "p95_ms": {
+   "median": 400.81039,
+   "min": 273.20696,
+   "max": 510.81247
+  },
+  "p99_ms": {
+   "median": 404.8471405,
+   "min": 279.046318,
+   "max": 515.4524
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 269.85699999999997,
+  "pooled_p95_ms": 492.28742000000005,
+  "pooled_p99_ms": 511.114445,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.00714999999999999,
+   "min": 0.0,
+   "max": 0.033299999999999885
+  },
+  "rows_inserted": {
+   "median": 6.0,
+   "min": 5.0,
+   "max": 7.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v3",
+  "kind": "treview",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 710.4162,
+   "min": 510.2884,
+   "max": 768.84485
+  },
+  "p95_ms": {
+   "median": 1240.2877075000001,
+   "min": 948.96712,
+   "max": 1427.786105
+  },
+  "p99_ms": {
+   "median": 1274.695812,
+   "min": 976.0221110000001,
+   "max": 1483.9338220000002
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 660.2257500000001,
+  "pooled_p95_ms": 1306.009825,
+  "pooled_p99_ms": 1441.3459819999998,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 0.5,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.050000000000000044,
+   "min": 0.0,
+   "max": 0.10000000000000009
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v4",
+  "kind": "treview",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 477.276275,
+   "min": 453.6171,
+   "max": 787.39445
+  },
+  "p95_ms": {
+   "median": 867.6411575,
+   "min": 839.33152,
+   "max": 1395.377415
+  },
+  "p99_ms": {
+   "median": 898.336284,
+   "min": 866.521085,
+   "max": 1464.3306570000002
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 514.3923500000001,
+  "pooled_p95_ms": 1205.0016650000002,
+  "pooled_p99_ms": 1411.471873,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": {
+   "median": 1.0,
+   "min": 0.0,
+   "max": 1.0
+  },
+  "avg_max_abs_diff_vs_true": {
+   "median": 0.10000000000000009,
+   "min": 0.0,
+   "max": 0.20000000000000018
+  },
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v0",
+  "kind": "twish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 4.5,
+   "min": 4.0,
+   "max": 6.0
+  },
+  "error_5xx": {
+   "median": 95.5,
+   "min": 94.0,
+   "max": 96.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 95.5,
+   "min": 94.0,
+   "max": 96.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 95.5,
+   "min": 94,
+   "max": 96
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 400.459025,
+   "min": 327.95975,
+   "max": 1110.0675
+  },
+  "p95_ms": {
+   "median": 491.66178749999995,
+   "min": 398.69998000000004,
+   "max": 1321.38011
+  },
+  "p99_ms": {
+   "median": 517.2804365000001,
+   "min": 419.49012400000004,
+   "max": 1343.46
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 398.41695000000004,
+  "pooled_p95_ms": 1192.24185,
+  "pooled_p99_ms": 1327.807415,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 4.5,
+   "min": 4.0,
+   "max": 6.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v3",
+  "kind": "twish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 646.029825,
+   "min": 521.2792,
+   "max": 691.60515
+  },
+  "p95_ms": {
+   "median": 1160.3626375,
+   "min": 863.3357149999999,
+   "max": 1217.76792
+  },
+  "p99_ms": {
+   "median": 1198.4840175,
+   "min": 894.1233970000001,
+   "max": 1286.2614620000002
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 617.74015,
+  "pooled_p95_ms": 1159.5402350000002,
+  "pooled_p99_ms": 1239.855241,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v4",
+  "kind": "twish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 475.87465000000003,
+   "min": 455.13535,
+   "max": 497.41805
+  },
+  "p95_ms": {
+   "median": 828.6419225,
+   "min": 811.984795,
+   "max": 895.5577599999999
+  },
+  "p99_ms": {
+   "median": 857.281671,
+   "min": 843.22986,
+   "max": 934.499213
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 478.62185,
+  "pooled_p95_ms": 843.290695,
+  "pooled_p99_ms": 904.2345979999999,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v0",
+  "kind": "wish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 6.5,
+   "min": 5.0,
+   "max": 8.0
+  },
+  "error_5xx": {
+   "median": 93.5,
+   "min": 92.0,
+   "max": 95.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 93.5,
+   "min": 92.0,
+   "max": 95.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 93.5,
+   "min": 92,
+   "max": 95
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 408.94165,
+   "min": 284.7123,
+   "max": 1051.3898
+  },
+  "p95_ms": {
+   "median": 593.0239675,
+   "min": 401.795615,
+   "max": 1665.5106549999998
+  },
+  "p99_ms": {
+   "median": 607.9356300000001,
+   "min": 413.281299,
+   "max": 1692.6306040000002
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 398.38905,
+  "pooled_p95_ms": 1594.800135,
+  "pooled_p99_ms": 1677.448516,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 6.5,
+   "min": 5.0,
+   "max": 8.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v1",
+  "kind": "wish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 1070.100775,
+   "min": 760.75505,
+   "max": 1341.4068
+  },
+  "p95_ms": {
+   "median": 1767.3826225,
+   "min": 1280.8073749999999,
+   "max": 2265.4900249999996
+  },
+  "p99_ms": {
+   "median": 1815.989227,
+   "min": 1322.733494,
+   "max": 2340.931475
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 1008.4319499999999,
+  "pooled_p95_ms": 2143.217625,
+  "pooled_p99_ms": 2288.334427,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v3",
+  "kind": "wish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 728.0298,
+   "min": 526.9158500000001,
+   "max": 1216.5985
+  },
+  "p95_ms": {
+   "median": 1292.0901125,
+   "min": 929.17972,
+   "max": 1953.5673049999998
+  },
+  "p99_ms": {
+   "median": 1350.995711,
+   "min": 956.31208,
+   "max": 2006.8965309999999
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 719.5731000000001,
+  "pooled_p95_ms": 1713.7279250000001,
+  "pooled_p99_ms": 1968.5172659999998,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "D",
+  "variant": "v4",
+  "kind": "wish",
+  "vus": 100,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 507.3625,
+   "min": 480.09125,
+   "max": 621.4376
+  },
+  "p95_ms": {
+   "median": 871.0272125,
+   "min": 820.07567,
+   "max": 1208.849495
+  },
+  "p99_ms": {
+   "median": 903.408407,
+   "min": 856.4760220000001,
+   "max": 1258.237911
+  },
+  "pooled_n": 400,
+  "pooled_p50_ms": 518.8388,
+  "pooled_p95_ms": 1027.4344300000002,
+  "pooled_p99_ms": 1220.244246,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 100.0,
+   "min": 100.0,
+   "max": 100.0
+  }
+ },
+ {
+  "scenario": "E",
+  "variant": "v0",
+  "kind": "wish",
+  "vus": 50,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 4.0,
+   "min": 4.0,
+   "max": 5.0
+  },
+  "error_5xx": {
+   "median": 46.0,
+   "min": 45.0,
+   "max": 46.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 46.0,
+   "min": 45.0,
+   "max": 46.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 46.0,
+   "min": 45,
+   "max": 46
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 169.4416,
+   "min": 133.8331,
+   "max": 335.69885
+  },
+  "p95_ms": {
+   "median": 222.3032875,
+   "min": 170.756305,
+   "max": 454.875765
+  },
+  "p99_ms": {
+   "median": 231.694908,
+   "min": 173.057226,
+   "max": 465.115058
+  },
+  "pooled_n": 200,
+  "pooled_p50_ms": 173.16635000000002,
+  "pooled_p95_ms": 445.100295,
+  "pooled_p99_ms": 455.60513599999996,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 4.0,
+   "min": 4.0,
+   "max": 5.0
+  }
+ },
+ {
+  "scenario": "E",
+  "variant": "v1",
+  "kind": "wish",
+  "vus": 50,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 395.609925,
+   "min": 298.9551,
+   "max": 533.9229
+  },
+  "p95_ms": {
+   "median": 680.5953649999999,
+   "min": 533.77145,
+   "max": 1012.62765
+  },
+  "p99_ms": {
+   "median": 704.2092849999999,
+   "min": 551.938026,
+   "max": 1064.171348
+  },
+  "pooled_n": 200,
+  "pooled_p50_ms": 387.02765,
+  "pooled_p95_ms": 810.2763150000002,
+  "pooled_p99_ms": 1020.6275599999997,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  }
+ },
+ {
+  "scenario": "E",
+  "variant": "v3",
+  "kind": "wish",
+  "vus": 50,
+  "mode": "same",
+  "runs": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "success": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  },
+  "error_5xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "duplicate_4xx": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_deadlocks": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "innodb_lock_timeouts": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "applog_1213": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "applog_1205": {
+   "median": 0.0,
+   "min": 0,
+   "max": 0
+  },
+  "p50_ms": {
+   "median": 352.82597499999997,
+   "min": 313.39025,
+   "max": 558.1376
+  },
+  "p95_ms": {
+   "median": 549.02687,
+   "min": 510.12942,
+   "max": 908.41044
+  },
+  "p99_ms": {
+   "median": 566.1787214999999,
+   "min": 524.012023,
+   "max": 940.869258
+  },
+  "pooled_n": 200,
+  "pooled_p50_ms": 378.2976,
+  "pooled_p95_ms": 795.9730600000001,
+  "pooled_p99_ms": 915.9973259999999,
+  "counter_mismatch_targets": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.0
+  },
+  "avg_mismatch_targets": null,
+  "avg_max_abs_diff_vs_true": null,
+  "rows_inserted": {
+   "median": 50.0,
+   "min": 50.0,
+   "max": 50.0
+  }
+ }
+]

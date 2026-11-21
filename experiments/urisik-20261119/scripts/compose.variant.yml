@@ -1,0 +1,12 @@
+# 실험용 override: app 서비스를 사전 빌드한 변형 이미지로 교체
+# 사용: APP_VARIANT=v0 docker compose -f docker-compose.local.yml -f experiments/urisik-20261119/scripts/compose.variant.yml up -d --no-build --force-recreate app
+# r/r2 이미지(재시도 비교): REVIEW_RETRY_MODE(none|inside|outside), REVIEW_RETRY_MAX, REVIEW_RETRY_BACKOFF(fixed|exp)
+# L 이미지(락 순서 비교): LOCK_MODE(update_first|for_update|insert_first)
+services:
+  app:
+    image: urisik-app:${APP_VARIANT:-v3}
+    environment:
+      - REVIEW_RETRY_MODE=${REVIEW_RETRY_MODE:-none}
+      - REVIEW_RETRY_MAX=${REVIEW_RETRY_MAX:-3}
+      - REVIEW_RETRY_BACKOFF=${REVIEW_RETRY_BACKOFF:-fixed}
+      - LOCK_MODE=${LOCK_MODE:-update_first}

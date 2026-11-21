@@ -1,0 +1,133 @@
+diff --git a/src/main/java/com/urisik/backend/domain/review/controller/ReviewController.java b/src/main/java/com/urisik/backend/domain/review/controller/ReviewController.java
+index 5875967..a75a10c 100644
+--- a/src/main/java/com/urisik/backend/domain/review/controller/ReviewController.java
++++ b/src/main/java/com/urisik/backend/domain/review/controller/ReviewController.java
+@@ -3,6 +3,7 @@ package com.urisik.backend.domain.review.controller;
+ import com.urisik.backend.domain.review.dto.ReviewRequestDto;
+ import com.urisik.backend.domain.review.dto.ReviewResponseDto;
+ import com.urisik.backend.domain.review.exception.ReviewSuccessCode;
++import com.urisik.backend.domain.review.service.ReviewRetryFacade;
+ import com.urisik.backend.domain.review.service.ReviewService;
+ import com.urisik.backend.global.apiPayload.ApiResponse;
+ import io.swagger.v3.oas.annotations.Operation;
+@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
+ public class ReviewController {
+ 
+     private final ReviewService reviewService;
++    private final ReviewRetryFacade reviewRetryFacade;
+ 
+     /**
+      * 1. 특정 레시피에 대한 간단 후기 작성 API
+@@ -31,7 +33,7 @@ public class ReviewController {
+             @AuthenticationPrincipal Long memberId
+             ) {
+ 
+-        ReviewResponseDto responseDto = reviewService.createReview(request, memberId, recipe_id);
++        ReviewResponseDto responseDto = reviewRetryFacade.createReview(request, memberId, recipe_id);
+         return ApiResponse.onSuccess(ReviewSuccessCode.CREATE_REVIEW_OK, responseDto);
+     }
+ }
+diff --git a/src/main/java/com/urisik/backend/domain/review/service/ReviewRetryFacade.java b/src/main/java/com/urisik/backend/domain/review/service/ReviewRetryFacade.java
+new file mode 100644
+index 0000000..2ff1feb
+--- /dev/null
++++ b/src/main/java/com/urisik/backend/domain/review/service/ReviewRetryFacade.java
+@@ -0,0 +1,44 @@
++package com.urisik.backend.domain.review.service;
++
++import com.urisik.backend.domain.review.dto.ReviewRequestDto;
++import com.urisik.backend.domain.review.dto.ReviewResponseDto;
++import lombok.RequiredArgsConstructor;
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.dao.PessimisticLockingFailureException;
++import org.springframework.stereotype.Service;
++
++/**
++ * [실험용] 트랜잭션 밖에서 재시도하는 래퍼. 호출마다 reviewService.createReview가 새 트랜잭션으로 실행된다.
++ */
++@Service
++@RequiredArgsConstructor
++public class ReviewRetryFacade {
++
++    private final ReviewService reviewService;
++
++    @Value("${review.retry.mode:none}")
++    private String retryMode;
++    @Value("${review.retry.max:3}")
++    private int retryMax;
++
++    public ReviewResponseDto createReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
++        if (!"outside".equals(retryMode)) {
++            return reviewService.createReview(requestDto, memberId, recipeId);
++        }
++        for (int attempt = 1; ; attempt++) {
++            try {
++                return reviewService.createReview(requestDto, memberId, recipeId);
++            } catch (PessimisticLockingFailureException e) {
++                if (attempt >= retryMax) {
++                    throw e;
++                }
++                try {
++                    Thread.sleep(10L * attempt + (long) (Math.random() * 40));
++                } catch (InterruptedException ie) {
++                    Thread.currentThread().interrupt();
++                    throw e;
++                }
++            }
++        }
++    }
++}
+diff --git a/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java b/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
+index caa7bb5..230d0cd 100644
+--- a/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
++++ b/src/main/java/com/urisik/backend/domain/review/service/ReviewService.java
+@@ -19,7 +19,9 @@ import com.urisik.backend.global.auth.exception.AuthenExcetion;
+ import com.urisik.backend.global.auth.exception.code.AuthErrorCode;
+ import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
+ import lombok.RequiredArgsConstructor;
++import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.dao.DataIntegrityViolationException;
++import org.springframework.dao.PessimisticLockingFailureException;
+ import org.springframework.stereotype.Service;
+ import org.springframework.transaction.annotation.Transactional;
+ 
+@@ -34,11 +36,39 @@ public class ReviewService {
+     private final RecipeRepository recipeRepository;
+     private final KafkaEventProducer kafkaEventProducer;
+ 
++    // [실험용] 재시도 방식 비교 (none | inside | outside). inside = 같은 트랜잭션 안에서 재시도
++    @Value("${review.retry.mode:none}")
++    private String retryMode;
++    @Value("${review.retry.max:3}")
++    private int retryMax;
++
+     /**
+      * 1. 리뷰 작성하기
+      */
+     @Transactional
+     public ReviewResponseDto createReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
++        if (!"inside".equals(retryMode)) {
++            return doCreateReview(requestDto, memberId, recipeId);
++        }
++        // 같은 트랜잭션 안에서 재시도: 교착이 나면 InnoDB가 트랜잭션을 롤백한다. 같은 트랜잭션 경계 안에서 다시 시도하는 효과를 본다
++        for (int attempt = 1; ; attempt++) {
++            try {
++                return doCreateReview(requestDto, memberId, recipeId);
++            } catch (PessimisticLockingFailureException e) {
++                if (attempt >= retryMax) {
++                    throw e;
++                }
++                try {
++                    Thread.sleep(10L * attempt + (long) (Math.random() * 40));
++                } catch (InterruptedException ie) {
++                    Thread.currentThread().interrupt();
++                    throw e;
++                }
++            }
++        }
++    }
++
++    private ReviewResponseDto doCreateReview(ReviewRequestDto requestDto, Long memberId, Long recipeId) {
+ 
+         FamilyMemberProfile familyMember = getFamilyMember(memberId);
+ 

@@ -1,0 +1,276 @@
+2026-11-19T08:50:11.828Z  WARN 1 --- [io-8080-exec-47] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.828Z ERROR 1 --- [io-8080-exec-47] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.828Z  WARN 1 --- [io-8080-exec-49] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.828Z ERROR 1 --- [io-8080-exec-49] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.829Z ERROR 1 --- [io-8080-exec-49] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.829Z ERROR 1 --- [io-8080-exec-47] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.851Z  WARN 1 --- [io-8080-exec-66] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.852Z ERROR 1 --- [io-8080-exec-66] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.851Z  WARN 1 --- [io-8080-exec-60] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.852Z  WARN 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.852Z ERROR 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.852Z  WARN 1 --- [io-8080-exec-35] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.852Z ERROR 1 --- [io-8080-exec-60] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.852Z ERROR 1 --- [io-8080-exec-35] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.853Z  WARN 1 --- [io-8080-exec-71] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.853Z ERROR 1 --- [io-8080-exec-71] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.853Z ERROR 1 --- [io-8080-exec-60] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.859Z  WARN 1 --- [io-8080-exec-42] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.859Z ERROR 1 --- [io-8080-exec-42] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.859Z  WARN 1 --- [io-8080-exec-58] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.854Z ERROR 1 --- [io-8080-exec-35] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.859Z ERROR 1 --- [io-8080-exec-58] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.863Z  WARN 1 --- [io-8080-exec-52] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.863Z ERROR 1 --- [io-8080-exec-52] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.863Z  WARN 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.864Z ERROR 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.853Z ERROR 1 --- [io-8080-exec-66] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.860Z ERROR 1 --- [io-8080-exec-42] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.866Z  WARN 1 --- [io-8080-exec-48] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.866Z ERROR 1 --- [io-8080-exec-48] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.853Z ERROR 1 --- [io-8080-exec-57] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.865Z ERROR 1 --- [io-8080-exec-24] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.869Z ERROR 1 --- [io-8080-exec-48] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.867Z ERROR 1 --- [io-8080-exec-52] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.877Z  WARN 1 --- [io-8080-exec-39] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.877Z ERROR 1 --- [io-8080-exec-39] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.867Z ERROR 1 --- [io-8080-exec-58] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.859Z ERROR 1 --- [io-8080-exec-71] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.879Z ERROR 1 --- [io-8080-exec-39] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.951Z  WARN 1 --- [io-8080-exec-21] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.952Z ERROR 1 --- [io-8080-exec-21] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.952Z  WARN 1 --- [io-8080-exec-69] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.953Z  WARN 1 --- [nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.953Z ERROR 1 --- [nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.953Z ERROR 1 --- [io-8080-exec-69] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.954Z  WARN 1 --- [io-8080-exec-32] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.955Z ERROR 1 --- [io-8080-exec-32] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.956Z  WARN 1 --- [io-8080-exec-23] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.956Z  WARN 1 --- [io-8080-exec-61] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.957Z ERROR 1 --- [io-8080-exec-23] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.957Z ERROR 1 --- [io-8080-exec-61] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.957Z  WARN 1 --- [io-8080-exec-16] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.957Z ERROR 1 --- [io-8080-exec-16] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.957Z  WARN 1 --- [io-8080-exec-41] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.957Z ERROR 1 --- [io-8080-exec-41] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.954Z ERROR 1 --- [io-8080-exec-21] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.960Z  WARN 1 --- [io-8080-exec-17] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.954Z ERROR 1 --- [nio-8080-exec-9] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.960Z ERROR 1 --- [io-8080-exec-17] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.961Z  WARN 1 --- [io-8080-exec-37] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.961Z ERROR 1 --- [io-8080-exec-37] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.961Z  WARN 1 --- [io-8080-exec-44] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.961Z ERROR 1 --- [io-8080-exec-44] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.963Z  WARN 1 --- [nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.963Z ERROR 1 --- [nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.958Z ERROR 1 --- [io-8080-exec-41] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.958Z ERROR 1 --- [io-8080-exec-23] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.958Z ERROR 1 --- [io-8080-exec-69] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.962Z ERROR 1 --- [io-8080-exec-37] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.958Z ERROR 1 --- [io-8080-exec-61] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.969Z  WARN 1 --- [io-8080-exec-36] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.969Z  WARN 1 --- [io-8080-exec-11] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.969Z ERROR 1 --- [io-8080-exec-36] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.969Z  WARN 1 --- [io-8080-exec-55] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.969Z ERROR 1 --- [io-8080-exec-55] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.970Z  WARN 1 --- [io-8080-exec-29] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.970Z ERROR 1 --- [io-8080-exec-29] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.962Z ERROR 1 --- [io-8080-exec-44] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.973Z  WARN 1 --- [io-8080-exec-75] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.973Z ERROR 1 --- [io-8080-exec-75] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.969Z  WARN 1 --- [io-8080-exec-40] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.969Z  WARN 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:11.975Z ERROR 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.969Z ERROR 1 --- [io-8080-exec-11] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.975Z ERROR 1 --- [io-8080-exec-40] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.962Z ERROR 1 --- [io-8080-exec-32] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.960Z ERROR 1 --- [io-8080-exec-16] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.965Z ERROR 1 --- [nio-8080-exec-8] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.971Z ERROR 1 --- [io-8080-exec-29] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.970Z ERROR 1 --- [io-8080-exec-55] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.964Z ERROR 1 --- [io-8080-exec-17] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.977Z ERROR 1 --- [io-8080-exec-11] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.970Z ERROR 1 --- [io-8080-exec-36] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.977Z ERROR 1 --- [io-8080-exec-26] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.002Z  WARN 1 --- [nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.002Z ERROR 1 --- [nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.002Z  WARN 1 --- [io-8080-exec-38] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.002Z  WARN 1 --- [io-8080-exec-73] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.002Z  WARN 1 --- [io-8080-exec-54] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.002Z ERROR 1 --- [io-8080-exec-54] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.002Z ERROR 1 --- [io-8080-exec-38] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.002Z ERROR 1 --- [io-8080-exec-73] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.977Z ERROR 1 --- [io-8080-exec-40] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.003Z  WARN 1 --- [io-8080-exec-33] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.003Z ERROR 1 --- [io-8080-exec-33] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.004Z  WARN 1 --- [io-8080-exec-28] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.005Z ERROR 1 --- [io-8080-exec-28] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:11.976Z ERROR 1 --- [io-8080-exec-75] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.006Z  WARN 1 --- [io-8080-exec-56] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.003Z ERROR 1 --- [io-8080-exec-73] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.007Z ERROR 1 --- [io-8080-exec-56] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.003Z ERROR 1 --- [io-8080-exec-38] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.003Z ERROR 1 --- [nio-8080-exec-3] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.014Z  WARN 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.014Z ERROR 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.015Z  WARN 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.015Z ERROR 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.015Z  WARN 1 --- [io-8080-exec-68] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.015Z ERROR 1 --- [io-8080-exec-68] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.016Z  WARN 1 --- [io-8080-exec-72] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.016Z ERROR 1 --- [io-8080-exec-72] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.003Z ERROR 1 --- [io-8080-exec-54] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.017Z  WARN 1 --- [io-8080-exec-64] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.017Z ERROR 1 --- [io-8080-exec-64] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.014Z  WARN 1 --- [io-8080-exec-20] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.019Z ERROR 1 --- [io-8080-exec-20] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.019Z  WARN 1 --- [nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-19T08:50:12.019Z ERROR 1 --- [nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.004Z ERROR 1 --- [io-8080-exec-33] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.016Z ERROR 1 --- [io-8080-exec-68] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.009Z ERROR 1 --- [io-8080-exec-28] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.011Z ERROR 1 --- [io-8080-exec-56] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.019Z ERROR 1 --- [io-8080-exec-64] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.016Z ERROR 1 --- [io-8080-exec-50] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.017Z ERROR 1 --- [io-8080-exec-72] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.016Z ERROR 1 --- [io-8080-exec-31] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.022Z ERROR 1 --- [nio-8080-exec-2] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-19T08:50:12.022Z ERROR 1 --- [io-8080-exec-20] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set review_count=(r1_0.review_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction

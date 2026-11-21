@@ -1,0 +1,184 @@
+latency_5korig-stub_fulltext_vu10_run4 {"p50_ms": 32.0927, "p95_ms": 66.13235999999999, "p99_ms": 91.17609099999983, "avg_ms": 35.06521417919294, "req_count": 16898, "fail_rate": 0}
+latency_5korig-stub_fulltext_vu50_run4 {"p50_ms": 84.14574999999999, "p95_ms": 150.27973499999993, "p99_ms": 186.1732650000001, "avg_ms": 89.16883204997954, "req_count": 33454, "fail_rate": 0}
+latency_5korig-stub_elasticsearch_vu10_run4 {"p50_ms": 45.5787, "p95_ms": 94.55984000000001, "p99_ms": 131.85032600000002, "avg_ms": 51.46090478415099, "req_count": 11559, "fail_rate": 0}
+latency_5korig-stub_elasticsearch_vu50_run4 {"p50_ms": 165.7047, "p95_ms": 268.34377499999994, "p99_ms": 329.8611609999999, "avg_ms": 174.60947367095912, "req_count": 17080, "fail_rate": 0}
+latency_5korig-stub_mysql_vu10_run4 {"p50_ms": 41.4208, "p95_ms": 97.36450999999994, "p99_ms": 138.6648660000003, "avg_ms": 49.069437465951005, "req_count": 12115, "fail_rate": 0}
+latency_5korig-stub_mysql_vu50_run4 {"p50_ms": 113.5676, "p95_ms": 216.4456999999999, "p99_ms": 276.1253879999996, "avg_ms": 122.40291594908685, "req_count": 24434, "fail_rate": 0}
+STUB_DONE
+ Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-mysql  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-mysql  Waiting
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+  Container urisik-zookeeper  Running
+ Container urisik-redis  Running
+ Container urisik-kafka  Running
+ Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to v4 (image=urisik-app:v4), ready in 31s
+v4 set 1 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 13, 'max_abs_diff_vs_exact': 0.2, 'score_sum_mismatch': ''}
+v4 set 2 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 12, 'max_abs_diff_vs_exact': 0.2, 'score_sum_mismatch': ''}
+v4 set 3 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 12, 'max_abs_diff_vs_exact': 0.2, 'score_sum_mismatch': ''}
+  Container urisik-redis  Running
+ Container urisik-zookeeper  Running
+ Container urisik-mysql  Running
+ Container urisik-elasticsearch  Running
+ Container urisik-kafka  Running
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+
+switched to s (image=urisik-app:s), ready in 31s
+s set 1 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 0, 'max_abs_diff_vs_exact': 0.0, 'score_sum_mismatch': 0}
+s set 2 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 0, 'max_abs_diff_vs_exact': 0.0, 'score_sum_mismatch': 0}
+s set 3 {'recipes': 20, 'reviews': 2000, 'count_mismatch': 0, 'avg_mismatch_rounded': 0, 'max_abs_diff_vs_exact': 0.0, 'score_sum_mismatch': 0}
+SCORESUM_DONE
+week_start 2026-11-16 return 0 mysql: [Warning] Using a password on the command line interface can be insecure.
+
+arrival_default_run1 r300 {"target_rps": 300, "achieved_rps": 293.0, "ok200_rps": 293.0, "p95_success_ms": 2509.4623301999995, "p99_success_ms": 3335.5111316299985, "p50_success_ms": 754.5837429999999, "p95_all_ms": 2509.4623301999995, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 421, "meets_slo": 0}
+arrival_default_run1 r350 {"target_rps": 350, "achieved_rps": 347.7, "ok200_rps": 347.7, "p95_success_ms": 1593.7795866999995, "p99_success_ms": 2309.9006566699995, "p50_success_ms": 394.91770399999996, "p95_all_ms": 1593.7795866999995, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 136, "meets_slo": 0}
+arrival_default_run1 r400 {"target_rps": 400, "achieved_rps": 397.1, "ok200_rps": 397.1, "p95_success_ms": 1489.3491862999974, "p99_success_ms": 2010.0815826200017, "p50_success_ms": 434.360447, "p95_all_ms": 1489.3491862999974, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 177, "meets_slo": 0}
+arrival_default_run1 r450 {"target_rps": 450, "achieved_rps": 435.8, "ok200_rps": 435.8, "p95_success_ms": 2554.3339265, "p99_success_ms": 2919.3203856, "p50_success_ms": 1338.6217545, "p95_all_ms": 2554.3339265, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 855, "meets_slo": 0}
+arrival_default_run1 r500 {"target_rps": 500, "achieved_rps": 450.9, "ok200_rps": 450.9, "p95_success_ms": 4329.75777, "p99_success_ms": 4764.0375515, "p50_success_ms": 2900.763164, "p95_all_ms": 4329.75777, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 2950, "meets_slo": 0}
+arrival_default_run1 r550 {"target_rps": 550, "achieved_rps": 534.8, "ok200_rps": 534.8, "p95_success_ms": 2169.145699699999, "p99_success_ms": 2577.1819580799997, "p50_success_ms": 1436.044699, "p95_all_ms": 2169.145699699999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 913, "meets_slo": 0}
+arrival_default_run1 r600 {"target_rps": 600, "achieved_rps": 564.5, "ok200_rps": 564.5, "p95_success_ms": 3732.4108082, "p99_success_ms": 4165.47517358, "p50_success_ms": 2408.228616, "p95_all_ms": 3732.4108082, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 2133, "meets_slo": 0}
+arrival_default_run1 max_rps_slo = 0 first_failing = 300
+arrival_hikari_run1 r300 {"target_rps": 300, "achieved_rps": 298.7, "ok200_rps": 298.7, "p95_success_ms": 1913.5038266499996, "p99_success_ms": 2757.8156698800044, "p50_success_ms": 267.504591, "p95_all_ms": 1913.5038266499996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 76, "meets_slo": 0}
+arrival_hikari_run1 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 650.491118, "p99_success_ms": 1187.587687, "p50_success_ms": 28.110561, "p95_all_ms": 650.491118, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run1 r400 {"target_rps": 400, "achieved_rps": 398.4, "ok200_rps": 398.4, "p95_success_ms": 1554.1294543999998, "p99_success_ms": 2013.3845170399986, "p50_success_ms": 509.174068, "p95_all_ms": 1554.1294543999998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 96, "meets_slo": 0}
+arrival_hikari_run1 r450 {"target_rps": 450, "achieved_rps": 448.6, "ok200_rps": 448.6, "p95_success_ms": 1482.335734949998, "p99_success_ms": 1867.48386287, "p50_success_ms": 588.374265, "p95_all_ms": 1482.335734949998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 83, "meets_slo": 0}
+arrival_hikari_run1 r500 {"target_rps": 500, "achieved_rps": 485.5, "ok200_rps": 485.5, "p95_success_ms": 2463.5269034999997, "p99_success_ms": 2899.7864854399995, "p50_success_ms": 1341.15094, "p95_all_ms": 2463.5269034999997, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 873, "meets_slo": 0}
+arrival_hikari_run1 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 939.3349573, "p99_success_ms": 1305.2054556899989, "p50_success_ms": 307.312311, "p95_all_ms": 939.3349573, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run1 r600 {"target_rps": 600, "achieved_rps": 577.8, "ok200_rps": 577.8, "p95_success_ms": 2751.5835956, "p99_success_ms": 3207.4094026000002, "p50_success_ms": 1752.673097, "p95_all_ms": 2751.5835956, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 1336, "meets_slo": 0}
+arrival_hikari_run1 max_rps_slo = 550 first_failing = 300
+arrival_tuned_run1 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 533.261051, "p99_success_ms": 953.886285, "p50_success_ms": 41.928269, "p95_all_ms": 533.261051, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run1 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 527.59444105, "p99_success_ms": 956.8091378099958, "p50_success_ms": 19.2665795, "p95_all_ms": 527.59444105, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run1 r400 {"target_rps": 400, "achieved_rps": 396.4, "ok200_rps": 396.4, "p95_success_ms": 1515.0167840999943, "p99_success_ms": 3315.5153634200005, "p50_success_ms": 36.073214, "p95_all_ms": 1515.0167840999943, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 218, "meets_slo": 0}
+arrival_tuned_run1 r450 {"target_rps": 450, "achieved_rps": 445.4, "ok200_rps": 445.4, "p95_success_ms": 1761.8754662999977, "p99_success_ms": 2947.4207440700006, "p50_success_ms": 50.500558999999996, "p95_all_ms": 1761.8754662999977, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 277, "meets_slo": 0}
+arrival_tuned_run1 r500 {"target_rps": 500, "achieved_rps": 428.3, "ok200_rps": 428.3, "p95_success_ms": 8262.46779305, "p99_success_ms": 10156.256361519998, "p50_success_ms": 3617.8693415, "p95_all_ms": 8262.46779305, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 4271, "meets_slo": 0}
+arrival_tuned_run1 r550 {"target_rps": 550, "achieved_rps": 499.4, "ok200_rps": 499.4, "p95_success_ms": 5710.0205803, "p99_success_ms": 7812.400631560002, "p50_success_ms": 2120.10708, "p95_all_ms": 5710.0205803, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 3029, "meets_slo": 0}
+arrival_tuned_run1 r600 {"target_rps": 600, "achieved_rps": 531.8, "ok200_rps": 531.8, "p95_success_ms": 6463.86508965, "p99_success_ms": 8558.187012710001, "p50_success_ms": 3420.043425, "p95_all_ms": 6463.86508965, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 4090, "meets_slo": 0}
+arrival_tuned_run1 max_rps_slo = 350 first_failing = 400
+arrival_hikari_run2 r300 {"target_rps": 300, "achieved_rps": 288.7, "ok200_rps": 288.7, "p95_success_ms": 3415.343341099999, "p99_success_ms": 4478.180436299998, "p50_success_ms": 768.638652, "p95_all_ms": 3415.343341099999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 677, "meets_slo": 0}
+arrival_hikari_run2 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 606.771588, "p99_success_ms": 859.902728, "p50_success_ms": 24.650014, "p95_all_ms": 606.771588, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run2 r400 {"target_rps": 400, "achieved_rps": 397.8, "ok200_rps": 397.8, "p95_success_ms": 1493.6952010999998, "p99_success_ms": 2009.426559289991, "p50_success_ms": 294.130834, "p95_all_ms": 1493.6952010999998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 132, "meets_slo": 0}
+arrival_hikari_run2 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 835.976456, "p99_success_ms": 1260.835147, "p50_success_ms": 139.916042, "p95_all_ms": 835.976456, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run2 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 816.081802, "p99_success_ms": 1234.199919, "p50_success_ms": 124.825828, "p95_all_ms": 816.081802, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run2 r550 {"target_rps": 550, "achieved_rps": 549.7, "ok200_rps": 549.7, "p95_success_ms": 1171.341182, "p99_success_ms": 1569.3589100000008, "p50_success_ms": 372.556479, "p95_all_ms": 1171.341182, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 19, "meets_slo": 0}
+arrival_hikari_run2 r600 {"target_rps": 600, "achieved_rps": 594.0, "ok200_rps": 594.0, "p95_success_ms": 1660.7448556, "p99_success_ms": 2055.42036064, "p50_success_ms": 845.683861, "p95_all_ms": 1660.7448556, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 364, "meets_slo": 0}
+arrival_hikari_run2 max_rps_slo = 500 first_failing = 300
+arrival_tuned_run2 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 373.040705, "p99_success_ms": 748.833698, "p50_success_ms": 20.547555, "p95_all_ms": 373.040705, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run2 r350 {"target_rps": 350, "achieved_rps": 348.8, "ok200_rps": 348.8, "p95_success_ms": 1331.3674559999997, "p99_success_ms": 1778.749393279997, "p50_success_ms": 26.346035, "p95_all_ms": 1331.3674559999997, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 76, "meets_slo": 0}
+arrival_tuned_run2 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 337.5662751499999, "p99_success_ms": 495.1931008999996, "p50_success_ms": 14.614564999999999, "p95_all_ms": 337.5662751499999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run2 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 337.605824, "p99_success_ms": 453.069093, "p50_success_ms": 15.211094, "p95_all_ms": 337.605824, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run2 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 211.243036, "p99_success_ms": 284.11884, "p50_success_ms": 15.625525, "p95_all_ms": 211.243036, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run2 r550 {"target_rps": 550, "achieved_rps": 540.5, "ok200_rps": 540.5, "p95_success_ms": 2830.0474665999996, "p99_success_ms": 3726.059488360001, "p50_success_ms": 720.965808, "p95_all_ms": 2830.0474665999996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 572, "meets_slo": 0}
+arrival_tuned_run2 r600 {"target_rps": 600, "achieved_rps": 600.0, "ok200_rps": 600.0, "p95_success_ms": 628.8996117999993, "p99_success_ms": 941.448131100001, "p50_success_ms": 130.8526465, "p95_all_ms": 628.8996117999993, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run2 max_rps_slo = 600 first_failing = 350
+arrival_default_run2 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 35.333413, "p99_success_ms": 109.979962, "p50_success_ms": 10.792267, "p95_all_ms": 35.333413, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run2 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 23.406891, "p99_success_ms": 44.914027, "p50_success_ms": 10.607437, "p95_all_ms": 23.406891, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run2 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 162.546797, "p99_success_ms": 313.696447, "p50_success_ms": 21.376904, "p95_all_ms": 162.546797, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run2 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 411.090104, "p99_success_ms": 607.929711, "p50_success_ms": 80.988268, "p95_all_ms": 411.090104, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run2 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 764.3564409999999, "p99_success_ms": 1146.6527747599978, "p50_success_ms": 303.4809975, "p95_all_ms": 764.3564409999999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run2 r550 {"target_rps": 550, "achieved_rps": 544.6, "ok200_rps": 544.6, "p95_success_ms": 1679.2987401499997, "p99_success_ms": 2041.17834237, "p50_success_ms": 955.792228, "p95_all_ms": 1679.2987401499997, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 323, "meets_slo": 0}
+arrival_default_run2 r600 {"target_rps": 600, "achieved_rps": 583.4, "ok200_rps": 583.4, "p95_success_ms": 2423.2905042999996, "p99_success_ms": 2831.1114302400015, "p50_success_ms": 1405.636687, "p95_all_ms": 2423.2905042999996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 997, "meets_slo": 0}
+arrival_default_run2 max_rps_slo = 500 first_failing = 550
+arrival_tuned_run3 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 266.066999, "p99_success_ms": 614.316412, "p50_success_ms": 14.769153, "p95_all_ms": 266.066999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 148.495509, "p99_success_ms": 236.090405, "p50_success_ms": 11.933653, "p95_all_ms": 148.495509, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 43.41320204999994, "p99_success_ms": 120.19378394999988, "p50_success_ms": 12.87142, "p95_all_ms": 43.41320204999994, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 84.82038729999984, "p99_success_ms": 312.5514469399997, "p50_success_ms": 12.9006905, "p95_all_ms": 84.82038729999984, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 84.656168, "p99_success_ms": 120.770762, "p50_success_ms": 14.050104, "p95_all_ms": 84.656168, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 608.3414839499999, "p99_success_ms": 888.56577805, "p50_success_ms": 148.5110065, "p95_all_ms": 608.3414839499999, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 r600 {"target_rps": 600, "achieved_rps": 600.0, "ok200_rps": 600.0, "p95_success_ms": 358.612578, "p99_success_ms": 530.148303, "p50_success_ms": 21.123958, "p95_all_ms": 358.612578, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run3 max_rps_slo = 600 first_failing = None
+arrival_default_run3 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 24.663917049999995, "p99_success_ms": 119.99879662999763, "p50_success_ms": 9.4598145, "p95_all_ms": 24.663917049999995, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 63.766908, "p99_success_ms": 211.798168, "p50_success_ms": 9.366324, "p95_all_ms": 63.766908, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 32.894998, "p99_success_ms": 121.894942, "p50_success_ms": 10.671218, "p95_all_ms": 32.894998, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 191.19271799999987, "p99_success_ms": 324.15911775999723, "p50_success_ms": 19.8984975, "p95_all_ms": 191.19271799999987, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run3 r500 {"target_rps": 500, "achieved_rps": 499.0, "ok200_rps": 333.6, "p95_success_ms": 1162.7715385000001, "p99_success_ms": 2106.660173299944, "p50_success_ms": 235.68704350000002, "p95_all_ms": 1011.8660472999998, "non200_rate": 0.3315, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.3315, "dropped_iterations": 60, "meets_slo": 0}
+arrival_default_run3 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 0.0, "p95_success_ms": 0, "p99_success_ms": 0, "p50_success_ms": 0, "p95_all_ms": 2.837464, "non200_rate": 1.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 1.0, "dropped_iterations": 0, "meets_slo": 0}
+arrival_default_run3 r600 {"target_rps": 600, "achieved_rps": 600.0, "ok200_rps": 0.0, "p95_success_ms": 0, "p99_success_ms": 0, "p50_success_ms": 0, "p95_all_ms": 2.59438, "non200_rate": 1.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 1.0, "dropped_iterations": 0, "meets_slo": 0}
+arrival_default_run3 max_rps_slo = 450 first_failing = 500
+arrival_hikari_run3 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 455.20281974999995, "p99_success_ms": 792.557539009999, "p50_success_ms": 14.0377555, "p95_all_ms": 455.20281974999995, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 22.694684, "p99_success_ms": 50.283255, "p50_success_ms": 9.948905, "p95_all_ms": 22.694684, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 18.902288, "p99_success_ms": 25.067287, "p50_success_ms": 9.585531, "p95_all_ms": 18.902288, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 301.4461281, "p99_success_ms": 539.2693683799998, "p50_success_ms": 12.1108835, "p95_all_ms": 301.4461281, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 58.185002, "p99_success_ms": 157.807739, "p50_success_ms": 12.284368, "p95_all_ms": 58.185002, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 110.416338, "p99_success_ms": 200.700856, "p50_success_ms": 12.416008, "p95_all_ms": 110.416338, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 r600 {"target_rps": 600, "achieved_rps": 600.0, "ok200_rps": 600.0, "p95_success_ms": 413.3688607000001, "p99_success_ms": 599.9674022200002, "p50_success_ms": 18.456602, "p95_all_ms": 413.3688607000001, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run3 max_rps_slo = 600 first_failing = None
+arrival_default_run4 r300 {"target_rps": 300, "achieved_rps": 299.7, "ok200_rps": 299.7, "p95_success_ms": 1055.6338323500001, "p99_success_ms": 1806.955712879986, "p50_success_ms": 47.186891, "p95_all_ms": 1055.6338323500001, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 19, "meets_slo": 0}
+arrival_default_run4 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 52.41921719999996, "p99_success_ms": 124.39151376999934, "p50_success_ms": 11.906333499999999, "p95_all_ms": 52.41921719999996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run4 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 26.820858, "p99_success_ms": 83.014992, "p50_success_ms": 10.675797, "p95_all_ms": 26.820858, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run4 r450 {"target_rps": 450, "achieved_rps": 450.0, "ok200_rps": 450.0, "p95_success_ms": 120.609964, "p99_success_ms": 220.800824, "p50_success_ms": 13.814142, "p95_all_ms": 120.609964, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run4 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 140.139151, "p99_success_ms": 256.408997, "p50_success_ms": 16.710899, "p95_all_ms": 140.139151, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run4 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 605.18588425, "p99_success_ms": 970.2782166299979, "p50_success_ms": 43.571899, "p95_all_ms": 605.18588425, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_default_run4 r600 {"target_rps": 600, "achieved_rps": 594.0, "ok200_rps": 594.0, "p95_success_ms": 1498.3947048, "p99_success_ms": 1772.038133680004, "p50_success_ms": 288.508261, "p95_all_ms": 1498.3947048, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 362, "meets_slo": 0}
+arrival_default_run4 max_rps_slo = 550 first_failing = 300
+arrival_hikari_run4 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 253.540662, "p99_success_ms": 651.196847, "p50_success_ms": 20.848453, "p95_all_ms": 253.540662, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run4 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 401.17202419999967, "p99_success_ms": 752.975966169991, "p50_success_ms": 12.4434335, "p95_all_ms": 401.17202419999967, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_hikari_run4 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 1078.56636, "p99_success_ms": 1594.985131, "p50_success_ms": 257.072691, "p95_all_ms": 1078.56636, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 0}
+arrival_hikari_run4 r450 {"target_rps": 450, "achieved_rps": 444.4, "ok200_rps": 444.4, "p95_success_ms": 1772.9908189999994, "p99_success_ms": 2263.0527212000025, "p50_success_ms": 522.596741, "p95_all_ms": 1772.9908189999994, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 338, "meets_slo": 0}
+arrival_hikari_run4 r500 {"target_rps": 500, "achieved_rps": 496.6, "ok200_rps": 496.6, "p95_success_ms": 1452.5932054, "p99_success_ms": 1891.6213265200017, "p50_success_ms": 430.298418, "p95_all_ms": 1452.5932054, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 205, "meets_slo": 0}
+arrival_hikari_run4 r550 {"target_rps": 550, "achieved_rps": 541.2, "ok200_rps": 541.2, "p95_success_ms": 1803.9633705, "p99_success_ms": 2239.7105449999995, "p50_success_ms": 798.197874, "p95_all_ms": 1803.9633705, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 528, "meets_slo": 0}
+arrival_hikari_run4 r600 {"target_rps": 600, "achieved_rps": 594.1, "ok200_rps": 594.1, "p95_success_ms": 1600.21815025, "p99_success_ms": 2011.8702337199984, "p50_success_ms": 754.287531, "p95_all_ms": 1600.21815025, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 353, "meets_slo": 0}
+arrival_hikari_run4 max_rps_slo = 350 first_failing = 400
+arrival_tuned_run4 r300 {"target_rps": 300, "achieved_rps": 300.0, "ok200_rps": 300.0, "p95_success_ms": 568.186403, "p99_success_ms": 821.725145, "p50_success_ms": 19.929282, "p95_all_ms": 568.186403, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 r350 {"target_rps": 350, "achieved_rps": 350.0, "ok200_rps": 350.0, "p95_success_ms": 93.124894, "p99_success_ms": 157.208927, "p50_success_ms": 12.280419, "p95_all_ms": 93.124894, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 r400 {"target_rps": 400, "achieved_rps": 400.0, "ok200_rps": 400.0, "p95_success_ms": 118.679662, "p99_success_ms": 420.458112, "p50_success_ms": 12.344981, "p95_all_ms": 118.679662, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 r450 {"target_rps": 450, "achieved_rps": 444.3, "ok200_rps": 444.3, "p95_success_ms": 1315.873969299996, "p99_success_ms": 3399.216335199987, "p50_success_ms": 15.491506, "p95_all_ms": 1315.873969299996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 342, "meets_slo": 0}
+arrival_tuned_run4 r500 {"target_rps": 500, "achieved_rps": 500.0, "ok200_rps": 500.0, "p95_success_ms": 91.14168065, "p99_success_ms": 178.4805720599999, "p50_success_ms": 13.197205499999999, "p95_all_ms": 91.14168065, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 r550 {"target_rps": 550, "achieved_rps": 550.0, "ok200_rps": 550.0, "p95_success_ms": 212.45766774999996, "p99_success_ms": 360.30085477999967, "p50_success_ms": 14.089957, "p95_all_ms": 212.45766774999996, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 r600 {"target_rps": 600, "achieved_rps": 600.0, "ok200_rps": 600.0, "p95_success_ms": 589.855668, "p99_success_ms": 908.732143, "p50_success_ms": 119.968053, "p95_all_ms": 589.855668, "non200_rate": 0.0, "rate_404": 0.0, "rate_5xx": 0.0, "rate_conn_fail_other": 0.0, "dropped_iterations": 0, "meets_slo": 1}
+arrival_tuned_run4 max_rps_slo = 600 first_failing = 450
+ Container urisik-zookeeper  Recreate
+ Container urisik-mysql  Recreate
+ Container urisik-redis  Recreate
+ Container urisik-elasticsearch  Recreate
+ Container urisik-redis  Recreated
+ Container urisik-zookeeper  Recreated
+ Container urisik-kafka  Recreate
+ Container urisik-elasticsearch  Recreated
+ Container urisik-mysql  Recreated
+ Container urisik-kafka  Recreated
+ Container urisik-app  Recreate
+ Container urisik-app  Recreated
+ Container urisik-redis  Starting
+ Container urisik-elasticsearch  Starting
+ Container urisik-zookeeper  Starting
+ Container urisik-mysql  Starting
+ Container urisik-zookeeper  Started
+ Container urisik-kafka  Starting
+ Container urisik-redis  Started
+ Container urisik-elasticsearch  Started
+ Container urisik-mysql  Started
+ Container urisik-kafka  Started
+ Container urisik-elasticsearch  Waiting
+ Container urisik-mysql  Waiting
+ Container urisik-mysql  Healthy
+ Container urisik-elasticsearch  Healthy
+ Container urisik-app  Starting
+ Container urisik-app  Started
+EXP4B_DONE

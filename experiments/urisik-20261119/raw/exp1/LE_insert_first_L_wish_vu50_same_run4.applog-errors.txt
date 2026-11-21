@@ -1,0 +1,270 @@
+2026-11-20T03:41:48.883Z  WARN 1 --- [io-8080-exec-58] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.884Z ERROR 1 --- [io-8080-exec-58] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.885Z  WARN 1 --- [io-8080-exec-34] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.885Z ERROR 1 --- [io-8080-exec-34] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.885Z  WARN 1 --- [io-8080-exec-54] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.885Z ERROR 1 --- [io-8080-exec-54] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.888Z ERROR 1 --- [io-8080-exec-54] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.885Z ERROR 1 --- [io-8080-exec-58] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.887Z ERROR 1 --- [io-8080-exec-34] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.926Z  WARN 1 --- [io-8080-exec-17] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.927Z ERROR 1 --- [io-8080-exec-17] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.927Z  WARN 1 --- [io-8080-exec-14] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.927Z ERROR 1 --- [io-8080-exec-14] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.927Z  WARN 1 --- [io-8080-exec-75] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.927Z ERROR 1 --- [io-8080-exec-75] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.928Z  WARN 1 --- [nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.928Z ERROR 1 --- [nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.927Z  WARN 1 --- [io-8080-exec-74] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.929Z ERROR 1 --- [io-8080-exec-74] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.927Z  WARN 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.931Z ERROR 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.931Z  WARN 1 --- [io-8080-exec-73] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.932Z ERROR 1 --- [io-8080-exec-73] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.929Z ERROR 1 --- [nio-8080-exec-3] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.931Z ERROR 1 --- [io-8080-exec-14] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.931Z ERROR 1 --- [io-8080-exec-75] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.931Z ERROR 1 --- [io-8080-exec-17] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.936Z ERROR 1 --- [io-8080-exec-74] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.934Z ERROR 1 --- [io-8080-exec-57] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.934Z ERROR 1 --- [io-8080-exec-73] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.973Z  WARN 1 --- [io-8080-exec-41] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.973Z ERROR 1 --- [io-8080-exec-41] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.973Z  WARN 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.973Z ERROR 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.974Z  WARN 1 --- [io-8080-exec-11] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.974Z ERROR 1 --- [io-8080-exec-11] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.974Z  WARN 1 --- [io-8080-exec-38] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.974Z ERROR 1 --- [io-8080-exec-38] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.974Z  WARN 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.974Z ERROR 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z  WARN 1 --- [io-8080-exec-64] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-64] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z  WARN 1 --- [io-8080-exec-76] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-76] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z  WARN 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.977Z  WARN 1 --- [io-8080-exec-65] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.977Z ERROR 1 --- [io-8080-exec-65] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.979Z  WARN 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.979Z ERROR 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.973Z  WARN 1 --- [io-8080-exec-22] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:48.979Z ERROR 1 --- [io-8080-exec-22] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-38] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-11] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.980Z ERROR 1 --- [io-8080-exec-22] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.981Z ERROR 1 --- [io-8080-exec-26] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-41] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.975Z ERROR 1 --- [io-8080-exec-24] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.983Z ERROR 1 --- [io-8080-exec-76] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.981Z ERROR 1 --- [io-8080-exec-31] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.977Z ERROR 1 --- [io-8080-exec-50] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.979Z ERROR 1 --- [io-8080-exec-65] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.029Z  WARN 1 --- [io-8080-exec-27] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.029Z  WARN 1 --- [io-8080-exec-68] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.029Z  WARN 1 --- [io-8080-exec-21] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.031Z  WARN 1 --- [io-8080-exec-39] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.031Z ERROR 1 --- [io-8080-exec-39] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.029Z ERROR 1 --- [io-8080-exec-27] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.029Z ERROR 1 --- [io-8080-exec-68] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.029Z  WARN 1 --- [io-8080-exec-36] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.032Z ERROR 1 --- [io-8080-exec-36] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.030Z  WARN 1 --- [nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.032Z ERROR 1 --- [nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.030Z  WARN 1 --- [io-8080-exec-69] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.030Z  WARN 1 --- [io-8080-exec-78] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.035Z ERROR 1 --- [io-8080-exec-69] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.036Z  WARN 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.036Z ERROR 1 --- [io-8080-exec-57] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:48.978Z ERROR 1 --- [io-8080-exec-64] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.031Z ERROR 1 --- [io-8080-exec-21] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.035Z ERROR 1 --- [io-8080-exec-78] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.033Z ERROR 1 --- [io-8080-exec-39] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.041Z  WARN 1 --- [io-8080-exec-46] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.041Z ERROR 1 --- [io-8080-exec-46] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.033Z ERROR 1 --- [io-8080-exec-68] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.036Z ERROR 1 --- [io-8080-exec-36] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.037Z ERROR 1 --- [io-8080-exec-57] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.034Z ERROR 1 --- [io-8080-exec-27] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.040Z ERROR 1 --- [io-8080-exec-78] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.037Z ERROR 1 --- [io-8080-exec-69] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.039Z ERROR 1 --- [io-8080-exec-21] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.043Z ERROR 1 --- [io-8080-exec-46] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.035Z ERROR 1 --- [nio-8080-exec-1] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.069Z  WARN 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.069Z  WARN 1 --- [nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.069Z  WARN 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.069Z ERROR 1 --- [nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.069Z ERROR 1 --- [io-8080-exec-26] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.069Z ERROR 1 --- [io-8080-exec-31] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.069Z  WARN 1 --- [io-8080-exec-55] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.069Z ERROR 1 --- [io-8080-exec-55] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.070Z  WARN 1 --- [io-8080-exec-29] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.070Z ERROR 1 --- [io-8080-exec-29] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.070Z  WARN 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.070Z ERROR 1 --- [io-8080-exec-24] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.070Z ERROR 1 --- [io-8080-exec-26] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.070Z ERROR 1 --- [io-8080-exec-55] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.070Z ERROR 1 --- [io-8080-exec-31] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.078Z  WARN 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.078Z  WARN 1 --- [io-8080-exec-65] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.078Z ERROR 1 --- [io-8080-exec-65] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.078Z ERROR 1 --- [io-8080-exec-50] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.078Z  WARN 1 --- [io-8080-exec-44] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.078Z ERROR 1 --- [io-8080-exec-44] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.079Z  WARN 1 --- [io-8080-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.079Z  WARN 1 --- [io-8080-exec-35] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.079Z ERROR 1 --- [io-8080-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.079Z  WARN 1 --- [io-8080-exec-59] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.079Z ERROR 1 --- [io-8080-exec-59] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.079Z  WARN 1 --- [io-8080-exec-62] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.080Z ERROR 1 --- [io-8080-exec-62] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.081Z  WARN 1 --- [nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1213, SQLState: 40001
+2026-11-20T03:41:49.082Z ERROR 1 --- [nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.079Z ERROR 1 --- [io-8080-exec-35] o.h.engine.jdbc.spi.SqlExceptionHelper   : Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.072Z ERROR 1 --- [nio-8080-exec-2] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.073Z ERROR 1 --- [io-8080-exec-24] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.082Z ERROR 1 --- [io-8080-exec-59] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.080Z ERROR 1 --- [io-8080-exec-44] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.082Z ERROR 1 --- [io-8080-exec-62] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.081Z ERROR 1 --- [io-8080-exec-65] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.080Z ERROR 1 --- [io-8080-exec-50] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.084Z ERROR 1 --- [nio-8080-exec-8] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.080Z ERROR 1 --- [io-8080-exec-10] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.073Z ERROR 1 --- [io-8080-exec-29] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
+2026-11-20T03:41:49.085Z ERROR 1 --- [io-8080-exec-35] c.u.b.g.a.h.GeneralExceptionAdvice       : Unhandled exception
+org.springframework.dao.CannotAcquireLockException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]; SQL [n/a]
+Caused by: org.hibernate.exception.LockAcquisitionException: JDBC exception executing SQL [update recipe r1_0 set wish_count=(r1_0.wish_count+1) where r1_0.id=?] [Deadlock found when trying to get lock; try restarting transaction] [n/a]
+Caused by: com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction

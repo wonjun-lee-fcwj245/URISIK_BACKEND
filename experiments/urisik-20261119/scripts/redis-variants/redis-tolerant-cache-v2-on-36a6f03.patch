@@ -1,0 +1,264 @@
+diff --git a/src/main/java/com/urisik/backend/global/config/FailureTolerantCache.java b/src/main/java/com/urisik/backend/global/config/FailureTolerantCache.java
+new file mode 100644
+index 0000000..140b55b
+--- /dev/null
++++ b/src/main/java/com/urisik/backend/global/config/FailureTolerantCache.java
+@@ -0,0 +1,141 @@
++package com.urisik.backend.global.config;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.springframework.cache.Cache;
++
++import java.util.concurrent.Callable;
++import java.util.concurrent.atomic.AtomicLong;
++
++/**
++ * 캐시(Redis) 오류가 요청 실패나 정지로 번지지 않게 하는 캐시 래퍼.
++ * 조회·저장·삭제가 실패하면 예외를 삼키고 캐시 미적중으로 처리해 원본(DB)으로 우회한다.
++ *
++ * CacheErrorHandler만으로는 부족하다. 캐시 매니저가 transactionAware라서 put/evict가 트랜잭션 커밋 뒤에 실행되는데,
++ * 그때 던져진 예외는 CacheErrorHandler를 거치지 않고 커밋 단계에서 요청으로 올라가 500이 된다.
++ * 그래서 TransactionAwareCacheDecorator 안쪽(실제 RedisCache를 직접 감싸는 위치)에 둔다.
++ * 경고 로그는 장애 중 폭주하지 않게 5초에 한 번만 남긴다.
++ */
++public final class FailureTolerantCache implements Cache {
++
++    private static final Logger log = LoggerFactory.getLogger(FailureTolerantCache.class);
++    private static final long LOG_INTERVAL_MS = 5_000;
++    private static final AtomicLong LAST_LOGGED_AT = new AtomicLong(0);
++
++    private final Cache delegate;
++
++    public FailureTolerantCache(Cache delegate) {
++        this.delegate = delegate;
++    }
++
++    private void warn(String op, Object key, RuntimeException e) {
++        long now = System.currentTimeMillis();
++        long last = LAST_LOGGED_AT.get();
++        if (now - last >= LOG_INTERVAL_MS && LAST_LOGGED_AT.compareAndSet(last, now)) {
++            log.warn("캐시 오류 무시하고 원본으로 우회: op={}, cache={}, key={}, cause={}", op, delegate.getName(), key, e.toString());
++        }
++    }
++
++    @Override
++    public String getName() {
++        return delegate.getName();
++    }
++
++    @Override
++    public Object getNativeCache() {
++        return delegate.getNativeCache();
++    }
++
++    @Override
++    public ValueWrapper get(Object key) {
++        try {
++            return delegate.get(key);
++        } catch (RuntimeException e) {
++            warn("get", key, e);
++            return null;
++        }
++    }
++
++    @Override
++    public <T> T get(Object key, Class<T> type) {
++        try {
++            return delegate.get(key, type);
++        } catch (RuntimeException e) {
++            warn("get", key, e);
++            return null;
++        }
++    }
++
++    @Override
++    public <T> T get(Object key, Callable<T> valueLoader) {
++        try {
++            return delegate.get(key, valueLoader);
++        } catch (ValueRetrievalException e) {
++            throw e;   // 값을 만드는 쪽(원본 조회)의 예외는 그대로 전달한다
++        } catch (RuntimeException e) {
++            warn("get", key, e);
++            try {
++                return valueLoader.call();
++            } catch (Exception inner) {
++                throw new ValueRetrievalException(key, valueLoader, inner);
++            }
++        }
++    }
++
++    @Override
++    public void put(Object key, Object value) {
++        try {
++            delegate.put(key, value);
++        } catch (RuntimeException e) {
++            warn("put", key, e);
++        }
++    }
++
++    @Override
++    public ValueWrapper putIfAbsent(Object key, Object value) {
++        try {
++            return delegate.putIfAbsent(key, value);
++        } catch (RuntimeException e) {
++            warn("putIfAbsent", key, e);
++            return null;
++        }
++    }
++
++    @Override
++    public void evict(Object key) {
++        try {
++            delegate.evict(key);
++        } catch (RuntimeException e) {
++            warn("evict", key, e);
++        }
++    }
++
++    @Override
++    public boolean evictIfPresent(Object key) {
++        try {
++            return delegate.evictIfPresent(key);
++        } catch (RuntimeException e) {
++            warn("evictIfPresent", key, e);
++            return false;
++        }
++    }
++
++    @Override
++    public void clear() {
++        try {
++            delegate.clear();
++        } catch (RuntimeException e) {
++            warn("clear", null, e);
++        }
++    }
++
++    @Override
++    public boolean invalidate() {
++        try {
++            return delegate.invalidate();
++        } catch (RuntimeException e) {
++            warn("invalidate", null, e);
++            return false;
++        }
++    }
++}
+diff --git a/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java b/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
+index 2f0432f..6fe79cc 100644
+--- a/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
++++ b/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
+@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
+ import com.fasterxml.jackson.annotation.PropertyAccessor;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
++import org.springframework.cache.Cache;
+ import org.springframework.cache.CacheManager;
+ import org.springframework.cache.annotation.EnableCaching;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.data.redis.cache.RedisCacheConfiguration;
+ import org.springframework.data.redis.cache.RedisCacheManager;
++import org.springframework.data.redis.cache.RedisCacheWriter;
+ import org.springframework.data.redis.connection.RedisConnectionFactory;
+ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+ import org.springframework.data.redis.serializer.RedisSerializationContext;
+@@ -56,10 +58,17 @@ public class RedisCacheConfig {
+                 "recommendWish", defaultConfig.entryTtl(Duration.ofMinutes(5))
+         );
+ 
+-        return RedisCacheManager.builder(connectionFactory)
+-                .cacheDefaults(defaultConfig.entryTtl(Duration.ofMinutes(10)))
+-                .withInitialCacheConfigurations(cacheConfigs)
+-                .transactionAware()
+-                .build();
++        // 캐시 오류가 요청 실패로 번지지 않게, 트랜잭션 데코레이터 안쪽(실제 RedisCache 바로 바깥)에 FailureTolerantCache를 끼운다
++        RedisCacheManager manager = new RedisCacheManager(
++                RedisCacheWriter.nonLockingRedisCacheWriter(connectionFactory),
++                defaultConfig.entryTtl(Duration.ofMinutes(10)),
++                cacheConfigs) {
++            @Override
++            protected Cache decorateCache(Cache cache) {
++                return super.decorateCache(new FailureTolerantCache(cache));
++            }
++        };
++        manager.setTransactionAware(true);
++        return manager;
+     }
+ }
+diff --git a/src/test/java/com/urisik/backend/global/config/FailureTolerantCacheTest.java b/src/test/java/com/urisik/backend/global/config/FailureTolerantCacheTest.java
+new file mode 100644
+index 0000000..06c330f
+--- /dev/null
++++ b/src/test/java/com/urisik/backend/global/config/FailureTolerantCacheTest.java
+@@ -0,0 +1,69 @@
++package com.urisik.backend.global.config;
++
++import org.junit.jupiter.api.DisplayName;
++import org.junit.jupiter.api.Test;
++import org.springframework.cache.Cache;
++import org.springframework.cache.concurrent.ConcurrentMapCache;
++
++import java.util.concurrent.atomic.AtomicInteger;
++
++import static org.assertj.core.api.Assertions.assertThat;
++import static org.assertj.core.api.Assertions.assertThatCode;
++import static org.assertj.core.api.Assertions.assertThatThrownBy;
++
++class FailureTolerantCacheTest {
++
++    /** 모든 연산이 Redis 장애처럼 예외를 던지는 캐시 */
++    private static class DownCache extends ConcurrentMapCache {
++        DownCache() { super("down"); }
++        private RuntimeException down() { return new IllegalStateException("Unable to connect to Redis"); }
++        @Override public ValueWrapper get(Object key) { throw down(); }
++        @Override public <T> T get(Object key, Class<T> type) { throw down(); }
++        @Override public <T> T get(Object key, java.util.concurrent.Callable<T> loader) { throw down(); }
++        @Override public void put(Object key, Object value) { throw down(); }
++        @Override public ValueWrapper putIfAbsent(Object key, Object value) { throw down(); }
++        @Override public void evict(Object key) { throw down(); }
++        @Override public boolean evictIfPresent(Object key) { throw down(); }
++        @Override public void clear() { throw down(); }
++        @Override public boolean invalidate() { throw down(); }
++    }
++
++    private final Cache tolerant = new FailureTolerantCache(new DownCache());
++
++    @Test
++    @DisplayName("Redis 장애 중에도 조회는 미적중(null), 저장·삭제는 조용히 무시한다")
++    void swallowsFailures() {
++        assertThat(tolerant.get("k")).isNull();
++        assertThat(tolerant.get("k", String.class)).isNull();
++        assertThatCode(() -> tolerant.put("k", "v")).doesNotThrowAnyException();
++        assertThatCode(() -> tolerant.evict("k")).doesNotThrowAnyException();
++        assertThatCode(tolerant::clear).doesNotThrowAnyException();
++        assertThat(tolerant.putIfAbsent("k", "v")).isNull();
++    }
++
++    @Test
++    @DisplayName("값 로더가 있는 조회는 캐시가 죽어 있으면 원본 로더를 직접 호출한다")
++    void fallsBackToLoader() {
++        AtomicInteger calls = new AtomicInteger();
++        String v = tolerant.get("k", () -> { calls.incrementAndGet(); return "from-db"; });
++        assertThat(v).isEqualTo("from-db");
++        assertThat(calls.get()).isEqualTo(1);
++    }
++
++    @Test
++    @DisplayName("원본 조회 자체가 실패하면 그 예외는 삼키지 않는다")
++    void loaderFailureIsNotSwallowed() {
++        assertThatThrownBy(() -> tolerant.get("k", () -> { throw new IllegalArgumentException("db error"); }))
++                .isInstanceOf(Cache.ValueRetrievalException.class);
++    }
++
++    @Test
++    @DisplayName("정상 캐시는 그대로 동작한다")
++    void healthyCacheWorks() {
++        Cache healthy = new FailureTolerantCache(new ConcurrentMapCache("ok"));
++        healthy.put("k", "v");
++        assertThat(healthy.get("k", String.class)).isEqualTo("v");
++        healthy.evict("k");
++        assertThat(healthy.get("k")).isNull();
++    }
++}

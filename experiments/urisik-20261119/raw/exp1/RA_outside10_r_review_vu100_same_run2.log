@@ -1,0 +1,108 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\RA_outside10_r_review_vu100_same_run2.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 100 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+Run     [ 100% ] setup()
+burst   [   0% ]
+
+running (0m02.0s), 093/100 VUs, 7 complete and 0 interrupted iterations
+burst   [   7% ] 100 VUs  0m00.9s/2m0s  007/100 iters, 1 per VU
+
+running (0m03.0s), 055/100 VUs, 45 complete and 0 interrupted iterations
+burst   [  45% ] 100 VUs  0m01.9s/2m0s  045/100 iters, 1 per VU
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=2.77s
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=36.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100    25.517079/s
+    checks_succeeded...: 64.00% 64 out of 100
+    checks_failed......: 36.00% 36 out of 100
+
+    ✗ status 200
+      ↳  64% — ✓ 64 / ✗ 36
+
+    CUSTOM
+    target_5xx.....................: 36     9.186148/s
+    target_ok......................: 64     16.33093/s
+
+    HTTP
+    http_req_duration..............: avg=946.46ms min=5.01ms  med=58.77ms p(90)=2.4s  p(95)=2.53s p(99)=2.66s max=2.77s
+      { expected_response:true }...: avg=733.91ms min=5.01ms  med=14.05ms p(90)=2.43s p(95)=2.55s p(99)=2.66s max=2.77s
+      { name:createReview }........: avg=1.88s    min=95.98ms med=1.9s    p(90)=2.53s p(95)=2.61s p(99)=2.67s max=2.77s
+    http_req_failed................: 18.00% 36 out of 200
+      { name:createReview }........: 36.00% 36 out of 100
+    http_reqs......................: 200    51.034157/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.88s    min=99.35ms med=1.9s    p(90)=2.54s p(95)=2.61s p(99)=2.68s max=2.77s
+    iterations.....................: 100    25.517079/s
+    vus............................: 55     min=0         max=93 
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 137 kB 35 kB/s
+    data_sent......................: 51 kB  13 kB/s
+
+
+
+
+running (0m03.9s), 000/100 VUs, 100 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 100 VUs  0m02.8s/2m0s  100/100 iters, 1 per VU
+
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU2 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU5 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU1 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU30 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU21 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU11 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU29 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU47 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU82 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU14 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU38 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU92 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU17 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU95 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU41 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU25 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU13 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU4 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU18 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU37 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU19 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU94 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU8 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU10 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU34 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU80 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU46 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU87 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU43 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU28 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU56 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU79 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU26 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU58 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:35+09:00" level=info msg="[NON200] VU88 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T03:37:36+09:00" level=info msg="[NON200] VU23 target=4245 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console

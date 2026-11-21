@@ -1,0 +1,14 @@
+# 실험 4 설정: tuned
+services:
+  mysql:
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=200
+  app:
+    environment:
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=50
+      - SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE=20
+      - SERVER_TOMCAT_THREADS_MAX=500
+      - SERVER_TOMCAT_THREADS_MIN_SPARE=50
+      - SERVER_TOMCAT_MAX_CONNECTIONS=10000
+      - SERVER_TOMCAT_ACCEPT_COUNT=500
+      # 관측용(튜닝 아님): Tomcat 스레드 지표 노출. 5종 모두 동일
+      - SERVER_TOMCAT_MBEANREGISTRY_ENABLED=true

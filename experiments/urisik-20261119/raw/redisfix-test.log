@@ -1,0 +1,30 @@
+
+Welcome to Gradle 8.5!
+
+Here are the highlights of this release:
+ - Support for running on Java 21
+ - Faster first use with Kotlin DSL
+ - Improved error and warning messages
+
+For more details see https://docs.gradle.org/8.5/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.5/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileJava
+/workspace/src/main/java/com/urisik/backend/domain/notification/entity/Notification.java:27: warning: @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+    private boolean isRead = false;
+                    ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 warning
+
+> Task :processResources
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :test
+
+BUILD SUCCESSFUL in 3m 12s
+4 actionable tasks: 4 executed
+exit 0

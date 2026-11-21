@@ -1,0 +1,59 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\C_v3_review_vu10_same_run2.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 10 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 10 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=214.22ms
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 10      27.050166/s
+    checks_succeeded...: 100.00% 10 out of 10
+    checks_failed......: 0.00%   0 out of 10
+
+    ✓ status 200
+
+    CUSTOM
+    target_ok......................: 10     27.050166/s
+
+    HTTP
+    http_req_duration..............: avg=66.22ms  min=7.61ms  med=26.27ms  p(90)=178.06ms p(95)=190.76ms p(99)=209.53ms max=214.22ms
+      { expected_response:true }...: avg=66.22ms  min=7.61ms  med=26.27ms  p(90)=178.06ms p(95)=190.76ms p(99)=209.53ms max=214.22ms
+      { name:createReview }........: avg=120.56ms min=36.75ms med=117.5ms  p(90)=192ms    p(95)=203.11ms p(99)=212ms    max=214.22ms
+    http_req_failed................: 0.00%  0 out of 20
+      { name:createReview }........: 0.00%  0 out of 10
+    http_reqs......................: 20     54.100332/s
+
+    EXECUTION
+    iteration_duration.............: avg=121.9ms  min=38.35ms med=118.58ms p(90)=193.1ms  p(95)=204.35ms p(99)=213.35ms max=215.6ms 
+    iterations.....................: 10     27.050166/s
+
+    NETWORK
+    data_received..................: 14 kB  37 kB/s
+    data_sent......................: 5.1 kB 14 kB/s
+
+
+
+
+running (0m00.4s), 00/10 VUs, 10 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 10 VUs  0m00.2s/2m0s  10/10 iters, 1 per VU
+

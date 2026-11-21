@@ -1,0 +1,16 @@
+# 커밋에서 제외하는 큰 원본 (로컬 raw/에는 그대로 남아 있음)
+# - k6 콘솔 로그: --summary-export JSON과 resources.csv에 같은 지표가 있고, 파일당 45~60MB
+raw/exp4/*.log
+# - 재생성 가능한 시드 SQL: scripts/exp2/seeded-random.cjs + db/init/generate-seed.js (SEED=42|7|2026)
+raw/exp2/seed-*.sql
+# - 순차 실행 참고 데이터(폐기·참고용): 요약은 README.md에 기록
+raw/reference-sequential/*
+!raw/reference-sequential/README.md
+raw/discarded-shared-iterations/*
+!raw/discarded-shared-iterations/README.md
+# 실행 중 임시 파일
+scripts/keep-awake.stop
+raw/exp4/*.stop
+raw/exp1/id-state.json
+# 임시 파일 (이전 실행에서 남은 보조 로그)
+raw/*.done

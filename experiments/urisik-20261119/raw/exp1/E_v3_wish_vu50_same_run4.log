@@ -1,0 +1,59 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\E_v3_wish_vu50_same_run4.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 50 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 50 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:addWish}
+    ✓ 'max>=0' max=537.78ms
+
+    http_req_failed{name:addWish}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 50      60.215797/s
+    checks_succeeded...: 100.00% 50 out of 50
+    checks_failed......: 0.00%   0 out of 50
+
+    ✓ status 200
+
+    CUSTOM
+    target_ok......................: 50    60.215797/s
+
+    HTTP
+    http_req_duration..............: avg=156.15ms min=2.97ms  med=24.32ms  p(90)=461.07ms p(95)=499.03ms p(99)=524.8ms  max=537.78ms
+      { expected_response:true }...: avg=156.15ms min=2.97ms  med=24.32ms  p(90)=461.07ms p(95)=499.03ms p(99)=524.8ms  max=537.78ms
+      { name:addWish }.............: avg=307.23ms min=34.52ms med=313.39ms p(90)=499.48ms p(95)=518.35ms p(99)=531.35ms max=537.78ms
+    http_req_failed................: 0.00% 0 out of 100
+      { name:addWish }.............: 0.00% 0 out of 50
+    http_reqs......................: 100   120.431593/s
+
+    EXECUTION
+    iteration_duration.............: avg=309.58ms min=37.87ms med=314.36ms p(90)=500.29ms p(95)=521.39ms p(99)=537.67ms max=544.35ms
+    iterations.....................: 50    60.215797/s
+
+    NETWORK
+    data_received..................: 67 kB 80 kB/s
+    data_sent......................: 27 kB 32 kB/s
+
+
+
+
+running (0m00.8s), 00/50 VUs, 50 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 50 VUs  0m00.5s/2m0s  50/50 iters, 1 per VU
+

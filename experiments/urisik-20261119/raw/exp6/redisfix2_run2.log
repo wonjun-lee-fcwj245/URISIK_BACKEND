@@ -1,0 +1,33 @@
+time="2026-11-21T03:23:56+09:00" level=warning msg="Request Failed" error="Get \"http://localhost:8080/api/recipes/search?keyword=%EB%B9%84%EB%B9%94%EB%B0%A5&page=0&size=10\": request timeout"
+time="2026-11-21T03:23:57+09:00" level=warning msg="Request Failed" error="Get \"http://localhost:8080/api/recipes/search?keyword=%EB%91%90%EB%B6%80&page=0&size=10\": request timeout"
+time="2026-11-21T03:23:57+09:00" level=warning msg="Request Failed" error="Get \"http://localhost:8080/api/recipes/search?keyword=%EA%B9%80%EC%B9%98%EC%B0%8C%EA%B0%9C&page=0&size=10\": request timeout"
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 5994   59.557406/s
+    checks_succeeded...: 99.94% 5991 out of 5994
+    checks_failed......: 0.05%  3 out of 5994
+
+    ✗ status 200
+      ↳  99% — ✓ 5991 / ✗ 3
+
+    HTTP
+    http_req_duration..............: avg=278.13ms med=13.71ms p(95)=893.02ms p(99)=1.74s max=5s   
+      { expected_response:true }...: avg=275.81ms med=13.7ms  p(95)=890.76ms p(99)=1.72s max=4.9s 
+    http_req_failed................: 0.04%  3 out of 6094
+    http_reqs......................: 6094   60.551023/s
+
+    EXECUTION
+    dropped_iterations.............: 7      0.069553/s
+    iteration_duration.............: avg=282.79ms med=13.99ms p(95)=899.83ms p(99)=1.75s max=5.04s
+    iterations.....................: 5994   59.557406/s
+    vus............................: 0      min=0         max=101
+    vus_max........................: 107    min=100       max=107
+
+    NETWORK
+    data_received..................: 13 MB  125 kB/s
+    data_sent......................: 2.0 MB 20 kB/s
+
+
+

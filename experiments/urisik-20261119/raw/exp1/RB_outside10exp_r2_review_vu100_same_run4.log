@@ -1,0 +1,95 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\RB_outside10exp_r2_review_vu100_same_run4.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 100 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+running (0m01.0s), 100/100 VUs, 0 complete and 0 interrupted iterations
+burst   [   0% ] 100 VUs  0m00.1s/2m0s  000/100 iters, 1 per VU
+
+running (0m02.0s), 070/100 VUs, 30 complete and 0 interrupted iterations
+burst   [  30% ] 100 VUs  0m01.1s/2m0s  030/100 iters, 1 per VU
+
+running (0m03.0s), 028/100 VUs, 72 complete and 0 interrupted iterations
+burst   [  72% ] 100 VUs  0m02.1s/2m0s  072/100 iters, 1 per VU
+
+running (0m04.0s), 017/100 VUs, 83 complete and 0 interrupted iterations
+burst   [  83% ] 100 VUs  0m03.1s/2m0s  083/100 iters, 1 per VU
+
+running (0m05.0s), 013/100 VUs, 87 complete and 0 interrupted iterations
+burst   [  87% ] 100 VUs  0m04.1s/2m0s  087/100 iters, 1 per VU
+
+running (0m06.0s), 012/100 VUs, 88 complete and 0 interrupted iterations
+burst   [  88% ] 100 VUs  0m05.1s/2m0s  088/100 iters, 1 per VU
+
+running (0m07.0s), 009/100 VUs, 91 complete and 0 interrupted iterations
+burst   [  91% ] 100 VUs  0m06.1s/2m0s  091/100 iters, 1 per VU
+
+running (0m08.0s), 009/100 VUs, 91 complete and 0 interrupted iterations
+burst   [  91% ] 100 VUs  0m07.1s/2m0s  091/100 iters, 1 per VU
+
+running (0m09.0s), 007/100 VUs, 93 complete and 0 interrupted iterations
+burst   [  93% ] 100 VUs  0m08.1s/2m0s  093/100 iters, 1 per VU
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=8.86s
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=5.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100    10.187296/s
+    checks_succeeded...: 95.00% 95 out of 100
+    checks_failed......: 5.00%  5 out of 100
+
+    ✗ status 200
+      ↳  95% — ✓ 95 / ✗ 5
+
+    CUSTOM
+    target_5xx.....................: 5      0.509365/s
+    target_ok......................: 95     9.677931/s
+
+    HTTP
+    http_req_duration..............: avg=1.08s    min=5.21ms   med=76.68ms p(90)=2.2s  p(95)=5.49s p(99)=8.85s max=8.86s
+      { expected_response:true }...: avg=891.06ms min=5.21ms   med=13.5ms  p(90)=2.12s p(95)=3.79s p(99)=7.27s max=8.85s
+      { name:createReview }........: avg=2.17s    min=138.48ms med=1.41s   p(90)=5.49s p(95)=8.82s p(99)=8.85s max=8.86s
+    http_req_failed................: 2.50%  5 out of 200
+      { name:createReview }........: 5.00%  5 out of 100
+    http_reqs......................: 200    20.374592/s
+
+    EXECUTION
+    iteration_duration.............: avg=2.18s    min=140.72ms med=1.43s   p(90)=5.5s  p(95)=8.85s p(99)=8.91s max=8.91s
+    iterations.....................: 100    10.187296/s
+    vus............................: 7      min=7        max=100
+    vus_max........................: 100    min=100      max=100
+
+    NETWORK
+    data_received..................: 138 kB 14 kB/s
+    data_sent......................: 51 kB  5.2 kB/s
+
+
+
+
+running (0m09.8s), 000/100 VUs, 100 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 100 VUs  0m08.9s/2m0s  100/100 iters, 1 per VU
+
+time="2026-11-20T12:53:04+09:00" level=info msg="[NON200] VU70 target=2596 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T12:53:04+09:00" level=info msg="[NON200] VU57 target=2596 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T12:53:04+09:00" level=info msg="[NON200] VU35 target=2596 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T12:53:04+09:00" level=info msg="[NON200] VU23 target=2596 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console
+time="2026-11-20T12:53:04+09:00" level=info msg="[NON200] VU31 target=2596 status=500 body={\"isSuccess\":false,\"code\":\"COMMON_500_001\",\"message\":\"예기치 않은 서버 에러가 발생했습니다.\"}" source=console

@@ -1,0 +1,40 @@
+
+Welcome to Gradle 8.5!
+
+Here are the highlights of this release:
+ - Support for running on Java 21
+ - Faster first use with Kotlin DSL
+ - Improved error and warning messages
+
+For more details see https://docs.gradle.org/8.5/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.5/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileJava
+> Task :processResources UP-TO-DATE
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+
+> Task :test
+
+RecommendationOrderTest > 찜 추천: 찜 수 내림차순, 같으면 평균 별점 내림차순, 같으면 리뷰 수 내림차순 FAILED
+    org.opentest4j.AssertionFailedError at RecommendationOrderTest.java:69
+
+3 tests completed, 1 failed
+
+> Task :test FAILED
+4 actionable tasks: 2 executed, 2 up-to-date
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///workspace/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 1m 44s
+exit 1

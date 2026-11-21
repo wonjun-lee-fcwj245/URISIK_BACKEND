@@ -1,0 +1,67 @@
+diff --git a/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java b/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
+index 2f0432f..19d8586 100644
+--- a/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
++++ b/src/main/java/com/urisik/backend/global/config/RedisCacheConfig.java
+@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
+ import com.fasterxml.jackson.annotation.PropertyAccessor;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
++import org.springframework.cache.Cache;
+ import org.springframework.cache.CacheManager;
++import org.springframework.cache.annotation.CachingConfigurer;
+ import org.springframework.cache.annotation.EnableCaching;
++import org.springframework.cache.interceptor.CacheErrorHandler;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.data.redis.cache.RedisCacheConfiguration;
+@@ -16,11 +19,49 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
+ import org.springframework.data.redis.serializer.StringRedisSerializer;
+ 
+ import java.time.Duration;
++import java.util.concurrent.atomic.AtomicLong;
+ import java.util.Map;
+ 
+ @Configuration
+ @EnableCaching
+-public class RedisCacheConfig {
++public class RedisCacheConfig implements CachingConfigurer {
++
++    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(RedisCacheConfig.class);
++
++    /**
++     * 캐시(Redis) 오류가 요청 실패나 정지로 번지지 않게 한다. 캐시 조회·저장·삭제가 실패하면 예외를 삼키고
++     * 캐시 미적중으로 처리해 원본(DB)으로 우회한다. 경고 로그는 장애 중 폭주하지 않게 5초에 한 번만 남긴다.
++     */
++    @Override
++    public CacheErrorHandler errorHandler() {
++        return new FailureTolerantCacheErrorHandler();
++    }
++
++    static class FailureTolerantCacheErrorHandler implements CacheErrorHandler {
++        private static final long LOG_INTERVAL_MS = 5_000;
++        private final AtomicLong lastLoggedAt = new AtomicLong(0);
++
++        private void warn(String op, Cache cache, Object key, RuntimeException e) {
++            long now = System.currentTimeMillis();
++            long last = lastLoggedAt.get();
++            if (now - last >= LOG_INTERVAL_MS && lastLoggedAt.compareAndSet(last, now)) {
++                log.warn("캐시 오류 무시하고 원본으로 우회: op={}, cache={}, key={}, cause={}",
++                        op, cache == null ? null : cache.getName(), key, e.toString());
++            }
++        }
++
++        @Override
++        public void handleCacheGetError(RuntimeException e, Cache cache, Object key) { warn("get", cache, key, e); }
++
++        @Override
++        public void handleCachePutError(RuntimeException e, Cache cache, Object key, Object value) { warn("put", cache, key, e); }
++
++        @Override
++        public void handleCacheEvictError(RuntimeException e, Cache cache, Object key) { warn("evict", cache, key, e); }
++
++        @Override
++        public void handleCacheClearError(RuntimeException e, Cache cache) { warn("clear", cache, null, e); }
++    }
+ 
+     @Bean
+     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {

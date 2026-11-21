@@ -29,7 +29,9 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     int updateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
 
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE Recipe r SET r.reviewCount = r.reviewCount + 1, r.avgScore = ROUND(((r.avgScore * r.reviewCount) + :newScore) / (r.reviewCount + 1), 1) WHERE r.id = :id")
+    // MySQL은 SET 절을 왼쪽부터 평가해 앞에서 바꾼 값을 뒤 식에서 사용한다.
+    // reviewCount를 먼저 올리면 평균 계산에 증가된 값이 쓰여 평균이 작게(첫 리뷰는 절반) 저장되므로 avgScore를 먼저 계산한다.
+    @Query("UPDATE Recipe r SET r.avgScore = ROUND(((r.avgScore * r.reviewCount) + :newScore) / (r.reviewCount + 1), 1), r.reviewCount = r.reviewCount + 1 WHERE r.id = :id")
     int incrementReviewCountAndUpdateAvgScore(@Param("id") Long id, @Param("newScore") int newScore);
 
     @Modifying

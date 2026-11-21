@@ -1,0 +1,64 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\scripts\exp1-concurrency.js
+        output: csv (C:\Users\이원준\Desktop\URISIK_BACKEND\experiments\urisik-20261119\raw\exp1\LB_insert_first_L_review_vu100_distinct_run2.full.csv)
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * burst: 1 iterations for each of 100 VUs (maxDuration: 2m0s, gracefulStop: 30s)
+
+
+running (0m01.0s), 093/100 VUs, 7 complete and 0 interrupted iterations
+burst   [   7% ] 100 VUs  0m00.1s/2m0s  007/100 iters, 1 per VU
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{name:createReview}
+    ✓ 'max>=0' max=636.79ms
+
+    http_req_failed{name:createReview}
+    ✓ 'rate>=0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 100     67.517048/s
+    checks_succeeded...: 100.00% 100 out of 100
+    checks_failed......: 0.00%   0 out of 100
+
+    ✓ status 200
+
+    CUSTOM
+    target_ok......................: 100    67.517048/s
+
+    HTTP
+    http_req_duration..............: avg=210.31ms min=4.91ms   med=63.3ms   p(90)=597.68ms p(95)=615.07ms p(99)=631.14ms max=636.79ms
+      { expected_response:true }...: avg=210.31ms min=4.91ms   med=63.3ms   p(90)=597.68ms p(95)=615.07ms p(99)=631.14ms max=636.79ms
+      { name:createReview }........: avg=412.86ms min=110.45ms med=413.47ms p(90)=615.13ms p(95)=619.61ms p(99)=633.89ms max=636.79ms
+    http_req_failed................: 0.00%  0 out of 200
+      { name:createReview }........: 0.00%  0 out of 100
+    http_reqs......................: 200    135.034097/s
+
+    EXECUTION
+    iteration_duration.............: avg=414.99ms min=112.09ms med=415.02ms p(90)=618.38ms p(95)=623.7ms  p(99)=638.18ms max=639.56ms
+    iterations.....................: 100    67.517048/s
+    vus............................: 93     min=93       max=93 
+    vus_max........................: 100    min=100      max=100
+
+    NETWORK
+    data_received..................: 138 kB 93 kB/s
+    data_sent......................: 51 kB  35 kB/s
+
+
+
+
+running (0m01.5s), 000/100 VUs, 100 complete and 0 interrupted iterations
+burst ✓ [ 100% ] 100 VUs  0m00.7s/2m0s  100/100 iters, 1 per VU
+

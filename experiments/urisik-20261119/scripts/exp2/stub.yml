@@ -1,0 +1,5 @@
+# 외부 API 호스트를 호스트 PC의 stub 서버로 연결 (코드 변경 없음)
+services:
+  app:
+    extra_hosts:
+      - "openapi.foodsafetykorea.go.kr:host-gateway"
