@@ -23,13 +23,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.urisik.backend.domain.allergy.enums.Allergen;
 import com.urisik.backend.global.util.QwertyToKoreanConverter;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,6 +48,7 @@ public class RecipeSearchService {
     private final SearchLogService searchLogService;
     private final RecipeElasticSearchService recipeElasticSearchService;
     private final MeterRegistry meterRegistry;
+    private final PlatformTransactionManager transactionManager;
 
     @Value("${search.engine:elasticsearch}")
     private String searchEngine;
@@ -59,7 +62,12 @@ public class RecipeSearchService {
     /** FULLTEXT BOOLEAN MODE 특수문자 패턴 (#5) */
     private static final Pattern BOOLEAN_OPERATORS = Pattern.compile("[+\\-*()~<>\"@]");
 
-    @Transactional(readOnly = true)
+    /**
+     * 검색. 메서드 전체를 하나의 트랜잭션으로 묶지 않는다.
+     * 트랜잭션을 길게 잡으면 첫 SQL부터 커밋까지 DB 커넥션을 쥔 채 ES·외부 API 응답을 기다려
+     * 호출이 몰릴 때 커넥션 풀이 포화한다(#24). DB를 읽는 구간(프로필·알레르기, 엔티티 조회와 변환)만
+     * 짧은 읽기 트랜잭션으로 감싸고, ES 조회와 외부 API 호출은 트랜잭션 밖에서 실행한다.
+     */
     public RecipeSearchResponseDTO search(Long loginUserId, String keyword, int page, int size) {
 
         String originalKeyword = keyword;
@@ -73,51 +81,28 @@ public class RecipeSearchService {
 
         searchLogService.logSearch(loginUserId, keyword);
 
-        FamilyMemberProfile profile =
-                familyMemberProfileRepository.findByMember_Id(loginUserId)
-                        .orElseThrow(() ->
-                                new GeneralException(GeneralErrorCode.NOT_FOUND));
+        List<Allergen> familyAllergens = inReadOnlyTx(() -> {
+            FamilyMemberProfile profile =
+                    familyMemberProfileRepository.findByMember_Id(loginUserId)
+                            .orElseThrow(() ->
+                                    new GeneralException(GeneralErrorCode.NOT_FOUND));
 
-        Long familyRoomId = profile.getFamilyRoom().getId();
+            Long familyRoomId = profile.getFamilyRoom().getId();
+            return allergyRiskService.getFamilyAllergens(familyRoomId);
+        });
 
         PageRequest pageable = PageRequest.of(page, size);
-        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>();
-
-        List<Allergen> familyAllergens = allergyRiskService.getFamilyAllergens(familyRoomId);
-
-        // search.engine 설정에 따라 분기
-        if ("mysql".equals(searchEngine)) {
-            items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
-        } else if ("fulltext".equals(searchEngine)) {
-            items.addAll(searchFromFulltext(keyword, pageable, familyAllergens));
-        } else {
-            // elasticsearch (기본) → ES 시도 + MySQL fallback
-            try {
-                items.addAll(searchFromElasticsearch(keyword, pageable, familyAllergens));
-            } catch (Exception e) {
-                log.warn("ES 검색 실패, MySQL fallback 사용: {}", e.getMessage());
-                items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
-            }
-        }
+        List<RecipeSearchResponseDTO.Item> items = new ArrayList<>(
+                searchInternal(keyword, pageable, familyAllergens));
 
         // (#6) 영문 변환 후 결과가 0건이면 원본 키워드로 재검색
         if (items.isEmpty() && !originalKeyword.equals(keyword)) {
             log.info("변환된 키워드 '{}' 결과 0건, 원본 '{}' 로 재검색", keyword, originalKeyword);
             keyword = originalKeyword;
-            if ("mysql".equals(searchEngine)) {
-                items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
-            } else if ("fulltext".equals(searchEngine)) {
-                items.addAll(searchFromFulltext(keyword, pageable, familyAllergens));
-            } else {
-                try {
-                    items.addAll(searchFromElasticsearch(keyword, pageable, familyAllergens));
-                } catch (Exception e) {
-                    items.addAll(searchFromMySQL(keyword, pageable, familyAllergens));
-                }
-            }
+            items.addAll(searchInternal(keyword, pageable, familyAllergens));
         }
 
-        // 외부 API 검색 (기존 유지)
+        // 외부 API 검색 (기존 유지). 트랜잭션 밖이라 응답을 기다리는 동안 DB 커넥션을 쥐지 않는다.
         int startIdx = page * size + 1;
         int endIdx = startIdx + size - 1;
 
@@ -138,17 +123,50 @@ public class RecipeSearchService {
         return new RecipeSearchResponseDTO(items);
     }
 
+    /** search.engine 설정에 따라 내부(DB·ES) 검색을 수행한다. DB를 읽는 구간만 읽기 트랜잭션이다. */
+    private List<RecipeSearchResponseDTO.Item> searchInternal(
+            String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
+
+        if ("mysql".equals(searchEngine)) {
+            return inReadOnlyTx(() -> searchFromMySQL(keyword, pageable, familyAllergens));
+        }
+        if ("fulltext".equals(searchEngine)) {
+            return inReadOnlyTx(() -> searchFromFulltext(keyword, pageable, familyAllergens));
+        }
+        // elasticsearch (기본) → ES 시도 + MySQL fallback
+        try {
+            return searchFromElasticsearch(keyword, pageable, familyAllergens);
+        } catch (Exception e) {
+            log.warn("ES 검색 실패, MySQL fallback 사용: {}", e.getMessage());
+            return inReadOnlyTx(() -> searchFromMySQL(keyword, pageable, familyAllergens));
+        }
+    }
+
+    private <T> T inReadOnlyTx(Supplier<T> work) {
+        TransactionTemplate template = new TransactionTemplate(transactionManager);
+        template.setReadOnly(true);
+        return template.execute(status -> work.get());
+    }
+
     /**
      * Elasticsearch 기반 검색
      */
     private List<RecipeSearchResponseDTO.Item> searchFromElasticsearch(
             String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
 
+        // ES 조회는 네트워크 호출이라 트랜잭션 밖에서 실행한다
         List<RecipeDocument> esResults = recipeElasticSearchService.search(keyword, pageable);
 
         if (esResults.isEmpty()) {
             return List.of();
         }
+
+        return inReadOnlyTx(() -> itemsFromDocuments(esResults, familyAllergens));
+    }
+
+    /** ES 결과 문서를 엔티티로 조회해 응답 항목으로 변환한다(DB 조회 구간, 읽기 트랜잭션 안에서 호출). */
+    private List<RecipeSearchResponseDTO.Item> itemsFromDocuments(
+            List<RecipeDocument> esResults, List<Allergen> familyAllergens) {
 
         List<Long> recipeIds = new ArrayList<>();
         List<Long> transformedIds = new ArrayList<>();
