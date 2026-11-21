@@ -10,6 +10,7 @@ h = {}
 for v in ('m', 'sf'):
     x10.start_app(v)
     e5.restart_stub(20)
+    e5.sh(['docker', 'exec', 'urisik-redis', 'redis-cli', 'FLUSHALL'])   # 앞선 구성이 저장한 캐시를 재사용하지 않게 한다
     h[v] = e8.response_hashes()
 same = h['m'] == h['sf']
 json.dump({'hashes': h, 'identical': same}, open(os.path.join(x10.RAW, 'response-hashes-osiv-off.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

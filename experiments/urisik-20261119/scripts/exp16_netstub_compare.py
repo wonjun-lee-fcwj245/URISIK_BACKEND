@@ -77,8 +77,7 @@ def restart_stub_container(delay_ms):
 def main():
     os.makedirs(RAW, exist_ok=True)
     e5.RAW = RAW
-    if DELAY:
-        restart_stub_container(DELAY)
+    restart_stub_container(DELAY or 20)   # 기본 20ms도 컨테이너를 다시 띄워 기록값과 실제 지연을 일치시킨다
     for run_no in (1, 2, 3):
         order = (('m_on', 'm', False), ('sf_off', 'sf', True)) if run_no % 2 else (('sf_off', 'sf', True), ('m_on', 'm', False))
         for tag, variant, off in order:

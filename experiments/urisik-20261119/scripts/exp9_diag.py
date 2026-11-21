@@ -40,6 +40,8 @@ def mysql_rows(sql):
     r = subprocess.run(['docker', 'exec', '-i', 'urisik-mysql', 'sh', '-c',
                         'mysql --default-character-set=utf8mb4 -uroot -p"$MYSQL_ROOT_PASSWORD" -N -B'],
                        input=sql.encode('utf-8'), capture_output=True)
+    if r.returncode != 0:   # 조회 실패를 빈 결과(연결 0개)로 오인하지 않도록 중단한다
+        raise RuntimeError('MySQL 조회 실패: ' + r.stderr.decode('utf-8', 'replace')[:200])
     return [l.split('\t') for l in r.stdout.decode('utf-8', 'replace').splitlines() if l]
 
 
@@ -82,6 +84,8 @@ def sample_phase():
         print(json.dumps(s, ensure_ascii=False), flush=True)
     out = proc.communicate()[0]
     open(os.path.join(RAW, 'sample-k6.log'), 'w', encoding='utf-8').write(out or '')
+    if proc.returncode != 0:   # 부하가 시작되지 않았을 수 있으므로 무부하 측정값을 결과로 저장하지 않는다
+        raise SystemExit(f'k6 실패(returncode={proc.returncode}), 로그: raw/exp9/sample-k6.log')
     json.dump(rows, open(os.path.join(RAW, f'samples-{VARIANT}.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     def med(f):
         v = [f(x) for x in rows if f(x) is not None]
@@ -125,7 +129,11 @@ def leak_phase():
     proc = start_load()
     out = proc.communicate()[0]
     open(os.path.join(RAW, 'leak-k6.log'), 'w', encoding='utf-8').write(out or '')
+    if proc.returncode != 0:
+        raise SystemExit(f'k6 실패(returncode={proc.returncode}), 로그: raw/exp9/leak-k6.log')
     logs = subprocess.run(['docker', 'logs', '--since', t0, 'urisik-app'], capture_output=True, text=True, errors='replace')
+    if logs.returncode != 0:
+        raise SystemExit('docker logs 실패: 누수 이벤트 0건과 구분할 수 없어 중단')
     text = logs.stdout + logs.stderr
     open(os.path.join(RAW, 'leak-app.log'), 'w', encoding='utf-8').write(text)
     blocks = re.split(r'(?=Connection leak detection triggered)', text)

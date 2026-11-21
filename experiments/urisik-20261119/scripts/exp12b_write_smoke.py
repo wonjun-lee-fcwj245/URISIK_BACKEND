@@ -41,7 +41,15 @@ def main():
     ]
     for m, p, b in tests:
         print(m, p, call(h, m, p, b))
+    # 정상 응답 경로 fixture: 방금 만든 초대 토큰으로 GET /api/invites/{token}을 호출한다(GET 전수 점검에서는 404였던 경로)
+    req = urllib.request.Request(BASE + '/api/family-rooms/3/invites', data=b'', headers=h, method='POST')
+    invite_url = json.load(urllib.request.urlopen(req, timeout=20))['result']['inviteUrl']
+    invite_token = invite_url.rsplit('/', 1)[1]
+    status, body = call(h, 'GET', f'/api/invites/{invite_token}')
+    print('GET /api/invites/{token} (fixture)', status, body)
     logs = subprocess.run(['docker', 'logs', '--since', '3m', 'urisik-app'], capture_output=True, text=True, errors='replace')
+    if logs.returncode != 0:
+        raise SystemExit('docker logs 실패: 지연 로딩 오류 0건과 구분할 수 없어 중단')
     text = logs.stdout + logs.stderr
     lazy = [l for l in text.splitlines() if 'LazyInitializationException' in l or 'could not initialize proxy' in l or 'no Session' in l]
     print('lazy loading errors in app log:', len(lazy))

@@ -2,7 +2,7 @@
 # 실험 4c (재설계): 기본 설정(Hikari 10, Tomcat 200)에서 수정 전(main + OSIV 켬)과 수정 후(sf + OSIV 끔)를
 # 원래 실험 4처럼 사다리(400→600, 50 단위)로 번갈아 3회씩(1회차 워밍업) 돌려 단계별 Hikari 점유 시간·풀 대기·ES 서킷 우회를 기록한다.
 # 결과는 raw/exp4c_<arm>/, results.csv의 exp4c_<arm>에 기록해 exp4b 원본과 섞이지 않게 한다.
-set -uo pipefail
+set -euo pipefail   # 한 단계라도 실패하면 체인을 중단하고 실패 코드를 돌려준다
 cd "$(dirname "$0")"
 export EXP4_STUB=1 EXP4_RATES=400,450,500,550,600 PYTHONUNBUFFERED=1
 python exp4/prep_mealplan.py

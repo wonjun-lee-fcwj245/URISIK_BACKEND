@@ -1,0 +1,10 @@
+POST /api/recipes/10/reviews (409, '{"isSuccess":false,"code":"MEAL_PLAN_409","message":"이미 리뷰를 작성한 메뉴입니다. ","errorDetail":"이미 리뷰를 작성한 메')
+POST /api/transformed-recipes/5/reviews (409, '{"isSuccess":false,"code":"MEAL_PLAN_409","message":"이미 리뷰를 작성한 메뉴입니다. ","errorDetail":"이미 리뷰를 작성한 메')
+PATCH /api/member/alarm (200, '{"isSuccess":true,"code":"Auth_200_2","message":"알람 동의 여부 변경 성공.","result":{"alarmPolicy":"ALARM_AGR')
+PATCH /api/member/agree (200, '{"isSuccess":true,"code":"Auth_200_2","message":"사용자 약관 동의 여부 갱신 성공","result":{"serviceTermsAgreed":')
+POST /api/family-rooms/3/profile-wishes (409, '{"isSuccess":false,"code":"WISH_409","message":"이미 위시리스트에 존재합니다.","errorDetail":"이미 위시리스트에 존재합니다."}')
+DELETE /api/family-rooms/3/profile-wishes (404, '{"isSuccess":false,"code":"WISH_404","message":"요청한 레시피 위시가 존재하지 않습니다.","errorDetail":"요청한 레시피 위시가 존')
+DELETE /api/family-rooms/3/family-wishlist/items (404, '{"isSuccess":false,"code":"FAMILY_WISHLIST_404","message":"가족 위시리스트 항목을 찾을 수 없습니다.","errorDetail":"가')
+POST /api/family-rooms/3/invites (200, '{"isSuccess":true,"code":"INVITE_200","message":"초대 토큰 생성 성공","result":{"inviteUrl":"https://urisik.')
+GET /api/invites/{token} (fixture) 200 {"isSuccess":true,"code":"INVITE_200","message":"초대 링크 조회 성공","result":{"familyRoomId":3,"inviterNam
+lazy loading errors in app log: 0
