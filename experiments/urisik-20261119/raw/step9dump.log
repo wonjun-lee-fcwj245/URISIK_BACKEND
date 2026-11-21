@@ -1,0 +1,21 @@
+m dumps 4 exec thread samples 1027
+  트랜잭션 안=True | DB 커넥션 대기(풀): 713 (69%)
+  트랜잭션 안=False | 기타: 128 (12%)
+  트랜잭션 안=True | 외부 API 호출: 126 (12%)
+  트랜잭션 안=True | ES 호출: 36 (4%)
+  트랜잭션 안=True | Redis 호출: 17 (2%)
+  트랜잭션 안=True | MySQL 통신: 5 (0%)
+  트랜잭션 안=False | MySQL 통신: 1 (0%)
+  트랜잭션 안=True | 기타: 1 (0%)
+DUMP_DONE
+sf dumps 4 exec thread samples 1144
+  트랜잭션 안=True | DB 커넥션 대기(풀): 929 (81%)
+  트랜잭션 안=False | 외부 API 호출: 145 (13%)
+  트랜잭션 안=False | ES 호출: 28 (2%)
+  트랜잭션 안=False | 기타: 22 (2%)
+  트랜잭션 안=True | 기타: 9 (1%)
+  트랜잭션 안=False | Redis 호출: 6 (1%)
+  트랜잭션 안=True | MySQL 통신: 4 (0%)
+  트랜잭션 안=True | Redis 호출: 1 (0%)
+DUMP_DONE
+DUMPCHAIN_DONE

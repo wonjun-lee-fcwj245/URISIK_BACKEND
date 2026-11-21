@@ -3,7 +3,7 @@
   █ THRESHOLDS 
 
     http_req_duration{name:target}
-    ✓ 'max>=0' max=70.31ms
+    ✓ 'max>=0' max=618.35ms
 
     http_req_failed{name:target}
     ✓ 'rate>=0' rate=0.00%
@@ -11,29 +11,29 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 6000    99.417777/s
+    checks_total.......: 6000    98.943623/s
     checks_succeeded...: 100.00% 6000 out of 6000
     checks_failed......: 0.00%   0 out of 6000
 
     ✓ status 200
 
     HTTP
-    http_req_duration..............: avg=19.06ms med=18.54ms p(95)=28.76ms p(99)=34.71ms max=70.31ms
-      { expected_response:true }...: avg=19.06ms med=18.54ms p(95)=28.76ms p(99)=34.71ms max=70.31ms
-      { name:target }..............: avg=19.33ms med=18.66ms p(95)=28.79ms p(99)=34.78ms max=70.31ms
+    http_req_duration..............: avg=21.88ms med=17.81ms p(95)=27.26ms p(99)=197.72ms max=618.35ms
+      { expected_response:true }...: avg=21.88ms med=17.81ms p(95)=27.26ms p(99)=197.72ms max=618.35ms
+      { name:target }..............: avg=22.15ms med=17.88ms p(95)=27.29ms p(99)=197.95ms max=618.35ms
     http_req_failed................: 0.00%  0 out of 6100
       { name:target }..............: 0.00%  0 out of 6000
-    http_reqs......................: 6100   101.07474/s
+    http_reqs......................: 6100   100.592683/s
 
     EXECUTION
-    iteration_duration.............: avg=19.48ms med=18.77ms p(95)=28.99ms p(99)=34.98ms max=71.31ms
-    iterations.....................: 6000   99.417777/s
-    vus............................: 1      min=1         max=3  
+    iteration_duration.............: avg=22.4ms  med=18.05ms p(95)=27.79ms p(99)=197.95ms max=619.07ms
+    iterations.....................: 6000   98.943623/s
+    vus............................: 2      min=1         max=3  
     vus_max........................: 100    min=100       max=100
 
     NETWORK
-    data_received..................: 20 MB  323 kB/s
-    data_sent......................: 2.1 MB 36 kB/s
+    data_received..................: 20 MB  321 kB/s
+    data_sent......................: 2.1 MB 35 kB/s
 
 
 

@@ -3,7 +3,7 @@
   █ THRESHOLDS 
 
     http_req_duration{name:target}
-    ✓ 'max>=0' max=7.04s
+    ✓ 'max>=0' max=7.07s
 
     http_req_failed{name:target}
     ✓ 'rate>=0' rate=0.00%
@@ -11,29 +11,29 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 601     9.74375/s
+    checks_total.......: 601     9.890215/s
     checks_succeeded...: 100.00% 601 out of 601
     checks_failed......: 0.00%   0 out of 601
 
     ✓ status 200
 
     HTTP
-    http_req_duration..............: avg=159.36ms med=38.17ms p(95)=49.24ms p(99)=3.54s max=7.04s
-      { expected_response:true }...: avg=159.36ms med=38.17ms p(95)=49.24ms p(99)=3.54s max=7.04s
-      { name:target }..............: avg=184.88ms med=38.6ms  p(95)=56.67ms p(99)=3.54s max=7.04s
+    http_req_duration..............: avg=254.76ms med=57.87ms p(95)=3.55s p(99)=3.57s max=7.07s
+      { expected_response:true }...: avg=254.76ms med=57.87ms p(95)=3.55s p(99)=3.57s max=7.07s
+      { name:target }..............: avg=296.11ms med=59.51ms p(95)=3.55s p(99)=3.57s max=7.07s
     http_req_failed................: 0.00%  0 out of 701
       { name:target }..............: 0.00%  0 out of 601
-    http_reqs......................: 701    11.365007/s
+    http_reqs......................: 701    11.535841/s
 
     EXECUTION
-    iteration_duration.............: avg=185.08ms med=38.72ms p(95)=57.23ms p(99)=3.54s max=7.04s
-    iterations.....................: 601    9.74375/s
-    vus............................: 3      min=0        max=8  
+    iteration_duration.............: avg=296.77ms med=60.45ms p(95)=3.55s p(99)=3.57s max=7.07s
+    iterations.....................: 601    9.890215/s
+    vus............................: 0      min=0        max=16 
     vus_max........................: 100    min=100      max=100
 
     NETWORK
     data_received..................: 2.0 MB 33 kB/s
-    data_sent......................: 230 kB 3.7 kB/s
+    data_sent......................: 242 kB 4.0 kB/s
 
 
 

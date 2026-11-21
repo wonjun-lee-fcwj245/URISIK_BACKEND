@@ -1,0 +1,5 @@
+# OSIV 끄기(설정만, 앱 코드 변경 없음, 진단 전용)
+services:
+  app:
+    environment:
+      - SPRING_JPA_OPEN_IN_VIEW=false

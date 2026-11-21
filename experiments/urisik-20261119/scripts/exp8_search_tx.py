@@ -1,7 +1,7 @@
 """실험 8: 검색 트랜잭션 범위 축소(#24) 전/후 비교.
 수정 전(m = main 248edca)과 수정 후(sf = perf/#24 브랜치)를 라운드마다 번갈아 띄우고,
 같은 조건(외부 API stub 20ms, ES 검색)에서 검색 단독 부하를 걸어 Hikari 점유·대기 시간과 요청 p95를 잰다.
-  python exp8_search_tx.py            # 4라운드(1회차 워밍업 제외 3회 집계)
+  python exp8_search_tx.py            # 3라운드(1회차 워밍업 제외 2회 집계)
 검색 응답이 수정 전/후에 같은지(결과·순서)도 질의 8개로 확인한다.
 """
 import csv
@@ -59,12 +59,12 @@ def response_hashes():
 def main():
     os.makedirs(RAW, exist_ok=True)
     hashes = {}
-    for run_no in (1, 2, 3, 4):
+    for run_no in (1, 2, 3):
         order = VARIANTS if run_no % 2 == 1 else VARIANTS[::-1]
         for variant in order:
             switch(variant)
             e5.restart_stub(20)
-            if run_no == 1:
+            if run_no == 3:
                 hashes[variant] = response_hashes()
             for label, rate, mode in CONDS:
                 vals = e5.run_cond(f'{variant}_{label}', 'search', rate, run_no, mode)

@@ -3,7 +3,7 @@
   █ THRESHOLDS 
 
     http_req_duration{name:target}
-    ✓ 'max>=0' max=11.17s
+    ✓ 'max>=0' max=30.68s
 
     http_req_failed{name:target}
     ✓ 'rate>=0' rate=0.00%
@@ -11,30 +11,31 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 5790    92.192794/s
-    checks_succeeded...: 100.00% 5790 out of 5790
-    checks_failed......: 0.00%   0 out of 5790
+    checks_total.......: 4790    62.308135/s
+    checks_succeeded...: 100.00% 4790 out of 4790
+    checks_failed......: 0.00%   0 out of 4790
 
     ✓ status 200
 
     HTTP
-    http_req_duration..............: avg=821.21ms med=71.74ms p(95)=3.55s p(99)=6.9s  max=11.17s
-      { expected_response:true }...: avg=821.21ms med=71.74ms p(95)=3.55s p(99)=6.9s  max=11.17s
-      { name:target }..............: avg=835.2ms  med=75.26ms p(95)=3.55s p(99)=6.92s max=11.17s
-    http_req_failed................: 0.00%  0 out of 5890
-      { name:target }..............: 0.00%  0 out of 5790
-    http_reqs......................: 5890   93.78507/s
+    http_req_duration..............: avg=4.48s med=988.55ms p(95)=16.64s p(99)=20.38s max=30.68s
+      { expected_response:true }...: avg=4.48s med=988.55ms p(95)=16.64s p(99)=20.38s max=30.68s
+      { name:target }..............: avg=4.57s med=1.06s    p(95)=16.64s p(99)=20.41s max=30.68s
+    http_req_failed................: 0.00%  0 out of 4890
+      { name:target }..............: 0.00%  0 out of 4790
+    http_reqs......................: 4890   63.608931/s
 
     EXECUTION
-    dropped_iterations.............: 211    3.359703/s
-    iteration_duration.............: avg=835.47ms med=75.44ms p(95)=3.55s p(99)=6.92s max=11.17s
-    iterations.....................: 5790   92.192794/s
-    vus............................: 12     min=0         max=304
-    vus_max........................: 311    min=100       max=311
+    dropped_iterations.............: 1210   15.739633/s
+    iteration_duration.............: avg=4.57s med=1.06s    p(95)=16.65s p(99)=20.41s max=30.68s
+    iterations.....................: 4790   62.308135/s
+    vus............................: 13     min=0         max=600
+    vus_max........................: 600    min=100       max=600
 
     NETWORK
-    data_received..................: 19 MB  300 kB/s
-    data_sent......................: 2.1 MB 34 kB/s
+    data_received..................: 11 MB  148 kB/s
+    data_sent......................: 1.8 MB 24 kB/s
 
 
 
+time="2026-11-21T13:37:08+09:00" level=warning msg="Insufficient VUs, reached 600 active VUs and cannot initialize more" executor=constant-arrival-rate scenario=s

@@ -10,6 +10,8 @@ const API = __ENV.API || 'search';
 const RATE = parseInt(__ENV.RATE || '100');
 const DUR = parseInt(__ENV.DURATION_S || '60');
 const USERS = parseInt(__ENV.USERS || '100');
+// 미적중 조건: 실행마다 SALT가 달라 검색어가 이전 실행과도 겹치지 않는다(난수 4자리는 조합이 약 63,000개뿐이라 Redis 캐시에 쌓여 오염됐다)
+const SALT = __ENV.SALT || String(Date.now());
 const KEYWORDS = ['김치찌개', '된장찌개', '두부', '삼겹살', '비빔밥', '불고기', '잡채'];
 const RECO = ['safe-recipes', 'high-score', 'safe-high-score', 'wish'];
 
@@ -37,7 +39,7 @@ export default function (d) {
     let url;
     if (API === 'search') {
         // KW_MODE=repeat: 실험 4와 같이 7개 검색어를 반복(외부 API 캐시 적중). 기본은 매번 미적중
-        const kw = __ENV.KW_MODE === 'repeat' ? KEYWORDS[it % KEYWORDS.length] : `${KEYWORDS[it % KEYWORDS.length]} ${1000 + Math.floor(Math.random() * 9000)}`;
+        const kw = __ENV.KW_MODE === 'repeat' ? KEYWORDS[it % KEYWORDS.length] : `${KEYWORDS[it % KEYWORDS.length]} ${SALT}-${it}`;
         url = `${BASE_URL}/api/recipes/search?keyword=${encodeURIComponent(kw)}&page=0&size=10`;
     } else if (API === 'recommend') {
         url = `${BASE_URL}/api/recommendations/home/${RECO[it % 4]}`;
