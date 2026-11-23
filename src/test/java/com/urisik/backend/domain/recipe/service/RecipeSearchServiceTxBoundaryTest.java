@@ -19,6 +19,11 @@ import org.springframework.transaction.support.DefaultTransactionStatus;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +58,7 @@ class RecipeSearchServiceTxBoundaryTest {
     private final RecipeElasticSearchService elasticSearchService = mock(RecipeElasticSearchService.class);
     private final AllergyRiskService allergyRiskService = mock(AllergyRiskService.class);
 
-    private final List<String> observed = new ArrayList<>();
+    private final List<String> observed = java.util.Collections.synchronizedList(new ArrayList<>());
 
     private RecipeSearchService service(String engine) {
         FamilyMemberProfile profile = mock(FamilyMemberProfile.class, RETURNS_DEEP_STUBS);
@@ -100,5 +105,68 @@ class RecipeSearchServiceTxBoundaryTest {
 
         assertThat(observed).contains("profile:true", "es:false", "external:false");
         assertThat(observed).doesNotContain("es:true", "external:true");
+    }
+
+    @Test
+    @DisplayName("ES 동시 호출은 설정한 한도를 넘지 않고, 대기하던 호출도 모두 끝난다")
+    void esConcurrencyIsLimited() throws Exception {
+        RecipeSearchService service = service("elasticsearch");
+        ReflectionTestUtils.setField(service, "esMaxConcurrency", 2);
+        ReflectionTestUtils.setField(service, "esQueueWaitMs", 5000L);
+
+        AtomicInteger active = new AtomicInteger();
+        AtomicInteger maxActive = new AtomicInteger();
+        when(elasticSearchService.search(anyString(), any())).thenAnswer(inv -> {
+            int now = active.incrementAndGet();
+            maxActive.accumulateAndGet(now, Math::max);
+            Thread.sleep(80);
+            active.decrementAndGet();
+            return List.<RecipeDocument>of();
+        });
+
+        int calls = 6;
+        ExecutorService pool = Executors.newFixedThreadPool(calls);
+        CountDownLatch done = new CountDownLatch(calls);
+        for (int i = 0; i < calls; i++) {
+            pool.submit(() -> {
+                try {
+                    service.search(1L, "김치찌개", 0, 10);
+                } finally {
+                    done.countDown();
+                }
+            });
+        }
+        assertThat(done.await(10, TimeUnit.SECONDS)).isTrue();
+        pool.shutdownNow();
+
+        assertThat(maxActive.get()).isLessThanOrEqualTo(2);
+        assertThat(maxActive.get()).isGreaterThanOrEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("한도를 기다리다 시간이 지나면 예외 대신 MySQL 대체 경로로 응답한다")
+    void esLimitTimeoutFallsBackToMySql() throws Exception {
+        RecipeSearchService service = service("elasticsearch");
+        ReflectionTestUtils.setField(service, "esMaxConcurrency", 1);
+        ReflectionTestUtils.setField(service, "esQueueWaitMs", 30L);
+
+        CountDownLatch holding = new CountDownLatch(1);
+        CountDownLatch release = new CountDownLatch(1);
+        when(elasticSearchService.search(anyString(), any())).thenAnswer(inv -> {
+            holding.countDown();
+            release.await(5, TimeUnit.SECONDS);
+            return List.<RecipeDocument>of();
+        });
+
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.submit(() -> service.search(1L, "김치찌개", 0, 10));
+        assertThat(holding.await(5, TimeUnit.SECONDS)).isTrue();
+
+        // 두 번째 호출은 한도(1)를 얻지 못해 30ms 뒤 MySQL 경로로 처리돼야 한다
+        service.search(1L, "된장찌개", 0, 10);
+        release.countDown();
+        pool.shutdownNow();
+
+        assertThat(observed).contains("recipeDb:true");
     }
 }

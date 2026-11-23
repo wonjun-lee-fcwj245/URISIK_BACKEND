@@ -31,6 +31,8 @@ import com.urisik.backend.global.util.QwertyToKoreanConverter;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -52,6 +54,20 @@ public class RecipeSearchService {
 
     @Value("${search.engine:elasticsearch}")
     private String searchEngine;
+
+    /**
+     * ES 동시 호출 한도. 검색 트랜잭션을 줄이기 전에는 ES 호출이 DB 트랜잭션 안에 있어 DB 커넥션 풀 크기가
+     * 동시 호출 수를 우연히 제한했다. 트랜잭션 밖으로 나오면서 그 제한이 사라지므로 명시적으로 둔다(#24).
+     * 서킷브레이커 바깥에서 대기하므로 대기 시간은 서킷의 느린 호출로 집계되지 않는다.
+     */
+    @Value("${search.es.max-concurrency:10}")
+    private int esMaxConcurrency = 10;
+
+    /** 한도를 얻기 위해 기다리는 최대 시간(ms). 넘으면 기존 MySQL 대체 경로로 보낸다. */
+    @Value("${search.es.queue-wait-ms:2000}")
+    private long esQueueWaitMs = 2000;
+
+    private volatile Semaphore esSemaphore;
 
     private static final Map<String, Integer> TYPE_PRIORITY = Map.of(
             "TRANSFORMED", 0,
@@ -154,14 +170,48 @@ public class RecipeSearchService {
     private List<RecipeSearchResponseDTO.Item> searchFromElasticsearch(
             String keyword, PageRequest pageable, List<Allergen> familyAllergens) {
 
-        // ES 조회는 네트워크 호출이라 트랜잭션 밖에서 실행한다
-        List<RecipeDocument> esResults = recipeElasticSearchService.search(keyword, pageable);
+        // ES 조회는 네트워크 호출이라 트랜잭션 밖에서 실행하되, 동시 호출 수는 제한한다
+        List<RecipeDocument> esResults = searchWithConcurrencyLimit(keyword, pageable);
 
         if (esResults.isEmpty()) {
             return List.of();
         }
 
         return inReadOnlyTx(() -> itemsFromDocuments(esResults, familyAllergens));
+    }
+
+    private Semaphore esSemaphore() {
+        Semaphore sem = esSemaphore;
+        if (sem == null) {
+            synchronized (this) {
+                if (esSemaphore == null) {
+                    esSemaphore = new Semaphore(Math.max(1, esMaxConcurrency), true);
+                }
+                sem = esSemaphore;
+            }
+        }
+        return sem;
+    }
+
+    /** ES 동시 호출 수를 제한한다. 한도를 얻지 못하면 예외를 던져 호출부가 MySQL 대체 경로로 전환하게 한다. */
+    private List<RecipeDocument> searchWithConcurrencyLimit(String keyword, PageRequest pageable) {
+        Semaphore sem = esSemaphore();
+        boolean acquired;
+        try {
+            acquired = sem.tryAcquire(esQueueWaitMs, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("ES 동시 호출 한도를 기다리다 중단됨", e);
+        }
+        if (!acquired) {
+            meterRegistry.counter("search.es.concurrency.rejected").increment();
+            throw new IllegalStateException("ES 동시 호출 한도 초과(" + esMaxConcurrency + ", 대기 " + esQueueWaitMs + "ms)");
+        }
+        try {
+            return recipeElasticSearchService.search(keyword, pageable);
+        } finally {
+            sem.release();
+        }
     }
 
     /** ES 결과 문서를 엔티티로 조회해 응답 항목으로 변환한다(DB 조회 구간, 읽기 트랜잭션 안에서 호출). */
