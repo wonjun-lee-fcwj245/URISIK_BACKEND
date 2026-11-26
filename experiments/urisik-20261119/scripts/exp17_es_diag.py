@@ -52,9 +52,9 @@ def app_es_timer():
     try:
         with urllib.request.urlopen('http://localhost:8080/actuator/metrics/search.es.query', timeout=3) as r:
             m = {x['statistic']: x['value'] for x in json.load(r)['measurements']}
-        return m.get('COUNT'), m.get('TOTAL_TIME'), m.get('MAX')
-    except Exception:
-        return None, None, None
+        return m.get('COUNT'), m.get('TOTAL_TIME'), m.get('MAX'), ''
+    except Exception as e:   # 빈 값만 남기지 않고 실패 원인(미등록, 연결 오류 등)을 함께 기록한다
+        return None, None, None, f'{type(e).__name__}: {str(e)[:80]}'
 
 
 def sampler(stop, path):
@@ -65,7 +65,7 @@ def sampler(stop, path):
             t = time.time()
             s = es_stats()
             if s is not None:
-                s['app_es_count'], s['app_es_total_s'], s['app_es_max_s'] = app_es_timer()
+                s['app_es_count'], s['app_es_total_s'], s['app_es_max_s'], s['app_es_error'] = app_es_timer()
                 if cols is None:
                     cols = ['ts'] + list(s)
                     w.writerow(cols)
