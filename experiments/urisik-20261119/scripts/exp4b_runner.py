@@ -47,6 +47,12 @@ def arrival(cfg, run_no):
     open(os.path.join(RAW, f'{label}.k6start.txt'), 'w').write(str(time.time()))   # 단계 시각 계산용
     r = k6_container({'RATES': RATES, 'STAGE_S': str(STAGE_S)}, label, f'{label}.json')
     open(os.path.join(RAW, f'{label}.log'), 'w', encoding='utf-8').write((r.stdout or '') + '\n' + (r.stderr or ''))
+    # 임계값은 하위 지표를 만들기 위한 형식적인 값(max>=0)이라 정상 실행은 0으로 끝난다.
+    # 99(임계값 미달)는 기록하고 계속하고, 그 밖의 0이 아닌 코드는 실패로 보고 결과를 저장하지 않는다.
+    if r.returncode == 99:
+        print(label, 'k6 임계값 미달(returncode=99), 결과는 기록한다')
+    elif r.returncode != 0:
+        raise SystemExit(f'k6 실패(returncode={r.returncode}): {label}, 로그 {label}.log')
     open(stop, 'w').close()
     col.wait(timeout=60)
     os.remove(stop)

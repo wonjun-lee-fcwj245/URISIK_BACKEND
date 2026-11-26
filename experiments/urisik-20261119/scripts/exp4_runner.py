@@ -32,7 +32,9 @@ def compose_files(cfg, nocpu=False):
              '-f', os.path.join(HERE, 'compose.variant.yml')]
     if not nocpu:   # nocpu: 기존 보고서와 같은 조건(컨테이너 CPU 제한 없음)
         files += ['-f', os.path.join(HERE, 'exp4', 'cpus.yml')]
-    if os.environ.get('EXP4_STUB'):   # 외부 API(식품안전나라)를 호스트의 stub으로 연결해 인터넷 변동을 제거
+    # EXP4_STUB=1: 호스트 PC의 stub으로 연결(host-gateway 경로, 부하 중 연결 시간 초과가 생길 수 있음)
+    # EXP4_STUB=net: 도커 네트워크 안 stub 컨테이너(urisik-stubnet, 별칭 openapi.foodsafetykorea.go.kr)로 연결, extra_hosts 없음
+    if os.environ.get('EXP4_STUB') and os.environ.get('EXP4_STUB') != 'net':
         files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
     if os.environ.get('EXP4_OSIV_OFF'):   # 진단용: 환경 변수만으로 OSIV를 끈다(앱 코드 변경 없음)
         files += ['-f', os.path.join(HERE, 'exp10', 'osiv-off.yml')]
