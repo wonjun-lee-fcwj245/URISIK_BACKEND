@@ -17,7 +17,7 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 REPO = os.path.abspath(os.path.join(ROOT, '..', '..'))
-RAW = os.path.join(ROOT, 'raw', 'exp2')
+RAW = os.path.join(ROOT, 'raw', os.environ.get('EXP2_RAW', 'exp2'))   # 재측정은 별도 폴더에 저장해 원본을 덮어쓰지 않는다
 CSV_PATH = os.path.join(ROOT, 'results.csv')
 IMAGE = os.environ.get('APP_VARIANT', 'v4')
 
@@ -39,7 +39,9 @@ def up_app(engine):
     env = dict(os.environ, APP_VARIANT=IMAGE, SEARCH_ENGINE=engine)
     files = ['-f', os.path.join(REPO, 'docker-compose.local.yml'),
              '-f', os.path.join(HERE, 'compose.variant.yml'), '-f', os.path.join(HERE, 'exp2', 'engine.yml')]
-    if os.environ.get('EXP2_STUB'):   # 외부 API를 호스트의 stub 서버(고정 지연)로 연결
+    # EXP2_STUB=1: 호스트 PC의 stub(host-gateway 경로, 부하 중 연결 시간 초과가 생길 수 있음)
+    # EXP2_STUB=net: 도커 네트워크 안 stub 컨테이너(urisik-stubnet)로 연결, extra_hosts 없음
+    if os.environ.get('EXP2_STUB') and os.environ.get('EXP2_STUB') != 'net':
         files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
     r = sh(['docker', 'compose'] + files +
            ['up', '-d', '--no-build', '--pull', 'never', '--force-recreate', 'app'], env=env, cwd=REPO)
@@ -120,12 +122,17 @@ def latency(engine, vus, run_no, dataset):
     r = sh(['k6', 'run', '--no-color', '--summary-export', jout, os.path.join(HERE, 'exp2-latency.js')],
            env=dict(os.environ, VUS=str(vus)))
     open(os.path.join(RAW, f'{label}.log'), 'w', encoding='utf-8').write(r.stdout + '\n' + r.stderr)
+    from scrub_tokens import scrub_file   # k6 요약에 setup()의 토큰이 평문으로 남으므로 바로 지운다
+    scrub_file(jout)
+    if r.returncode != 0:
+        raise SystemExit(f'k6 실패(returncode={r.returncode}): {label}')
     m = json.load(open(jout, encoding='utf-8'))['metrics']
     d = m['http_req_duration{name:search}']
     f = m['http_req_failed{name:search}']
     vals = {'p50_ms': d['med'], 'p95_ms': d['p(95)'], 'p99_ms': d['p(99)'], 'avg_ms': d['avg'],
             'req_count': m['iterations']['count'], 'fail_rate': f['value']}
-    append([['exp2', f'latency_vu{vus}', engine, run_no, k, v, f'dataset={dataset};warmup={"yes" if run_no == 1 else "no"}']
+    label_exp = os.environ.get('EXP2_LABEL', 'exp2')   # 재측정은 다른 이름으로 기록해 원래 실험 2와 섞이지 않게 한다
+    append([[label_exp, f'latency_vu{vus}', engine, run_no, k, v, f'dataset={dataset};warmup={"yes" if run_no == 1 else "no"}']
             for k, v in vals.items()])
     print(label, json.dumps(vals))
 
