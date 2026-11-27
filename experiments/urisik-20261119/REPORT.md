@@ -338,7 +338,18 @@ Redis 컨테이너를 멈춘 상태에서 추천 API를 40회 호출했다: **40
 | 25초 안에 생긴 알림 행 | 0건 | 0건 |
 
 - **조회·구독은 Redis 중단의 영향을 받지 않았다**(DB만 쓰고, SSE 구독은 앱 메모리에 등록만 한다).
-- **알림 발송 경로(Redis Pub/Sub)는 재지 못했다.** 식단 확정 이벤트를 넣어 보다가 **소비자가 읽기 전용 트랜잭션이라 알림 저장이 매번 실패하는 버그**를 찾았다(Redis와 무관, Redis 정상일 때도 같다, 이슈 #31). 이 경로는 저장 단계에서 끝나 Redis 발행까지 가지 않는다. 고친 뒤에는 Redis가 멈췄을 때 발행이 Redis 타임아웃(설정이 없으면 기본 60초)만큼 소비자 스레드를 붙잡을 수 있어 다시 재야 한다.
+- **알림 발송 경로(Redis Pub/Sub)는 재지 못했다.** 식단 확정 이벤트를 넣어 보다가 **소비자가 읽기 전용 트랜잭션이라 알림 저장이 매번 실패하는 버그**를 찾았다(Redis와 무관, Redis 정상일 때도 같다, 이슈 #31). 이 경로는 저장 단계에서 끝나 Redis 발행까지 가지 않는다. 고친 뒤 다시 잰 결과는 아래 실험 19b에 있다.
+
+**발송 경로 재측정 (실험 19b, #31 수정 후 main f01ead2)**: 같은 스크립트를 대기 한도 240초로 3회 돌렸다(`EXP19_LABEL=exp19b_send_fixed EXP19_WAIT_S=240`, `raw/exp19b_send_fixed/`, `results.csv`의 `exp19b_send_fixed`). 알림 대상은 1명, 이벤트는 2건을 연달아 넣었다.
+
+| | 첫 알림 행이 보일 때까지 | 두 번째 알림 행 | 조회·구독·상세 |
+|---|---|---|---|
+| Redis 정상 (3회) | 4.1 · 18.4 · 16.3초 | 첫 행과 같은 시각 | 모두 200, 120ms 이하 |
+| **Redis 중단 (3회)** | **61.8~62.0초** | **121.2~121.7초** | 모두 200, 50ms 이하 |
+
+- **Redis가 멈추면 발행 한 건이 Redis 명령 타임아웃(설정이 없어 기본 60초) 동안 Kafka 소비자 스레드를 붙잡는다.** 알림 저장과 발행이 한 트랜잭션 안이라 커밋도 그만큼 늦어 알림 행이 약 62초 뒤에 보이고, 다음 이벤트는 그 뒤에 줄을 서 약 122초에 보였다. 대상이 N명이면 이벤트 하나에 약 N×60초가 걸리는 구조다. 사용자 요청(조회·구독)으로는 번지지 않았다. Redis 타임아웃 200ms 설정(적용 대기)이 들어가면 줄어들 것으로 보지만 재지 않았다.
+- Redis 정상일 때 첫 행까지 16~18초가 걸린 회차는 직전 Redis 재시작 뒤 소비자 재연결로 보이나 확인하지 않았다.
+- **추가 버그: Redis가 정상일 때 실시간 알림(SSE)이 전달되지 않는다(이슈 #35).** 구독을 열어 둔 채 이벤트를 넣으니 알림 행은 1.7초에 저장됐지만 SSE로는 연결 이벤트만 오고 알림 이벤트는 오지 않았다(`raw/exp19b_send_fixed/sse_check.json`). 발행은 `GenericJackson2JsonRedisSerializer`로 타입 정보를 붙여 보내는데(`memberId`가 `["java.lang.Long", 3]`), 구독 쪽은 일반 `ObjectMapper`로 읽어 `memberId`를 숫자로 꺼내다 `ClassCastException`이 난다. Redis가 멈췄을 때는 발행 실패 → 같은 인스턴스로 직접 전송하는 경로를 타서, 오히려 그때만(약 60초 뒤) 전달될 수 있다.
 
 ## 5. 실험 4. 처리량 (재설계)
 
@@ -711,6 +722,7 @@ EXP17_RUN=1 python exp17_es_diag.py   # ES 노드 지표 + 앱 ES 호출 시간�
 bash exp2_netstub.sh              # 실험 2 검색 지연 (EXP2_STUB=net, 결과 raw/exp2_netstub, exp2_netstub)
 python exp18_allergy_invalidation.py --trials 50 --hammers 1   # 알레르기 변경 → 안전 추천 캐시 (동시 읽기 1개, 4개는 --hammers 4)
 python exp19_redis_notification.py   # Redis 중단 시 알림 조회·구독·상세
+EXP19_LABEL=exp19b_send_fixed EXP19_WAIT_S=240 EXP19_RUN=1 python exp19_redis_notification.py   # #31 수정 후 발송 경로(2·3회차는 EXP19_RUN=2,3)
 python exp20_stub_ab.py           # 같은 세션 stub 경로 A/B + 외부 API 호출·재시도 수
 python exp21_es_pool.py           # ES 클라이언트 연결 풀 10/30 대 50/100 (이미지 urisik-app:mp)
 python scrub_tokens.py            # 결과 JSON의 테스트 토큰(JWT) 제거. 러너가 자동 호출하지만 오래된 러너(exp1~4) 결과는 커밋 전 직접 실행

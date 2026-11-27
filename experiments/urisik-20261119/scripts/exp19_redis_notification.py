@@ -15,7 +15,10 @@ import urllib.request
 
 from exp3_runner import http_json, mysql, token, append, ROOT, BASE
 
-RAW = os.path.join(ROOT, 'raw', 'exp19_redis_notification')
+LABEL = os.environ.get('EXP19_LABEL', 'exp19_redis_notification')   # 재측정은 다른 이름으로 기록해 원본과 섞이지 않게 한다
+RUN = int(os.environ.get('EXP19_RUN', '1'))
+WAIT_S = float(os.environ.get('EXP19_WAIT_S', '25'))                 # 알림 행을 기다리는 한도(초). Redis 중단 시 발행 타임아웃(기본 60초)보다 길게
+RAW = os.path.join(ROOT, 'raw', LABEL)
 TYPE = 'com.urisik.backend.global.kafka.event.NotificationEvent'
 
 
@@ -79,7 +82,7 @@ def phase(name, member, room, tok, out):
         res['produce_error'] = err5 or err6
         res['first_row_s'] = res['second_row_s'] = None
     else:
-        res['first_row_s'], res['second_row_s'] = wait_rows(member, base, t0, 25)
+        res['first_row_s'], res['second_row_s'] = wait_rows(member, base, t0, WAIT_S)
     out.append(res)
     print(json.dumps(res, ensure_ascii=False), flush=True)
 
@@ -101,15 +104,15 @@ def main():
             phase('redis_down', member, room, tok, out)
     finally:
         subprocess.run(['docker', 'start', 'urisik-redis'], capture_output=True)
-    json.dump(out, open(os.path.join(RAW, 'result.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
+    json.dump(out, open(os.path.join(RAW, f'result_run{RUN}.json' if RUN > 1 or LABEL != 'exp19_redis_notification' else 'result.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
     rows = []
     for r in out:
         if 'error' in r:
-            rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'error', r['error'], ''])
+            rows.append([LABEL, r['phase'], 'main', RUN, 'error', r['error'], ''])
             continue
-        rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'produce_ok', int(r['produce_ok']), r.get('produce_error', '')])
+        rows.append([LABEL, r['phase'], 'main', RUN, 'produce_ok', int(r['produce_ok']), r.get('produce_error', '')])
         for k in ('list_ms', 'sse_ms', 'detail_ms', 'first_row_s', 'second_row_s'):
-            rows.append(['exp19_redis_notification', r['phase'], 'main', 1, k, r[k] if r[k] is not None else '',
+            rows.append([LABEL, r['phase'], 'main', RUN, k, r[k] if r[k] is not None else '',
                          f"redis_timeout=default;result={r[k.replace('_ms', '')] if k.endswith('_ms') else ''}"])
     append(rows)
 
