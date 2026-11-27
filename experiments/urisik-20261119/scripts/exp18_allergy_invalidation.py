@@ -46,7 +46,24 @@ def pick_allergen(desc):
 
 
 def redis_del(*keys):
-    subprocess.run(['docker', 'exec', 'urisik-redis', 'redis-cli', 'DEL', *keys], capture_output=True)
+    """키를 지우고 성공 여부를 돌려준다(명령 실패를 '알레르기 선택 오류'로 잘못 분류하지 않기 위해)."""
+    r = subprocess.run(['docker', 'exec', 'urisik-redis', 'redis-cli', 'DEL', *keys], capture_output=True, text=True)
+    return r.returncode == 0 and r.stdout.strip().isdigit()
+
+
+def redis_exists(*keys):
+    r = subprocess.run(['docker', 'exec', 'urisik-redis', 'redis-cli', 'EXISTS', *keys], capture_output=True, text=True)
+    return int(r.stdout.strip()) if r.returncode == 0 and r.stdout.strip().isdigit() else None
+
+
+def wait_evicted(keys, limit=5.0):
+    """초기화(알레르기 [NONE]) 삭제 메시지가 실제로 처리돼 두 캐시 키가 사라질 때까지 기다린다."""
+    t = time.time()
+    while time.time() - t < limit:
+        if redis_exists(*keys) == 0:
+            return True
+        time.sleep(0.05)
+    return False
 
 
 def set_allergy(room, tok, allergens):
@@ -63,8 +80,14 @@ def main(trials, hammers):
         u = users[t % len(users)]
         room = rooms[u]
         tok = token(u)
+        keys = (f'recommendSafe::{u}', f'familyAllergens::{room}')
+        recipes(tok)                                      # 두 키를 채워 둔다(초기화 삭제가 처리됐는지 키가 사라지는 것으로 확인)
         set_allergy(room, tok, ['NONE'])
-        time.sleep(1.0)                                   # 기준 상태의 삭제 메시지가 처리되게 기다린다
+        if not wait_evicted(keys):                        # 고정 대기 대신 삭제 처리 완료를 확인한다
+            print('skip: 초기화 삭제가 5초 안에 처리되지 않음', u, flush=True)
+            results.append({'trial': t + 1, 'user': u, 'verdict': 'init_timeout'})
+            set_allergy(room, tok, ['NONE'])
+            continue
         before = recipes(tok)                             # 캐시 채우기(알레르기 없음 기준)
         x = before[0]
         a = pick_allergen(x['description'])
@@ -104,18 +127,32 @@ def main(trials, hammers):
         for th in ths:
             th.join()
         verdict = 'fresh'
-        if fresh_at is None:
-            redis_del(f'recommendSafe::{u}', f'familyAllergens::{room}')
-            verdict = 'invalid_allergen_pick' if x['id'] in [r['id'] for r in recipes(tok)] else 'persistent_stale'
+        late_reads = 0
+        if fresh_at is not None:
+            # 새 값이 보인 뒤에도 옛 알레르기로 계산한 결과가 늦게 다시 캐시될 수 있다(@Cacheable에 sync 없음).
+            # 동시 읽기를 멈춘 뒤 0.5초 기다렸다가 1초 동안 다시 읽어 옛 결과가 돌아오는지 본다.
+            time.sleep(0.5)
+            for _ in range(5):
+                if x['id'] in [r['id'] for r in recipes(tok)]:
+                    late_reads += 1
+                time.sleep(0.2)
+        if fresh_at is None or late_reads:
+            if not redis_del(*keys):
+                verdict = 'measure_error'                 # 캐시 삭제 실패: 판정하지 않는다
+            elif x['id'] in [r['id'] for r in recipes(tok)]:
+                verdict = 'invalid_allergen_pick'
+            else:
+                verdict = 'persistent_stale' if fresh_at is None else 'late_stale'
         rec = {'trial': t + 1, 'user': u, 'room': room, 'recipe': x['id'], 'allergen': a, 'hammers': hammers,
                'precondition_cached_x': x['id'] in cached, 'write_status': st_, 'write_ms': round((t_resp - t0) * 1000, 1),
                'stale_reads': stale_reads, 'hammer_stale_reads': hammer_stale[0],
-               'fresh_after_ms': round((fresh_at - t_resp) * 1000, 1) if fresh_at else None, 'verdict': verdict}
+               'fresh_after_ms': round((fresh_at - t_resp) * 1000, 1) if fresh_at else None, 'late_stale_reads': late_reads,
+               'verdict': verdict}
         results.append(rec)
         print(json.dumps(rec, ensure_ascii=False), flush=True)
         set_allergy(room, tok, ['NONE'])                  # 원래대로
     json.dump(results, open(os.path.join(RAW, f'invalidation_h{hammers}.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
-    valid = [r for r in results if r['verdict'] != 'invalid_allergen_pick']
+    valid = [r for r in results if r['verdict'] not in ('invalid_allergen_pick', 'measure_error', 'init_timeout')]
     ok = sorted(r['fresh_after_ms'] for r in valid if r['fresh_after_ms'] is not None)
 
     def p(v, q):
@@ -123,7 +160,8 @@ def main(trials, hammers):
         return v[f] + (v[c] - v[f]) * (k - f)
     note = f'trials={trials};poll=50ms;hammer=10ms;hammers={hammers}'
     rows = [['exp18_allergy', 'invalidation', 'main', f'h{hammers}', k, v, note] for k, v in {
-        'trials': len(results), 'invalid_allergen_pick': len(results) - len(valid),
+        'trials': len(results), 'excluded_trials': len(results) - len(valid),
+        'late_stale_after_fresh': sum(r['verdict'] == 'late_stale' for r in valid),
         'precondition_cached_x': sum(r['precondition_cached_x'] for r in valid),
         'persistent_stale_10s': sum(r['verdict'] == 'persistent_stale' for r in valid),
         'fresh_p50_ms': p(ok, 0.5) if ok else '', 'fresh_p95_ms': p(ok, 0.95) if ok else '', 'fresh_max_ms': max(ok) if ok else '',

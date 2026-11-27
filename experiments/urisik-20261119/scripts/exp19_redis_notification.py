@@ -29,23 +29,31 @@ def timed(fn):
 
 
 def produce(room, count):
+    """이벤트를 넣고 (성공 여부, stderr 요약)을 돌려준다. 발행 실패와 소비·저장 실패를 구분하기 위해."""
     msg = f'__TypeId__:{TYPE}\t' + json.dumps({'familyRoomId': room, 'mealPlanGenerationCount': count})
-    subprocess.run(['docker', 'exec', '-i', 'urisik-kafka', 'kafka-console-producer', '--bootstrap-server', 'localhost:9092',
-                    '--topic', 'meal-plan-confirmed', '--property', 'parse.headers=true', '--property', 'headers.delimiter=\t'],
-                   input=msg + '\n', capture_output=True, text=True, timeout=60)
+    r = subprocess.run(['docker', 'exec', '-i', 'urisik-kafka', 'kafka-console-producer', '--bootstrap-server', 'localhost:9092',
+                        '--topic', 'meal-plan-confirmed', '--property', 'parse.headers=true', '--property', 'headers.delimiter=\t'],
+                       input=msg + '\n', capture_output=True, text=True, timeout=60)
+    err = (r.stderr or '').strip()
+    return r.returncode == 0 and 'ERROR' not in err, err[:200]
 
 
 def notif_count(member):
     return int(mysql(f'select count(*) from notification where member_id={member}').strip())
 
 
-def wait_rows(member, target, limit):
-    t = time.time()
-    while time.time() - t < limit:
-        if notif_count(member) >= target:
-            return round(time.time() - t, 1)
+def wait_rows(member, base, t0, limit):
+    """발행 전 공통 기준 시각 t0부터 base+1, base+2 행이 처음 보인 시각(초)을 한 루프에서 기록한다."""
+    first = second = None
+    while time.time() - t0 < limit and second is None:
+        n = notif_count(member)
+        now = round(time.time() - t0, 1)
+        if first is None and n >= base + 1:
+            first = now
+        if n >= base + 2:
+            second = now
         time.sleep(0.5)
-    return None
+    return first, second
 
 
 def sse_status(tok):
@@ -63,11 +71,15 @@ def phase(name, member, room, tok, out):
     res['detail_ms'], res['detail'] = timed(lambda: http_json('GET', '/api/recipes/2364', tok, timeout=70)[0])
     base = notif_count(member)
     t0 = time.time()
-    produce(room, 5)
-    produce(room, 6)
+    ok5, err5 = produce(room, 5)
+    ok6, err6 = produce(room, 6)
     res['produce_s'] = round(time.time() - t0, 1)
-    res['first_row_s'] = wait_rows(member, base + 1, 20)
-    res['second_row_s'] = wait_rows(member, base + 2, 20)
+    res['produce_ok'] = ok5 and ok6
+    if not res['produce_ok']:
+        res['produce_error'] = err5 or err6
+        res['first_row_s'] = res['second_row_s'] = None
+    else:
+        res['first_row_s'], res['second_row_s'] = wait_rows(member, base, t0, 25)
     out.append(res)
     print(json.dumps(res, ensure_ascii=False), flush=True)
 
@@ -79,14 +91,23 @@ def main():
     out = []
     try:
         phase('redis_up', member, room, tok, out)
-        subprocess.run(['docker', 'stop', 'urisik-redis'], capture_output=True)
-        time.sleep(2)
-        phase('redis_down', member, room, tok, out)
+        r = subprocess.run(['docker', 'stop', 'urisik-redis'], capture_output=True, text=True)
+        running = subprocess.run(['docker', 'inspect', '-f', '{{.State.Running}}', 'urisik-redis'], capture_output=True, text=True).stdout.strip()
+        if r.returncode != 0 or running != 'false':      # 중단이 확인되지 않으면 redis_down을 재지 않는다
+            out.append({'phase': 'redis_down', 'error': f'redis stop 실패(returncode={r.returncode}, running={running})'})
+            print(out[-1], flush=True)
+        else:
+            time.sleep(2)
+            phase('redis_down', member, room, tok, out)
     finally:
         subprocess.run(['docker', 'start', 'urisik-redis'], capture_output=True)
     json.dump(out, open(os.path.join(RAW, 'result.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
     rows = []
     for r in out:
+        if 'error' in r:
+            rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'error', r['error'], ''])
+            continue
+        rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'produce_ok', int(r['produce_ok']), r.get('produce_error', '')])
         for k in ('list_ms', 'sse_ms', 'detail_ms', 'first_row_s', 'second_row_s'):
             rows.append(['exp19_redis_notification', r['phase'], 'main', 1, k, r[k] if r[k] is not None else '',
                          f"redis_timeout=default;result={r[k.replace('_ms', '')] if k.endswith('_ms') else ''}"])

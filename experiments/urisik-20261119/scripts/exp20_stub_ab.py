@@ -47,13 +47,14 @@ def redis_keys():
 
 
 def sampler(stop, path):
-    cols = ['ts'] + [f'retry_{k}' for k in RETRY_KINDS] + [f'cb_{k}' for k in CB_KINDS] + ['cb_not_permitted', 'external_cache_keys']
+    # app_start: 앱 기동 시각. 실행기가 앱을 재생성하기 전 표본(이전 회차 앱의 누계)을 분석에서 빼기 위해 기록한다
+    cols = ['ts', 'app_start'] + [f'retry_{k}' for k in RETRY_KINDS] + [f'cb_{k}' for k in CB_KINDS] + ['cb_not_permitted', 'external_cache_keys']
     with open(path, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
         w.writerow(cols)
         while not stop.is_set():
             t = time.time()
-            row = [time.strftime('%Y-%m-%dT%H:%M:%S', time.localtime(t))]
+            row = [time.strftime('%Y-%m-%dT%H:%M:%S', time.localtime(t)), metric('process.start.time', {})]
             row += [metric('resilience4j.retry.calls', {'name': 'foodSafetyApi', 'kind': k}) for k in RETRY_KINDS]
             row += [metric('resilience4j.circuitbreaker.calls', {'name': 'foodSafetyApi', 'kind': k}) for k in CB_KINDS]
             row += [metric('resilience4j.circuitbreaker.not.permitted.calls', {'name': 'foodSafetyApi'})]
