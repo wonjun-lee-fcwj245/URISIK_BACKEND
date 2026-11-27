@@ -1,0 +1,6 @@
+# 실험 21: ES 저수준 RestClient 연결 풀을 늘린다(이미지 urisik-app:mp의 EsClientPoolConfig가 읽음)
+services:
+  app:
+    environment:
+      - ES_MAX_CONN_PER_ROUTE=50
+      - ES_MAX_CONN_TOTAL=100
