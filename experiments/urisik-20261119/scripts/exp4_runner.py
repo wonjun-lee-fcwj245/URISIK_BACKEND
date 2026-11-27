@@ -38,7 +38,11 @@ def compose_files(cfg, nocpu=False):
         files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
     if os.environ.get('EXP4_OSIV_OFF'):   # 진단용: 환경 변수만으로 OSIV를 끈다(앱 코드 변경 없음)
         files += ['-f', os.path.join(HERE, 'exp10', 'osiv-off.yml')]
-    return files + ['-f', os.path.join(HERE, 'exp4', f'cfg-{cfg}.yml')]
+    files += ['-f', os.path.join(HERE, 'exp4', f'cfg-{cfg}.yml')]
+    # EXP4_EXTRA=경로1,경로2: 추가 덮어쓰기(실험 21의 ES 연결 풀 설정 등). 없으면 아무것도 바꾸지 않는다
+    for x in filter(None, os.environ.get('EXP4_EXTRA', '').split(',')):
+        files += ['-f', os.path.join(HERE, x)]
+    return files
 
 
 def wait_ready(timeout=300):

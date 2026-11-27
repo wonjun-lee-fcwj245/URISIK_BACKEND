@@ -118,3 +118,16 @@
 - 실험 4e: 사다리 300→600, 구성 4개(기본 m_on·sf_off·sfb_off, 전체 튜닝 m_on) × 3회, 회차마다 순서 회전. 보완안 3회차는 절전으로 무효, 보완안·대조군 4회차는 11-26에 재측정.
 - 실험 17: 전체 튜닝 + 수정 전으로 사다리 3회, ES `_nodes/stats`(스레드 풀·GC·질의 시간·CPU)와 앱 `search.es.query` 타이머를 2초 간격 수집.
 - 실험 2 재측정: 5,000건, 엔진 3종 × VU 10·50 × 4라운드(1회차 제외), 결과 `raw/exp2_netstub`, `results.csv`의 `exp2_netstub`.
+
+## 리뷰 3차 대응 (실험 18~21, 11-26~27)
+| 이미지/구성 | 내용 |
+|---|---|
+| main 이미지(기본 compose 빌드) | 실험 18(알레르기 캐시), 19(Redis 중단 알림). Redis 타임아웃 설정 없음(기본 60초) |
+| `urisik-app:m` + `EXP4_STUB=1`/`net` | 실험 20(같은 세션 stub 경로 A/B), 기본 설정 |
+| `urisik-app:mp` | `urisik-app:m`(main 248edca) + `EsClientPoolConfig`(환경 변수 `ES_MAX_CONN_PER_ROUTE`/`ES_MAX_CONN_TOTAL`로 ES RestClient 연결 풀 변경, 없으면 기본 10/30). 실험 21, 전체 튜닝 구성. 코드는 패치로 보관(`scripts/es-pool-variant/es-pool-on-248edca.patch`, 248edca 위에 적용) |
+| `scripts/exp21/es-pool-50.yml` | 풀 50/100 덮어쓰기(`EXP4_EXTRA`로 실행기에 추가) |
+- 실험 18: 사용자 1~50의 알레르기·식단을 API로 바꿨다가 SQL로 원래 상태(알레르기 SHRIMP 1건, 식단 0건)로 되돌렸다. 식단 선호는 프로필 수정 API의 필수 항목이라 `KOREAN`을 함께 보냈다(안전 추천은 식단을 쓰지 않음).
+- 실험 19 첫 실행은 메모리 부족으로 Claude Code가 중단해 Redis가 멈춘 채 남았고, 다시 켠 뒤 재실행했다.
+- 실험 20: 1회차는 수집기가 잘못된 인스턴스 이름(소문자 `foodsafetyapi`)을 세어 무효(`exp20_invalid_wrong_instance_*`, `raw/exp20_invalid_wrong_instance/`), 수정 후 처음부터 다시 쟀다. 호스트 2회차는 6.4시간 절전 공백으로 무효(`exp20_host_invalid_system_sleep`).
+- 실험 21: 시작 직후 노트북이 약 16시간 절전 상태였고, 깬 뒤(11-27 14:57) 측정이 시작됐다. 측정 구간 안의 수집 공백은 최대 10초.
+

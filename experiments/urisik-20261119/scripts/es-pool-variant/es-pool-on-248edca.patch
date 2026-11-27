@@ -1,0 +1,38 @@
+diff --git a/src/main/java/com/urisik/backend/global/config/EsClientPoolConfig.java b/src/main/java/com/urisik/backend/global/config/EsClientPoolConfig.java
+new file mode 100644
+index 0000000..4d668c1
+--- /dev/null
++++ b/src/main/java/com/urisik/backend/global/config/EsClientPoolConfig.java
+@@ -0,0 +1,32 @@
++package com.urisik.backend.global.config;
++
++import org.springframework.boot.autoconfigure.elasticsearch.RestClientBuilderCustomizer;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.core.env.Environment;
++
++/**
++ * 실험용: ES 저수준 RestClient(Apache HttpAsyncClient)의 연결 풀 크기를 환경 변수로 바꾼다.
++ * ES_MAX_CONN_PER_ROUTE / ES_MAX_CONN_TOTAL이 없으면 라이브러리 기본값(호스트당 10, 전체 30)을 그대로 쓴다.
++ */
++@Configuration
++public class EsClientPoolConfig {
++
++    @Bean
++    public RestClientBuilderCustomizer esPoolCustomizer(Environment env) {
++        Integer perRoute = env.getProperty("ES_MAX_CONN_PER_ROUTE", Integer.class);
++        Integer total = env.getProperty("ES_MAX_CONN_TOTAL", Integer.class);
++        // Boot의 HTTP 클라이언트 콜백 안에서 호출되는 메서드를 재정의한다(콜백을 덮어쓰지 않음).
++        return new RestClientBuilderCustomizer() {
++            @Override
++            public void customize(org.elasticsearch.client.RestClientBuilder builder) {
++            }
++
++            @Override
++            public void customize(org.apache.http.impl.nio.client.HttpAsyncClientBuilder http) {
++                if (perRoute != null) http.setMaxConnPerRoute(perRoute);
++                if (total != null) http.setMaxConnTotal(total);
++            }
++        };
++    }
++}
