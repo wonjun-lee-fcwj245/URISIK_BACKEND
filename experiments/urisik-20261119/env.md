@@ -124,7 +124,7 @@
 |---|---|
 | main 이미지(기본 compose 빌드) | 실험 18(알레르기 캐시), 19(Redis 중단 알림). Redis 타임아웃 설정 없음(기본 60초) |
 | `urisik-app:m` + `EXP4_STUB=1`/`net` | 실험 20(같은 세션 stub 경로 A/B), 기본 설정 |
-| `urisik-app:mp` | `urisik-app:m`(main 248edca) + `EsClientPoolConfig`(환경 변수 `ES_MAX_CONN_PER_ROUTE`/`ES_MAX_CONN_TOTAL`로 ES RestClient 연결 풀 변경, 없으면 기본 10/30). 실험 21, 전체 튜닝 구성. 코드는 worktree에서만 만들었고 저장소에 커밋하지 않았다 |
+| `urisik-app:mp` | `urisik-app:m`(main 248edca) + `EsClientPoolConfig`(환경 변수 `ES_MAX_CONN_PER_ROUTE`/`ES_MAX_CONN_TOTAL`로 ES RestClient 연결 풀 변경, 없으면 기본 10/30). 실험 21, 전체 튜닝 구성. 코드는 패치로 보관(`scripts/es-pool-variant/es-pool-on-248edca.patch`, 248edca 위에 적용) |
 | `scripts/exp21/es-pool-50.yml` | 풀 50/100 덮어쓰기(`EXP4_EXTRA`로 실행기에 추가) |
 - 실험 18: 사용자 1~50의 알레르기·식단을 API로 바꿨다가 SQL로 원래 상태(알레르기 SHRIMP 1건, 식단 0건)로 되돌렸다. 식단 선호는 프로필 수정 API의 필수 항목이라 `KOREAN`을 함께 보냈다(안전 추천은 식단을 쓰지 않음).
 - 실험 19 첫 실행은 메모리 부족으로 Claude Code가 중단해 Redis가 멈춘 채 남았고, 다시 켠 뒤 재실행했다.
