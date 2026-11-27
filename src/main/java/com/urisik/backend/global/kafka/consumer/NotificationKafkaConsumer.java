@@ -27,7 +27,7 @@ public class NotificationKafkaConsumer {
             topics = "meal-plan-confirmed",
             containerFactory = "notificationListenerFactory"
     )
-    @Transactional(readOnly = true)
+    @Transactional   // 안에서 알림을 저장하므로 읽기 전용이면 INSERT가 실패한다(#31)
     public void handleMealPlanConfirmed(NotificationEvent event) {
         if (!List.of(5, 6, 10).contains(event.getMealPlanGenerationCount())) {
             return;
