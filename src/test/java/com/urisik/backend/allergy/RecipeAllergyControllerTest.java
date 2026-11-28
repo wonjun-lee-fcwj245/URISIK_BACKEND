@@ -1,11 +1,23 @@
 package com.urisik.backend.allergy;
 
+/*
+ * [비활성] 테스트 대상 RecipeAllergyController가 main에서 클래스 본문 전체가 주석 처리돼 있어
+ * (src/main/java/.../allergy/controller/RecipeAllergyController.java) 이 테스트가 컴파일되지 않았다.
+ * 그 때문에 전체 테스트(gradle test)가 돌지 않던 문제를 막으려고 컨트롤러와 같은 방식으로 주석 처리한다.
+ * 아래 코드는 주석 처리된 컨트롤러의 현재 코드(가족 프로필로 가족방을 찾고 generateSubstitutionRules로 판별)에 맞춰 고쳐 두었다.
+ * 컨트롤러를 다시 켤 때 이 주석을 함께 풀면 된다.
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.urisik.backend.domain.allergy.controller.RecipeAllergyController;
 import com.urisik.backend.domain.allergy.dto.req.RecipeAllergyCheckRequestDTO;
 import com.urisik.backend.domain.allergy.enums.Allergen;
 import com.urisik.backend.domain.allergy.enums.AllergySuccessCode;
+import com.urisik.backend.domain.allergy.entity.AllergenAlternative;
+import com.urisik.backend.domain.allergy.entity.AlternativeIngredient;
 import com.urisik.backend.domain.allergy.service.AllergySubstitutionService;
+import com.urisik.backend.domain.member.entity.FamilyMemberProfile;
+import com.urisik.backend.domain.member.repo.FamilyMemberProfileRepository;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +33,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -39,6 +52,27 @@ class RecipeAllergyControllerTest {
     @MockBean
     private AllergySubstitutionService allergySubstitutionService;
 
+    // 컨트롤러가 로그인 사용자의 가족 프로필로 가족방을 찾은 뒤 가족방 기준으로 판별한다
+    @MockBean
+    private FamilyMemberProfileRepository familyMemberProfileRepository;
+
+    private static final Long FAMILY_ROOM_ID = 10L;
+
+    private void givenFamilyRoom(Long loginUserId) {
+        FamilyMemberProfile profile = Mockito.mock(FamilyMemberProfile.class, Mockito.RETURNS_DEEP_STUBS);
+        Mockito.when(profile.getFamilyRoom().getId()).thenReturn(FAMILY_ROOM_ID);
+        Mockito.when(familyMemberProfileRepository.findByMember_Id(loginUserId)).thenReturn(Optional.of(profile));
+    }
+
+    private static AllergenAlternative alternative(String name, String reason) {
+        AlternativeIngredient ingredient = Mockito.mock(AlternativeIngredient.class);
+        Mockito.when(ingredient.getName()).thenReturn(name);
+        AllergenAlternative alt = Mockito.mock(AllergenAlternative.class);
+        Mockito.when(alt.getIngredient()).thenReturn(ingredient);
+        Mockito.when(alt.getReason()).thenReturn(reason);
+        return alt;
+    }
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -56,14 +90,15 @@ class RecipeAllergyControllerTest {
                         "잣 8g(8알)"
                 ));
 
-        Map<Allergen, List<String>> serviceResult = Map.of(
+        givenFamilyRoom(loginUserId);
+        Map<Allergen, List<AllergenAlternative>> serviceResult = Map.of(
                 Allergen.PINE_NUT,
-                List.of("참깨", "해바라기씨")
+                List.of(alternative("참깨", "고소한 맛"), alternative("해바라기씨", "식감"))
         );
 
         Mockito.when(
-                allergySubstitutionService.checkAndMapSubstitutions(
-                        Mockito.eq(loginUserId),
+                allergySubstitutionService.generateSubstitutionRules(
+                        Mockito.eq(FAMILY_ROOM_ID),
                         Mockito.anyList()
                 )
         ).thenReturn(serviceResult);
@@ -82,7 +117,7 @@ class RecipeAllergyControllerTest {
                 .andExpect(jsonPath("$.result", hasSize(1)))
                 .andExpect(jsonPath("$.result[0].allergen").value("잣"))
                 .andExpect(jsonPath("$.result[0].alternatives", hasSize(2)))
-                .andExpect(jsonPath("$.result[0].alternatives",
+                .andExpect(jsonPath("$.result[0].alternatives[*].name",
                         containsInAnyOrder("참깨", "해바라기씨")));
     }
 
@@ -99,9 +134,10 @@ class RecipeAllergyControllerTest {
                         "설탕 2g"
                 ));
 
+        givenFamilyRoom(loginUserId);
         Mockito.when(
-                allergySubstitutionService.checkAndMapSubstitutions(
-                        Mockito.eq(loginUserId),
+                allergySubstitutionService.generateSubstitutionRules(
+                        Mockito.eq(FAMILY_ROOM_ID),
                         Mockito.anyList()
                 )
         ).thenReturn(Map.of());
@@ -119,3 +155,5 @@ class RecipeAllergyControllerTest {
     }
 
 }
+
+*/
