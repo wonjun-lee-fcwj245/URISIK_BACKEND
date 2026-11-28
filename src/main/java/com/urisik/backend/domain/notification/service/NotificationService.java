@@ -175,7 +175,8 @@ public class NotificationService {
                 emitter.send(SseEmitter.event()
                         .id(String.valueOf(memberId))
                         .name("notification")
-                        .data(data));
+                        // null을 그대로 넣으면 MVC 전송 단계에서 예외가 나고, 빈 data는 EventSource가 이벤트를 버리므로 "null"로 보낸다
+                        .data(data != null ? data : "null"));
             } catch (IOException e) {
                 emitters.remove(memberId);
             }
