@@ -15,7 +15,10 @@ import urllib.request
 
 from exp3_runner import http_json, mysql, token, append, ROOT, BASE
 
-RAW = os.path.join(ROOT, 'raw', 'exp19_redis_notification')
+LABEL = os.environ.get('EXP19_LABEL', 'exp19_redis_notification')   # 재측정은 다른 이름으로 기록해 원본과 섞이지 않게 한다
+RUN = int(os.environ.get('EXP19_RUN', '1'))
+WAIT_S = float(os.environ.get('EXP19_WAIT_S', '25'))                 # 알림 행을 기다리는 한도(초). Redis 중단 시 발행 타임아웃(기본 60초)보다 길게
+RAW = os.path.join(ROOT, 'raw', LABEL)
 TYPE = 'com.urisik.backend.global.kafka.event.NotificationEvent'
 
 
@@ -79,12 +82,26 @@ def phase(name, member, room, tok, out):
         res['produce_error'] = err5 or err6
         res['first_row_s'] = res['second_row_s'] = None
     else:
-        res['first_row_s'], res['second_row_s'] = wait_rows(member, base, t0, 25)
+        res['first_row_s'], res['second_row_s'] = wait_rows(member, base, t0, WAIT_S)
     out.append(res)
     print(json.dumps(res, ensure_ascii=False), flush=True)
 
 
+def already_recorded(label, run=None, phase=None):
+    """같은 이름(·회차·구간)의 행이 results.csv에 이미 있으면 True. 재실행으로 CSV에 행이 겹쳐 쌓이는 것을 막는다."""
+    import csv as _csv
+    path = os.path.join(ROOT, 'results.csv')
+    if not os.path.exists(path):
+        return False
+    for r in _csv.DictReader(open(path, encoding='utf-8')):
+        if r['experiment'] == label and (run is None or r['run'] == str(run)) and (phase is None or r['scenario'] == phase):
+            return True
+    return False
+
+
 def main():
+    if already_recorded(LABEL, RUN):   # 같은 이름·회차를 다시 재면 JSON만 덮이고 CSV에는 행이 겹친다
+        raise SystemExit(f'{LABEL} 회차 {RUN}은 이미 기록돼 있다. EXP19_RUN을 바꾸거나 기존 행을 정리한 뒤 실행하라.')
     os.makedirs(RAW, exist_ok=True)
     member, room = map(int, mysql("select m.id, p.family_room from member m join family_member_profile p on p.member=m.id where m.alarm_policy='ALARM_AGREED' limit 1").split())
     tok = token(member)
@@ -101,15 +118,15 @@ def main():
             phase('redis_down', member, room, tok, out)
     finally:
         subprocess.run(['docker', 'start', 'urisik-redis'], capture_output=True)
-    json.dump(out, open(os.path.join(RAW, 'result.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
+    json.dump(out, open(os.path.join(RAW, f'result_run{RUN}.json' if RUN > 1 or LABEL != 'exp19_redis_notification' else 'result.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
     rows = []
     for r in out:
         if 'error' in r:
-            rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'error', r['error'], ''])
+            rows.append([LABEL, r['phase'], 'main', RUN, 'error', r['error'], ''])
             continue
-        rows.append(['exp19_redis_notification', r['phase'], 'main', 1, 'produce_ok', int(r['produce_ok']), r.get('produce_error', '')])
+        rows.append([LABEL, r['phase'], 'main', RUN, 'produce_ok', int(r['produce_ok']), r.get('produce_error', '')])
         for k in ('list_ms', 'sse_ms', 'detail_ms', 'first_row_s', 'second_row_s'):
-            rows.append(['exp19_redis_notification', r['phase'], 'main', 1, k, r[k] if r[k] is not None else '',
+            rows.append([LABEL, r['phase'], 'main', RUN, k, r[k] if r[k] is not None else '',
                          f"redis_timeout=default;result={r[k.replace('_ms', '')] if k.endswith('_ms') else ''}"])
     append(rows)
 

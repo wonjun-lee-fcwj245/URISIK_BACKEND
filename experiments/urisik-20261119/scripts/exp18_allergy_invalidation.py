@@ -21,7 +21,9 @@ import time
 
 from exp3_runner import http_json, mysql, token, append, ROOT
 
-RAW = os.path.join(ROOT, 'raw', 'exp18_allergy')
+LABEL = os.environ.get('EXP18_LABEL', 'exp18_allergy')   # 재측정은 다른 이름으로 기록해 원본을 덮어쓰지 않는다
+IMAGE = os.environ.get('EXP18_IMAGE', 'main')
+RAW = os.path.join(ROOT, 'raw', LABEL)
 PATH = '/api/recommendations/home/safe-recipes'
 KEYWORDS = [  # Allergen enum의 매칭 단어(src/.../Allergen.java)
     ('EGG', ['달걀', '계란', '난백', '난황']), ('MILK', ['우유', '생크림', '치즈', '버터', '연유', '요거트']),
@@ -159,7 +161,7 @@ def main(trials, hammers):
         k = (len(v) - 1) * q; f = int(k); c = min(f + 1, len(v) - 1)
         return v[f] + (v[c] - v[f]) * (k - f)
     note = f'trials={trials};poll=50ms;hammer=10ms;hammers={hammers}'
-    rows = [['exp18_allergy', 'invalidation', 'main', f'h{hammers}', k, v, note] for k, v in {
+    rows = [[LABEL, 'invalidation', IMAGE, f'h{hammers}', k, v, note] for k, v in {
         'trials': len(results), 'excluded_trials': len(results) - len(valid),
         'late_stale_after_fresh': sum(r['verdict'] == 'late_stale' for r in valid),
         'precondition_cached_x': sum(r['precondition_cached_x'] for r in valid),

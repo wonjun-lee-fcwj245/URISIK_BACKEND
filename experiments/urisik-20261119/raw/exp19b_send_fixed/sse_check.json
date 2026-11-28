@@ -1,0 +1,10 @@
+{
+ "when": "2026-11-27, main f01ead2, Redis 정상",
+ "method": "알림 동의 회원으로 /api/notifications/subscribe 구독 35초, 구독 3초 뒤 meal-plan-confirmed 이벤트(count 5) 발행",
+ "produce_ok": true,
+ "notification_row_after_s": 1.7,
+ "sse_lines": ["event:connect", "data:connected!"],
+ "notification_event_received": false,
+ "app_log_parse_failures_in_window": 1,
+ "exception": "java.lang.ClassCastException: class java.util.ArrayList cannot be cast to class java.lang.Number"
+}
