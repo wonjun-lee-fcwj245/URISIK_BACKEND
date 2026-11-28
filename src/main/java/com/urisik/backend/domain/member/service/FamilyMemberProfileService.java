@@ -18,6 +18,7 @@ import com.urisik.backend.domain.member.repo.*;
 import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.global.external.s3.S3Remover;
 import com.urisik.backend.global.external.s3.S3Uploader;
+import com.urisik.backend.global.kafka.event.CacheEvictEvent;
 import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -112,10 +113,12 @@ public class FamilyMemberProfileService {
 
         FamilyMemberProfile saved = familyMemberProfileRepository.save(profile);
 
-        kafkaEventProducer.sendCacheEvict(
-                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
-        );
-        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
+        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
+        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
+                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
+                CacheEvictEvent.allEntries(
+                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
+        ));
 
         //4단계 프론트에서 성공응답과 함꼐 저장한 정보 전달.
         return FamilyMemberProfileConverter.toCreate(saved);
@@ -200,10 +203,12 @@ public class FamilyMemberProfileService {
         List<MemberAllergy> allergies = memberAllergyRepository.findByFamilyMemberProfile_Id(profileId);
         List<DietPreference> diets = dietPreferenceRepository.findAllByFamilyMemberProfile_Id(profileId);
 
-        kafkaEventProducer.sendCacheEvict(
-                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
-        );
-        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
+        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
+        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
+                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
+                CacheEvictEvent.allEntries(
+                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
+        ));
 
         return FamilyMemberProfileConverter.toUpdate(profile, allergies, diets);
     }
@@ -406,10 +411,12 @@ public class FamilyMemberProfileService {
         targetProfile.getMember().setFamilyRoom(null);
         familyMemberProfileRepository.delete(targetProfile);
 
-        kafkaEventProducer.sendCacheEvict(
-                List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish")
-        );
-        kafkaEventProducer.sendCacheEvict(List.of("familyAllergens"), String.valueOf(familyRoomId));
+        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
+        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
+                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
+                CacheEvictEvent.allEntries(
+                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
+        ));
 
         return FamilyMemberProfileResponse.Delete.builder().isDeleted(true).build();
 
