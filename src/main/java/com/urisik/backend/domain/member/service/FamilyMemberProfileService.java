@@ -18,7 +18,7 @@ import com.urisik.backend.domain.member.repo.*;
 import com.urisik.backend.domain.recipe.entity.Recipe;
 import com.urisik.backend.global.external.s3.S3Remover;
 import com.urisik.backend.global.external.s3.S3Uploader;
-import com.urisik.backend.global.kafka.event.CacheEvictEvent;
+import com.urisik.backend.global.cache.AllergyCacheEvictor;
 import com.urisik.backend.global.kafka.producer.KafkaEventProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,6 +32,7 @@ import java.util.List;
 public class FamilyMemberProfileService {
 
     private final FamilyMemberProfileRepository familyMemberProfileRepository;
+    private final AllergyCacheEvictor allergyCacheEvictor;
     private final MemberRepository memberRepository;
     private final MemberAllergyRepository memberAllergyRepository;
     private final DietPreferenceRepository dietPreferenceRepository;
@@ -113,12 +114,8 @@ public class FamilyMemberProfileService {
 
         FamilyMemberProfile saved = familyMemberProfileRepository.save(profile);
 
-        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
-        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
-                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
-                CacheEvictEvent.allEntries(
-                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
-        ));
+        // 커밋 직후 같은 요청 안에서 가족 알레르기 → 추천 캐시를 지우고, Kafka로 한 번 더 지운다(#45, #37)
+        allergyCacheEvictor.evictForFamily(familyRoomId);
 
         //4단계 프론트에서 성공응답과 함꼐 저장한 정보 전달.
         return FamilyMemberProfileConverter.toCreate(saved);
@@ -203,12 +200,8 @@ public class FamilyMemberProfileService {
         List<MemberAllergy> allergies = memberAllergyRepository.findByFamilyMemberProfile_Id(profileId);
         List<DietPreference> diets = dietPreferenceRepository.findAllByFamilyMemberProfile_Id(profileId);
 
-        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
-        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
-                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
-                CacheEvictEvent.allEntries(
-                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
-        ));
+        // 커밋 직후 같은 요청 안에서 가족 알레르기 → 추천 캐시를 지우고, Kafka로 한 번 더 지운다(#45, #37)
+        allergyCacheEvictor.evictForFamily(familyRoomId);
 
         return FamilyMemberProfileConverter.toUpdate(profile, allergies, diets);
     }
@@ -411,12 +404,8 @@ public class FamilyMemberProfileService {
         targetProfile.getMember().setFamilyRoom(null);
         familyMemberProfileRepository.delete(targetProfile);
 
-        // 가족 알레르기 캐시를 먼저 지운 뒤 추천 캐시를 지운다(같은 레코드 키로 순서 보장, #37)
-        kafkaEventProducer.sendCacheEvictInOrder(String.valueOf(familyRoomId), List.of(
-                CacheEvictEvent.withKey(List.of("familyAllergens"), String.valueOf(familyRoomId)),
-                CacheEvictEvent.allEntries(
-                        List.of("recommendSafe", "recommendHighScore", "recommendSafeHighScore", "recommendWish"))
-        ));
+        // 커밋 직후 같은 요청 안에서 가족 알레르기 → 추천 캐시를 지우고, Kafka로 한 번 더 지운다(#45, #37)
+        allergyCacheEvictor.evictForFamily(familyRoomId);
 
         return FamilyMemberProfileResponse.Delete.builder().isDeleted(true).build();
 
