@@ -50,12 +50,12 @@ class AllergyControllerTest {
 
         // when & then
         mockMvc.perform(
-                        get("/api/users/{userId}/allergies", userId)
+                        get("/api/members/{memberId}/allergies", userId)
                                 .with(authentication(authenticationWithPrincipal(userId)))
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.isSuccess").value(true))
-                .andExpect(jsonPath("$.code").value("ALLERGY_200"))
+                .andExpect(jsonPath("$.code").value("ALLERGY_200_001"))
                 .andExpect(jsonPath("$.result[0].name").value("우유"))
                 .andExpect(jsonPath("$.result[1].name").value("계란"));
     }
@@ -71,7 +71,7 @@ class AllergyControllerTest {
 
         // when & then
         mockMvc.perform(
-                        get("/api/users/{userId}/allergies", targetUserId)
+                        get("/api/members/{memberId}/allergies", targetUserId)
                                 .with(authentication(authenticationWithPrincipal(loginUserId)))
                 )
                 .andExpect(status().isForbidden())
@@ -85,7 +85,7 @@ class AllergyControllerTest {
     @Test
     void getUserAllergies_unauthorized() throws Exception {
         mockMvc.perform(
-                        get("/api/users/{userId}/allergies", 1L)
+                        get("/api/members/{memberId}/allergies", 1L)
                 )
                 .andExpect(status().isUnauthorized());
     }
