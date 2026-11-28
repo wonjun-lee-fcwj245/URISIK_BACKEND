@@ -134,4 +134,5 @@
 - 버그 수정 확인(11-27~28): `urisik_backend-app`을 #35 수정 브랜치로 빌드(실험 22), 같은 이미지에 `scripts/exp6/redis-timeout.yml`(명령·연결 200ms)을 더해 실험 22·19c, `urisik-app:r4j`(#33 수정)로 Resilience4j 인스턴스 확인, `urisik-app:evict`(#37 수정)로 실험 18 재측정과 파티션 오프셋 확인. 첫 `evict` 빌드는 다른 Gradle 작업과 겹쳐 실패했고 다시 빌드해 성공했다.
 - 머지 후(11-28): #38~#43을 머지한 main(4a7f0d1)을 기본 compose로 빌드해 앱을 띄웠다. Redis 명령·연결 타임아웃 200ms가 기본 compose에 들어갔다. 실시간 알림 전달(2.0초)과 Resilience4j 인스턴스(`foodsafetyapi` 하나)를 확인했다. 테스트는 Gradle 컨테이너(`gradle:8.5-jdk17`)에서 `gradle test --continue`로 돌렸다.
 - 실험 23·24(11-28): 이미지 `urisik-app:main45`(#45까지 반영한 main 빌드). 기본 compose에 #39(Redis 명령·연결 타임아웃 200ms)가 들어간 상태. 실험 23의 `cb_relaxed`는 `scripts/exp23/es-cb-relaxed.yml`을 덮어쓴 것. 측정 중 호스트 CPU 약 70%, 여유 메모리 약 3GB(다른 프로그램 실행 중). 앱이 Redis 연결 초기화 시간 초과로 기동에 실패해 `cb_relaxed` 3회차가 두 번 무효(`raw/exp23_cb_relaxed/invalid-app-startup-failure*`)였고, 실행기의 준비 대기를 고친 뒤 다시 쟀다.
+- 실험 25(11-28): 앱 이미지 `urisik-app:redisfix2`, `scripts/exp6/redis-timeout-200.yml`·`redis-timeout-500.yml`로 타임아웃 덮어쓰기, 외부 API 대역은 도커 네트워크 안 stub 컨테이너(`urisik-stubnet`, 20ms), 호스트 stub 경로 없음. 3라운드 순서 번갈아, 라운드마다 앱을 새로 만들고 Redis를 약 30초 중단했다.
 
