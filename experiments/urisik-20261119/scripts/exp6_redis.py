@@ -12,7 +12,9 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 REPO = os.path.abspath(os.path.join(ROOT, '..', '..'))
-RAW = os.path.join(ROOT, 'raw', 'exp6')
+# 재측정 옵션(없으면 원래 실험 6과 같다): EXP6_IMAGE(앱 이미지), EXP6_OVERLAY(타임아웃 덮어쓰기), EXP6_STUB=net(도커 네트워크 안 stub), EXP6_RAW(결과 폴더), EXP6_EXPERIMENT(results.csv 실험 이름)
+RAW = os.path.join(ROOT, 'raw', os.environ.get('EXP6_RAW', 'exp6'))
+EXPERIMENT = os.environ.get('EXP6_EXPERIMENT', 'exp6')
 CSV_PATH = os.path.join(ROOT, 'results.csv')
 APIS = ('search', 'recommend', 'detail', 'mealplan')
 
@@ -22,25 +24,19 @@ def sh(cmd, **kw):
 
 
 def wait_ready(timeout=300):
-    t = time.time()
-    while time.time() - t < timeout:
-        try:
-            req = urllib.request.Request('http://localhost:8080/api/auth/test-token?memberId=1', method='POST')
-            with urllib.request.urlopen(req, timeout=5) as r:
-                if r.status == 200:
-                    return
-        except Exception:
-            pass
-        time.sleep(3)
-    raise RuntimeError('app not ready')
+    """앱 응답 + 시작 완료 로그 + 20초간 재시작 없음(실험 4 실행기와 같은 대기, 웹 서버가 Redis 리스너보다 먼저 떠서 200이 와도 기동이 실패할 수 있음)."""
+    import exp4_runner
+    exp4_runner.wait_ready(timeout)
 
 
 def start_app(variant):
     files = ['-f', os.path.join(REPO, 'docker-compose.local.yml'), '-f', os.path.join(HERE, 'compose.variant.yml'),
-             '-f', os.path.join(HERE, 'exp2', 'engine.yml'), '-f', os.path.join(HERE, 'exp2', 'stub.yml')]
-    if variant.startswith('redisfix'):
-        files += ['-f', os.path.join(HERE, 'exp6', 'redis-timeout.yml')]
-    env = dict(os.environ, APP_VARIANT=variant, SEARCH_ENGINE='elasticsearch')
+             '-f', os.path.join(HERE, 'exp2', 'engine.yml')]
+    if os.environ.get('EXP6_STUB') != 'net':   # net이면 호스트 stub 경로(extra_hosts)를 쓰지 않고 도커 네트워크 안 stub 컨테이너를 쓴다
+        files += ['-f', os.path.join(HERE, 'exp2', 'stub.yml')]
+    if variant.startswith('redisfix') or os.environ.get('EXP6_OVERLAY'):
+        files += ['-f', os.path.join(HERE, os.environ.get('EXP6_OVERLAY', 'exp6/redis-timeout.yml'))]
+    env = dict(os.environ, APP_VARIANT=os.environ.get('EXP6_IMAGE', variant), SEARCH_ENGINE='elasticsearch')
     sh(['docker', 'start', 'urisik-redis'])
     r = sh(['docker', 'compose'] + files + ['up', '-d', '--no-build', '--pull', 'never', '--force-recreate', 'app'], env=env, cwd=REPO)
     if r.returncode != 0:
@@ -106,7 +102,7 @@ def analyze(csv_out, t_down, t_up, variant, run_no):
                 'p95_success_ms': round(ok[max(int(len(ok) * 0.95) - 1, 0)], 1) if len(ok) >= 20 else '',
             }
             for k, v in vals.items():
-                out.append(['exp6', ph + '_' + api, variant, run_no, k, v, 'rate=60rps;redis down ~30s;client timeout 5s'])
+                out.append([EXPERIMENT, ph + '_' + api, variant, run_no, k, v, 'rate=60rps;redis down ~30s;client timeout 5s'])
     # 복구 시간: Redis 복구 후 연속 5초 동안 모든 요청이 200이 되는 첫 시점까지
     after = sorted(x for x in rows if x[0] >= t_up)
     rec = ''
@@ -117,7 +113,7 @@ def analyze(csv_out, t_down, t_up, variant, run_no):
         if all(all(by_sec.get(s, [True])) for s in range(s0, s0 + 5)):
             rec = s0
             break
-    out.append(['exp6', 'recovery', variant, run_no, 'seconds_until_5s_all_200', rec, 'Redis 복구 후'])
+    out.append([EXPERIMENT, 'recovery', variant, run_no, 'seconds_until_5s_all_200', rec, 'Redis 복구 후'])
     with open(CSV_PATH, 'a', newline='', encoding='utf-8') as f:
         csv.writer(f).writerows(out)
     return out

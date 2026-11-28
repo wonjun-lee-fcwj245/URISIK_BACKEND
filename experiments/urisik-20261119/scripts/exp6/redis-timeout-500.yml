@@ -1,0 +1,6 @@
+# 실험 6 재측정(타임아웃 500ms): 명령·연결 타임아웃을 500ms로
+services:
+  app:
+    environment:
+      - SPRING_DATA_REDIS_TIMEOUT=500ms
+      - SPRING_DATA_REDIS_CONNECT_TIMEOUT=500ms

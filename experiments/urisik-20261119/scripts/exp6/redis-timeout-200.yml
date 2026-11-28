@@ -1,0 +1,6 @@
+# 실험 6 재측정(타임아웃 200ms, 비교 기준): 원래 실험 6의 값
+services:
+  app:
+    environment:
+      - SPRING_DATA_REDIS_TIMEOUT=200ms
+      - SPRING_DATA_REDIS_CONNECT_TIMEOUT=200ms
