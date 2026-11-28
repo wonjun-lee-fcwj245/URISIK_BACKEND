@@ -1,0 +1,284 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /scripts/exp4b-arrival.js
+        output: -
+
+     scenarios: (100.00%) 7 scenarios, 5000 max VUs, 7m40s max duration (incl. graceful stop):
+              * r300: 300.00 iterations/s for 1m0s (maxVUs: 300-2500, gracefulStop: 10s)
+              * r350: 350.00 iterations/s for 1m0s (maxVUs: 350-2500, startTime: 1m5s, gracefulStop: 10s)
+              * r400: 400.00 iterations/s for 1m0s (maxVUs: 400-2500, startTime: 2m10s, gracefulStop: 10s)
+              * r450: 450.00 iterations/s for 1m0s (maxVUs: 450-2500, startTime: 3m15s, gracefulStop: 10s)
+              * r500: 500.00 iterations/s for 1m0s (maxVUs: 500-2500, startTime: 4m20s, gracefulStop: 10s)
+              * r550: 550.00 iterations/s for 1m0s (maxVUs: 550-2500, startTime: 5m25s, gracefulStop: 10s)
+              * r600: 600.00 iterations/s for 1m0s (maxVUs: 600-2500, startTime: 6m30s, gracefulStop: 10s)
+
+
+
+  █ THRESHOLDS 
+
+    dropped_iterations{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    dropped_iterations{scenario:r600}
+    ✓ 'count>=0' count=0
+
+    http_req_duration{scenario:r300,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r300}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r350,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r350}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r400,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r400}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r450,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r450}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r500,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r500}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r550,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r550}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r600,expected_response:true}
+    ✓ 'max>=0' max=0s
+
+    http_req_duration{scenario:r600}
+    ✓ 'max>=0' max=0s
+
+    http_reqs{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    http_reqs{scenario:r600}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    status_200{scenario:r600}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    status_404{scenario:r600}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    status_5xx{scenario:r600}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r300}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r350}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r400}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r450}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r500}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r550}
+    ✓ 'count>=0' count=0
+
+    status_other{scenario:r600}
+    ✓ 'count>=0' count=0
+
+
+  █ TOTAL RESULTS 
+
+    CUSTOM
+    status_200...................................: 0       0/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+    status_404...................................: 0       0/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+    status_5xx...................................: 0       0/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+    status_other.................................: 0       0/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+
+    HTTP
+    http_req_duration............................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r300,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r300 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r350,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r350 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r400,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r400 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r450,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r450 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r500,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r500 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r550,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r550 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r600,expected_response:true }...: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+      { scenario:r600 }..........................: avg=0s med=0s p(90)=0s p(95)=0s p(99)=0s max=0s
+    http_req_failed..............................: 100.00% 1 out of 1
+    http_reqs....................................: 1       100.100591/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+
+    EXECUTION
+    dropped_iterations...........................: 0       0/s
+      { scenario:r300 }..........................: 0       0/s
+      { scenario:r350 }..........................: 0       0/s
+      { scenario:r400 }..........................: 0       0/s
+      { scenario:r450 }..........................: 0       0/s
+      { scenario:r500 }..........................: 0       0/s
+      { scenario:r550 }..........................: 0       0/s
+      { scenario:r600 }..........................: 0       0/s
+
+    NETWORK
+    data_received................................: 0 B     0 B/s
+    data_sent....................................: 0 B     0 B/s
+
+
+
+
+Run    [ 100% ] setup()
+r300   [   0% ]
+r350   [   0% ]
+r400   [   0% ]
+r450   [   0% ]
+r500   [   0% ]
+r550   [   0% ]
+r600   [   0% ]
+
+time="2026-11-28T07:45:26Z" level=warning msg="Request Failed" error="Post \"http://app:8080/api/auth/test-token?memberId=1\": dial tcp 172.20.0.7:8080: connect: connection refused"
+time="2026-11-28T07:45:27Z" level=error msg="TypeError: Cannot read property 'result' of undefined\n\tat setup (file:///scripts/exp4b-arrival.js:50:42(33))\n" hint="script exception" source=stacktrace

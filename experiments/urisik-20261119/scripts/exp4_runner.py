@@ -45,14 +45,34 @@ def compose_files(cfg, nocpu=False):
     return files
 
 
+def _app_state():
+    r = sh(['docker', 'inspect', 'urisik-app', '--format', '{{.State.StartedAt}}|{{.RestartCount}}|{{.State.Status}}'])
+    return r.stdout.strip() if r.returncode == 0 else ''
+
+
+def _app_started_logged(started_at):
+    """현재 기동(StartedAt 이후) 로그에 'Started UrisikBackendApplication'이 있는지."""
+    r = sh(['docker', 'logs', '--since', started_at, 'urisik-app'])
+    return 'Started UrisikBackendApplication' in (r.stdout + r.stderr)
+
+
 def wait_ready(timeout=300):
+    """앱이 응답하고, 기동 완료 로그가 있고, 20초간 재시작이 없을 때까지 기다린다.
+    웹 서버(Tomcat)는 일부 SmartLifecycle(예: redisMessageListenerContainer)보다 먼저 떠서,
+    Redis 연결 초기화가 늦으면 200이 온 직후 기동이 실패해 앱이 재시작될 수 있다(2026-11-28 실험 23에서 확인).
+    그 사이에 예열·측정이 돌지 않게 한다."""
     start = time.time()
     while time.time() - start < timeout:
         try:
             req = urllib.request.Request('http://localhost:8080/api/auth/test-token?memberId=1', method='POST')
             with urllib.request.urlopen(req, timeout=5) as r:
                 if r.status == 200:
-                    return
+                    st = _app_state()
+                    started = st.split('|')[0] if st else ''
+                    if started and _app_started_logged(started):
+                        time.sleep(20)
+                        if _app_state() == st:
+                            return
         except Exception:
             pass
         time.sleep(3)
