@@ -36,6 +36,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
 
+    /**
+     * Resilience4j 인스턴스 이름. 설정을 환경 변수(RESILIENCE4J_..._INSTANCES_FOODSAFETYAPI_*)로 넣으면
+     * Map 키가 소문자로 바인딩되므로 이름도 소문자여야 같은 인스턴스가 된다(#33, ES의 "elasticsearchapi"와 같은 방식).
+     * 대소문자가 섞이면 설정이 적용되지 않은 별도 인스턴스(라이브러리 기본값)가 만들어진다.
+     */
+    public static final String RESILIENCE_INSTANCE = "foodsafetyapi";
+
+
     private final RestTemplate restTemplate;
 
     @Value("${foodsafety.api.key}")
@@ -55,8 +63,8 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
      * @return 레시피 Row, 없거나 장애 시 null
      */
     @Override
-    @Retry(name = "foodSafetyApi")
-    @CircuitBreaker(name = "foodSafetyApi", fallbackMethod = "fetchOneByRcpSeqFallback")
+    @Retry(name = RESILIENCE_INSTANCE)
+    @CircuitBreaker(name = RESILIENCE_INSTANCE, fallbackMethod = "fetchOneByRcpSeqFallback")
     public FoodSafetyRecipeResponse.Row fetchOneByRcpSeq(String rcpSeq) {
 
         String url = String.format(
@@ -104,8 +112,8 @@ public class FoodSafetyRecipeClientImpl implements FoodSafetyRecipeClient {
      * @return 검색된 레시피 목록, 장애 시 빈 리스트
      */
     @Override
-    @Retry(name = "foodSafetyApi")
-    @CircuitBreaker(name = "foodSafetyApi", fallbackMethod = "searchByNameFallback")
+    @Retry(name = RESILIENCE_INSTANCE)
+    @CircuitBreaker(name = RESILIENCE_INSTANCE, fallbackMethod = "searchByNameFallback")
     @Cacheable(value = "externalRecipeSearch", key = "#keyword + ':' + #startIdx + ':' + #endIdx")
     public List<FoodSafetyRecipeResponse.Row> searchByName(String keyword, int startIdx, int endIdx) {
         String filter = "RCP_NM=" + keyword;
