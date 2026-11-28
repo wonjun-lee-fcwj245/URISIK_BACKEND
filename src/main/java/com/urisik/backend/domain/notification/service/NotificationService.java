@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -35,7 +35,9 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final MemberRepository memberRepository;
-    private final RedisTemplate<String, Object> redisTemplate;
+    // Pub/Sub는 일반 JSON 문자열로 보낸다. RedisTemplate<String, Object>(GenericJackson2JsonRedisSerializer)로 보내면
+    // 타입 정보가 붙어(memberId → ["java.lang.Long", 3]) 구독 쪽 해석이 실패해 SSE가 전달되지 않았다(#35).
+    private final StringRedisTemplate stringRedisTemplate;
     private final ObjectMapper objectMapper;
 
     /**
@@ -134,12 +136,7 @@ public class NotificationService {
     // Redis Pub/Sub를 통해 모든 인스턴스로 SSE 브로드캐스트
     private void sendSseOnly(Long memberId, NotificationType type, Object data) {
         try {
-            Map<String, Object> message = Map.of(
-                    "memberId", memberId,
-                    "type", type.name(),
-                    "data", data
-            );
-            redisTemplate.convertAndSend("sse-notification", message);
+            stringRedisTemplate.convertAndSend("sse-notification", toSseMessage(memberId, type, data));
         } catch (Exception e) {
             log.warn("[SSE] Redis Pub/Sub 발행 실패, 로컬 전송 시도: memberId={}", memberId);
             sendSseLocal(memberId, data);
@@ -149,13 +146,25 @@ public class NotificationService {
     // Redis Subscriber 콜백 — 모든 인스턴스에서 호출됨
     public void onSseMessage(String message) {
         try {
-            Map<String, Object> parsed = objectMapper.readValue(message, Map.class);
-            Long memberId = ((Number) parsed.get("memberId")).longValue();
-            Object data = parsed.get("data");
-            sendSseLocal(memberId, data);
+            Map<String, Object> parsed = parseSseMessage(message);
+            sendSseLocal(((Number) parsed.get("memberId")).longValue(), parsed.get("data"));
         } catch (Exception e) {
             log.warn("[SSE] Redis 메시지 파싱 실패", e);
         }
+    }
+
+    // Pub/Sub 메시지 형식: {"memberId": 3, "type": "TEMPERATURE", "data": 5} (타입 정보 없는 JSON)
+    String toSseMessage(Long memberId, NotificationType type, Object data) throws IOException {
+        Map<String, Object> message = new java.util.HashMap<>();
+        message.put("memberId", memberId);
+        message.put("type", type.name());
+        message.put("data", data);
+        return objectMapper.writeValueAsString(message);
+    }
+
+    @SuppressWarnings("unchecked")
+    Map<String, Object> parseSseMessage(String message) throws IOException {
+        return objectMapper.readValue(message, Map.class);
     }
 
     // 로컬 인스턴스의 emitter로 SSE 전송
@@ -166,7 +175,8 @@ public class NotificationService {
                 emitter.send(SseEmitter.event()
                         .id(String.valueOf(memberId))
                         .name("notification")
-                        .data(data));
+                        // null을 그대로 넣으면 MVC 전송 단계에서 예외가 나고, 빈 data는 EventSource가 이벤트를 버리므로 "null"로 보낸다
+                        .data(data != null ? data : "null"));
             } catch (IOException e) {
                 emitters.remove(memberId);
             }
