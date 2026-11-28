@@ -87,7 +87,21 @@ def phase(name, member, room, tok, out):
     print(json.dumps(res, ensure_ascii=False), flush=True)
 
 
+def already_recorded(label, run=None, phase=None):
+    """같은 이름(·회차·구간)의 행이 results.csv에 이미 있으면 True. 재실행으로 CSV에 행이 겹쳐 쌓이는 것을 막는다."""
+    import csv as _csv
+    path = os.path.join(ROOT, 'results.csv')
+    if not os.path.exists(path):
+        return False
+    for r in _csv.DictReader(open(path, encoding='utf-8')):
+        if r['experiment'] == label and (run is None or r['run'] == str(run)) and (phase is None or r['scenario'] == phase):
+            return True
+    return False
+
+
 def main():
+    if already_recorded(LABEL, RUN):   # 같은 이름·회차를 다시 재면 JSON만 덮이고 CSV에는 행이 겹친다
+        raise SystemExit(f'{LABEL} 회차 {RUN}은 이미 기록돼 있다. EXP19_RUN을 바꾸거나 기존 행을 정리한 뒤 실행하라.')
     os.makedirs(RAW, exist_ok=True)
     member, room = map(int, mysql("select m.id, p.family_room from member m join family_member_profile p on p.member=m.id where m.alarm_policy='ALARM_AGREED' limit 1").split())
     tok = token(member)

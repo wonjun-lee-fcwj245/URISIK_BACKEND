@@ -16,6 +16,7 @@ import urllib.request
 
 import exp19_redis_notification as e19
 from exp3_runner import mysql, token, append, ROOT, BASE
+from exp19_redis_notification import already_recorded
 
 LABEL = os.environ.get('EXP22_LABEL', 'exp22_sse')
 RAW = os.path.join(ROOT, 'raw', LABEL)
@@ -64,6 +65,8 @@ def main(trials, redis_down, wait_s):
     member, room = map(int, mysql("select m.id, p.family_room from member m join family_member_profile p on p.member=m.id where m.alarm_policy='ALARM_AGREED' limit 1").split())
     tok = token(member)
     phase = 'redis_down' if redis_down else 'redis_up'
+    if already_recorded(LABEL, phase=phase):   # 재실행으로 CSV 행이 겹치고 JSON만 덮이는 것을 막는다
+        raise SystemExit(f'{LABEL}의 {phase}는 이미 기록돼 있다. EXP22_LABEL을 바꿔 실행하라.')
     out = []
     try:
         if redis_down:
