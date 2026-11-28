@@ -132,4 +132,4 @@
 - 실험 21: 시작 직후 노트북이 약 16시간 절전 상태였고, 깬 뒤(11-27 14:57) 측정이 시작됐다. 측정 구간 안의 수집 공백은 최대 10초.
 - 실험 19b(11-27): #31 수정 후 main(f01ead2)을 기본 compose로 다시 빌드해 발송 경로를 3회 재고, SSE 전달 여부를 한 번 확인했다. 로컬 DB에 테스트 알림 행이 회차마다 2건씩 남았다(알림 동의 회원 1명).
 - 버그 수정 확인(11-27~28): `urisik_backend-app`을 #35 수정 브랜치로 빌드(실험 22), 같은 이미지에 `scripts/exp6/redis-timeout.yml`(명령·연결 200ms)을 더해 실험 22·19c, `urisik-app:r4j`(#33 수정)로 Resilience4j 인스턴스 확인, `urisik-app:evict`(#37 수정)로 실험 18 재측정과 파티션 오프셋 확인. 첫 `evict` 빌드는 다른 Gradle 작업과 겹쳐 실패했고 다시 빌드해 성공했다.
-
+- 머지 후(11-28): #38~#43을 머지한 main(4a7f0d1)을 기본 compose로 빌드해 앱을 띄웠다. Redis 명령·연결 타임아웃 200ms가 기본 compose에 들어갔다. 실시간 알림 전달(2.0초)과 Resilience4j 인스턴스(`foodsafetyapi` 하나)를 확인했다. 테스트는 Gradle 컨테이너(`gradle:8.5-jdk17`)에서 `gradle test --continue`로 돌렸다.
