@@ -96,6 +96,9 @@ services:
       # Redis 연결 정보
       - SPRING_DATA_REDIS_HOST=redis
       - SPRING_DATA_REDIS_PORT=6379
+      # Redis 명령 타임아웃(기본 60초). 장애 시 캐시·알림 발행이 60초씩 매달리지 않게 짧게 둔다(#23 캐시 래퍼의 전제, 실험 6·19b)
+      - SPRING_DATA_REDIS_TIMEOUT=200ms
+      - SPRING_DATA_REDIS_CONNECT_TIMEOUT=200ms
 
       # HikariCP 커넥션 풀 튜닝
       - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=50
